@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<!-- ---------- dashboard ------------- -->
+<div data-role="page" style="background-color:#fff;">
+
+    <div data-role="header" data-theme="b" style="background-color:#3a3a3a;text-align:left;color:#FFF;" data-id="header-nav" data-position="fixed">
+        <h1 style="text-align:left;width:70%;float:left;margin-left:10px;">Hi, Rodolfo!</h1>
+        <div style="width:28%;text-align:right;float:right;margin-top:-2em;margin-right:10px;">
+            <a href="#user-menu-panel" style="color:#FFF;margin-right:10px;"><i class="fa fa-user fa-fw"></i></a>
+            <a href="#nav-menu-panel" style="color:#FFF;"><i class="fa fa-bars fa-fw"></i></a>
+        </div>
+    </div><!-- /header -->
+
+    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" style="background-color:#DFDFDF;width:85%;max-width:230px;">
+        <ul data-role="listview">
+            <li><a href="dashboard.html" style="color:#337AB7;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+            <li><a href="goals.html" style="color:#337AB7;"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li><a href="learning.html" style="color:#337AB7;"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
+            <li><a href="resources.html" style="color:#337AB7;"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+        </ul>
+    </div><!-- /panel -->
+
+    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="user-menu-panel" align="center" style="background-color:#DFDFDF;">
+        <img src="img/photo.png" style="width:80%;margin-left:auto;margin-right:auto;" />
+        <h4>Hello, Rodolfo</h4>
+        <ul data-role="listview" style="margin-top:20px;">
+            <li><a href="#" style="color:#337AB7;"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="#" style="color:#337AB7;"><i class="fa fa-cog fa-fw"></i> Notification Options</a></li>
+            <li><a href="index.html" style="color:#337AB7;"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
+        </ul>
+    </div><!-- /panel -->
+
+    <div data-role="content" style="background-color:#FFF;text-shadow:none;">
+        <div style="text-align:center;">
+            <div class="my-boxes" style="margin:5px;margin-bottom:20px;border:1px solid #ddd;padding:10px;">
+                <img src="img/course1.jpg" style="width:100%;margin-left:auto;margin-right:auto;display:block;" />
+                <h2 style="margin:5px;">Finances 101</h2>
+                <p style="margin:5px;">Learn some tips, tricks, and hacks for managing your money</p>
+                <small style="margin:5px;color:#777;">Duration: 5 minutes</small>
+                <a class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all" style="text-shadow: 2px 2px 4px #000000;margin-top:20px;margin-bottom:0;color:#fff;background-color:#779ECB;width:60%;margin-left:auto;margin-right:auto;">Begin Course</a>
+            </div>
+
+            <div class="my-boxes" style="margin:5px;margin-bottom:20px;border:1px solid #ddd;padding:10px;">
+                <img src="img/course2.jpg" style="width:100%;margin-left:auto;margin-right:auto;display:block;" />
+                <h2 style="margin:5px;">Saving and Budgeting</h2>
+                <p style="margin:5px;"> Learn how easy saving can be and why you need to budget</p>
+                <small style="margin:5px;color:#777;">Duration: 5 minutes</small>
+                <a class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all" style="text-shadow: 2px 2px 4px #000000;margin-top:20px;margin-bottom:0;color:#fff;background-color:#779ECB;width:60%;margin-left:auto;margin-right:auto;">Begin Course</a>
+            </div>
+
+            <div class="my-boxes" style="margin:5px;margin-bottom:20px;border:1px solid #ddd;padding:10px;">
+                <img src="img/course3.jpg" style="width:100%;margin-left:auto;margin-right:auto;display:block;" />
+                <h2 style="margin:5px;">Your Credit Score</h2>
+                <p style="margin:5px;">Not sure what it takes to have the credit you need? Start here</p>
+                <small style="margin:5px;color:#777;">Duration: 5 minutes</small>
+                <a class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all" style="text-shadow: 2px 2px 4px #000000;margin-top:20px;margin-bottom:0;color:#fff;background-color:#779ECB;width:60%;margin-left:auto;margin-right:auto;">Begin Course</a>
+            </div>
+        </div>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" style="border-top:3px solid #aaa;">
+        <data class="row">
+            <div style="width:90%;padding:0px 10px;text-align:center;">
+                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts2-popup').popup('open');">Contacts</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy2-popup').popup('open');">Privacy Policy</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters2-popup').popup('open');">Supporters</a></small></p>
+            </div>
+        </data>
+    </div>
+
+    <div data-role="popup" id="contacts2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div style="padding:10px 20px;">
+            <h3>Contact Us</h3>
+            <p>Email - <a href="mailto:info@oinweb.ca">info@oinweb.ca</a></p>
+            <p>Twitter - <a href="http://twitter.com/rodolfo_oin">@rodolfo_oin</a></p>
+            <p>Website - <a href="http://oinweb.ca">oinweb.ca</a></p>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts2-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+    <div data-role="popup" id="privacy2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div style="padding:10px 20px;">
+            <h3>Privacy Statement</h3>
+            <h5>Introduction</h5>
+            <p>Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.</p>
+            <h5>Links to other sites</h5>
+            <p>The Ontario Immigrant Network web site provides links to other sites that may be of interest. This privacy statement covers the main Ontario Immigrant Network web site and those of Ontario Immigrant Network business units ONLY and not the web sites of other organizations. Each organization’s web site may have a different privacy statement depending on the nature of its site. You should review the privacy statement each time you submit personal information on a web site.</p>
+            <h5>Collection of information</h5>
+            <p>The only information collected that is used to identify you is information you give voluntarily. When you submit a question or comment, you may be asked for your name, e-mail address, or other information. This information is only used to process and respond to your question or comment. This information is not disclosed except to authorized personnel who need it to answer your question. In transit, the information that you send may not be secure. If you would prefer to raise a comment or question in person, please call Ontario Immigrant Network at 519-521-3135.</p>
+            <h5>Security</h5>
+            <p>Ontario Immigrant Network computer system uses software to monitor unauthorized attempts to upload or change information, or damage the service we provide. No attempt is made to identify users or their usage patterns except during investigations.</p>
+
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy2-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+    <div data-role="popup" id="supporters2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div style="padding:10px 20px;text-align:center;">
+            <h3>Thank you, our supporters</h3>
+            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
+            <img src="img/academicstoday.png" alt="academics today logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
+            <img src="img/vivacanada.jpg" alt="viva canada logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" /><br/>
+            <img src="img/libro.png" alt="libro logo" style="vertical-align:middle;width:90%;margin-left:auto;margin-right:auto;text-align:center;height:auto;max-width:500px;padding:10px;" />
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters2-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
