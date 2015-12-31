@@ -2,6 +2,195 @@
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
+
+/* General Styling
+ * -------------------------- */
+.text-center{
+    text-align:center;
+}
+.m0{
+    margin: 0px !important;
+}
+.ui-page{
+    background-color:#fff;
+}
+
+/* Page Header
+ * -------------------------- */
+.ui-header{
+    background-color:#3a3a3a;
+    text-align:left;
+    color:#FFF;
+}
+.ui-header h1.greeting{
+    text-align:left;
+    float:left;
+    margin:0 10px;
+    display:inline-block;
+}
+.ui-header h5.level{
+    display:inline-block;
+    margin:0 10px;
+    float:left;
+    font-size:8pt;
+    line-height:29px;
+}
+.ui-header div.nav-menu{
+    text-align:right;
+    float:right;
+    margin-top:12px;
+    margin-right:10px;
+}
+.ui-header div.nav-menu a{
+    color: #fff;
+}
+
+/* Nav Panel
+ * -------------------------- */
+.ui-panel .ui-panel-inner div.separator{
+    width:25%;
+    margin:auto;
+    display:inline-block;
+    border-bottom:1px solid #aaa;
+    position:relative;
+    top:-4px;
+}
+.ui-panel .ui-panel-inner h5.greeting{
+    margin-top:10px;
+}
+.ui-panel .ui-panel-inner h5.panel-menu-header{
+    display:inline-block;
+    margin-top:25px;
+    padding:0 10px;
+}
+.ui-panel .ui-panel-inner img.user-image{
+    width:40%;
+    border-radius:50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.ui-panel .ui-panel-inner .ui-listview li a{
+    color:#337AB7;
+}
+
+/* Page Content - Common
+ * -------------------------- */
+.ui-content{
+    background-color:#FFF;
+    text-shadow: 2px 2px 4px #000000;
+}
+.ui-content div .my-boxes{
+    margin-bottom:20px;
+    border-radius:5px;
+    color:#fff;
+}
+.ui-content * .my-boxes.red-box{
+    background-color:#E66771 !important;
+}
+.ui-content * .my-boxes.blue-box{
+    background-color:#779ECB !important;
+}
+.ui-content * .my-boxes.green-box{
+    background-color:#92C472 !important;
+}
+
+/* Page Content - Learning
+ * -------------------------- */
+.ui-content div .my-boxes.learning-box img.course-img{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+.ui-content div .my-boxes.learning-box h2{
+    margin: 5px;
+}
+.ui-content div .my-boxes.learning-box p{
+    margin: 5px;
+}
+.ui-content div .my-boxes.learning-box small{
+    margin: 5px;
+}
+.ui-content div .my-boxes.learning-box small.short-course{
+    color: greenyellow;
+}
+.ui-content div .my-boxes.learning-box small.moderate-course{
+    color: yellow;
+}
+.ui-content div .my-boxes.learning-box small.long-course{
+    color: orangered;
+}
+.ui-content div .my-boxes.learning-box .ui-btn.begin-course{
+    text-shadow: 2px 2px 4px #000000;
+    margin-top:20px;
+    margin-bottom:0;
+    color:#fff;
+    background-color:#779ECB;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* Page Content - Resources
+ * -------------------------- */
+.ui-content div .my-boxes.resources-box h2{
+    position:relative;
+    top:-0.2em;
+    margin:10px !important;
+}
+
+/* Page Content - Goals
+ * -------------------------- */
+.ui-content div .my-boxes.goals-box h2{
+    margin:5px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:5px;
+    margin-bottom:10px;
+}
+.ui-content div .my-boxes.goals-box p {
+    margin: 5px;
+}
+.ui-content div .my-boxes.goals-box * input{
+    padding:10px;
+}
+
+/* Footer Nav
+ * -------------------------- */
+.ui-footer{
+    border-top:3px solid #aaa;
+}
+.ui-footer .row div{
+    width:90%;
+    padding:0px 10px;
+    text-align:center;
+}
+
+/* Popups
+ * -------------------------- */
+#confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
+    padding: 10px 20px;
+}
+#supporters3-popup div img.supporter-image{
+    vertical-align:middle;
+    width:90%;
+    height:auto;
+    max-width:250px;
+    padding:10px;
+}
+#supporters3-popup div img.supporter-image.libro{
+    margin-left:auto;
+    margin-right:auto;
+    max-width:500px;
+}
+#error-popup div h3, #error-popup div #error-text, #error-popup div h3 i{
+    color: red;
+}
+#error-popup div h3 i{
+    position:relative;
+    top: 5px;
+    margin-right:10px;
+}
+
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -1354,7 +1543,7 @@
 /* stack all grids below 40em (640px) */
 @media all and (min-width: 501px) {
     .my-boxes {
-        width: 300px !important;
+        min-width: 320px !important;
         padding: 10px !important;
         margin-left:20px !important;
         margin-right:5px !important;

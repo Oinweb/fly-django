@@ -5,69 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
 
-    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css" />
 
-    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 
 <!-- ---------- dashboard ------------- -->
-<div data-role="page" style="background-color:#fff;">
-
-    <div data-role="header" data-theme="b" style="background-color:#3a3a3a;text-align:left;color:#FFF;" data-id="header-nav" data-position="fixed">
-        <h1 style="text-align:left;width:70%;float:left;margin-left:10px;">Hi, Rodolfo!</h1>
-        <div style="width:28%;text-align:right;float:right;margin-top:-2em;margin-right:10px;">
-            <a href="#user-menu-panel" style="color:#FFF;margin-right:10px;"><i class="fa fa-user fa-fw"></i></a>
-            <a href="#nav-menu-panel" style="color:#FFF;"><i class="fa fa-bars fa-fw"></i></a>
+<div data-role="page">
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed">
+        <h1 class="greeting">Hi Rodolfo!</h1>
+        <h5 class="level">
+            <span style="color:goldenrod;">Lvl 1</span>
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <span style="color:greenyellow">50/100 xp</span>
+        </h5>
+        <div class="nav-menu">
+            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
 
-    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" style="background-color:#DFDFDF;width:85%;max-width:230px;">
+    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" style="background-color:#DFDFDF;width:230px;">
+        <img src="img/photo.png" class="user-image" />
+        <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="dashboard.html" style="color:#337AB7;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li><a href="goals.html" style="color:#337AB7;"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
-            <li><a href="learning.html" style="color:#337AB7;"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
-            <li><a href="resources.html" style="color:#337AB7;"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
+            <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
+        <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
+        <ul data-role="listview">
+            <li><a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+            <li><a href="goals.html"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li><a href="learning.html"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
+            <li><a href="resources.html"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+        </ul>
+
     </div><!-- /panel -->
 
-    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="user-menu-panel" align="center" style="background-color:#DFDFDF;">
-        <img src="img/photo.png" style="width:80%;margin-left:auto;margin-right:auto;" />
-        <h4>Hello, Rodolfo</h4>
-        <ul data-role="listview" style="margin-top:20px;">
-            <li><a href="#" style="color:#337AB7;"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li><a href="#" style="color:#337AB7;"><i class="fa fa-cog fa-fw"></i> Notification Options</a></li>
-            <li><a href="index.html" style="color:#337AB7;"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
-        </ul>
-    </div><!-- /panel -->
+    <div data-role="content">
+        <div class="text-center">
+            <div class="my-boxes red-box resources-box">
+                <h2>Social Media</h2>
 
-    <div data-role="content" style="background-color:#FFF;text-shadow: 2px 2px 4px #000000;">
-        <div style="text-align:center;">
-            <div class="my-boxes" style="margin-bottom:20px;border-radius:5px;background-color:#E66771;color:#fff;">
-                <h2 style="position:relative;top:-0.2em;margin:10px;">Social Media</h2>
-
-                <ul data-role="listview" data-inset="true" style="margin:0px;">
+                <ul data-role="listview" data-inset="true" class="m0">
                     <li><a href="https://twitter.com/LibroCU">@LibroCU</a></li>
                     <li><a href="https://twitter.com/rodolfo_oin">@rodolfo_oin</a></li>
                     <li><a href="https://twitter.com/360finances">@360finances</a></li>
                 </ul>
             </div>
 
-            <div class="my-boxes" style="margin-bottom:20px;border-radius:5px;background-color:#779ECB;color:#fff;">
-                <h2 style="position:relative;top:-0.2em;margin:10px;">Blogs</h2>
-                <ul data-role="listview" data-inset="true" style="margin:0px;">
+            <div class="my-boxes blue-box resources-box">
+                <h2>Blogs</h2>
+                <ul data-role="listview" data-inset="true" class="m0">
                     <li><a href="http://www.youngadultmoney.com/">Young Adult Money</a></li>
                     <li><a href="http://www.youngcheapliving.com/">Young, Cheap Living</a></li>
                     <li><a href="http://moneylicious.org/">Moneylicious</a></li>
                 </ul>
             </div>
 
-            <div class="my-boxes" style="margin-bottom:20px;border-radius:5px;background-color:#92C472;color:#fff;">
-                <h2 style="position:relative;top:-0.2em;margin:10px;">Other Cool Apps</h2>
-                <ul data-role="listview" data-inset="true" style="margin:0px;">
+            <div class="my-boxes green-box resources-box">
+                <h2>Other Cool Apps</h2>
+                <ul data-role="listview" data-inset="true" class="m0">
                     <li><a href="https://play.google.com/store/apps/details?id=com.mint&hl=en">Mint.com</a></li>
                     <li><a href="https://play.google.com/store/apps/details?id=com.dayspringtech.envelopes&hl=en">GoodBudget</a></li>
                     <li><a href="https://play.google.com/store/apps/details?id=com.finicity.mvelopes&hl=en">Mvelopes</a></li>
@@ -76,9 +78,9 @@
         </div>
     </div><!-- /content -->
 
-    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" style="border-top:3px solid #aaa;">
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav">
         <data class="row">
-            <div style="width:90%;padding:0px 10px;text-align:center;">
+            <div>
                 <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts3-popup').popup('open');">Contacts</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy3-popup').popup('open');">Privacy Policy</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small></p>
@@ -87,7 +89,7 @@
     </div>
 
     <div data-role="popup" id="contacts3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
+        <div>
             <h3>Contact Us</h3>
             <p>Email - <a href="mailto:info@oinweb.ca">info@oinweb.ca</a></p>
             <p>Twitter - <a href="http://twitter.com/rodolfo_oin">@rodolfo_oin</a></p>
@@ -97,7 +99,7 @@
     </div>
 
     <div data-role="popup" id="privacy3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
+        <div>
             <h3>Privacy Statement</h3>
             <h5>Introduction</h5>
             <p>Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.</p>
@@ -113,12 +115,12 @@
     </div>
 
     <div data-role="popup" id="supporters3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;text-align:center;">
+        <div class="text-center">
             <h3>Thank you, our supporters</h3>
-            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/academicstoday.png" alt="academics today logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/vivacanada.jpg" alt="viva canada logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" /><br/>
-            <img src="img/libro.png" alt="libro logo" style="vertical-align:middle;width:90%;margin-left:auto;margin-right:auto;text-align:center;height:auto;max-width:500px;padding:10px;" />
+            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" class="supporter-image" />
+            <img src="img/academicstoday.png" alt="academics today logo" class="supporter-image" />
+            <img src="img/vivacanada.jpg" alt="viva canada logo" class="supporter-image" /><br/>
+            <img src="img/libro.png" alt="libro logo" class="supporter-image libro" />
             <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters3-popup').popup('close');">Close</button>
         </div>
     </div>
