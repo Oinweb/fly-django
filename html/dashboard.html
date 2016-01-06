@@ -17,27 +17,33 @@
 <!-- ---------- dashboard ------------- -->
 <div data-role="page" style="background-color:#fff;">
 
-    <div data-role="header" data-theme="b" style="background-color:#3a3a3a;text-align:left;color:#FFF;" data-id="header-nav" data-position="fixed">
-        <h1 style="text-align:left;float:left;margin:0 10px;display:inline-block;">Hi Rodolfo!</h1><h5 style="display:inline-block;margin:0 10px;float:left;font-size:8pt;line-height:29px;"><span style="color:goldenrod;">Lvl 1</span>&nbsp;&nbsp;-&nbsp;&nbsp;<span style="color:greenyellow">50/100 xp</span></h5>
-        <div style="text-align:right;float:right;margin-top:12px;margin-right:10px;">
-            <a href="#nav-menu-panel" style="color:#FFF;"><i class="fa fa-bars fa-fw"></i></a>
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed">
+        <h1 class="greeting">Hi Rodolfo!</h1>
+        <h5 class="level">
+            <span style="color:goldenrod;">Lvl 1</span>
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <span style="color:greenyellow">50/100 xp</span>
+        </h5>
+        <div class="nav-menu">
+            <a href="#nav-menu-help"><i class="fa fa-question-circle fa-fw"></i></a>
+            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
 
-    <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" style="background-color:#DFDFDF;width:230px;">
-        <img src="img/photo.png" style="width:40%;border-radius:50%;margin-left:auto;margin-right:auto;" />
-        <h5 style="margin-top:10px;">Hello, Rodolfo</h5>
+    <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" style="background-color:#DFDFDF;width:230px;">
+        <img src="img/photo.png" class="user-image" />
+        <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#" style="color:#337AB7;"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li><a href="#" style="color:#337AB7;"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
-            <li><a href="index.html" style="color:#337AB7;"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
+            <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
-        <div style="width:25%;margin:auto;display:inline-block;border-bottom:1px solid #aaa;position:relative;top:-4px;"></div><h5 style="display:inline-block;margin-top:25px;padding:0 10px;">Navigation</h5><div style="width:25%;margin:auto;display:inline-block;border-bottom:1px solid #aaa;position:relative;top:-4px;"></div>
+        <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
         <ul data-role="listview">
-            <li><a href="dashboard.html" style="color:#337AB7;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li><a href="goals.html" style="color:#337AB7;"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
-            <li><a href="learning.html" style="color:#337AB7;"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
-            <li><a href="resources.html" style="color:#337AB7;"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+            <li><a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+            <li><a href="goals.html"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li><a href="learning.html"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
+            <li><a href="resources.html"><i class="fa fa-link fa-fw"></i> Resources</a></li>
         </ul>
 
     </div><!-- /panel -->
@@ -66,28 +72,35 @@
         </div>
     </div><!-- /content -->
 
-    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" style="border-top:3px solid #aaa;">
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav">
         <data class="row">
-            <div style="width:90%;padding:0px 10px;text-align:center;">
-                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts4-popup').popup('open');">Contacts</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy4-popup').popup('open');">Privacy Policy</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters4-popup').popup('open');">Supporters</a></small></p>
+            <div>
+                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts3-popup').popup('open');">Contacts</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy3-popup').popup('open');">Privacy Policy</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small></p>
             </div>
         </data>
     </div>
 
-    <div data-role="popup" id="contacts4-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
-            <h3>Contact Us</h3>
-            <p>Email - <a href="mailto:info@oinweb.ca">info@oinweb.ca</a></p>
-            <p>Twitter - <a href="http://twitter.com/rodolfo_oin">@rodolfo_oin</a></p>
-            <p>Website - <a href="http://oinweb.ca">oinweb.ca</a></p>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts4-popup').popup('close');">Close</button>
+    <div data-role="popup" id="other-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <input type="text" class="form-control" id="save-for-input" placeholder="Save for..." aria-label="Save for..."/>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" id="save-for-btn" onclick="">Save</button>
         </div>
     </div>
 
-    <div data-role="popup" id="privacy4-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
+    <div data-role="popup" id="contacts3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email - <a href="mailto:fly@oinweb.ca">fly@oinweb.ca</a></p>
+            <p>Twitter - <a href="http://twitter.com/oinweb">@oinweb</a></p>
+            <p>Website - <a href="http://oinweb.ca">oinweb.ca</a></p>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts3-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+    <div data-role="popup" id="privacy3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
             <h3>Privacy Statement</h3>
             <h5>Introduction</h5>
             <p>Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.</p>
@@ -98,18 +111,18 @@
             <h5>Security</h5>
             <p>Ontario Immigrant Network computer system uses software to monitor unauthorized attempts to upload or change information, or damage the service we provide. No attempt is made to identify users or their usage patterns except during investigations.</p>
 
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy4-popup').popup('close');">Close</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy3-popup').popup('close');">Close</button>
         </div>
     </div>
 
-    <div data-role="popup" id="supporters4-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;text-align:center;">
+    <div data-role="popup" id="supporters3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
             <h3>Thank you, our supporters</h3>
-            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/academicstoday.png" alt="academics today logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/vivacanada.jpg" alt="viva canada logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" /><br/>
-            <img src="img/libro.png" alt="libro logo" style="vertical-align:middle;width:90%;margin-left:auto;margin-right:auto;text-align:center;height:auto;max-width:500px;padding:10px;" />
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters4-popup').popup('close');">Close</button>
+            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" class="supporter-image" />
+            <img src="img/academicstoday.png" alt="academics today logo" class="supporter-image" />
+            <img src="img/vivacanada.jpg" alt="viva canada logo" class="supporter-image" /><br/>
+            <img src="img/libro.png" alt="libro logo" class="supporter-image libro" />
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters3-popup').popup('close');">Close</button>
         </div>
     </div>
 
