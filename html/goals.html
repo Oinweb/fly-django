@@ -15,7 +15,7 @@
 <body>
 
 <!-- ---------- dashboard ------------- -->
-<div data-role="page" style="background-color:#fff;">
+<div data-role="page" style="background-color:#fff;" id="goal-page">
 
     <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false">
         <h1 class="greeting">Hi Rodolfo!</h1>
@@ -34,20 +34,20 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a onclick="window.location='profile.html#profile-page';"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
-            <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
+            <li><a onclick="window.location='index.html';"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
         <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
         <ul data-role="listview">
-            <li><a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li><a href="goals.html"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
-            <li><a href="learning.html"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
-            <li><a href="resources.html"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+            <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+            <li><a onclick="window.location='goals.html#goal-page';"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li><a onclick="window.location='learning.html';"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
+            <li><a onclick="window.location='resources.html';"><i class="fa fa-link fa-fw"></i> Resources</a></li>
         </ul>
         <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
         <ul data-role="listview">
-            <li><a href="modal-test.html"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>
+            <li><a onclick="window.location='modal-test.html';"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>
         </ul>
 
     </div><!-- /panel -->
