@@ -31,6 +31,7 @@
 }
 .ui-page{
     background-color:#fff;
+    min-height: 100% !important;
 }
 .ui-content{
     text-align:center !important;
@@ -43,26 +44,36 @@
     text-align:left;
     color:#FFF;
 }
-.ui-header h1.greeting{
-    text-align:left;
+.ui-header img.user-img{
     float:left;
-    margin:0 10px;
+    margin: 5px;
     display:inline-block;
+    width:25px;
+    height: auto;
+    border-radius: 50%;
 }
 .ui-header h5.level{
     display:inline-block;
-    margin:0 10px;
+    margin:0 5px;
     float:left;
-    font-size:12pt;
+    font-size:11pt;
+    margin-top: 10px;
+    font-weight:bold;
 }
 .ui-header div.nav-menu{
     text-align:right;
     float:right;
     margin-top:12px;
     margin-right:10px;
+    width:10%;
 }
 .ui-header div.nav-menu a{
     color: #fff;
+}
+.ui-header div.progress{
+    display:inline-block;
+    width:50%;
+    margin: 10px;
 }
 
 /* Nav Panel
@@ -80,6 +91,7 @@
 }
 .ui-panel .ui-panel-inner h5.greeting{
     margin-top:10px;
+    margin-bottom:20px;
 }
 .ui-panel .ui-panel-inner h5.panel-menu-header{
     display:inline-block;
@@ -328,6 +340,12 @@
 #profile-page #badges li span:first-child{
     position:relative;
     top: 8px;
+}
+
+/* Page Content - Notifications
+ * -------------------------- */
+.ui-listview li{
+    background-color: #F6f6f6;
 }
 
 /* Footer Nav
@@ -1754,7 +1772,7 @@
 
 
 /* stack all grids below 40em (640px) */
-@media all and (max-width: 500px) {
+@media all and (max-width: 720px) {
     .my-boxes {
         width: 90% !important;
         padding: 10px !important;
@@ -1766,9 +1784,9 @@
 }
 
 /* stack all grids below 40em (640px) */
-@media all and (min-width: 501px) {
+@media all and (min-width: 720px) {
     .my-boxes {
-        min-width: 320px !important;
+        width:320px;
         padding: 10px !important;
         margin-left:20px !important;
         margin-right:5px !important;

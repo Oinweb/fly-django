@@ -6,14 +6,16 @@
     <title></title>
 
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/share-button.min.css" />
     <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/share-button.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
 </head>
 <body>
@@ -21,15 +23,19 @@
 <!-- ---------- dashboard ------------- -->
 <div data-role="page" style="background-color:#fff;" id="course-content">
 
-    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false">
-        <h1 class="greeting">Hi Rodolfo!</h1>
-        <h5 class="level">
-            <span style="color:goldenrod;">Lvl 1</span>
-            &nbsp;&nbsp;-&nbsp;&nbsp;
-            <span style="color:greenyellow">50/100 xp</span>
-        </h5>
-        <div class="nav-menu">
-            <a href="#nav-menu-help"><i class="fa fa-question-circle fa-fw"></i></a>
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center" style="min-width:320px;">
+        <div style="display:inline-block;">
+            <img src="img/photo.png" class="user-img"/>
+            <h5 class="level">
+                <span style="color:goldenrod;">Lvl 1</span>
+            </h5>
+        </div>
+        <div class="progress" style="display:inline-block;width:180px;margin:10px auto;">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                50/100 XP
+            </div>
+        </div>
+        <div class="nav-menu" style="width:30px;float:right;">
             <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
@@ -38,19 +44,15 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a onclick="window.location='profile.html';"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
+            <li><a onclick="window.location='profile.html#profile-page';"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a onclick="window.location='notifications.html#notifications-page';"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a onclick="window.location='index.html';"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
-        </ul>
-        <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
-        <ul data-role="listview">
+            <li data-role="list-divider"></li>
+            <li><a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
             <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li><a onclick="window.location='goals.html';"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li><a onclick="window.location='goals.html#goal-page';"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
             <li><a onclick="window.location='learning.html';"><i class="fa fa-graduation-cap fa-fw"></i> Learning</a></li>
             <li><a onclick="window.location='resources.html';"><i class="fa fa-link fa-fw"></i> Resources</a></li>
-        </ul>
-        <div class="separator"></div><h5 class="panel-menu-header">Navigation</h5><div  class="separator"></div>
-        <ul data-role="listview">
             <li><a onclick="window.location='modal-test.html';"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>
         </ul>
 
@@ -77,13 +79,15 @@
     </div><!-- /content -->
 
     <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
-        <data class="row">
-            <div>
-                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts3-popup').popup('open');">Contacts</a>
+        <div class="row">
+            <div style="margin:auto;">
+                <p class="m5"><small>Provided by Ontario Immigrant Network <br/>
+                    <a href="#" onclick="$('#contacts3-popup').popup('open');">Contacts</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy3-popup').popup('open');">Privacy Policy</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small>
+                </p>
             </div>
-        </data>
+        </div>
     </div>
 
     <div data-role="popup" id="contacts3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
