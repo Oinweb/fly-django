@@ -26,8 +26,14 @@
 .m5{
     margin: 5px !important;
 }
+.mt10{
+    margin-top: 10px !important;
+}
 .ui-page{
     background-color:#fff;
+}
+.ui-content{
+    text-align:center !important;
 }
 
 /* Page Header
@@ -126,8 +132,13 @@
     padding:20px;
     padding-top:0;
 }
+#login-page .ui-content .row #inner-login-container{
+    text-align:center;
+}
 #login-page .ui-content .row #inner-login-container #login-logo{
-    width:100%;max-width: 260px;
+    width:100%;
+    max-width: 260px;
+    margin: auto;
 }
 #login-page .ui-content .row #inner-login-container a{
     display:block;
@@ -147,6 +158,9 @@
     margin: auto !important;
     margin-top: -15px !important;
 }
+
+/* Page Content - Dashboard
+ * -------------------------- */
 #dashboard .ui-content div .my-boxes h2,
 #dashboard .ui-content div .my-boxes p{
     margin: 5px;
@@ -198,13 +212,11 @@
  * -------------------------- */
 #course-content .ui-content div h2{
     text-align: center;
-    width: 100%;
     margin: auto;
     margin-bottom: 10px;
-    text-decoration: underline;
 }
 #course-content .ui-content div video{
-    width: 90% !important;
+    width: 255px;
     height: auto;
 }
 #course-content .ui-content div *{
@@ -245,8 +257,6 @@
     margin: 0px auto;
 }
 .ui-content div .ui-collapsible-heading-toggle{
-    background-color: #779ECB;
-    color: #fff;
     text-shadow: none;
 }
 .ui-content div .ui-listview li h5{
@@ -278,6 +288,36 @@
 }
 .ui-content div .my-boxes.goals-box * input{
     padding:10px;
+}
+
+/* Page Content - Profile
+ * -------------------------- */
+.ui-content div .ui-listview li span{
+    font-weight: bold;
+}
+.ui-content div .ui-listview li p{
+    white-space: normal;
+}
+.ui-li-static .ui-body-inherit{
+    padding: 0px;
+}
+#profile-page .ui-content .ui-collapsible{
+    margin: 0px;
+}
+#profile-page .ui-content .ui-listview .goal-fail a{
+    background-color: #E66771;
+    text-shadow: none;
+}
+#profile-page .ui-content .ui-listview .goal-success a{
+    background-color: #92C472;
+    text-shadow: none;
+}
+#profile-page .ui-content .ui-listview .goal-locked a{
+    background-color: gold;
+    text-shadow: none;
+}
+#profile-page .ui-content .ui-collapsible .ui-collapsible-content{
+    padding-top: 0px;
 }
 
 /* Footer Nav

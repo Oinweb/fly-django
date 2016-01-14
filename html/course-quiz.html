@@ -36,7 +36,7 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
@@ -56,10 +56,12 @@
 
     <div data-role="content">
         <div class="text-center">
-            <h2>Course Title Quiz</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
-            <p>Click 'Begin' to continue!</p>
+            <h2 class="ui-bar ui-bar-a ui-corner-all">Course Title Quiz</h2>
+            <div class="ui-body ui-body-a ui-corner-all mt10">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
+                <p>Click 'Begin' to continue!</p>
+            </div>
         </div>
     </div><!-- /content -->
 
@@ -90,7 +92,7 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
@@ -148,7 +150,7 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
@@ -206,7 +208,7 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
@@ -264,7 +266,7 @@
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a href="profile.html"><i class="fa fa-user fa-fw"></i> Profile</a></li>
             <li><a href="#"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
             <li><a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
         </ul>
@@ -289,7 +291,7 @@
             <div class="social-sharing">
                 <share-button></share-button>
             </div>
-            <div data-role="collapsible" style="margin-top:20px;" id="quiz-answers">
+            <div data-role="collapsible" style="margin-top:20px;" id="quiz-answers" style="background-color: #779ECB;color:#fff;">
                 <h4 style="background-color: #779ECB;">Show Correct Answers</h4>
                 <ul data-role="listview">
                     <li><h5>Question 1</h5><p>E - Correct answer text here</p></li>
@@ -403,6 +405,9 @@
         $('.btnCloseQuiz').on('click', function(){
             if(quizScore >= 50 ){
                 $('#badge-popup').popup('open');
+            }
+            else{
+                window.location="dashboard.html#dashboard";
             }
         });
         $('#btnBeginQuiz').on('click', function(){

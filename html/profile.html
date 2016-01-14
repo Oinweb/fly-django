@@ -7,19 +7,15 @@
 
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/share-button.min.css" />
-    <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <script src="js/share-button.min.js"></script>
-    <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
 </head>
 <body>
 
 <!-- ---------- dashboard ------------- -->
-<div data-role="page" style="background-color:#fff;" id="course-content">
+<div data-role="page" style="background-color:#fff;" id="profile-page">
 
     <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false">
         <h1 class="greeting">Hi Rodolfo!</h1>
@@ -34,7 +30,7 @@
         </div>
     </div><!-- /header -->
 
-    <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center">
+    <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
         <img src="img/photo.png" class="user-image" />
         <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
@@ -58,21 +54,60 @@
 
     <div data-role="content">
         <div class="text-center">
-            <h2 class="ui-bar ui-bar-a ui-corner-all">Course Title</h2>
-            <div class="ui-body ui-body-a ui-corner-all">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
-                <video id="my-video" class="video-js" controls preload="auto" width="255px" height="auto"
-                       poster="img/course1.jpg" data-setup="{}">
-                    <source src="course-content/vid1.mp4" type='video/mp4'>
-                    <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a web browser that
-                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                </video>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.</p>
-                <button data-icon="info" id="btnTakeQuiz" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow" onclick="window.location='course-quiz.html#course-quiz-0';"><span>Take Quiz</span></button>
-            </div>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:#E66771;color:#fff;"><h4>User Info</h4></li>
+                <li><span>Name</span><span class="fright text-right">Rodolfo Martinez</span></li>
+                <li><span>Date Joined</span><span class="fright text-right">01/13/2016</span></li>
+                <li><span>Level (4)</span><span class="fright text-right" style="color:goldenrod;">Financial Guru</span></li>
+                <li><span>Experience</span><span class="fright text-right" style="color:green;">50/100 xp</span></li>
+            </ul>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:#779ECB;color:#fff;"><h4>Current Goals</h4></li>
+                <li><span>Saving</span><p>I want to save $20 every 2 days</p></li>
+                <li><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p></li>
+                <li><span>Goal</span><p>I want to save $700 for general savings</p></li>
+            </ul>
+            <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
+                <li data-role="list-divider" style="background-color:#92C472;color:#fff;"><h4>Goal History</h4></li>
+                <div data-role="collapsible" data-corners="false">
+                    <h4>Last Month</h4>
+                    <ul data-role="listview" data-corners="false">
+                        <li class="goal-fail" data-icon="delete"><a><span>Saving</span><p>I want to save $20 every 2 days</p></a></li>
+                        <li class="goal-success" data-icon="check"><a><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p><h5 style="margin-top:5px;color:#fff;">+25 XP</h5></a></li>
+                        <li class="goal-locked" data-icon="lock"><a><span>Goal</span><p>I want to save $700 for general savings</p></a></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible"  data-corners="false">
+                    <h4>December</h4>
+                    <ul data-role="listview" data-corners="false">
+                        <li class="goal-fail" data-icon="delete"><a><span>Saving</span><p>I want to save $20 every 2 days</p></a></li>
+                        <li class="goal-success" data-icon="check"><a><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p></a></li>
+                        <li class="goal-success" data-icon="check"><a><span>Goal</span><p>I want to save $700 for general savings</p></a></li>
+                    </ul>
+                </div>
+                <div data-role="collapsible" data-corners="false">
+                    <h4>November</h4>
+                    <ul data-role="listview" data-corners="false">
+                        <li class="goal-success" data-icon="check"><a><span>Saving</span><p>I want to save $20 every 2 days</p></a></li>
+                        <li class="goal-success" data-icon="check"><a><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p></a></li>
+                        <li class="goal-fail" data-icon="delete"><a><span>Goal</span><p>I want to save $700 for general savings</p></a></li>
+                    </ul>
+                </div>
+            </ul>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:goldenrod;color:#fff;"><h4>Newsletter Signup</h4></li>
+                <li>
+                    <span style="position:relative;top:10px;font-size:10pt;">Receive Newsletter</span><span class="text-right fright">
+                    <form>
+                        <select id="newsletter-switch" data-role="flipswitch" data-mini="true">
+                            <option selected="true">Off</option>
+                            <option>On</option>
+                        </select>
+                    </form>
+                    </span>
+                    <button id="btnSaveChanges" style="display:none;" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:30px;"><span>Save Changes</span></button>
+                </li>
+            </ul>
         </div>
     </div><!-- /content -->
 
@@ -84,6 +119,13 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small></p>
             </div>
         </data>
+    </div>
+
+    <div data-role="popup" id="other-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <input type="text" class="form-control" id="save-for-input" placeholder="Save for..." aria-label="Save for..."/>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" id="save-for-btn" onclick="">Save</button>
+        </div>
     </div>
 
     <div data-role="popup" id="contacts3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
@@ -123,6 +165,22 @@
         </div>
     </div>
 
+    <div data-role="popup" id="error-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3><i class="fa fa-2x fa-times"></i>Error</h3>
+            <p id="error-text">There was an error</p>
+        </div>
+    </div>
+
+    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3>Great you've set a goal!</h3>
+            <p>Once you confirm this goal you cannot change it for at least 30 days</p>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="lock_goal = true;$('#confirm-popup').popup('close');lockBoxItems();">Lock Goal</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#confirm-popup').popup('close');">Cancel</button>
+        </div>
+    </div>
+
 </div><!-- /page -->
 
 </body>
@@ -130,13 +188,11 @@
 
 <script>
     $(document).ready(function(){
-        new ShareButton({
-            networks: {
-                pinterest: { enabled: false },
-                reddit: { enabled: false },
-                linkedin: { enabled: false },
-                whatsapp: { enabled: false }
-            }
+        $('#newsletter-switch').on('change', function(){
+           $('#btnSaveChanges').show();
         });
+        $('#btnSaveChanges').on('click', function(){
+            $(this).hide();
+        })
     });
 </script>
