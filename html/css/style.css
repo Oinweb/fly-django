@@ -319,6 +319,16 @@
 #profile-page .ui-content .ui-collapsible .ui-collapsible-content{
     padding-top: 0px;
 }
+#profile-page .ui-listview>li h4{
+    margin: 0 !important;
+}
+#profile-page .ui-listview .ui-listview-inset .ui-shadow{
+    margin: 0px !important;
+}
+#profile-page #badges li span:first-child{
+    position:relative;
+    top: 8px;
+}
 
 /* Footer Nav
  * -------------------------- */
