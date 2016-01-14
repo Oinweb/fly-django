@@ -15,52 +15,52 @@
 <body>
 
 <!-- ---------- login ------------- -->
-<div data-role="page" id="login-page" style="background-color:white;">
+<div data-role="page" id="login-page">
     <!-- ---------- login content ------------- -->
-    <div data-role="content" align="center" data-theme="a" style="clear:both;margin-top:0;padding:0;text-shadow: 2px 2px 4px #000000;">
+    <div data-role="content" align="center" data-theme="a" style="">
         <div class="row">                            <!-- row -->
-            <div class="container" id="inner-login-container" style="padding:20px;padding-top:0;">
-                <img src="img/oin-fly-logo.png" id="login-logo" alt="bizmula-logo" style="width:100%;max-width:300px;">
+            <div class="container" id="inner-login-container">
+                <img src="img/oin-fly-logo.png" id="login-logo" alt="bizmula-logo" style="">
 
                 <div class="clearfix"></div>
                 <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
-                   style="text-align:left;width:80%;max-width:300px;min-width:300px;margin:5px;margin-top:10px;text-shadow: 2px 2px 4px #000000;margin-left:auto;margin-right:auto;background-color:#4B7EBD;color:#fff;">
-                    <span style="font-family:arial;margin-left:60px;text-align:center;">Login With Facebook</span></a>
+                   style="background-color:#4B7EBD;">
+                    <span>Login With Facebook</span></a>
                 <div class="clearfix"></div>
                 <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
-                   style="text-align:left;width:80%;max-width:300px;min-width:300px;margin:5px;margin-top:0;text-shadow: 2px 2px 4px #000000;margin-left:auto;margin-right:auto;background-color:#0FD4FF;color:#fff;">
-                    <span style="font-family:arial;margin-left:60px;text-align:center;">Login With Twitter</span></a>
+                   style="background-color:#0FD4FF;">
+                    <span>Login With Twitter</span></a>
                 <div class="clearfix"></div>
                 <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
-                   style="text-align:left;width:80%;max-width:300px;min-width:300px;margin:5px;margin-top:0;text-shadow: 2px 2px 4px #000000;margin-left:auto;margin-right:auto;background-color:#FD5D51;color:#fff;">
-                    <span style="font-family:arial;margin-left:60px;text-align:center;">Login With Google</span></a>
+                   style="background-color:#FD5D51;">
+                    <span>Login With Google</span></a>
 
             </div><!-- container -->
         </div>
     </div>
 
-    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" style="border-top:3px solid #aaa;">
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
         <data class="row">
-            <div style="width:90%;padding:0px 10px;text-align:center;">
-                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts1-popup').popup('open');">Contacts</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy1-popup').popup('open');">Privacy Policy</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters1-popup').popup('open');">Supporters</a></small></p>
+            <div>
+                <p><small>Provided by Ontario Immigrant Network <br/> <a href="#" onclick="$('#contacts3-popup').popup('open');">Contacts</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy3-popup').popup('open');">Privacy Policy</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small></p>
             </div>
         </data>
     </div>
 
-    <div data-role="popup" id="contacts1-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
+    <div data-role="popup" id="contacts3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
             <h3>Contact Us</h3>
-            <p>Email - <a href="mailto:info@oinweb.ca">info@oinweb.ca</a></p>
-            <p>Twitter - <a href="http://twitter.com/rodolfo_oin">@rodolfo_oin</a></p>
+            <p>Email - <a href="mailto:fly@oinweb.ca">fly@oinweb.ca</a></p>
+            <p>Twitter - <a href="http://twitter.com/oinweb">@oinweb</a></p>
             <p>Website - <a href="http://oinweb.ca">oinweb.ca</a></p>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts1-popup').popup('close');">Close</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts3-popup').popup('close');">Close</button>
         </div>
     </div>
 
-    <div data-role="popup" id="privacy1-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;">
+    <div data-role="popup" id="privacy3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
             <h3>Privacy Statement</h3>
             <h5>Introduction</h5>
             <p>Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.</p>
@@ -71,18 +71,18 @@
             <h5>Security</h5>
             <p>Ontario Immigrant Network computer system uses software to monitor unauthorized attempts to upload or change information, or damage the service we provide. No attempt is made to identify users or their usage patterns except during investigations.</p>
 
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy1-popup').popup('close');">Close</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy3-popup').popup('close');">Close</button>
         </div>
     </div>
 
-    <div data-role="popup" id="supporters1-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div style="padding:10px 20px;text-align:center;">
+    <div data-role="popup" id="supporters3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
             <h3>Thank you, our supporters</h3>
-            <img src="img/webalchemists.png" alt="youth opportunities unlimited logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/academicstoday.png" alt="academics today logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" />
-            <img src="img/vivacanada.jpg" alt="viva canada logo" style="vertical-align:middle;width:90%;height:auto;max-width:250px;padding:10px;" /><br/>
-            <img src="img/libro.png" alt="libro logo" style="vertical-align:middle;width:90%;margin-left:auto;margin-right:auto;text-align:center;height:auto;max-width:500px;padding:10px;" />
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters1-popup').popup('close');">Close</button>
+            <a href="http://www.libro.ca"><img src="img/libro.png" alt="libro logo" class="supporter-image libro" /></a>
+            <a href="http://www.web-alchemist.com"><img src="img/webalchemists.png" alt="web alchemists logo" class="supporter-image" style="width:47%;float:left;padding:0;"/></a>
+            <a href="http://www.mikasoftware.com"><img src="img/mikasoftware.png" alt="academics today logo" class="supporter-image" style="width:49%;float:right;padding:0;margin-top:15px;" /></a>
+            <a href="http://www.vivacanada.com"><img src="img/vivacanada.jpg" alt="viva canada logo" class="supporter-image" /><br/></a>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters3-popup').popup('close');">Close</button>
         </div>
     </div>
 

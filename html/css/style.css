@@ -8,8 +8,23 @@
 .text-center{
     text-align:center;
 }
+.text-left {
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.fright{
+    float: right;
+}
+.fleft{
+    float: left;
+}
 .m0{
     margin: 0px !important;
+}
+.m5{
+    margin: 5px !important;
 }
 .ui-page{
     background-color:#fff;
@@ -46,6 +61,9 @@
 
 /* Nav Panel
  * -------------------------- */
+.ui-panel{
+    background-color:#f6f6f6;
+}
 .ui-panel .ui-panel-inner div.separator{
     width:25%;
     margin:auto;
@@ -92,6 +110,52 @@
 .ui-content * .my-boxes.green-box{
     background-color:#92C472 !important;
 }
+.ui-content * .my-boxes{
+    text-align:center;
+}
+
+/* Page Content - Login
+ * -------------------------- */
+#login-page .ui-content{
+    clear:both;
+    margin-top:0;
+    padding:0;
+    text-shadow: 2px 2px 4px #000000;
+}
+#login-page .ui-content .row #inner-login-container{
+    padding:20px;
+    padding-top:0;
+}
+#login-page .ui-content .row #inner-login-container #login-logo{
+    width:100%;max-width: 260px;
+}
+#login-page .ui-content .row #inner-login-container a{
+    display:block;
+    text-align:left;
+    width:245px;
+    margin:5px;
+    margin-top:10px;
+    text-shadow: 2px 2px 4px #000000;
+    margin-left:auto;
+    margin-right:auto;
+    color:#fff;
+}
+#login-page .ui-content .row #inner-login-container a span {
+    font-family: arial;
+    text-align: center;
+    display: block;
+    margin: auto !important;
+    margin-top: -15px !important;
+}
+#dashboard .ui-content div .my-boxes h2,
+#dashboard .ui-content div .my-boxes p{
+    margin: 5px;
+}
+#dashboard .ui-content div .my-boxes a{
+    margin: 20px auto;
+    margin-bottom: 0;
+    width:60%;
+}
 
 /* Page Content - Learning
  * -------------------------- */
@@ -130,6 +194,69 @@
     margin-right:auto;
 }
 
+/* Page Content - Learning - course page
+ * -------------------------- */
+#course-content .ui-content div h2{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+#course-content .ui-content div video{
+    width: 90% !important;
+    height: auto;
+}
+#course-content .ui-content div *{
+    text-shadow: none;
+    text-align: left;
+}
+
+#course-content .ui-content div button span{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    margin-left:-10px;
+}
+
+/* Page Content - Learning - course quiz
+ * -------------------------- */
+.ui-content div{
+    text-shadow: none;
+    text-align: justify;
+}
+.quiz-answer.selected{
+    background-color: #3388CC;
+    color: #fff;
+}
+.ui-content div .ui-listview{
+    margin-top: 0px;
+}
+.ui-content div .ui-listview .ui-li-divider{
+    background-color: #779ECB;
+    color: #fff;
+    text-shadow: none;
+    font-size: 12pt !important;
+}
+#course-quiz-finish .ui-content div{
+    text-align:center !important;
+}
+.ui-content div h2{
+    margin: 0px auto;
+}
+.ui-content div .ui-collapsible-heading-toggle{
+    background-color: #779ECB;
+    color: #fff;
+    text-shadow: none;
+}
+.ui-content div .ui-listview li h5{
+    margin: 0px;
+}
+.ui-content div .ui-listview li p{
+    margin: 0px;
+    margin-top: 5px;
+}
+
 /* Page Content - Resources
  * -------------------------- */
 .ui-content div .my-boxes.resources-box h2{
@@ -156,17 +283,24 @@
 /* Footer Nav
  * -------------------------- */
 .ui-footer{
-    border-top:3px solid #aaa;
+    background-color: #3A3A3A;
+    padding: 0px 0px;
 }
 .ui-footer .row div{
     width:90%;
     padding:0px 10px;
     text-align:center;
 }
+.ui-footer .row div a{
+    text-decoration: none;
+}
+.ui-footer .row div p{
+    margin: 5px;
+}
 
 /* Popups
  * -------------------------- */
-#confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
+#confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
     padding: 10px 20px;
 }
 #supporters3-popup div img.supporter-image{
@@ -189,6 +323,44 @@
     top: 5px;
     margin-right:10px;
 }
+#badge-popup div p i.fa-3x{
+    color:green;
+    border:3px solid #aaa;
+    padding: 10px;
+    border-radius: 50%;
+}
+#badge-popup div .social-sharing{
+    width: 100%;
+    margin-left:-20px;
+    margin-right: auto;
+
+}
+#levelup-popup div .level-up-fieldset{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom:15px;
+}
+#levelup-popup div .level-up-fieldset .level{
+    color:goldenrod;
+    margin: 5px;
+    text-decoration:underline;
+}
+#levelup-popup div .level-up-fieldset .level-title{
+    color: green;
+    margin: 5px;
+}
+.ui-popup div .social-sharing share-button{
+    color: #000 !important;
+    font-weight: normal;
+    background-color: #eee;
+    border: 1px solid #aaa;
+}
+.ui-popup div .social-sharing share-button::before{
+    color: #000 !important;
+}
+
+#levelup-popup
 
 /* FONT PATH
  * -------------------------- */
@@ -207,6 +379,11 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.ui-icon-fa::before{
+    display:inline-block;
+    width: 20px;
+    height: auto;
 }
 /* makes the font 33% larger relative to the icon container */
 .ui-icon-fa-lg {
@@ -1529,13 +1706,12 @@
 /* stack all grids below 40em (640px) */
 @media all and (max-width: 500px) {
     .my-boxes {
-        width: 100% !important;
+        width: 90% !important;
         padding: 10px !important;
         float: none !important;
         margin-left:auto !important;
         margin-right:auto !important;
         display:block;
-        max-width:300px;
     }
 }
 
