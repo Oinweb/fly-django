@@ -346,6 +346,12 @@
 .ui-content div .my-boxes.goals-box * input{
     padding:10px;
 }
+.ui-content div .my-boxes.goals-box img.goals-img{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
 
 /* Page Content - Profile
  * -------------------------- */
