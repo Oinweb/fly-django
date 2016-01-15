@@ -21,21 +21,21 @@
 <!-- ---------- dashboard ------------- -->
 <div data-role="page" style="background-color:#fff;" id="goal-page">
 
-    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center" style="min-width:320px;">
-        <div style="width:80px;display:inline-block;">
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center">
+        <div class="user-info">
             <img src="img/photo.png" class="user-img"/>
             <h5 class="level">
-                <span style="color:goldenrod;">Lvl 1</span>
+                <span>Lvl 1</span>
             </h5>
         </div>
-        <div style="text-align:center;display:inline-block;width:180px;margin-left: auto;margin-right:auto;">
-            <div class="progress" style="display:inline-block;width:100%;margin:10px auto;">
+        <div class="progress-bar-div">
+            <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                     50/100 XP
                 </div>
             </div>
         </div>
-        <div class="nav-menu" style="width:30px;float:right;">
+        <div class="nav-menu">
             <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
@@ -63,10 +63,10 @@
             <div class="my-boxes red-box goals-box">
                 <h2>Saving</h2>
                 <p>I want to save...</p>
-                <input type="text" class="form-control" id="save-dollars" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
+                <input type="text" id="save-dollars" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
                 <p>Every...</p>
                 <fieldset class="ui-grid-a">
-                    <div class="ui-block-a"><input type="text" class="form-control" id="save-period" placeholder="time period" aria-label="Time period"></div>
+                    <div class="ui-block-a"><input type="text" id="save-period" placeholder="time period" aria-label="Time period"></div>
                     <div class="ui-block-b"><select id="save-time">
                         <option value="days">Days</option>
                         <option value="weeks">Weeks</option>
@@ -79,11 +79,11 @@
             <div class="my-boxes blue-box goals-box">
                 <h2>Credit</h2>
                 <p>I want to raise my credit score by...</p>
-                <input type="text" class="form-control" id="credit-points" placeholder="number of points" aria-label="Number of points">
+                <input type="text" id="credit-points" placeholder="number of points" aria-label="Number of points">
                 <p>In...</p>
 
                 <fieldset class="ui-grid-a">
-                    <div class="ui-block-a"><input type="text" id="credit-period" class="form-control" placeholder="time period" aria-label="Time period"></div>
+                    <div class="ui-block-a"><input type="text" id="credit-period" placeholder="time period" aria-label="Time period"></div>
                     <div class="ui-block-b"><select id="credit-time">
                         <option value="weeks">Weeks</option>
                         <option value="months">Months</option>
@@ -95,7 +95,7 @@
             <div class="my-boxes green-box goals-box">
                 <h2>Goal</h2>
                 <p>I want to save...</p>
-                <input type="text" class="form-control" id="goal-amount" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
+                <input type="text" id="goal-amount" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
                 <p>For...</p>
                 <fieldset class="ui-grid-a">
                 <select id="goal-for">
