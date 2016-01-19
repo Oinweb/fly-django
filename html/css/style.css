@@ -36,6 +36,12 @@
 .ui-content{
     text-align:center !important;
 }
+.my-boxes img{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
 
 /* Page Header
  * -------------------------- */
@@ -185,12 +191,6 @@
 
 /* Page Content - Learning
  * -------------------------- */
-.ui-content div .my-boxes.learning-box img.course-img{
-    width:100%;
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
-}
 .ui-content div .my-boxes.learning-box h2{
     margin: 5px;
 }
@@ -1786,7 +1786,7 @@
 /* stack all grids below 40em (640px) */
 @media all and (min-width: 720px) {
     .my-boxes {
-        width:320px;
+        width:300px;
         padding: 10px !important;
         margin-left:20px !important;
         margin-right:5px !important;
