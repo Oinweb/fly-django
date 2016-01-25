@@ -105,18 +105,19 @@
                     </div>
                 </li>
             </ul>
+
             <ul data-role="listview" data-inset="true" id="courses">
                 <li data-role="list-divider" style="background-color:#E74C3C;color:#fff;"><h4>Courses Completed</h4></li>
                 <li><a onclick="window.location='course.html';"><span>Course 1</span><span class="fright" style="color:green;">75%</span></a></li>
                 <li><a onclick="window.location='course.html';"><span>Course 2</span><span class="fright" style="color:green;">55%</span></a></li>
                 <li><a onclick="window.location='course.html';"><span>Course 3</span><span class="fright" style="color:green;">66%</span></a></li>
             </ul>
+
             <ul data-role="listview" data-inset="true" id="badges">
                 <li data-role="list-divider" style="background-color:darkturquoise;color:#fff;"><h4>FLY Badges</h4></li>
-                <li data-icon="false"><a onclick="$('#badge-popup').popup('open');"><span>Badge 1</span><span class="fright" style="color:green;"><i class="fa fa-2x fa-thumbs-up"></i></span></a></li>
-                <li data-icon="false"><a onclick="$('#badge-popup').popup('open');"><span>Badge 2</span><span class="fright" style="color:orangered;"><i class="fa fa-2x fa-thumbs-down"></i></span></a></li>
-                <li data-icon="false"><a onclick="$('#badge-popup').popup('open');"><span>Badge 3</span><span class="fright" style="color:goldenrod;"><i class="fa fa-2x fa-home"></i></span></a></li>
+                <li><a onclick="$('#badges-popup').popup('open');" data-icon="thumbs-up">View Badges</a></li>
             </ul>
+
             <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider" style="background-color:goldenrod;color:#fff;"><h4>Newsletter Signup</h4></li>
                 <li>
@@ -184,16 +185,41 @@
         </div>
     </div>
 
-    <div data-role="popup" id="badge-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+    <div data-role="popup" id="badges-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
         <div class="text-center">
-            <h3>You've earned a new FLY badge!</h3>
-            <p class="text-left">Congratulations! You've earned a shiny new badge for your collection! Keep up the good work and be sure to let your friends know!</p>
-            <p><i class="fa fa-3x fa-thumbs-up"></i></p>
-
-            <div class="social-sharing">
-                <share-button></share-button>
+            <div class="ui-grid-a">
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-thumbs-up" style="color:green;"></i>
+                    <h4>Badge 1</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-tasks" style="color:orangered;"></i>
+                    <h4>Badge 2</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-lock" style="color:darkgoldenrod;"></i>
+                    <h4>Badge 3</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-edit" style="color:purple;"></i>
+                    <h4>Badge 4</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-tablet" style="color:orange;"></i>
+                    <h4>Badge 5</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-calculator" style="color:blue;"></i>
+                    <h4>Badge 6</h4>
+                    <p>Earned for doing something</p>
+                </div>
             </div>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#badge-popup').popup('close');">OK</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#badges-popup').popup('close');">Close</button>
         </div>
     </div>
 

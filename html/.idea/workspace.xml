@@ -2,81 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db2105ef-eb3b-4ef1-9a6d-1a2c41fc4aa5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/academicstoday.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/course1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/course2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/course3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/libro.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/mikasoftware.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/oin-fly-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/savings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/vivacanada.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/img/webalchemists.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/facebook.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/googleplus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/storage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/flyapp_project/pipeline.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/flyapp_project/secret_settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/gunicorn_config.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/home.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/templates/mobile/panel.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/mobile/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/jquery.mobile-1.4.5.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/share-button.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/jquery-1.11.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/jquery.mobile-1.4.5.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share-button.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/share-button.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/share-button.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/share-utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/email.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/export.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/facebook.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/googlePlus.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/linkedin.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/pinterest.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/reddit.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/twitter.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../src/flyapp_project/static/js/share/svg/whatsapp.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/savings.png" afterPath="$PROJECT_DIR$/img/savings.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/misc.xml" afterPath="$PROJECT_DIR$/../.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/py-fly.iml" afterPath="$PROJECT_DIR$/../.idea/py-fly.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course-quiz.html" afterPath="$PROJECT_DIR$/course-quiz.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course.html" afterPath="$PROJECT_DIR$/course.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard.html" afterPath="$PROJECT_DIR$/dashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/goals.html" afterPath="$PROJECT_DIR$/goals.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/learning.html" afterPath="$PROJECT_DIR$/learning.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modal-test.html" afterPath="$PROJECT_DIR$/modal-test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifications.html" afterPath="$PROJECT_DIR$/notifications.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profile.html" afterPath="$PROJECT_DIR$/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources.html" afterPath="$PROJECT_DIR$/resources.html" />
     </list>
     <ignored path="html.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,18 +24,60 @@
     <favorites_list name="html" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3273427">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6806433">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="profile.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/profile.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.34749034">
+                  <caret line="203" column="53" selection-start-line="203" selection-start-column="53" selection-end-line="203" selection-end-column="53" />
+                  <folding>
+                    <element signature="n#style#0;n#li#0;n#ul#4;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#1;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#3;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#4;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#i#0;n#div#5;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-16.875">
+                  <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+                  <folding>
+                    <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.7567568">
+                  <caret line="522" column="16" selection-start-line="522" selection-start-column="16" selection-end-line="522" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -128,15 +98,15 @@
         <option value="$PROJECT_DIR$/js/facebook.js" />
         <option value="$PROJECT_DIR$/js/googleplus.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/resources.html" />
         <option value="$PROJECT_DIR$/learning.html" />
         <option value="$PROJECT_DIR$/course.html" />
         <option value="$PROJECT_DIR$/course-quiz.html" />
         <option value="$PROJECT_DIR$/dashboard.html" />
-        <option value="$PROJECT_DIR$/goals.html" />
         <option value="$PROJECT_DIR$/modal-test.html" />
         <option value="$PROJECT_DIR$/notifications.html" />
+        <option value="$PROJECT_DIR$/goals.html" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/profile.html" />
       </list>
     </option>
@@ -299,7 +269,8 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083201684" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13479623" sideWeight="0.5018431" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13507853" sideWeight="0.5018431" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -312,7 +283,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -467,6 +437,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -524,6 +501,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -581,6 +565,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -596,6 +587,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -642,6 +640,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -708,13 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="30.125">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/storage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -763,17 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/goals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.534018">
-          <caret line="53" column="112" selection-start-line="53" selection-start-column="112" selection-end-line="53" selection-end-column="112" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/learning.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49679077">
@@ -802,14 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33119383">
-          <caret line="53" column="112" selection-start-line="53" selection-start-column="112" selection-end-line="53" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7894737">
@@ -821,11 +800,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/goals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.338896">
+          <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3273427">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.7567568">
+          <caret line="522" column="16" selection-start-line="522" selection-start-column="16" selection-end-line="522" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34749034">
+          <caret line="203" column="53" selection-start-line="203" selection-start-column="53" selection-end-line="203" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#4;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#1;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#3;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#4;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#5;n#div#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

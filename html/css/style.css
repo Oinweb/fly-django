@@ -379,6 +379,9 @@
 .ui-content div .my-boxes.goals-box * input{
     padding:10px;
 }
+.ui-content div .my-boxes.goals-box * select{
+    color: #000;
+}
 .ui-content div .my-boxes.goals-box img.goals-img{
     width:100%;
     margin-left:auto;
@@ -452,8 +455,8 @@
 
 /* Popups
  * -------------------------- */
-#locked-popup div, #confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
-    padding: 10px 20px;
+#badges-popup div, #locked-popup div, #confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
+    padding: 10px 10px;
 }
 #supporters3-popup div img.supporter-image{
     vertical-align:middle;
@@ -500,6 +503,23 @@
 }
 #levelup-popup div .level-up-fieldset .level-title{
     color: green;
+    margin: 5px;
+}
+#badges-popup div .ui-grid-a{
+    padding: 0;
+    width: 100%;
+}
+#badges-popup div .ui-grid-a .badges{
+    border: 2px solid #bbb;
+    border-radius:10px;
+    background: none;
+    width:48%;
+    margin: 1%;
+    color: #000 !important;
+    height:auto !important;
+}
+#badges-popup div .ui-grid-a .badges p{
+    font-size: 9pt;
     margin: 5px;
 }
 .ui-popup div .social-sharing share-button{
