@@ -23,7 +23,7 @@
                 <img src="img/oin-fly-logo.png" id="login-logo" alt="bizmula-logo" style="">
 
                 <div class="clearfix"></div>
-                <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
                    style="background-color:#4B7EBD;">
                     <span>Login With Facebook</span></a>
                 <div class="clearfix"></div>
@@ -31,10 +31,9 @@
                    style="background-color:#0FD4FF;">
                     <span>Login With Twitter</span></a>
                 <div class="clearfix"></div>
-                <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
+                <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
                    style="background-color:#FD5D51;">
                     <span>Login With Google</span></a>
-
             </div><!-- container -->
         </div>
     </div>
@@ -89,4 +88,34 @@
 </div>
 
 </body>
+
+<script src="js/facebook.js"></script>
+<script src="js/googleplus.js"></script>
+<script src="js/storage.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+            FB.init({
+                appId: '1563113100645657',
+                version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+            });
+        });
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    });
+</script>
+
+<script>
+    //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+    function onLoadCallback()
+    {
+        gapi.client.setApiKey('AIzaSyBhA0lq7C6pXMK_zESGRoGmOCt032baDP8'); //set your API KEY
+        gapi.client.load('plus', 'v1',function(){});//Load Google + API
+    }
+</script>
 </html>

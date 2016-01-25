@@ -36,6 +36,10 @@
 .ui-content{
     text-align:center !important;
 }
+.my-boxes{
+    position:relative;
+    min-width:200px;
+}
 .my-boxes img{
     width:100%;
     margin-left:auto;
@@ -58,7 +62,7 @@
 /* stack all grids below 40em (640px) */
 @media all and (min-width: 720px) {
     .my-boxes {
-        width:320px;
+        width:330px;
         padding: 10px !important;
         margin-left:20px !important;
         margin-right:5px !important;
@@ -75,12 +79,12 @@
     color:#FFF;
     min-width: 320px;
 }
-.ui-header .user-info img.user-img{
+.ui-header .user-info img.user-image{
     float:left;
     margin: 5px;
     display:inline-block;
-    width:25px;
-    height: auto;
+    width:auto;
+    height: 27px;
     border-radius: 50%;
 }
 .ui-header .user-info{
@@ -116,7 +120,7 @@
     text-align: center;
     display: inline-block;
     min-width: 200px;
-    width:60%;
+    width:55%;
     margin: 12px auto;
     margin-bottom: 5px;
 }
@@ -261,6 +265,35 @@
     width:60%;
     margin-left:auto;
     margin-right:auto;
+}
+.ui-content div .my-boxes.learning-box.locked{
+    background-color: #8a8a8a !important;
+}
+.ui-content div .my-boxes.learning-box.locked .locked-icon{
+    margin-top:-56px;
+    position:absolute;
+    top: 33%;
+    width:100%;
+    z-index: 100;
+}
+.ui-content div .my-boxes.learning-box.locked .locked-icon button{
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    margin: 0;
+    left:-10px;
+    width:100px;
+    height: 100px;
+    margin-left:auto;
+    margin-right:auto;
+    border: none;
+    box-shadow: none;
+}
+.ui-content div .my-boxes.learning-box.locked .locked-icon button i{
+    color: goldenrod;
+}
+.ui-content div .my-boxes.learning-box.locked .course-img{
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
 }
 
 /* Page Content - Learning - course page
@@ -419,7 +452,7 @@
 
 /* Popups
  * -------------------------- */
-#confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
+#locked-popup div, #confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
     padding: 10px 20px;
 }
 #supporters3-popup div img.supporter-image{
