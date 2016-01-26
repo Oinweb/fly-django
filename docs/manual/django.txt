@@ -1,0 +1,233 @@
+———————————————————————————————————————————————————————————
+SETUP WEB-APPLICATION USING PYTHON3 USING DJANGO FRAMEWORK.
+———————————————————————————————————————————————————————————
+By: Bartlomiej Mika
+Date: April, 28th, 2015
+
+
+
+************************
+* Installing memcached *
+************************
+The following instructions are for Apple Mac OSX: Yosemite.
+1. Install **brew**.
+
+
+2. Run the following command:
+$ brew install memcached
+$ brew install libmemcached
+$ brew install zlib
+$ brew install libsas12
+
+3. To startup the cache, run the following.
+$ /usr/local/bin/memcached -d -u nobody
+
+
+4. To view, run these. (Or find 'memchach' in Activity Monitor)
+$ netstat -an
+$ /usr/local/bin/php -i | grep -i 'memcache'
+
+
+
+**************************
+* PROJECT INITIALIZATION *
+**************************
+Q) How do we setup a project project titled: “py-fly”
+A) How to create a project from scratch. (Note: This is only done by Bart)
+
+
+(1)
+$ cd ~/Developer/rodolfomartinez/oinweb/
+$ mkdir py-fly
+$ cd py-fly
+
+
+(2)
+Setup our environment:
+
+(OSX)
+$ python3 -m venv env
+
+(Linux/FreeBSD)
+$ virtualenv env
+
+
+(3) okay , Now lets activate virtualenv
+$ source env/bin/activate
+
+
+(4) Confirm we are using Python3
+$ python --version  # Should return Python 3.x
+
+
+(5) OSX USERS ONLY:
+(a) Check what Postgres.app version you are using.
+(b) For Postgres we need the following $PATH, so just type it in.
+$ source env/bin/activate
+
+
+(6) Now finally lets install djnago
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+pip3 install django                 # Our MVC Framework
+pip3 install psycopg2               # Postgres SQL DB
+pip3 install gunicorn               # Web-Server Helper
+pip3 install Pillow                 # Req: ImageField
+pip3 install djangorestframework    # Web browsable API Framework
+pip3 install markdown               # Markdown support for the browsable API.
+pip3 install django-filter          # Filtering support
+#pip3 install qrcode                 # QR Code Generator
+#pip3 install pylibmc                # memcached connector
+#pip3 install pylibmc --install-option="--with-libmemcached=/usr/local"  # (FreeBSD Only for memcached!)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+(7) After installation
+$ python -c "import django; print(django.get_version())" # 1.8
+
+
+(8) Now django installed and ready to use , okay lets create a sample site
+$ cd src
+$ django-admin.py startproject fly_project
+
+
+(9) Now change directory to my site
+$ python manage.py runserver
+
+
+(10) Now go to your browser and enter:  http://localhost:8000
+You should see a site. Exit web server when finished.
+
+
+(10) Lets get our Postgres.app setup, follow the instructions in the file
+"postgres.txt" to have our database setup, then do this:
+
+Update your database settings to use your Postgres SQL DB.
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "fly_db",
+        "USER": "django",
+        "PASSWORD": "123password",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+(10) Create the application(s).
+python manage.py startapp landpage
+python manage.py startapp api
+
+(11) Then go to ecantina_project/settings.py and make sure to include the following:
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'rest_framework',
+    'landpage',
+    'api','
+)
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+(12) Also don't forget to add the following to that file.
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+# 'Sites Framework' requires this line.
+SITE_ID = 1
+- - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+(13) Now go to fly_project/urls.py and make sure it looks like the following:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+"""
+from django.conf.urls import include, url
+from django.contrib import admin
+from django.conf.urls.static import static, settings
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap
+
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('landpage.urls')),
+    url(r'', include('api.urls')),
+
+    # Sitemap
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+(13) Finally, create a file called ‘requirements.txt’ and add all the libraries this project will use. Make sure this file is located in the root of the project. Run this code.
+$ pip freeze > requirements.txt
+
+
+(14) Submit this code to git. We now have the project setup. See “git.txt”.
+
+
+
+*****************
+* PROJECT SETUP *
+*****************
+Q) Now that we have a project, how do we access it and set it up locally on the computer?
+A) Follow these steps:
+
+
+1) Clone from git:
+$ cd ~/Developer
+$ git clone some_url (See "git.txt").
+
+
+2) Go into the directory
+$ cd py-fly
+
+
+3) Setup our virtual environment
+$ python3 -m venv env
+
+
+(5) okay , Now lets activate virtualenv
+$ source env/bin/activate
+
+
+(6) OSX USERS ONLY:
+(a) Check what Postgres.app version you are using.
+(b) For Postgres we need the following $PATH, so just type it in.
+$ export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+
+
+(7) Now lets install the libraries this project depends on.
+$ pip3 install -r requirements.txt
+
+
+(8) Lets load up our apps data
+(a) Create our store.
+$ python manage.py setup_ecantina
+
+
+(b) Import comic book data.
+(See gcd.txt)
+
+
+
+**********
+* SOURCE *
+**********
+1) https://www.computersnyou.com/2960/setup-django-virtualenv-macosx-mavericks/
+2) http://stackoverflow.com/questions/20251562/how-to-install-django-for-python-3-3
+3) http://hackercodex.com/guide/python-development-environment-on-mac-osx/
+4) http://stackoverflow.com/questions/12410113/migrating-virtualenv-and-github-between-computers

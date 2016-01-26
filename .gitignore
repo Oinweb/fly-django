@@ -1,10 +1,3 @@
-#--------
-# pycharm
-#--------
-.idea/
-.idea/*
-
-
 #—————————
 # Xcode
 #—————————
@@ -84,6 +77,8 @@ $RECYCLE.BIN/
 #—————————
 # KDE directory preferences
 .directory
+.idea  # PyCharm
+*/.idea/
 
 
 #—————————
@@ -152,4 +147,4 @@ env/
 #—————————————————————————————
 # Application Specific Ignores
 #—————————————————————————————
-src/flyapp_project/flyapp_project/secret_settings.py
+fly_project/fly_project/secret_settings.py

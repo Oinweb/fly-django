@@ -1,0 +1,61 @@
+———————————————————————————————————————————————————————————
+HOWTO: Setup Postgres SQL Database for Mac OSX El Captain
+———————————————————————————————————————————————————————————
+By: Bartlomiej Mika
+Date: June, 23th, 2015
+
+
+
+********************
+* Instal OSX App   *
+********************
+1) Download for OSX: http://postgresapp.com
+
+2) Copy into /Applications
+
+3) Run it
+
+
+
+******************
+* Setup Database *
+******************
+To create a new database use
+# create database fly_db;
+
+To list all the database, use
+# \l
+
+To delete a database,
+# drop database fly_db;
+
+To enter a database:
+# \c fly_db
+
+To create an administrator for this database.
+# CREATE USER django WITH PASSWORD '123password';
+# GRANT ALL PRIVILEGES ON DATABASE py-fly to django;
+
+Django will create/drop 'test' databases in unit-testing. So lets give
+permission to the user to have create/drop ability.
+# ALTER USER django CREATEDB;
+
+You are now able to log into the database "fly_db" with the admin
+user account "django" using the passowrd "123password"."
+
+
+Quick Script
+- - - - - - - -
+drop database fly_db;
+create database fly_db;
+\c fly_db
+GRANT ALL PRIVILEGES ON DATABASE fly_db to django;
+ALTER USER django CREATEDB;
+- - - - - - - -
+
+
+******************
+* Source(s) *
+******************
+Beginners Coures:
+http://www.postgresqlforbeginners.com/2010/11/interacting-with-postgresql-psql.html
