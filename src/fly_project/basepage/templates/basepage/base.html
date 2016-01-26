@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
+</head>
+<body>
+    <!-- CSRF Token -->
+    {% csrf_token %}
+    
+    <!-- CONTENT -->
+    {% block content %}
+    {% endblock %}
+    <!-- /.CONTENT -->
+</body>
+<script type="text/javascript" src="{% static 'js/facebook.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/googleplus.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/storage.js' %}"></script>
+</html>
