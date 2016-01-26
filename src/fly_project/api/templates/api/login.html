@@ -1,0 +1,59 @@
+<script>
+    function sign_in(username, password, success_callback, error_callback) {
+        var data = {
+            'username': username,
+            'password': password,
+        };
+        var url = "/api/logins/0/sign_in/?format=json";
+        var type = "POST"; // Insert.
+
+        jQuery.ajax({
+            url: url,
+            data: data,
+            type: type,
+            traditional: true, // Note: This allows many-to-many arrays for Django REST Framework
+            success: function(json_result){
+                success_callback(json_result); // Call back the function with the JSON results.
+            },
+            error: function(xhr,status,error) {
+                // Print the error log to console.
+                console.debug(status + ': ' + error + ' -- ' + xhr.responseText);
+                    
+                // Convert JSON string into javascript associative array.
+                var json = jQuery.parseJSON(xhr.responseText);
+                error_callback(json); // Return JSON
+            },
+            complete: function(xhr,status) {
+                // Do nothing.
+            }
+        });
+
+    }
+
+
+    function sign_off(success_callback, error_callback) {
+    var url = "/api/logins/0/sign_off/?format=json";
+    
+     jQuery.ajax({
+        url: url,
+        data: {},
+        type: "POST",
+        traditional: true, // Note: This allows many-to-many arrays for Django REST Framework
+        success: function(json_result) {
+            success_callback(json_result);  // Call back the function with the JSON results.
+        },
+        error: function(xhr,status,error) {
+            // Print the error log to console.
+            console.debug(status + ': ' + error + ' -- ' + xhr.responseText);
+                
+            // Convert JSON string into javascript associative array.
+            var json = jQuery.parseJSON(xhr.responseText);
+            error_callback(json); // Return JSON
+        },
+        complete: function(xhr,status) {
+            // Do nothing.
+        }
+    });
+                
+}
+</script>

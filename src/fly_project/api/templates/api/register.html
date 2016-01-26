@@ -1,0 +1,34 @@
+<script>
+    function registration(username, email, password, first_name, last_name, success_callback, error_callback) {
+        var data = {
+            'username': username,
+            'email': email,
+            'password': password,
+            'first_name': first_name,
+            'last_name': last_name,
+        };
+        var url = "/api/registers/0/registration/?format=json";
+        
+        jQuery.ajax({
+            url: url,
+            data: data,
+            type: "POST",
+            traditional: true, // Note: This allows many-to-many arrays for Django REST Framework
+            success: function(json_result){
+                success_callback(json_result); // Call back the function with the JSON results.
+            },
+            error: function(xhr,status,error) {
+                // Print the error log to console.
+                console.debug(status + ': ' + error + ' -- ' + xhr.responseText);
+                    
+                // Convert JSON string into javascript associative array.
+                var json = jQuery.parseJSON(xhr.responseText);
+                error_callback(json); // Return JSON
+            },
+            complete: function(xhr,status) {
+                // Do nothing.
+            }
+        });
+
+    }
+</script>
