@@ -142,6 +142,7 @@ DATABASES = {
 python manage.py startapp landpage
 python manage.py startapp api
 python manage.py startapp basepage
+python manage.py startapp login
 
 (11) Then go to ecantina_project/settings.py and make sure to include the following:
 - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -9,31 +9,25 @@
         <div class="row">                            <!-- row -->
             <div class="container" id="inner-login-container">
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
-
-                <div class="clearfix"></div>
-                <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
-                   style="background-color:#4B7EBD;">
-                    <span>Login With Facebook</span></a>
-                <div class="clearfix"></div>
-                <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
-                   style="background-color:#0FD4FF;">
-                    <span>Login With Twitter</span></a>
-                <div class="clearfix"></div>
-                <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
-                   style="background-color:#FD5D51;">
-                    <span>Login With Google</span></a>
-
-                <br/>
-                <hr style="width:280px;margin:auto;"/>
-                <br/>
-                <form style="width:280px;margin:auto;">
-                    <input type="text" placeholder="Email Address" />
-                    <input type="text" placeholder="Password" />
-                    <input type="button" value="Generic Login" class="ui-btn ui-corner-all" />
-                </form>
-            </div><!-- container -->
+                    
+                    <div class="clearfix"></div>
+                    <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                        style="background-color:#4B7EBD;">
+                        <span>Login With Facebook</span></a>
+                    <div class="clearfix"></div>
+                    <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
+                        style="background-color:#0FD4FF;">
+                        <span>Login With Twitter</span></a>
+                    <div class="clearfix"></div>
+                    <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
+                        style="background-color:#FD5D51;">
+                        <span>Login With Google</span></a>
+                    <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>Generic Login</span></a>
+                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>Generic Register</span></a>
+                    </div><!-- container -->
         </div>
     </div>
+
 
     <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
         <data class="row">

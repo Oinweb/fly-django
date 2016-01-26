@@ -63,6 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'fly_project.custom_middleware.PyFlyCustomMiddleware',
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
