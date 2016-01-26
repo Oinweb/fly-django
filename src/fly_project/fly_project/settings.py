@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'social.apps.django_app.default',  # python social auth
     'rest_social_auth',
+    'basepage',
     'landpage',
     'api',
 ]
