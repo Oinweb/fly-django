@@ -14,14 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
 from django.conf.urls.static import static, settings
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap
-
-
-from django.conf.urls.i18n import i18n_patterns
-from django.utils.translation import ugettext_lazy as _
 
 
 sitemaps = {
@@ -30,9 +28,14 @@ sitemaps = {
 
 
 urlpatterns = [
+    # Multi-Language Support
     url(r'^i18n/', include('django.conf.urls.i18n')),
+               
+    # Administration Access
     url(r'^admin/', admin.site.urls),
-#    url(r'', include('api.urls')),
+               
+    # Django REST Framework
+    url(r'', include('api.urls')),
                
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
@@ -40,6 +43,7 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
+# Application URLs.
 urlpatterns += i18n_patterns('',
     url(r'', include('landpage.urls')),
 )

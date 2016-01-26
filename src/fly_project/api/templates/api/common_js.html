@@ -1,0 +1,33 @@
+<script>
+    function phonenumber_to_integer(phone_string){
+        if (typeof phone_string === "undefined") {
+            return 0;
+        }
+        
+        var phone = phone_string;
+        phone = phone.replace(/\D/g,''); // Remove non-numeric characters
+        phone = parseInt(phone);
+        return phone;
+    }
+
+    function get_phone(text_id)
+    {
+        return phonenumber_to_integer( $(text_id).val() );
+    }
+
+    function is_phone_valid(phone) {
+        if (phone.length != 10) {
+            return false;
+        }
+        
+        return !isNaN( phonenumber_to_integer(phone) );
+    }
+
+    {% comment %}
+        http://stackoverflow.com/a/46181
+    {% endcomment %}
+    function is_email_valid(email) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
+    }
+</script>
