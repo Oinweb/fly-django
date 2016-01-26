@@ -45,8 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'rest_framework',
+    'rest_framework.authtoken',
+    'social.apps.django_app.default',  # python social auth
+    'rest_social_auth',
     'landpage',
-#    'api','
+    'api',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -168,10 +171,31 @@ MEDIA_URL = '/media/'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
+#        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.DjangoFilterBackend',
     )
 }
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# Django REST social auth (Third Party)                                       #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# Facebook ( http://developers.facebook.com )
+SOCIAL_AUTH_FACEBOOK_KEY = 'your app client id'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'your app client secret'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]  # optional
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'us_EN'}  # optional
+
+# Twitter ( https://apps.twitter.com/app/new )
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
