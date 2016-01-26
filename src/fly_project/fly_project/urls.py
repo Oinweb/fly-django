@@ -20,17 +20,26 @@ from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap
 
 
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import ugettext_lazy as _
+
+
 sitemaps = {
     'static': StaticViewSitemap,
 }
 
 
 urlpatterns = [
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', admin.site.urls),
-    url(r'', include('landpage.urls')),
-    url(r'', include('api.urls')),
+#    url(r'', include('api.urls')),
                
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns += i18n_patterns('',
+    url(r'', include('landpage.urls')),
+)

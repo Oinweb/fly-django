@@ -1,0 +1,1 @@
+Media root directory is where all the translations are stored.

@@ -5,6 +5,27 @@ By: Bartlomiej Mika
 Date: April, 28th, 2015
 
 
+************************
+* Installing gettext  *
+************************
+1.
+brew install gettext
+brew link gettext --force
+
+
+2. See:
+http://stackoverflow.com/a/27784546
+
+
+3.
+sudo chown -R $(whoami) /usr/local/share/emacs/site-lisp
+
+
+4.
+brew link gettext --force
+brew unlink gettext && brew link gettext --force
+
+
 
 ************************
 * Installing memcached *
