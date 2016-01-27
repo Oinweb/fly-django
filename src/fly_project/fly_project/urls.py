@@ -48,4 +48,6 @@ urlpatterns = [
 # Application URLs.
 urlpatterns += i18n_patterns('',
     url(r'', include('landpage.urls')),
+    url(r'', include('authentication.urls')),
+    url(r'', include('dashboard.urls')),
 )

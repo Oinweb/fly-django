@@ -142,7 +142,8 @@ DATABASES = {
 python manage.py startapp landpage
 python manage.py startapp api
 python manage.py startapp basepage
-python manage.py startapp login
+python manage.py startapp authentication
+python manage.py startapp dashboard
 
 (11) Then go to ecantina_project/settings.py and make sure to include the following:
 - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -162,6 +163,8 @@ INSTALLED_APPS = (
     'basepage',
     'landpage',
     'api','
+    'authentication',
+    'dashboard',
 )
 - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -191,6 +194,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('landpage.urls')),
     url(r'', include('api.urls')),
+    url(r'', include('authentication.urls')),
+    url(r'', include('dashboard.urls')),
 
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

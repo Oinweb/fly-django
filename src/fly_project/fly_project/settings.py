@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'basepage',
     'landpage',
     'api',
+    'authentication',
+    'dashboard',
 ]
 
 MIDDLEWARE_CLASSES = [
