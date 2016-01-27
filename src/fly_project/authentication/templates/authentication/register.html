@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block content %}
 
 <!-- ---------- login ------------- -->
@@ -11,12 +11,12 @@
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
                     
                     <form style="width:280px;margin:auto;">
-                        <input type="text" placeholder="Email Address" name="email" id="id_email" />
-                        <input type="text" placeholder="First Name" name="fname" id="id_first_name" />
-                        <input type="text" placeholder="Last Name" name="lname" id="id_last_name" />
-                        <input type="password" placeholder="Password" name="pass1" id="id_password" />
-                        <input type="password" placeholder="Confirm Password" name="pass2" id="id_password" />
-                        <input onclick="ajax_register();" type="button" value="Register" class="ui-btn ui-corner-all" />
+                        <input type="text" placeholder="{% trans 'Email Address' %}" name="email" id="id_email" />
+                        <input type="text" placeholder="{% trans 'First Name' %}" name="fname" id="id_first_name" />
+                        <input type="text" placeholder="{% trans 'Last Name' %}" name="lname" id="id_last_name" />
+                        <input type="password" placeholder="{% trans 'Password' %}" name="pass1" id="id_password" />
+                        <input type="password" placeholder="{% trans 'Confirm Password' %}" name="pass2" id="id_password2" />
+                        <input onclick="ajax_register();" type="button" value="{% trans 'Register' %}" class="ui-btn ui-corner-all" />
                     </form>
                     <div class="clearfix"></div>
                     <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color:#666;padding-top:25px;"><span>Login</span></a>
@@ -28,6 +28,56 @@
 </div>
 <script>
     function ajax_register() {
+        // Defensive Code: Name handling.
+        if( $('#id_first_name').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your first name." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if( $('#id_last_name').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your last name." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: The following code will ensure the proper
+        //                 validation occured on the inputted entries.
+        if ($('#id_email').val() == '') {
+            //$('.alert-danger').text('{% trans "Please enter a email address." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( !is_email_valid( $('#id_email').val() ) ) {
+            //$('.alert-danger').text('{% trans "Please enter a valid email address." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: Password handling.
+        if ( $('#id_password').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter a password." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( $('#id_password2').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please confirm your password." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( $('#id_password').val() != $('#id_password2').val() ){
+            //$('.alert-danger').text('{% trans "Error! Passwords do not match." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: Ensure that the user agrees to the terms before proceeding.
+        //var is_tsa_checked = $('#id_register_tos2').is(':checked');
+        //if (is_tsa_checked == false) {
+            //$('.alert-danger').text('{% trans "Please agree to the service agreement to continue." %}');
+            //$('.alert-danger').show();
+            return;
+        //}
+        
         ajax_new_user(
             function(json_result) {
                       
@@ -54,27 +104,27 @@
                 console.log(string);
                 if (string.indexOf("username") > -1)
                 {
-                    console.log("Missing email, please fill it it.");
+                    console.log("{% trans 'Missing email, please fill it it.' %}");
                     //TODO: Error message.
                 }
                 else if (string.indexOf("password") > -1)
                 {
-                      console.log("Missing password, please fill it in.");
+                      console.log("{% trans 'Password' %}Missing password, please fill it in.");
                      //TODO: Error message.
                 }
                 else if (string.indexOf("has already been taken by another user") > -1)
                 {
-                      console.log("Email has already been taken by another user");
+                      console.log("{% trans 'Password' %}Email has already been taken by another user");
                       //TODO: Error message.
                 }
-                else if (string.indexOf("has already been taken by another user") > -1)
+                else if (string.indexOf("first_name") > -1)
                 {
-                      console.log("first_name");
+                      console.log("{% trans 'Missing first name, please fill it it.' %}");
                       //TODO: Error message.
                 }
-                else if (string.indexOf("has already been taken by another user") > -1)
+                else if (string.indexOf("last_name") > -1)
                 {
-                      console.log("last_name");
+                      console.log("{% trans 'Missing last name, please fill it it.' %}");
                       //TODO: Error message.
                 }
             }
@@ -114,7 +164,7 @@
                     success_callback();
                 }
                 else {
-                    error_callback('Error - Wrong email or password.');
+                    error_callback("{% trans 'Error - Wrong email or password' %}");
                 }
             },
             function(error_callback) {

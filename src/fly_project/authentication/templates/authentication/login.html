@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block content %}
 
 <!-- ---------- login ------------- -->
@@ -11,12 +11,12 @@
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
                     
                     <form style="width:280px;margin:auto;">
-                        <input type="text" placeholder="Email Address" />
-                        <input type="text" placeholder="Password" />
-                        <input type="button" value="Login" class="ui-btn ui-corner-all" />
+                        <input type="text" placeholder="{% trans 'Email Address' %}" />
+                        <input type="text" placeholder="{% trans 'Password' %}" />
+                        <input type="button" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
                     </form>
                     <div class="clearfix"></div>
-                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>Create Account</span></a>
+                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
                     </div><!-- container -->
         </div>
     </div>
