@@ -22,7 +22,6 @@
     {% endblock %}
     <!-- /.CONTENT -->
 </body>
-<script type="text/javascript" src="{% static 'js/facebook.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/googleplus.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/storage.js' %}"></script>
 {% include "api/common_js.html" %}
@@ -47,5 +46,6 @@
             fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
 </script>
+{% include 'basepage/facebook_js.html' %}
 <!-- end Facebook SDK -->
 </html>
