@@ -20,7 +20,7 @@ function loginFacebook() {
                     response['email'],
                     'http://graph.facebook.com/' + response['id'] + '/picture?type=normal'
                 );
-                window.location="dashboard.html";
+                window.location="/dashboard";
             }
         );
     }, {scope: 'email,publish_actions'});
