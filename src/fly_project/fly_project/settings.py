@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'api',
     'authentication',
     'dashboard',
+    'mygoals',
+    'learning',
+    'resources',
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = [

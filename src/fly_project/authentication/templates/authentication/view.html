@@ -8,27 +8,26 @@
     <div data-role="content" align="center" data-theme="a" style="">
         <div class="row">                            <!-- row -->
             <div class="container" id="inner-login-container">
-                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
+                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
-                    <div class="clearfix"></div>
-                    <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                <div class="clearfix"></div>
+                <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
                         style="background-color:#4B7EBD;">
-                        <span>{% trans 'Login With Facebook' %}</span></a>
-                    <div class="clearfix"></div>
-                    <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
+                <span>{% trans 'Login With Facebook' %}</span></a>
+                <div class="clearfix"></div>
+                <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
                         style="background-color:#0FD4FF;">
-                        <span>{% trans 'Login With Twitter' %}</span></a>
-                    <div class="clearfix"></div>
-                    <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
+                <span>{% trans 'Login With Twitter' %}</span></a>
+                <div class="clearfix"></div>
+                <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
                         style="background-color:#FD5D51;">
-                        <span>{% trans 'Login With Google' %}</span></a>
-                    <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Login' %}</span></a>
-                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Register' %}</span></a>
-                    </div><!-- container -->
+                <span>{% trans 'Login With Google' %}</span></a>
+                <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Login' %}</span></a>
+                <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Register' %}</span></a>
+            </div><!-- container -->
         </div>
     </div>
 
     {% include "basepage/footer.html" %}
 </div>
-
 {% endblock content %}

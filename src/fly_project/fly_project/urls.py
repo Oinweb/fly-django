@@ -50,4 +50,8 @@ urlpatterns += i18n_patterns('',
     url(r'', include('landpage.urls')),
     url(r'', include('authentication.urls')),
     url(r'', include('dashboard.urls')),
+    url(r'', include('mygoals.urls')),
+    url(r'', include('learning.urls')),
+    url(r'', include('resources.urls')),
+    url(r'', include('account.urls')),
 )

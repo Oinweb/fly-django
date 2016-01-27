@@ -144,6 +144,11 @@ python manage.py startapp api
 python manage.py startapp basepage
 python manage.py startapp authentication
 python manage.py startapp dashboard
+python manage.py startapp mygoals
+python manage.py startapp learning
+python manage.py startapp resources
+python manage.py startapp account
+
 
 (11) Then go to ecantina_project/settings.py and make sure to include the following:
 - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -165,6 +170,10 @@ INSTALLED_APPS = (
     'api','
     'authentication',
     'dashboard',
+    'mygoals',
+    'learning',
+    'resources',
+    'account',
 )
 - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -196,6 +205,10 @@ urlpatterns = [
     url(r'', include('api.urls')),
     url(r'', include('authentication.urls')),
     url(r'', include('dashboard.urls')),
+    url(r'', include('mygoals.urls')),
+    url(r'', include('learning.urls')),
+    url(r'', include('resources.urls')),
+    url(r'', include('account.urls')),
 
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
