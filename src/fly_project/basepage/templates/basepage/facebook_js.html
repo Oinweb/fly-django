@@ -4,7 +4,7 @@ function loginFacebook() {
         // Note: The call will only work if you accept the permission request
         FB.getLoginStatus(function(response){
             if(response.status === 'connected'){
-                console.log("1 of 2");
+                console.log("1 of 2: ");
                 console.log(JSON.stringify(response.authResponse.accessToken));
                 saveKeyToStorage('facebook',response.authResponse.accessToken);
                       
@@ -27,7 +27,7 @@ function loginFacebook() {
             'GET',
             {"fields":"name,first_name,last_name,email"},
             function(response) {
-                console.log(JSON.stringify(response));
+               
                 saveUserToStorage(
                     response['id'],
                     response['name'],
@@ -36,7 +36,10 @@ function loginFacebook() {
                     response['email'],
                     'http://graph.facebook.com/' + response['id'] + '/picture?type=normal'
                 );
-                console.log("2 of 2");
+               
+                console.log("2 of 2:");
+                console.log(JSON.stringify(response));
+               
                 //window.location="/dashboard";
             }
         );
@@ -49,8 +52,8 @@ function loginFacebook() {
 function flyapp_register_token(token, success_callback, error_callback) {
     var data = {
         'grant_type': 'convert_token',
-        'client_id': '{{ settings.SOCIAL_AUTH_FACEBOOK_KEY }}',
-        'client_secret': '{{ settings.SOCIAL_AUTH_FACEBOOK_SECRET }}',
+        'client_id': {{ settings.SOCIAL_AUTH_FACEBOOK_KEY }},
+        'client_secret': {{ settings.SOCIAL_AUTH_FACEBOOK_SECRET }},
         'backend': 'facebook',
         'token': token,
     };
