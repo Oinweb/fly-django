@@ -28,6 +28,16 @@ SECRET_EMAIL_HOST_PASSWORD = ''
 
 
 #---------------------------------------------------------------------------#
+# Django REST social auth (Third Party)                                     #
+#---------------------------------------------------------------------------#
+SECRET_SOCIAL_AUTH_FACEBOOK_KEY = 'your app client id'
+SECRET_SOCIAL_AUTH_FACEBOOK_SECRET = 'your app client secret'
+SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]  # optional
+SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'us_EN'}  # optional
+SECRET_SOCIAL_AUTH_TWITTER_KEY = ''
+SECRET_SOCIAL_AUTH_TWITTER_SECRET = ''
+
+#---------------------------------------------------------------------------#
 # PayPal Settings                                                           #
 #---------------------------------------------------------------------------#
 SECRET_PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
