@@ -88,6 +88,7 @@
                     function(login_json_result) {
                            
                         console.log(login_json_result);
+                        window.location = '/{{ request.language }}/dashboard';
                            
                     },
                     function(login_error_json_result) {
@@ -109,12 +110,12 @@
                 }
                 else if (string.indexOf("password") > -1)
                 {
-                      console.log("{% trans 'Password' %}Missing password, please fill it in.");
+                      console.log("{% trans 'Missing password, please fill it in.' %}");
                      //TODO: Error message.
                 }
                 else if (string.indexOf("has already been taken by another user") > -1)
                 {
-                      console.log("{% trans 'Password' %}Email has already been taken by another user");
+                      console.log("{% trans 'Email has already been taken by another user' %}");
                       //TODO: Error message.
                 }
                 else if (string.indexOf("first_name") > -1)
