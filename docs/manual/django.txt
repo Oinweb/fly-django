@@ -96,7 +96,7 @@ pip3 install Pillow                 # Req: ImageField
 pip3 install djangorestframework    # Web browsable API Framework
 pip3 install markdown               # Markdown support for the browsable API.
 pip3 install django-filter          # Filtering support
-pip3 install rest-social-auth       # Twitter/Facebook/etc Social Authentication
+pip3 install django-rest-framework-social-oauth2   # Twitter/Facebook/etc Social Authentication
 #pip3 install qrcode                 # QR Code Generator
 #pip3 install pylibmc                # memcached connector
 #pip3 install pylibmc --install-option="--with-libmemcached=/usr/local"  # (FreeBSD Only for memcached!)
@@ -163,8 +163,9 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'rest_framework',
     'rest_framework.authtoken',
-    'social.apps.django_app.default',  # python social auth
-    'rest_social_auth',
+    'oauth2_provider',
+    'social.apps.django_app.default',
+    'rest_framework_social_oauth2',
     'basepage',
     'landpage',
     'api','

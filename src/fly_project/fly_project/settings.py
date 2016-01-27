@@ -55,8 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'rest_framework',
     'rest_framework.authtoken',
-    'social.apps.django_app.default',  # python social auth
-    'rest_social_auth',
+    'oauth2_provider',
+    'social.apps.django_app.default',
+    'rest_framework_social_oauth2',
     'basepage',
     'landpage',
     'api',
@@ -95,6 +96,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.i18n',
+                                   'social.apps.django_app.context_processors.backends',
+                                   'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -235,6 +238,8 @@ REST_FRAMEWORK = {
 #        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.DjangoFilterBackend',
@@ -243,8 +248,10 @@ REST_FRAMEWORK = {
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# Django REST social auth (Third Party)                                       #
+# Django rest-framework Social Oauth2 (Third Party)                           #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/PhilipGarnero/django-rest-framework-social-oauth2
+
 # Facebook ( http://developers.facebook.com )
 SOCIAL_AUTH_FACEBOOK_KEY = SECRET_SOCIAL_AUTH_FACEBOOK_KEY
 SOCIAL_AUTH_FACEBOOK_SECRET = SECRET_SOCIAL_AUTH_FACEBOOK_SECRET
@@ -256,7 +263,16 @@ SOCIAL_AUTH_TWITTER_KEY = SECRET_SOCIAL_AUTH_TWITTER_KEY
 SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 
 AUTHENTICATION_BACKENDS = (
+    # Others auth providers (e.g. Google, OpenId, etc)
+    # ...
+                           
+    # Facebook OAuth2
+    'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.facebook.FacebookOAuth2',
-    'social.backends.twitter.TwitterOAuth',
+                           
+    # django-rest-framework-social-oauth2
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+                           
+    # Django
     'django.contrib.auth.backends.ModelBackend',
 )
