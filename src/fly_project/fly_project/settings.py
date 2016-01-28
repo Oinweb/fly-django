@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'learning',
     'resources',
     'account',
+    'help',
 ]
 
 MIDDLEWARE_CLASSES = [

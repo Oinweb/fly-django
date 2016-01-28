@@ -7,6 +7,6 @@ from fly_project import settings
 
 @login_required(login_url='/authentication')
 def mygoals_page(request):
-    return render(request, 'account/profile.html',{
+    return render(request, 'mygoals/view.html',{
         'settings': settings,
     })

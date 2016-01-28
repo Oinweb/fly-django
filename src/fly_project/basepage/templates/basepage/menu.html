@@ -15,7 +15,7 @@
         <li data-role="list-divider">
         </li>
         <li>
-            <a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
+            <a onclick="window.location='/{{ request.language }}/help';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
         </li>
         <li>
             <a onclick="window.location='/{{ request.language }}/dashboard';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>

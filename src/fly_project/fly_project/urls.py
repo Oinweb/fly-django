@@ -58,4 +58,5 @@ urlpatterns += i18n_patterns('',
     url(r'', include('learning.urls')),
     url(r'', include('resources.urls')),
     url(r'', include('account.urls')),
+    url(r'', include('help.urls')),
 )

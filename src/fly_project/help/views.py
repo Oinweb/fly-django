@@ -6,7 +6,7 @@ from fly_project import settings
 
 
 @login_required(login_url='/authentication')
-def learning_page(request):
-    return render(request, 'learning/view.html',{
-                  'settings': settings,
+def help_page(request):
+    return render(request, 'help/view.html',{
+        'settings': settings,
     })
