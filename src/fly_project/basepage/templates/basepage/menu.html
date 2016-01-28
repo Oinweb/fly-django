@@ -1,7 +1,7 @@
 {% load staticfiles i18n %}
 <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
     <img src="#" class="user-image" />
-    <h5>{% trans "Hello" %}, {{ request.user.first_name }} </h5>
+    <h5 class="greeting">{% trans "Hello" %}, {{ request.user.first_name }} </h5>
     <ul data-role="listview">
         <li>
             <a onclick="window.location='/{{ request.language }}/account';"><i class="fa fa-user fa-fw"></i> {% trans "Profile" %}</a>
