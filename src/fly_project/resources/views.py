@@ -7,6 +7,6 @@ from fly_project import settings
 
 @login_required(login_url='/authentication')
 def resources_page(request):
-    return render(request, 'account/profile.html',{
+    return render(request, 'resources/view.html',{
         'settings': settings,
     })
