@@ -28,7 +28,7 @@ SECRET_EMAIL_HOST_PASSWORD = ''
 
 
 #---------------------------------------------------------------------------#
-# Django rest-framework Social Oauth2 (Third Party)                         #
+# Python Social Auth (Third Party)                                          #
 #---------------------------------------------------------------------------#
 # Facebook ( http://developers.facebook.com )
 SECRET_SOCIAL_AUTH_FACEBOOK_KEY = 'your app client id'

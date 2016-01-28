@@ -247,14 +247,14 @@ REST_FRAMEWORK = {
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# Django rest-framework Social Oauth2 (Third Party)                           #
+# Python Social Auth (Third Party)                                            #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# https://github.com/PhilipGarnero/django-rest-framework-social-oauth2
+# https://github.com/omab/python-social-auth
 
 # Facebook ( http://developers.facebook.com )
 SOCIAL_AUTH_FACEBOOK_KEY = SECRET_SOCIAL_AUTH_FACEBOOK_KEY
 SOCIAL_AUTH_FACEBOOK_SECRET = SECRET_SOCIAL_AUTH_FACEBOOK_SECRET
-#SOCIAL_AUTH_FACEBOOK_SCOPE = SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE
+SOCIAL_AUTH_FACEBOOK_SCOPE = SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE
 #SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS
 
 # Twitter ( https://apps.twitter.com/app/new )
@@ -264,7 +264,7 @@ SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
 #                           'social.backends.google.GoogleOAuth2',
-#                           'social.backends.twitter.TwitterOAuth',
+    'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 
