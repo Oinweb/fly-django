@@ -230,6 +230,7 @@ $ pip freeze > requirements.txt
 * SETUP SOCIAL AUTHENTICATION *
 *******************************
 http://artandlogic.com/2014/04/tutorial-adding-facebooktwittergoogle-authentication-to-a-django-application/
+http://stackoverflow.com/a/35069555
 
 
 *****************

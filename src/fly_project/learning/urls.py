@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = patterns('',
-#     url(r'^dashboard$', views.dashboard_page, name='dashboard'),                  
+    url(r'^learning$', views.learning_page, name='learning'),                  
 )
