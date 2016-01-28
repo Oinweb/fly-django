@@ -11,7 +11,7 @@
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
                 <div class="clearfix"></div>
-                <a onclick="fly_facebook_login();" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                <a onclick="loginFacebook();" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
                         style="background-color:#4B7EBD;">
                     <span>{% trans 'Login With Facebook' %}</span>
                 </a>
@@ -37,6 +37,9 @@
 </div>
 
 <script>
+    /**
+     * Deprecated Functions
+     */
     function fly_facebook_login()
     {
         window.location = "{% url 'social:begin' 'facebook' %}?next=/dashboard";
