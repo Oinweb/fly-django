@@ -37,9 +37,6 @@
 </div>
 
 <script>
-    /**
-     * Deprecated Functions
-     */
     function fly_facebook_login()
     {
         window.location = "{% url 'social:begin' 'facebook' %}?next=/{{ request.language }}/dashboard";
