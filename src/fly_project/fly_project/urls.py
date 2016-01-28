@@ -37,8 +37,9 @@ urlpatterns = [
     # Django REST Framework
     url(r'', include('api.urls')),
              
-    # oAuth2
-    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    # python social auth & Generic Auth
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
                
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

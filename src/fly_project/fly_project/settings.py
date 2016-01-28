@@ -53,11 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'oauth2_provider',
-    'social.apps.django_app.default',
-    'rest_framework_social_oauth2',
+    'social.apps.django_app.default',  # python social auth
     'basepage',
     'landpage',
     'api',
@@ -79,6 +78,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'fly_project.custom_middleware.PyFlyCustomMiddleware',
 ]
 
@@ -96,8 +97,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.i18n',
-                                   'social.apps.django_app.context_processors.backends',
-                                   'social.apps.django_app.context_processors.login_redirect',
+                'social.apps.django_app.context_processors.backends',        # python social auth
+                'social.apps.django_app.context_processors.login_redirect',  # python social auth
             ],
         },
     },
@@ -238,8 +239,6 @@ REST_FRAMEWORK = {
 #        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
-        'rest_framework_social_oauth2.authentication.SocialAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.DjangoFilterBackend',
@@ -263,16 +262,22 @@ SOCIAL_AUTH_TWITTER_KEY = SECRET_SOCIAL_AUTH_TWITTER_KEY
 SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 
 AUTHENTICATION_BACKENDS = (
-    # Others auth providers (e.g. Google, OpenId, etc)
-    # ...
-                           
-    # Facebook OAuth2
-    'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.facebook.FacebookOAuth2',
-                           
-    # django-rest-framework-social-oauth2
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-                           
-    # Django
+#                           'social.backends.google.GoogleOAuth2',
+#                           'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/dashboard'
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-cors-headers (Third Party)                                           #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/OttoYiu/django-cors-headers
+
+CORS_ORIGIN_WHITELIST = (
+    'google.com',
+    'facebook.com',
+    'twitter.com',
 )

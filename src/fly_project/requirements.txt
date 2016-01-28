@@ -6,7 +6,6 @@ defusedxml==0.4.1
 django-braces==1.8.1
 django-filter==0.12.0
 django-oauth-toolkit==0.10.0
-django-rest-framework-social-oauth2==1.0.2
 djangorestframework==3.3.2
 gunicorn==19.4.5
 oauthlib==1.0.3

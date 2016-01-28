@@ -51,13 +51,10 @@ function loginFacebook() {
 
 function flyapp_register_token(token, success_callback, error_callback) {
     var data = {
-        'grant_type': 'convert_token',
-        'client_id': {{ settings.SOCIAL_AUTH_FACEBOOK_KEY }},
-        'client_secret': {{ settings.SOCIAL_AUTH_FACEBOOK_SECRET }},
-        'backend': 'facebook',
-        'token': token,
+        'provider': 'Facebook',
+        'code': token,
     };
-    var url = "/auth/convert-token";
+    var url = "/api/login/social/token/";
     
     jQuery.ajax({
         url: url,
