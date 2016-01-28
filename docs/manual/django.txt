@@ -226,6 +226,11 @@ $ pip freeze > requirements.txt
 (14) Submit this code to git. We now have the project setup. See “git.txt”.
 
 
+*******************************
+* SETUP SOCIAL AUTHENTICATION *
+*******************************
+http://artandlogic.com/2014/04/tutorial-adding-facebooktwittergoogle-authentication-to-a-django-application/
+
 
 *****************
 * PROJECT SETUP *
