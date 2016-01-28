@@ -11,7 +11,7 @@
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
                 <div class="clearfix"></div>
-                <a onclick="loginFacebook();" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                <a onclick="fly_facebook_login();" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
                         style="background-color:#4B7EBD;">
                     <span>{% trans 'Login With Facebook' %}</span>
                 </a>
@@ -42,15 +42,15 @@
      */
     function fly_facebook_login()
     {
-        window.location = "{% url 'social:begin' 'facebook' %}?next=/dashboard";
+        window.location = "{% url 'social:begin' 'facebook' %}?next=/{{ request.language }}/dashboard";
     }
 
     function fly_twitter_login() {
-        window.location = "{% url 'social:begin' 'twitter' %}?next=/dashboard";
+        window.location = "{% url 'social:begin' 'twitter' %}?next=/{{ request.language }}/dashboard";
     }
 
     function fly_google_login() {
-        window.location = "{% url 'social:begin' 'google-oauth2' %}?next=/dashboard";
+        window.location = "{% url 'social:begin' 'google-oauth2' %}?next=/{{ request.language }}/dashboard";
     }
 </script>
 
