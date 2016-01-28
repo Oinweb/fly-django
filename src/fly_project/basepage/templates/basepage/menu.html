@@ -10,7 +10,7 @@
             <a onclick="window.location='/{{ request.language }}/notifications';"><i class="fa fa-cog fa-fw"></i> {% trans "Notifications" %}</a>
         </li>
         <li>
-            <a onclick="window.location='/{{ request.language }}/';"><i class="fa fa-power-off fa-fw"></i> {% trans "Log Out" %}</a>
+            <a onclick="ajax_logoff();"><i class="fa fa-power-off fa-fw"></i> {% trans "Log Out" %}</a>
         </li>
         <li data-role="list-divider">
         </li>
@@ -31,3 +31,19 @@
         </li>
     </ul>
 </div><!-- /panel -->
+<script>
+    /**
+     *  Function will log out the user and return the user to the main authentication page.
+     */
+    function ajax_logoff()
+    {
+        sign_off(
+            function(ok) {
+                 window.location='/{{ request.language }}/authentication';
+            },
+            function(bad) {
+                 console.log(bad);
+            }
+        );
+    }
+</script>
