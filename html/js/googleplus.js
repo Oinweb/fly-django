@@ -33,7 +33,7 @@ function gplusLoginCallback(response){
                 result['emails'][0]['value'],
                 result['image']['url']
             );
-            window.location="dashboard.html";
+            window.location="/dashboard";
         });
     }
     else{

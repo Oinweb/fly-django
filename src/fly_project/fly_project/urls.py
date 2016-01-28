@@ -36,6 +36,10 @@ urlpatterns = [
                
     # Django REST Framework
     url(r'', include('api.urls')),
+             
+    # python social auth & Generic Auth
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
                
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
@@ -48,4 +52,10 @@ urlpatterns = [
 # Application URLs.
 urlpatterns += i18n_patterns('',
     url(r'', include('landpage.urls')),
+    url(r'', include('authentication.urls')),
+    url(r'', include('dashboard.urls')),
+    url(r'', include('mygoals.urls')),
+    url(r'', include('learning.urls')),
+    url(r'', include('resources.urls')),
+    url(r'', include('account.urls')),
 )

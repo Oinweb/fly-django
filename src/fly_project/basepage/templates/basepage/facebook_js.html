@@ -1,8 +1,10 @@
+<script>
 function loginFacebook() {
     FB.login(function(){
         // Note: The call will only work if you accept the permission request
         FB.getLoginStatus(function(response){
             if(response.status === 'connected'){
+                console.log("1 of 2: ");
                 saveKeyToStorage('facebook',response.authResponse.accessToken);
             }
         })
@@ -11,7 +13,7 @@ function loginFacebook() {
             'GET',
             {"fields":"name,first_name,last_name,email"},
             function(response) {
-                console.log(JSON.stringify(response));
+               
                 saveUserToStorage(
                     response['id'],
                     response['name'],
@@ -20,8 +22,12 @@ function loginFacebook() {
                     response['email'],
                     'http://graph.facebook.com/' + response['id'] + '/picture?type=normal'
                 );
-                window.location="dashboard.html";
+               
+                console.log("2 of 2:");
+               
+                window.location = "{% url 'social:begin' 'facebook' %}?next=/dashboard";
             }
         );
     }, {scope: 'email,publish_actions'});
 }
+</script>

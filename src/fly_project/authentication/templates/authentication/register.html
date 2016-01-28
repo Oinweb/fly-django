@@ -1,0 +1,179 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- login ------------- -->
+<div data-role="page" id="login-page">
+    <!-- ---------- login content ------------- -->
+    <div data-role="content" align="center" data-theme="a" style="">
+        <div class="row">                            <!-- row -->
+            <div class="container" id="inner-login-container">
+                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
+                    
+                    <form style="width:280px;margin:auto;">
+                        <input type="text" placeholder="{% trans 'Email Address' %}" name="email" id="id_email" />
+                        <input type="text" placeholder="{% trans 'First Name' %}" name="fname" id="id_first_name" />
+                        <input type="text" placeholder="{% trans 'Last Name' %}" name="lname" id="id_last_name" />
+                        <input type="password" placeholder="{% trans 'Password' %}" name="pass1" id="id_password" />
+                        <input type="password" placeholder="{% trans 'Confirm Password' %}" name="pass2" id="id_password2" />
+                        <input onclick="ajax_register();" type="button" value="{% trans 'Register' %}" class="ui-btn ui-corner-all" />
+                    </form>
+                    <div class="clearfix"></div>
+                    <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color:#666;padding-top:25px;"><span>Login</span></a>
+                </div><!-- container -->
+        </div>
+    </div>
+    
+    {% include "basepage/footer.html" %}
+</div>
+<script>
+    function ajax_register() {
+        // Defensive Code: Name handling.
+        if( $('#id_first_name').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your first name." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if( $('#id_last_name').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your last name." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: The following code will ensure the proper
+        //                 validation occured on the inputted entries.
+        if ($('#id_email').val() == '') {
+            //$('.alert-danger').text('{% trans "Please enter a email address." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( !is_email_valid( $('#id_email').val() ) ) {
+            //$('.alert-danger').text('{% trans "Please enter a valid email address." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: Password handling.
+        if ( $('#id_password').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter a password." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( $('#id_password2').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please confirm your password." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( $('#id_password').val() != $('#id_password2').val() ){
+            //$('.alert-danger').text('{% trans "Error! Passwords do not match." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        
+        // Defensive Code: Ensure that the user agrees to the terms before proceeding.
+        //var is_tsa_checked = $('#id_register_tos2').is(':checked');
+        //if (is_tsa_checked == false) {
+            //$('.alert-danger').text('{% trans "Please agree to the service agreement to continue." %}');
+            //$('.alert-danger').show();
+            return;
+        //}
+        
+        ajax_new_user(
+            function(json_result) {
+                      
+                console.log(json_result);
+                ajax_login(
+                    $('#id_email').val(),
+                    $('#id_password').val(),
+                    function(login_json_result) {
+                           
+                        console.log(login_json_result);
+                        window.location = '/{{ request.language }}/dashboard';
+                           
+                    },
+                    function(login_error_json_result) {
+                           
+                        console.log(login_error_json_result);
+                           
+                    }
+                ); // end Login
+                      
+            },
+            function(error_json_result) {
+                // Convert the error json into string.
+                var string = JSON.stringify( error_json_result );
+                console.log(string);
+                if (string.indexOf("username") > -1)
+                {
+                    console.log("{% trans 'Missing email, please fill it it.' %}");
+                    //TODO: Error message.
+                }
+                else if (string.indexOf("password") > -1)
+                {
+                      console.log("{% trans 'Missing password, please fill it in.' %}");
+                     //TODO: Error message.
+                }
+                else if (string.indexOf("has already been taken by another user") > -1)
+                {
+                      console.log("{% trans 'Email has already been taken by another user' %}");
+                      //TODO: Error message.
+                }
+                else if (string.indexOf("first_name") > -1)
+                {
+                      console.log("{% trans 'Missing first name, please fill it it.' %}");
+                      //TODO: Error message.
+                }
+                else if (string.indexOf("last_name") > -1)
+                {
+                      console.log("{% trans 'Missing last name, please fill it it.' %}");
+                      //TODO: Error message.
+                }
+            }
+        ); // end New User.
+    }
+    
+    function ajax_new_user(success_callback, error_callback) {
+        var username = $('#id_email').val();
+        var email = $('#id_email').val();
+        var password = $('#id_password').val();
+        var first_name = $('#id_first_name').val();
+        var last_name = $('#id_last_name').val();
+        
+        registration(
+            username, email, password, first_name, last_name,
+            function(json_result) {
+                // Success
+                if (json_result['status'] == 'success') {
+                    success_callback(json_result['user_id']);
+                } else {
+                    error_callback(json_result['errors']);
+                }
+                     
+            },
+            function(error_json) {
+                error_callback(error_json['errors']);
+            }
+        ); // End Registration
+    }
+
+    function ajax_login(username, password, success_callback, error_callback) {
+        sign_in(
+            username,
+            password,
+            function(json_result) {
+                if (json_result.status == "success") {
+                    success_callback();
+                }
+                else {
+                    error_callback("{% trans 'Error - Wrong email or password' %}");
+                }
+            },
+            function(error_callback) {
+                // Do nothing.
+            }
+        ); // End Login
+    }
+</script>
+
+
+{% endblock content %}

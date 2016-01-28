@@ -1,0 +1,57 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- login ------------- -->
+<div data-role="page" id="login-page">
+    <!-- ---------- login content ------------- -->
+    <div data-role="content" align="center" data-theme="a" style="">
+        <div class="row">                            <!-- row -->
+            <div class="container" id="inner-login-container">
+                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
+                    
+                <div class="clearfix"></div>
+                <a onclick="fly_facebook_login();" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                        style="background-color:#4B7EBD;">
+                    <span>{% trans 'Login With Facebook' %}</span>
+                </a>
+                
+                <div class="clearfix"></div>
+                <a onclick="fly_twitter_login();" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
+                        style="background-color:#0FD4FF;">
+                    <span>{% trans 'Login With Twitter' %}</span>
+                </a>
+                
+                <div class="clearfix"></div>
+                <a onclick="fly_google_login();" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
+                        style="background-color:#FD5D51;">
+                    <span>{% trans 'Login With Google' %}</span>
+                </a>
+                
+                <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Login' %}</span></a>
+                <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Generic Register' %}</span></a>
+            </div><!-- container -->
+        </div>
+    </div>
+    {% include "basepage/footer.html" %}
+</div>
+
+<script>
+    /**
+     * Deprecated Functions
+     */
+    function fly_facebook_login()
+    {
+        window.location = "{% url 'social:begin' 'facebook' %}?next=/{{ request.language }}/dashboard";
+    }
+
+    function fly_twitter_login() {
+        window.location = "{% url 'social:begin' 'twitter' %}?next=/{{ request.language }}/dashboard";
+    }
+
+    function fly_google_login() {
+        window.location = "{% url 'social:begin' 'google-oauth2' %}?next=/{{ request.language }}/dashboard";
+    }
+</script>
+
+{% endblock content %}

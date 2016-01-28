@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = patterns('',
-    url(r'^$', views.land_page, name='landpage'),
+    url(r'^$', views.land_page, name='landpage'),                      
 )

@@ -1,0 +1,100 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- login ------------- -->
+<div data-role="page" id="login-page">
+    <!-- ---------- login content ------------- -->
+    <div data-role="content" align="center" data-theme="a" style="">
+        <div class="row">                            <!-- row -->
+            <div class="container" id="inner-login-container">
+                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
+                    
+                    <form style="width:280px;margin:auto;">
+                        <input type="text" placeholder="{% trans 'Email Address' %}" id="id_email" />
+                        <input type="text" placeholder="{% trans 'Password' %}" id="id_password"  />
+                        <input type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
+                    </form>
+                    <div class="clearfix"></div>
+                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
+                    </div><!-- container -->
+        </div>
+    </div>
+    
+    {% include "basepage/footer.html" %}    
+</div>
+
+<script>
+    /**
+     *
+     */
+    function ajax_login()
+    {
+        /*
+        // Defensive Code: Password handling.
+        if( $('#id_email').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your email." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if ( !is_email_valid( $('#id_email').val() ) ) {
+            //$('.alert-danger').text('{% trans "Please enter a valid email address." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+        if( $('#id_password').val() == "" ){
+            //$('.alert-danger').text('{% trans "Error! Please enter your password." %}');
+            //$('.alert-danger').show();
+            return;
+        }
+    */
+        
+        // Login into our portal for editing customer information.
+        ajax_login2(
+            $('#id_email').val(),
+            $('#id_password').val(),
+            function(json_result) {
+                window.location = '/{{ request.language }}/dashboard';
+            },
+            function(json_error) {
+                // Convert the error json into string.
+                var string = JSON.stringify( json_error );
+                console.log(string);
+                if (string.indexOf("username and/or password are blank") > -1)
+                {
+                    console.log("{% trans 'Username and/or password are blank, please fill it it.' %}");
+                    //TODO: Error message.
+                }
+                else if (string.indexOf("wrong username or password") > -1)
+                {
+                    console.log("{% trans 'Wrong username or password' %}");
+                    //TODO: Error message.
+                }
+            }
+        ); // End Login
+    }
+
+    /**
+     * Handle logging in the user.
+     */
+    function ajax_login2(username, password, success_callback, error_callback) {
+        sign_in(
+            username,
+            password,
+            function(json_result) {
+                if (json_result.status == "success") {
+                    success_callback();
+                }
+                else {
+                    error_callback('{% trans "Error - Wrong email or password." %}');
+                }
+            },
+            function(error_json) {
+                error_callback(error_json);
+            }
+        ); // End Login
+     }
+</script>
+
+
+{% endblock content %}

@@ -11,23 +11,32 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 ugettext = lambda s: s
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Import variables for our application. Basically all imported variables
+# have a SECRET_* prefix.
+try:
+    from fly_project.secret_settings import *
+except ImportError:
+    pass
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0vb!o-2&t!)xku_=-li*#f=1b)axs_rj=!992q_0r!s&64#p98'
+SECRET_KEY = SECRET_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = SECRET_DEBUG
 
-ALLOWED_HOSTS = []
+# List of people to contact on error when DEBUG=False
+ADMINS = SECRET_ADMINS
 
+ALLOWED_HOSTS = SECRET_ALLOWED_HOSTS
 
 # 'Sites Framework' requires this line.
 SITE_ID = 1
@@ -44,13 +53,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'social.apps.django_app.default',  # python social auth
-    'rest_social_auth',
     'basepage',
     'landpage',
     'api',
+    'authentication',
+    'dashboard',
+    'mygoals',
+    'learning',
+    'resources',
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,6 +78,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'fly_project.custom_middleware.PyFlyCustomMiddleware',
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
@@ -79,6 +97,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.i18n',
+                'social.apps.django_app.context_processors.backends',        # python social auth
+                'social.apps.django_app.context_processors.login_redirect',  # python social auth
             ],
         },
     },
@@ -94,10 +114,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "fly_db",
-        "USER": "django",
-        "PASSWORD": "123password",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "USER": SECRET_DB_USER,
+        "PASSWORD": SECRET_DB_PASSWORD,
+        "HOST": SECRET_DB_HOST,
+        "PORT": SECRET_DB_PORT,
     }
 }
 
@@ -167,6 +187,50 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+
+# Email
+# http://stackoverflow.com/questions/19264907/python-django-gmail-smtp-setup
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = SECRET_EMAIL_HOST
+EMAIL_PORT = SECRET_EMAIL_PORT
+EMAIL_HOST_USER = SECRET_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = SECRET_EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_TO_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = SECRET_EMAIL_HOST_USER
+
+
+
+# Error Emailing
+# https://docs.djangoproject.com/en/dev/topics/logging/
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': False, # Set to this value to prevent spam
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
+
+
+# The Google Analytics Key
+GOOGLE_ANALYTICS_KEY = SECRET_GOOGLE_ANALYTICS_KEY
+
+
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 # Django REST Framework Configuration (Third Party)                           #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
@@ -183,20 +247,37 @@ REST_FRAMEWORK = {
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# Django REST social auth (Third Party)                                       #
+# Python Social Auth (Third Party)                                            #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/omab/python-social-auth
+
 # Facebook ( http://developers.facebook.com )
-SOCIAL_AUTH_FACEBOOK_KEY = 'your app client id'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'your app client secret'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ]  # optional
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'us_EN'}  # optional
+SOCIAL_AUTH_FACEBOOK_KEY = SECRET_SOCIAL_AUTH_FACEBOOK_KEY
+SOCIAL_AUTH_FACEBOOK_SECRET = SECRET_SOCIAL_AUTH_FACEBOOK_SECRET
+SOCIAL_AUTH_FACEBOOK_SCOPE = SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS
 
 # Twitter ( https://apps.twitter.com/app/new )
-SOCIAL_AUTH_TWITTER_KEY = ''
-SOCIAL_AUTH_TWITTER_SECRET = ''
+SOCIAL_AUTH_TWITTER_KEY = SECRET_SOCIAL_AUTH_TWITTER_KEY
+SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
+#    'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/dashboard'
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-cors-headers (Third Party)                                           #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/OttoYiu/django-cors-headers
+
+CORS_ORIGIN_WHITELIST = (
+    'google.com',
+    'facebook.com',
+    'twitter.com',
 )
