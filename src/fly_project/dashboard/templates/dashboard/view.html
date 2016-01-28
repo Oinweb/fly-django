@@ -1,7 +1,68 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block content %}
 
-dashboard TODO
+<!-- ---------- dashboard ------------- -->
+<div data-role="page" id="dashboard">
+
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center">
+        <div class="user-info">
+            <img src="{% static 'img/photo.png' %}" class="user-image"/>
+            <h5 class="level">
+                <span>Lvl 1</span>
+            </h5>
+        </div>
+        <div class="progress-bar-div">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    50/100 XP
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
+        </div>
+    </div><!-- /header -->
+
+    {% include 'basepage/menu.html' %}
+
+    <div data-role="content">
+        <div class="text-center">
+
+            <div class="my-boxes dashboard-box red-box" >
+                <img src="{% static 'img/oinweb-fly-goals-menu-icon.png' %}" />
+                <h2>My Goals</h2>
+                <p>Set goals for savings and credit score</p>
+                <a onclick="window.location='goals.html'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">Continue</a>
+            </div>
+
+            <div class="my-boxes dashboard-box blue-box">
+                <img src="{% static 'img/oinweb-fly-learning.png' %}" />
+                <h2>Learning</h2>
+                <p>Learn more about financial management</p>
+                <a onclick="window.location='learning.html'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">Continue</a>
+            </div>
+
+            <div class="my-boxes dashboard-box green-box">
+                <img src="{% static 'img/oinweb-fly-resources.png' %}" />
+                <h2>Resources</h2>
+                <p>Other helpful apps and sites</p>
+                <a onclick="window.location='resources.html'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">Continue</a>
+            </div>
+
+        </div>
+    </div><!-- /content -->
+    
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+
+<script src="js/storage.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+</script>
 
 {% endblock content %}
