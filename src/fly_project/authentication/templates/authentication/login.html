@@ -8,20 +8,33 @@
     <div data-role="content" align="center" data-theme="a" style="">
         <div class="row">                            <!-- row -->
             <div class="container" id="inner-login-container">
-                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="">
+                <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
-                    <form style="width:280px;margin:auto;">
-                        <input type="text" placeholder="{% trans 'Email Address' %}" id="id_email" />
-                        <input type="text" placeholder="{% trans 'Password' %}" id="id_password"  />
-                        <input type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
-                    </form>
-                    <div class="clearfix"></div>
-                    <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
-                    </div><!-- container -->
+                <form style="width:280px;margin:auto;">
+                    <input type="text" placeholder="{% trans 'Email Address' %}" id="id_email" />
+                    <input type="password" placeholder="{% trans 'Password' %}" id="id_password"  />
+                    <input type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
+                </form>
+                <div class="clearfix"></div>
+                <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
+            </div><!-- container -->
         </div>
     </div>
     
-    {% include "basepage/footer.html" %}    
+    {% include "basepage/footer.html" %}
+    
+    <!-- Error Message Modal -->
+    <div data-role="popup" id="login-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <h3>Login: Error</h3>
+            <p>
+                <div id="id_error"></div>
+            </p>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#login-popup').popup('close');">Close</button>
+        </div>
+    </div>
+    <!-- end Error Message Modal -->
+    
 </div>
 
 <script>
@@ -30,24 +43,22 @@
      */
     function ajax_login()
     {
-        /*
         // Defensive Code: Password handling.
         if( $('#id_email').val() == "" ){
-            //$('.alert-danger').text('{% trans "Error! Please enter your email." %}');
-            //$('.alert-danger').show();
+            $('#login-popup').popup('open');
+            $('#id_error').html('{% trans "Please enter your email." %}');
             return;
         }
         if ( !is_email_valid( $('#id_email').val() ) ) {
-            //$('.alert-danger').text('{% trans "Please enter a valid email address." %}');
-            //$('.alert-danger').show();
+            $('#login-popup').popup('open');
+            $('#id_error').html('{% trans "Please enter a valid email address." %}');
             return;
         }
         if( $('#id_password').val() == "" ){
-            //$('.alert-danger').text('{% trans "Error! Please enter your password." %}');
-            //$('.alert-danger').show();
+            $('#login-popup').popup('open');
+            $('#id_error').html('{% trans "Please enter your password." %}');
             return;
         }
-    */
         
         // Login into our portal for editing customer information.
         ajax_login2(
@@ -62,13 +73,22 @@
                 console.log(string);
                 if (string.indexOf("username and/or password are blank") > -1)
                 {
-                    console.log("{% trans 'Username and/or password are blank, please fill it it.' %}");
-                    //TODO: Error message.
+                    $('#login-popup').popup('open');
+                    $('#id_error').html('{% trans "Username and/or password are blank, please fill it it." %}');
                 }
-                else if (string.indexOf("wrong username or password") > -1)
+                else if (string.indexOf("Error - Wrong email or password.") > -1)
                 {
-                    console.log("{% trans 'Wrong username or password' %}");
-                    //TODO: Error message.
+                    $('#login-popup').popup('open');
+                    $('#id_error').html('{% trans "Wrong username or password" %}');
+                }
+                else if (string.indexOf("username not found") > -1)
+                    {
+                    $('#login-popup').popup('open');
+                    $('#id_error').html('{% trans "Email not found" %}');
+                }
+                else {
+                    $('#login-popup').popup('open');
+                    $('#id_error').html('{% trans "Unknown error." %}');
                 }
             }
         ); // End Login
