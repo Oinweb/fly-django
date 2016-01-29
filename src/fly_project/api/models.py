@@ -162,11 +162,26 @@ class Badge(models.Model):
         return str(self.id) + ' ' + self.title
 
 
+class XPLevelManager(models.Manager):
+    def get_or_create_for_level_one(self):
+        """
+            Function will lookup
+        """
+        try:
+            return XPLevel.objects.get(level=1)
+        except XPLevel.DoesNotExist:
+            return self.create(
+                level=1,
+                required_xp=0,
+            )
+                                    
+
 class XPLevel(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_xp_levels'
     
+    objects = XPLevelManager()
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     level = models.PositiveSmallIntegerField(
@@ -345,16 +360,12 @@ class Me(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     avatar = models.ImageField(upload_to='upload', null=True, blank=True)
-    level = models.PositiveSmallIntegerField(
+    current_xp = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(99999)],
         default=0,
         db_index=True,
     )
-    xp = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(99999)],
-        default=0,
-        db_index=True,
-    )
+    xplevel = models.ForeignKey(XPLevel)
     badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)
     courses = models.ManyToManyField(EnrolledCourse, blank=True, related_name='fly_user_enrolled_courses',)
     

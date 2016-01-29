@@ -130,5 +130,5 @@ class QuestionSubmissionSerializer(serializers.ModelSerializer):
 class MeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Me
-        fields = ('id', 'created', 'user', 'avatar', 'level', 'xp', 'badges', 'courses',)
+        fields = ('id', 'created', 'user', 'avatar', 'current_xp', 'xplevel', 'badges', 'courses',)
 

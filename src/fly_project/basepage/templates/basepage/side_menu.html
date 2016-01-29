@@ -1,4 +1,5 @@
 {% load staticfiles i18n %}
+{% if user.is_authenticated %}
 <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
     <img src="#" class="user-image" />
     <h5 class="greeting">{% trans "Hello" %}, {{ request.user.first_name }} </h5>
@@ -47,3 +48,4 @@
         );
     }
 </script>
+{% endif %}

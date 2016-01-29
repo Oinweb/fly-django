@@ -81,7 +81,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'fly_project.custom_middleware.PyFlyCustomMiddleware',
+    'fly_project.middleware.PyFlyLanguageMiddleware',
+    'fly_project.middleware.PyFlyMeMiddleware',
+                      
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
