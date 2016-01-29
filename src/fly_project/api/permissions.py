@@ -14,6 +14,34 @@ class IsAdminUserOrReadOnly(permissions.BasePermission):
                 return request.user.is_superuser
 
 
+class IsUserOrReadOnly(permissions.BasePermission):
+    """
+        Object-level permission to only allow owners of an object to edit it.
+        Assumes the model instance has an `user` attribute.
+    """
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        
+        # Instance must have an attribute named `owner`.
+        return obj.user == request.user
+
+
+class IsUser(permissions.BasePermission):
+    """
+        Object-level permission to only allow owners of an object to edit and
+        view it. Assumes the model instance has an `user` attribute.
+    """
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_anonymous():
+            return False
+        else:
+            # Instance must have an attribute named `owner`.
+            return obj.user == request.user
+
+
 #class AnonymousWriteAndIsEmployeeRead(permissions.BasePermission):
 #    """
 #        Custom permission to deny all non-employees from reading actions and 
