@@ -12,6 +12,7 @@ from api.views import course
 from api.views import question
 from api.views import enrolled_course
 from api.views import quiz_submission
+from api.views import quiz
 from api.views import question_submission
 from api.views import me
 from rest_framework.routers import DefaultRouter
@@ -32,6 +33,7 @@ router.register(r'courses', course.CourseViewSet)
 router.register(r'questions', question.QuestionViewSet)
 router.register(r'enrolled_courses', enrolled_course.EnrolledCourseViewSet)
 router.register(r'quiz_submissions', quiz_submission.QuizSubmissionViewSet)
+router.register(r'quizzes', quiz.QuizViewSet)
 router.register(r'question_submissions', question_submission.QuestionSubmissionViewSet)
 router.register(r'me', me.MeViewSet)
 
