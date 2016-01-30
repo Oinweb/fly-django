@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'social.apps.django_app.default',  # python social auth
+    'social.apps.django_app.default', 
+    'modeltranslation',
     'basepage',
     'landpage',
     'api',

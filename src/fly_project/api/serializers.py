@@ -82,7 +82,7 @@ class GoalSerializer(serializers.ModelSerializer):
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('id', 'created', 'type', 'image', 'level', 'title', 'description', 'has_xp_requirement', 'required_xp',)
+        fields = ('id', 'created', 'type', 'image', 'level', 'title', 'title_en', 'title_es', 'title_fr', 'description', 'description_en', 'description_es', 'description_fr', 'has_xp_requirement', 'required_xp',)
 
 
 class XPLevelSerializer(serializers.ModelSerializer):
@@ -94,19 +94,19 @@ class XPLevelSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ('id', 'created', 'title', 'summary', 'description', 'video_url', 'duration', 'awarded_xp', 'prerequisites',)
+        fields = ('id', 'created', 'title', 'summary', 'description', 'title_en', 'summary_en', 'description_en', 'title_es', 'summary_es', 'description_es', 'title_fr', 'summary_fr', 'description_fr', 'video_url', 'duration', 'awarded_xp', 'prerequisites',)
 
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
-        fields = ('id', 'created', 'course', 'title', 'description',)
+        fields = ('id', 'created', 'course', 'title', 'description', 'title_en', 'description_en', 'title_es', 'description_es', 'title_fr', 'description_fr',)
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ('id', 'created', 'quiz', 'num', 'title', 'description', 'type', 'a', 'a_is_correct', 'b', 'b_is_correct', 'c', 'c_is_correct', 'd', 'd_is_correct', 'e', 'e_is_correct', 'f', 'f_is_correct', 'true_choice', 'false_choice', 'answer',)
+        fields = ('id', 'created', 'quiz', 'num', 'title', 'description', 'type', 'a', 'b', 'c', 'd', 'f', 'a_en', 'b_en', 'c_en', 'd_en', 'f_en', 'a_es', 'b_es', 'c_es', 'd_es', 'f_es', 'a_fr', 'b_fr', 'c_fr', 'd_fr', 'f_fr', 'a_is_correct', 'b_is_correct', 'c_is_correct', 'd_is_correct', 'e', 'e_is_correct', 'f_is_correct', 'true_choice', 'false_choice', 'true_choice_en', 'false_choice_en', 'true_choice_es', 'false_choice_es', 'true_choice_fr', 'false_choice_fr', 'answer',)
 
 
 class EnrolledCourseSerializer(serializers.ModelSerializer):

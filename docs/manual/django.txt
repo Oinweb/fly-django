@@ -89,17 +89,18 @@ $ source env/bin/activate
 
 (6) Now finally lets install djnago
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-pip3 install django                 # Our MVC Framework
-pip3 install psycopg2               # Postgres SQL DB
-pip3 install gunicorn               # Web-Server Helper
-pip3 install Pillow                 # Req: ImageField
-pip3 install djangorestframework    # Web browsable API Framework
-pip3 install markdown               # Markdown support for the browsable API.
-pip3 install django-filter          # Filtering support
-pip3 install python-social-auth     # Twitter/Facebook/etc Social Authentication
-pip3 install django-cors-headers    # Enable CORS in Heades
-#pip3 install qrcode                # QR Code Generator
-#pip3 install pylibmc               # memcached connector
+pip3 install django                             # Our MVC Framework
+pip3 install psycopg2                           # Postgres SQL DB
+pip3 install gunicorn                           # Web-Server Helper
+pip3 install Pillow                             # Req: ImageField
+pip3 install djangorestframework                # Web browsable API Framework
+pip3 install markdown                           # Markdown support for the browsable API.
+pip3 install django-filter                      # Filtering support
+pip3 install python-social-auth                 # Twitter/Facebook/etc Social Authentication
+pip3 install django-cors-headers                # Enable CORS in Heades
+pip3 install django-modeltranslation==0.11rc2   # Model Translations
+#pip3 install qrcode                            # QR Code Generator
+#pip3 install pylibmc                           # memcached connector
 #pip3 install pylibmc --install-option="--with-libmemcached=/usr/local"  # (FreeBSD Only for memcached!)
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -167,6 +168,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'social.apps.django_app.default',
+    'modeltranslation',
     'basepage',
     'landpage',
     'api','
