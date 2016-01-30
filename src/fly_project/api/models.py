@@ -172,7 +172,8 @@ class XPLevelManager(models.Manager):
         except XPLevel.DoesNotExist:
             return self.create(
                 level=1,
-                required_xp=0,
+                min_xp=0,
+                max_xp=25,
             )
                                     
 
@@ -187,13 +188,17 @@ class XPLevel(models.Model):
     level = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         choices=constants.DURATION_IN_MINUTES_OPTIONS,
-        default=5,
-    )
-    required_xp = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(9999)],
         default=1,
     )
-    
+    min_xp = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(9999)],
+        default=0,
+    )
+    max_xp = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(9999)],
+        default=25,
+    )
+                                                   
     def __str__(self):
         return str(self.id)
 
@@ -360,10 +365,14 @@ class Me(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     avatar = models.ImageField(upload_to='upload', null=True, blank=True)
-    current_xp = models.PositiveSmallIntegerField(
+    xp = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(99999)],
         default=0,
         db_index=True,
+    )
+    xp_percent = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        default=0,
     )
     xplevel = models.ForeignKey(XPLevel)
     badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)

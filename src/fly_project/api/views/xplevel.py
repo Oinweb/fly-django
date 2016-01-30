@@ -13,7 +13,7 @@ from api.models import XPLevel
 class XPLevelFilter(django_filters.FilterSet):
     class Meta:
         model = XPLevel
-        fields = ['id', 'created', 'level', 'required_xp',]
+        fields = ['id', 'created', 'level', 'min_xp', 'max_xp',]
 
 
 class XPLevelViewSet(viewsets.ModelViewSet):

@@ -2,20 +2,26 @@
 {% if user.is_authenticated %}
     <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center">
         <div class="user-info">
-            <img src="{% static 'img/photo.png' %}" class="user-image"/>
+            {% if request.me.avater.url != None %}
+                <img src="{{ request.avatar.url }}" class="user-image" />
+            {% else %}
+                <img src="{% static 'img/photo.png' %}" class="user-image" />
+            {% endif %}
             <h5 class="level">
                 <span>Lvl {{ request.me.level }}</span>
             </h5>
         </div>
         <div class="progress-bar-div">
             <div class="progress">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    50/100 XP
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ request.me.xp_percent }}">
+                    {{ request.me.xp }}/{{ request.me.xplevel.max_xp }} XP
                 </div>
             </div>
         </div>
         <div class="nav-menu">
-            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
+            <a href="#nav-menu-panel">
+                <i class="fa fa-bars fa-fw"></i>
+            </a>
         </div>
     </div><!-- /header -->
 {% endif %}
