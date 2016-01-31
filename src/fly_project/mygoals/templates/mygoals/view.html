@@ -2,14 +2,67 @@
 {% load staticfiles i18n %}
 {% block content %}
 
-<!-- ---------- dashboard ------------- -->
-<div data-role="page" id="dashboard">
-
+<!-- ---------- My Goals ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page">
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-
-    {% trans "Continue" %}
-    
+    {% include "mygoals/view_js.html" %}
+    <div data-role="content">
+        <div class="text-center">
+            <div class="my-boxes red-box goals-box">
+                <img src="{% static 'img/savings.png' %}" class="goals-img" />
+                <h2>{% trans "Savings" %}</h2>
+                <p>{% trans "I want to save..." %}</p>
+                <input type="text" id="save-dollars" placeholder="{% trans 'amount in dollars' %}" aria-label="{% trans 'Amount (to the nearest dollar)' %}">
+                    <p>{% trans "Every..." %}</p>
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><input type="text" id="save-period" placeholder="{% trans 'Continue' %}time period" aria-label="{% trans 'Continue' %}Time period"></div>
+                        <div class="ui-block-b"><select id="save-time">
+                            <option value="weeks">{% trans "Weeks" %}</option>
+                            <option value="months">{% trans "Months" %}</option>
+                        </select></div>
+                    </fieldset>
+                    <button data-icon="check" id="red-btn" onclick="lockRedBox();">{% trans "Set My Goal!" %}</button>
+                    </div>
+            
+            <div class="my-boxes blue-box goals-box">
+                <img src="{% static 'img/oinweb-fly-credit.png' %}" />
+                <h2>{% trans "Credit" %}</h2>
+                <p>{% trans "I want to raise my credit score by..." %}</p>
+                <input type="text" id="credit-points" placeholder="{% trans 'number of points' %}" aria-label="{% trans 'Number of points' %}">
+                    <p>{% trans "In..." %}</p>
+                    
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><input type="text" id="credit-period" placeholder="{% trans 'time period' %}" aria-label="{% trans 'Time period' %}"></div>
+                        <div class="ui-block-b"><select id="credit-time">
+                            <option value="weeks">{% trans "Weeks" %}</option>
+                            <option value="months">{% trans "Months" %}</option>
+                        </select></div>
+                    </fieldset>
+                    <button data-icon="check" id="blue-btn" onclick="lockBlueBox();">{% trans "Set My Goal!" %}</button>
+                    </div>
+            
+            <div class="my-boxes green-box goals-box">
+                <img src="{% static 'img/oinweb-fly-goals.png' %}" />
+                <h2>{% trans "Goal" %}</h2>
+                <p>{% trans "I want to save..." %}</p>
+                <input type="text" id="goal-amount" placeholder="{% trans 'amount in dollars' %}" aria-label="{% trans 'Amount (to the nearest dollar)' %}">
+                    <p>{% trans "For..." %}</p>
+                    <fieldset class="ui-grid-a">
+                        <select id="goal-for">
+                            <option value="house">House</option>
+                            <option value="business">Business</option>
+                            <option value="education">Education</option>
+                            <option value="vacation">Vacation</option>
+                            <option value="retirement">Retirement</option>
+                            <option value="savings">General Savings</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </fieldset>
+                    <button data-icon="check" id="green-btn" onclick="lockGreenBox();">{% trans "Set My Goal!" %}</button>
+                    </div>
+        </div>
+    </div><!-- /content -->
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
