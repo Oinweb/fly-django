@@ -108,6 +108,40 @@ class GoalManager(models.Manager):
         except Goal.DoesNotExist:
             return None
 
+    """
+        Function will lookup 'credit' type goal and then returns it.
+    """
+    def get_latest_credit_goal(self, user_id):
+        try:
+            goals = Goal.objects.filter(
+                user_id=user_id,
+                type=constants.CREDIT_MYGOAL_TYPE,
+            ).order_by('-created')
+
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except Goal.DoesNotExist:
+            return None
+
+    """
+        Function will lookup 'final' type goal and then returns it.
+    """
+    def get_latest_final_goal(self, user_id):
+        try:
+            goals = Goal.objects.filter(
+                user_id=user_id,
+                type=constants.GOAL_MYGOAL_TYPE,
+            ).order_by('-created')
+                
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except Goal.DoesNotExist:
+            return None
+
 
 class Goal(models.Model):
     class Meta:

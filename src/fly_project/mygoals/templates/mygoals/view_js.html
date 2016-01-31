@@ -48,13 +48,13 @@
         
         // Save the goal
         $('#id_goal_id').val(goal_id);
-        $('#id_goal_type').val(1);
+        $('#id_goal_type').val({{ constants.SAVINGS_MYGOAL_TYPE }});
     }
 
     function save_goal()
     {
         var goal_type = $('#id_goal_type').val();
-        if (goal_type == 1) {
+        if (goal_type == {{ constants.SAVINGS_MYGOAL_TYPE }}) {
             set_save_goal();
         } else {
             $('#error-popup').popup('open');
@@ -84,7 +84,7 @@
                     function(goal) {
                          // Step 4: Lock the particular box depending on what
                          //         the 'type' is set as.
-                         if (goal['type'] == 1)
+                         if (goal['type'] == {{ constants.SAVINGS_MYGOAL_TYPE }})
                          {
                              lockBox('red');
                              $('#savings_goal_is_locked').val(1);
