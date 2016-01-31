@@ -84,7 +84,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'fly_project.middleware.PyFlyLanguageMiddleware',
     'fly_project.middleware.PyFlyMeMiddleware',
-                      
+    'fly_project.middleware.PyFlyTokenMiddleware',                      
 ]
 
 ROOT_URLCONF = 'fly_project.urls'

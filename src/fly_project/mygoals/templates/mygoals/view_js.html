@@ -3,4 +3,17 @@
     $(document).ready(function(){
         loadUserData();
     });
+    
+    function set_save_goal(goal_id)
+    {
+        get_goal(
+            goal_id,
+            function(goal) {
+                 console.log(goal);
+            },
+            function(error_json) {
+                 console.log(error_json);
+            }
+        );
+    }
 </script>

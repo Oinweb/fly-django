@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from fly_project import settings
 from fly_project import constants
 from api.models import Goal
+from rest_framework.authtoken.models import Token
 
 
 @login_required(login_url='/authentication')
@@ -18,6 +19,9 @@ def mygoals_page(request):
             type=constants.SAVINGS_MYGOAL_TYPE,
         )
     
+    token = Token.objects.get(user_id=request.user.id)
+    print(token)
+
     return render(request, 'mygoals/view.html',{
         'settings': settings,
         'savings_goal': savings_goal,
