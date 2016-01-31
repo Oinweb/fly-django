@@ -90,16 +90,59 @@ class ImageUpload(models.Model):
         return str(self.upload_id)
 
 
+class GoalManager(models.Manager):
+    def get_latest_savings_goal(self, user_id):
+        """
+            Function will lookup 'savings' type goal and then returns it.
+        """
+        try:
+            goals = Goal.objects.filter(
+                user_id=user_id,
+                type=constants.SAVINGS_MYGOAL_TYPE,
+            ).order_by('-created')
+            
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except Goal.DoesNotExist:
+            return None
+
+
 class Goal(models.Model):
     class Meta:
         app_label = 'api'
+        ordering = ('-created',)
         db_table = 'fly_goals'
     
+    objects = GoalManager()
     id = models.AutoField(primary_key=True)
-    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, db_index=True,)
+    
+    # Variable to be used to save the initial date this goal was created on.
+    created = models.DateTimeField(auto_now_add=True, db_index=True,)
+    
+    # Variable controls when this particular goal can be closed. Closure
+    # involves modifying 'is_closed' and 'earned_xp' values.
     unlocks = models.DateTimeField(null=True,blank=True)
+    
+    # Variable controls whether this particular goal was finished and thus
+    # cannot be modified after it was closed.
+    is_closed = models.BooleanField(default=False)
+    
+    # When 'is_closed=True' variable was set, this variable controls whether
+    # the User has actually finished this goal with success or not.
     was_accomplished = models.BooleanField(default=False)
-    user = models.ForeignKey(User)
+    
+    # When 'is_closed=True' variable was set, this variable controls what
+    # amount of experience points where earned for accomplishing it.
+    earned_xp = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(9999)],
+        default=0,
+    )
+    
+    # This application has three types of goals and thus as a result this
+    # variable controls which of the three goals this goal is.
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(3)],
         choices=constants.GOAL_TYPE_OPTIONS,
@@ -107,14 +150,15 @@ class Goal(models.Model):
         db_index=True,
     )
     
+    # The next set of variables are used to track goal specific information.
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         default=0.00,
     )
-    
     times = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(99)],
+        default=0,
     )
     
     period = models.PositiveSmallIntegerField(
@@ -236,7 +280,7 @@ class Quiz(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    course = models.ForeignKey(Course)
+    course = models.ForeignKey(Course, db_index=True,)
     title = models.CharField(max_length=63, null=True, blank=True)
     description = models.CharField(max_length=511, null=True, blank=True)
 
@@ -251,7 +295,7 @@ class Question(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    quiz = models.ForeignKey(Quiz)
+    quiz = models.ForeignKey(Quiz, db_index=True,)
     num = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         default=1,
@@ -292,7 +336,7 @@ class EnrolledCourse(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, db_index=True,)
     course = models.ForeignKey(Course)
     finished = models.DateTimeField(null=True, blank=True,)
     is_finished = models.BooleanField(default=False)
@@ -312,7 +356,7 @@ class QuizSubmission(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, db_index=True,)
     course = models.ForeignKey(EnrolledCourse)
     finished = models.DateTimeField(null=True, blank=True,)
     is_finished = models.BooleanField(default=False)
@@ -332,7 +376,7 @@ class QuestionSubmission(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, db_index=True,)
     quiz = models.ForeignKey(QuizSubmission)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(2)],
@@ -363,12 +407,11 @@ class Me(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, db_index=True,)
     avatar = models.ImageField(upload_to='upload', null=True, blank=True)
     xp = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(99999)],
         default=0,
-        db_index=True,
     )
     xp_percent = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)],
@@ -378,5 +421,10 @@ class Me(models.Model):
     badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)
     courses = models.ManyToManyField(EnrolledCourse, blank=True, related_name='fly_user_enrolled_courses',)
     
+    # Track the current goals the User is on at the moment.
+#    savings = models.ForeignKey(Goal, related_name='fly_user_savings', null=True, blank=True,)
+#    credit = models.ForeignKey(Goal, related_name='fly_user_credit', null=True, blank=True,)
+#    goal = models.ForeignKey(Goal, related_name='fly_user_mygoal', null=True, blank=True,)
+
     def __str__(self):
         return str(self.id)

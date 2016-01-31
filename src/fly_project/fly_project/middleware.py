@@ -3,6 +3,8 @@ from django.utils.translation import get_language
 from django.contrib.auth.models import User
 from api.models import Me
 from api.models import XPLevel
+from api.models import Goal
+
 
 class PyFlyLanguageMiddleware(object):
     def process_request(self, request):

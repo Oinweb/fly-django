@@ -9,68 +9,126 @@
     {% include "mygoals/view_js.html" %}
     <div data-role="content">
         <div class="text-center">
+            <!-- Savings -->
             <div class="my-boxes red-box goals-box">
                 <img src="{% static 'img/savings.png' %}" class="goals-img" />
                 <h2>{% trans "Savings" %}</h2>
                 <p>{% trans "I want to save..." %}</p>
-                <input type="text" id="save-dollars" placeholder="{% trans 'amount in dollars' %}" aria-label="{% trans 'Amount (to the nearest dollar)' %}">
-                    <p>{% trans "Every..." %}</p>
-                    <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><input type="text" id="save-period" placeholder="{% trans 'Continue' %}time period" aria-label="{% trans 'Continue' %}Time period"></div>
-                        <div class="ui-block-b"><select id="save-time">
-                            <option value="weeks">{% trans "Weeks" %}</option>
-                            <option value="months">{% trans "Months" %}</option>
-                        </select></div>
-                    </fieldset>
-                    <button data-icon="check" id="red-btn" onclick="lockRedBox();">{% trans "Set My Goal!" %}</button>
+                <input id="save-dollars"
+                    value="{{ savings_goal.amount }}"
+                     type="text"
+              placeholder="{% trans 'amount in dollars' %}"
+               aria-label="{% trans 'Amount (to the nearest dollar)' %}" />
+                <p>{% trans "Every..." %}</p>
+                <fieldset class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <input id="save-period"
+                             type="text"
+                      placeholder="{% trans 'time period' %}"
+                       aria-label="{% trans 'Time period' %}" />
                     </div>
+                    <div class="ui-block-b">
+                        <select id="save-time">
+                            <option value=1>
+                                {% trans "Weeks" %}
+                            </option>
+                            <option value=2>
+                                {% trans "Months" %}
+                            </option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button id="red-btn"
+                 data-icon="check"
+                   onclick="lockRedBox();">
+                    {% trans "Set My Goal!" %}
+                </button>
+            </div>
+            <!-- end Savings -->
             
+            <!-- Credit -->
             <div class="my-boxes blue-box goals-box">
                 <img src="{% static 'img/oinweb-fly-credit.png' %}" />
                 <h2>{% trans "Credit" %}</h2>
                 <p>{% trans "I want to raise my credit score by..." %}</p>
-                <input type="text" id="credit-points" placeholder="{% trans 'number of points' %}" aria-label="{% trans 'Number of points' %}">
-                    <p>{% trans "In..." %}</p>
-                    
-                    <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><input type="text" id="credit-period" placeholder="{% trans 'time period' %}" aria-label="{% trans 'Time period' %}"></div>
-                        <div class="ui-block-b"><select id="credit-time">
-                            <option value="weeks">{% trans "Weeks" %}</option>
-                            <option value="months">{% trans "Months" %}</option>
-                        </select></div>
-                    </fieldset>
-                    <button data-icon="check" id="blue-btn" onclick="lockBlueBox();">{% trans "Set My Goal!" %}</button>
+                <input id="credit-points"
+                     type="text"
+              placeholder="{% trans 'number of points' %}"
+               aria-label="{% trans 'Number of points' %}" />
+                <p>{% trans "In..." %}</p>
+                <fieldset class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <input id="credit-period"
+                             type="text"
+                      placeholder="{% trans 'time period' %}"
+                       aria-label="{% trans 'Time period' %}" />
                     </div>
+                    <div class="ui-block-b">
+                        <select id="credit-time">
+                            <option value="weeks">
+                                {% trans "Weeks" %}
+                            </option>
+                            <option value="months">
+                                {% trans "Months" %}
+                            </option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button id="blue-btn"
+                 data-icon="check"
+                   onclick="lockBlueBox();">
+                    {% trans "Set My Goal!" %}
+                </button>
+            </div>
+            <!-- end Credit -->
             
+            <!-- Goal -->
             <div class="my-boxes green-box goals-box">
                 <img src="{% static 'img/oinweb-fly-goals.png' %}" />
                 <h2>{% trans "Goal" %}</h2>
                 <p>{% trans "I want to save..." %}</p>
-                <input type="text" id="goal-amount" placeholder="{% trans 'amount in dollars' %}" aria-label="{% trans 'Amount (to the nearest dollar)' %}">
-                    <p>{% trans "For..." %}</p>
-                    <fieldset class="ui-grid-a">
-                        <select id="goal-for">
-                            <option value="house">House</option>
-                            <option value="business">Business</option>
-                            <option value="education">Education</option>
-                            <option value="vacation">Vacation</option>
-                            <option value="retirement">Retirement</option>
-                            <option value="savings">General Savings</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </fieldset>
-                    <button data-icon="check" id="green-btn" onclick="lockGreenBox();">{% trans "Set My Goal!" %}</button>
-                    </div>
+                <input id="goal-amount"
+                     type="text"
+              placeholder="{% trans 'amount in dollars' %}"
+               aria-label="{% trans 'Amount (to the nearest dollar)' %}" />
+                <p>{% trans "For..." %}</p>
+                <fieldset class="ui-grid-a">
+                    <select id="goal-for">
+                        <option value=1>
+                            {% trans "House" %}
+                        </option>
+                        <option value=2>
+                            {% trans "Business" %}
+                        </option>
+                        <option value=3>
+                            {% trans "Education" %}
+                        </option>
+                        <option value=4>
+                            {% trans "Vacation" %}
+                        </option>
+                        <option value=5>
+                            {% trans "Goal" %}Retirement
+                        </option>
+                        <option value=6>
+                            {% trans "General Savings" %}
+                        </option>
+                        <option value=7>
+                            {% trans "Other" %}
+                        </option>
+                    </select>
+                </fieldset>
+                <button id="green-btn"
+                 data-icon="check"
+                   onclick="lockGreenBox();">
+                    {% trans "Set My Goal!" %}
+                </button>
+            </div>
+            <!-- end Goal -->
+            
         </div>
+        
     </div><!-- /content -->
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
-
 {% endblock content %}

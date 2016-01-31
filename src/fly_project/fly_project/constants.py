@@ -1,15 +1,21 @@
 from django.utils.translation import ugettext_lazy as _
 
 
+SAVINGS_MYGOAL_TYPE = 1
+CREDIT_MYGOAL_TYPE = 2
+GOAL_MYGOAL_TYPE = 3
 GOAL_TYPE_OPTIONS = (
-    (1, _('Savings')),
-    (2, _('Credit')),
-    (3, _('Goal')),
+    (SAVINGS_MYGOAL_TYPE, _('Savings')),
+    (CREDIT_MYGOAL_TYPE, _('Credit')),
+    (GOAL_MYGOAL_TYPE, _('Goal')),
 )
 
+
+WEEKS_TYPE = 1
+MONTHS_TYPE = 2
 INTERVAL_OPTIONS = (
-    (1, _('Weeks')),
-    (2, _('Months')),
+    (WEEKS_TYPE, _('Weeks')),
+    (MONTHS_TYPE, _('Months')),
 )
 
 FOR_WANT_OPTIONS = (
