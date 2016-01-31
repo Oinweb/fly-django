@@ -13,6 +13,9 @@
         
         jQuery.ajax({
             url: url,
+            headers: {
+                Authorization: 'Token ' + '{{ request.token }}'
+            }
             cache: false,
             contentType: false,
             processData: false,
@@ -42,6 +45,9 @@
         
         jQuery.ajax({
             url: url,
+            headers: {
+                Authorization: 'Token ' + '{{ request.token }}'
+            }
             data: data,
             type: type,
             traditional: true, // Note: This allows many-to-many arrays for Django REST Framework
@@ -66,6 +72,9 @@
         var url = "/api/quizzes/" + id + "/?format=json";
         jQuery.ajax({
             url: url,
+            headers: {
+                Authorization: 'Token ' + '{{ request.token }}'
+            }
             cache: false,
             contentType: false,
             processData: false,
@@ -87,6 +96,9 @@
         var url = "/api/quizzes/?format=json&search="+keyword;
         jQuery.ajax({
             url: url,
+            headers: {
+                Authorization: 'Token ' + '{{ request.token }}'
+            }
             cache: false,
             contentType: false,
             processData: false,
