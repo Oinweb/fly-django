@@ -8,6 +8,7 @@
     <div data-role="content" align="center" data-theme="a" style="">
         <div class="row">                            <!-- row -->
             <div class="container" id="inner-login-container">
+                {% include "authentication/login_js.html" %}
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
                 <form style="width:280px;margin:auto;">
@@ -34,87 +35,5 @@
         </div>
     </div>
     <!-- end Error Message Modal -->
-    
 </div>
-
-<script>
-    /**
-     *
-     */
-    function ajax_login()
-    {
-        // Defensive Code: Password handling.
-        if( $('#id_email').val() == "" ){
-            $('#login-popup').popup('open');
-            $('#id_error').html('{% trans "Please enter your email." %}');
-            return;
-        }
-        if ( !is_email_valid( $('#id_email').val() ) ) {
-            $('#login-popup').popup('open');
-            $('#id_error').html('{% trans "Please enter a valid email address." %}');
-            return;
-        }
-        if( $('#id_password').val() == "" ){
-            $('#login-popup').popup('open');
-            $('#id_error').html('{% trans "Please enter your password." %}');
-            return;
-        }
-        
-        // Login into our portal for editing customer information.
-        ajax_login2(
-            $('#id_email').val(),
-            $('#id_password').val(),
-            function(json_result) {
-                window.location = '/{{ request.language }}/dashboard';
-            },
-            function(json_error) {
-                // Convert the error json into string.
-                var string = JSON.stringify( json_error );
-                console.log(string);
-                if (string.indexOf("username and/or password are blank") > -1)
-                {
-                    $('#login-popup').popup('open');
-                    $('#id_error').html('{% trans "Username and/or password are blank, please fill it it." %}');
-                }
-                else if (string.indexOf("Error - Wrong email or password.") > -1)
-                {
-                    $('#login-popup').popup('open');
-                    $('#id_error').html('{% trans "Wrong username or password" %}');
-                }
-                else if (string.indexOf("username not found") > -1)
-                    {
-                    $('#login-popup').popup('open');
-                    $('#id_error').html('{% trans "Email not found" %}');
-                }
-                else {
-                    $('#login-popup').popup('open');
-                    $('#id_error').html('{% trans "Unknown error." %}');
-                }
-            }
-        ); // End Login
-    }
-
-    /**
-     * Handle logging in the user.
-     */
-    function ajax_login2(username, password, success_callback, error_callback) {
-        sign_in(
-            username,
-            password,
-            function(json_result) {
-                if (json_result.status == "success") {
-                    success_callback();
-                }
-                else {
-                    error_callback('{% trans "Error - Wrong email or password." %}');
-                }
-            },
-            function(error_json) {
-                error_callback(error_json);
-            }
-        ); // End Login
-     }
-</script>
-
-
 {% endblock content %}

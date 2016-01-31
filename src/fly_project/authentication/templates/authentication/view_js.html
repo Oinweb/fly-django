@@ -1,0 +1,15 @@
+{% load staticfiles i18n %}
+<script>
+    function fly_facebook_login()
+    {
+        window.location = "{% url 'social:begin' 'facebook' %}?next=/{{ request.language }}/dashboard";
+    }
+
+    function fly_twitter_login() {
+        window.location = "{% url 'social:begin' 'twitter' %}?next=/{{ request.language }}/dashboard";
+    }
+
+    function fly_google_login() {
+        window.location = "{% url 'social:begin' 'google-oauth2' %}?next=/{{ request.language }}/dashboard";
+    }
+</script>
