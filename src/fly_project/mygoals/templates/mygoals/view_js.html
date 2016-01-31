@@ -1,17 +1,117 @@
 {% load staticfiles i18n %}
+<input type="hidden" id="id_goal_id" value=0 />
+<input type="hidden" id="id_goal_type" value=0 />
+<input type="hidden" id="savings_goal_is_locked" value={{ savings_goal.is_locked }} />
+<input type="hidden" id="credit_goal_is_locked" value=0 />
+<input type="hidden" id="final_goal_is_locked" value=0 />
 <script type="text/javascript">
     $(document).ready(function(){
         loadUserData();
     });
     
-    function set_save_goal(goal_id)
+    function lockBox(cur_box) {
+        $('.' + cur_box + '-box * input').attr('disabled', 'true');
+        $('.' + cur_box + '-box * select').attr('disabled', 'true');
+        $('#' + cur_box + '-btn').buttonMarkup({icon: 'lock'});
+        $('#' + cur_box + '-btn').data('icon', 'lock');
+        $('#' + cur_box + '-btn').text('Goal Locked (30 days)');
+    }
+
+    function confirm_save_goal(goal_id)
     {
+        if ($('#savings_goal_is_locked').val() == 1) {
+            return;
+        }
+        
+        // Defensive Code: Ensure that the values have been set.
+        if( $('#save-dollars').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Savings" %}');
+            $('#id_error_message').html('{% trans "Please enter saving amount in dollars (red box)" %}');
+            return;
+        }
+        if( $('#save-period').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Savings" %}');
+            $('#id_error_message').html('{% trans "Please enter your savings period." %}');
+            return;
+        }
+        if( $('#save-time').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Savings" %}');
+            $('#id_error_message').html('{% trans "Please enter your savings time." %}');
+            return;
+        }
+        
+        // Load the confirmation popup.
+        $('#confirm-popup').popup('open');
+        
+        // Save the goal
+        $('#id_goal_id').val(goal_id);
+        $('#id_goal_type').val(1);
+    }
+
+    function save_goal()
+    {
+        var goal_type = $('#id_goal_type').val();
+        if (goal_type == 1) {
+            set_save_goal();
+        } else {
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Error" %}');
+            $('#id_error_message').html('{% trans "Unknown goal selected." %}');
+        }
+    }
+
+    function set_save_goal()
+    {
+        // Step 1: Get the "id" of the goal we currently selected on.
+        var goal_id = $('#id_goal_id').val();
+        
+        // Step 2: Fetch the Goal model object from the API.
         get_goal(
             goal_id,
             function(goal) {
-                 console.log(goal);
+                // Step 3: Update the values.
+                goal["amount"] = $('#save-dollars').val();
+                goal["times"] = parseInt( $('#save-period').val() );
+                goal["period"] = parseInt( $('#save-time').val() );
+                goal["is_locked"] = 'True';
+                var nowPlus30Days = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)); // Now + 30 days.
+                goal["unlocks"] = date_to_django_date(nowPlus30Days);
+                set_goal(
+                    goal,
+                    function(goal) {
+                         // Step 4: Lock the particular box depending on what
+                         //         the 'type' is set as.
+                         if (goal['type'] == 1)
+                         {
+                             lockBox('red');
+                             $('#savings_goal_is_locked').val(1);
+                         }
+                         else if (goal['type'] == 2)
+                         {
+                             lockBox('blue');
+                             $('#credit_goal_is_locked').val(1);
+                         }
+                         else if (goal['green'] == 3)
+                         {
+                             lockBox('red');
+                             $('#final_goal_is_locked').val(1);
+                         }
+                    },
+                    function(error_json) {
+                         $('#error-popup').popup('open');
+                         $('#id_error_title').html('{% trans "Savings" %}');
+                         $('#id_error_message').html('{% trans "An unknown error occured when saving goal, please see log." %}');
+                         console.log(error_json);
+                    }
+                );
             },
             function(error_json) {
+                 $('#error-popup').popup('open');
+                 $('#id_error_title').html('{% trans "Savings" %}');
+                 $('#id_error_message').html('{% trans "An unknown error occured when fetching goal, please see log." %}');
                  console.log(error_json);
             }
         );

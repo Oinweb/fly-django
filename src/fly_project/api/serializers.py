@@ -76,7 +76,7 @@ class BannedWordSerializer(serializers.ModelSerializer):
 class GoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goal
-        fields = ('id', 'created', 'was_accomplished', 'user', 'type', 'amount', 'times', 'for_want', 'for_other_want',)
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'type', 'amount', 'times', 'period', 'for_want', 'for_other_want',)
 
 
 class BadgeSerializer(serializers.ModelSerializer):

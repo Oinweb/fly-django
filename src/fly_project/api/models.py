@@ -122,6 +122,10 @@ class Goal(models.Model):
     # Variable to be used to save the initial date this goal was created on.
     created = models.DateTimeField(auto_now_add=True, db_index=True,)
     
+    # Variable controls whether the User has set the Goal and will wait
+    # 30 days before this Goal will unlock.
+    is_locked = models.BooleanField(default=False)
+    
     # Variable controls when this particular goal can be closed. Closure
     # involves modifying 'is_closed' and 'earned_xp' values.
     unlocks = models.DateTimeField(null=True,blank=True)

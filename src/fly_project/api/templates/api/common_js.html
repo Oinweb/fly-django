@@ -30,4 +30,15 @@
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         return re.test(email);
     }
+
+    function date_to_django_date(js_date) {
+        var today = js_date;
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear(); var hh = today.getHours();
+        var m = today.getMinutes();
+        var secs = today.getSeconds();
+        var now = yyyy+"-"+mm+"-"+dd+"T"+hh+":"+m+":"+secs;
+        return now;
+    }
 </script>
