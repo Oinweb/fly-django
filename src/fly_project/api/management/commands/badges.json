@@ -99,6 +99,177 @@
                "level": "7",
                "has_xp_requirement": "1",
                "required_xp": "450"
+        },
+        {
+               "id": "11",
+               "type": "3",
+               "image": "",
+               "title": "First Course Complete",
+               "description": "Great - now try another one!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "12",
+               "type": "3",
+               "image": "",
+               "title": "Knowledge Sharer",
+               "description": "Thanks for letting your friends know!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "13",
+               "type": "3",
+               "image": "",
+               "title": "Completed Finances 101",
+               "description": "Great, now try Finance II!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "14",
+               "type": "3",
+               "image": "",
+               "title": "Completed Finances II ",
+               "description": "You did it!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "15",
+               "type": "3",
+               "image": "",
+               "title": "Completed Saving & Budgeting 101",
+               "description": "Great, now try Saving & Budgeting II!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "16",
+               "type": "3",
+               "image": "",
+               "title": "Saving & Budgeting II",
+               "description": "Great, now try Credit Score II!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "17",
+               "type": "3",
+               "image": "",
+               "title": "Completed Credit Score 101",
+               "description": "Great, now try Credit Score II!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "18",
+               "type": "3",
+               "image": "",
+               "title": "Completed Credit Score II",
+               "description": "You did it!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "19",
+               "type": "2",
+               "image": "",
+               "title": "First goal achieved",
+               "description": "You hit your first goal! Awesome!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "20",
+               "type": "2",
+               "image": "",
+               "title": "Goal Sharing",
+               "description": "Be proud of hitting your goals!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "21",
+               "type": "2",
+               "image": "",
+               "title": "First goal failed",
+               "description": "Don’t give up!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "22",
+               "type": "2",
+               "image": "",
+               "title": "First savings goal achieved",
+               "description": "Great saving! Keep it up!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "23",
+               "type": "2",
+               "image": "",
+               "title": "First credit goal achieved",
+               "description": "Good job!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "24",
+               "type": "2",
+               "image": "",
+               "title": "First big goal achieved",
+               "description": "That wasn’t so hard, now was it?",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "25",
+               "type": "2",
+               "image": "",
+               "title": "Savings champ",
+               "description": "Great saving! Keep it up!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "26",
+               "type": "2",
+               "image": "",
+               "title": "Credit score champ",
+               "description": "Good job!",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "27",
+               "type": "2",
+               "image": "",
+               "title": "Big saver!",
+               "description": "That wasn’t so hard, now was it?",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
         }
     ]
 }
+
