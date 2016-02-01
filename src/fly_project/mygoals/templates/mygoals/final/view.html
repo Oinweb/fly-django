@@ -1,0 +1,101 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- My Goals ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include "mygoals/final/view_js.html" %}
+    <div data-role="content">
+        <div class="text-center">
+            <!-- Final Goal -->
+            <div class="my-boxes green-box goals-box">
+                <img src="{% static 'img/oinweb-fly-goals.png' %}" />
+                <h2>{% trans "Goal" %}</h2>
+                <p>{% trans "I want to save..." %}</p>
+                <input {% if final_goal.is_locked %}disabled=true{% endif %}
+                       id="goal-amount"
+                    value="{% if final_goal.amount %}{{ final_goal.amount }}{% endif %}"
+                     type="text"
+              placeholder="{% trans 'amount in dollars' %}"
+               aria-label="{% trans 'Amount (to the nearest dollar)' %}" />
+                <p>{% trans "For..." %}</p>
+                <fieldset class="ui-grid-a">
+                    <select {% if final_goal.is_locked %}disabled=true{% endif %} id="goal-for">
+                        <option value=1 {% if final_goal.for_want == 1  %}selected{% endif %}>
+                            {% trans "House" %}
+                        </option>
+                        <option value=2 {% if final_goal.for_want == 2  %}selected{% endif %}>
+                            {% trans "Business" %}
+                        </option>
+                        <option value=3 {% if final_goal.for_want == 3  %}selected{% endif %}>
+                            {% trans "Education" %}
+                        </option>
+                        <option value=4 {% if final_goal.for_want == 4  %}selected{% endif %}>
+                            {% trans "Vacation" %}
+                        </option>
+                        <option value=5 {% if final_goal.for_want == 5  %}selected{% endif %}>
+                            {% trans "Goal" %}Retirement
+                        </option>
+                        <option value=6 {% if final_goal.for_want == 6  %}selected{% endif %}>
+                            {% trans "General Savings" %}
+                        </option>
+                        <option value=7 {% if final_goal.for_want == 7  %}selected{% endif %}>
+                            {% trans "Other" %}{% if final_goal.for_other_want != ""  %} ({{  final_goal.for_other_want }}){% endif %}
+                        </option>
+                    </select>
+                </fieldset>
+                <button {% if final_goal.is_locked %}disabled=true{% endif %}
+                        id="green-btn"
+                 data-icon="check"
+                   onclick="confirm_final_goal({{ final_goal.id }});">
+                   {% if final_goal.is_locked %}
+                       {% trans "Goal Locked (30 days)" %}
+                   {% else %}
+                       {% trans "Set My Goal!" %}
+                   {% endif %}
+                </button>
+            </div>
+            <!-- end Final Goal -->
+            
+        </div>
+        
+    </div><!-- /content -->
+    {% include "basepage/footer.html" %}
+
+    <!-- Error Modal -->
+    <div data-role="popup" id="error-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3><i class="fa fa-2x fa-times"></i><div id="id_error_title"></div></h3>
+            <p id="error-text"><div id="id_error_message"></div></p>
+            <button data-role="button"
+                class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                onclick="$('#error-popup').popup('close');">
+                Close
+            </button>
+        </div>
+    </div>
+    <!-- end Message Modal -->
+    
+    <!-- Success Modal -->
+    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3>Great you've set a goal!</h3>
+            <p>Once you confirm this goal you cannot change it for at least 30 days</p>
+            <button data-role="button"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                      onclick="save_goal(); $('#confirm-popup').popup('close');">
+                Lock Goal
+            </button>
+            <button data-role="button"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                      onclick="$('#confirm-popup').popup('close');">
+                Cancel
+            </button>
+        </div>
+    </div>
+    <!-- end Success Modal -->
+
+</div><!-- /page -->
+{% endblock content %}

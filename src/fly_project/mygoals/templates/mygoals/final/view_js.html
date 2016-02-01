@@ -1,0 +1,103 @@
+{% load staticfiles i18n %}
+<input type="hidden" id="id_goal_id" value=0 />
+<input type="hidden" id="id_goal_type" value=0 />
+<input type="hidden" id="savings_goal_is_locked" value={{ savings_goal.is_locked }} />
+<input type="hidden" id="credit_goal_is_locked" value={{ credit_goal.is_locked }} />
+<input type="hidden" id="final_goal_is_locked" value={{ final_goal.is_locked }} />
+<input type="hidden" id="final_goal_for_other_want" value="{{ final_goal.for_other_want }}" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+    
+    function lockBox(cur_box) {
+        $('.' + cur_box + '-box * input').attr('disabled', 'true');
+        $('.' + cur_box + '-box * select').attr('disabled', 'true');
+        $('#' + cur_box + '-btn').buttonMarkup({icon: 'lock'});
+        $('#' + cur_box + '-btn').data('icon', 'lock');
+        $('#' + cur_box + '-btn').text('Goal Locked (30 days)');
+    }
+
+    function confirm_final_goal(goal_id)
+    {
+        if ($('#final_goal_is_locked').val() == 1) {
+            return;
+        }
+    
+        // Defensive Code: Ensure that the values have been set.
+        if( $('#goal-amount').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Goal" %}');
+            $('#id_error_message').html('{% trans "Please enter saving amount in dollars (green box)" %}');
+            return;
+        }
+        //if( $('#credit-time').val() == "" ){
+        //    $('#error-popup').popup('open');
+        //    $('#id_error_title').html('{% trans "Credit" %}');
+        //    $('#id_error_message').html('{% trans "Please enter your credit time." %}');
+        //    return;
+        //}
+    
+        // Load the confirmation popup.
+        $('#confirm-popup').popup('open');
+    
+        // Save the goal
+        $('#id_goal_id').val(goal_id);
+        $('#id_goal_type').val({{ constants.GOAL_MYGOAL_TYPE }});
+    }
+
+    function save_goal()
+    {
+        var goal_id = parseInt( $('#id_goal_id').val() );
+        var goal_type = parseInt ( $('#id_goal_type').val() );
+        
+        if (goal_type == {{ constants.GOAL_MYGOAL_TYPE }}) {
+            console.log("Processing Final Goal");
+            ajax_set_final_goal(goal_id);
+        } else {
+            alert('{% trans "Unknown goal selected." %}');
+            console.log("Goal ID: "+goal_id);
+            console.log("Goal Type: "+goal_type);
+        }
+    }
+
+    function ajax_set_final_goal(goal_id)
+    {
+        // Step 1: Fetch the Goal model object from the API.
+        get_final_goal(
+            goal_id,
+            function(goal) {
+                // Step 2: Update the goal.
+                goal["amount"] = $('#goal-amount').val();
+                goal["for_want"] = parseInt( $('#goal-for').val() );
+                goal["for_other_want"] = parseInt( $('#final_goal_for_other_want').val() );
+                goal["is_locked"] = 'True';
+                var nowPlus30Days = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)); // Now + 30 days.
+                goal["unlocks"] = date_to_django_date(nowPlus30Days);
+                
+                // Step 3: Save the goal.
+                set_final_goal(
+                    goal,
+                    function(goal) {
+                        // Step 4: Lock the particular box depending on what
+                        //         the 'type' is set as.
+                        lockBox('green');
+                        $('#final_goal_is_locked').val(1);
+                    },
+                    function(error_json) {
+                        $('#error-popup').popup('open');
+                        $('#id_error_title').html('{% trans "Savings" %}');
+                        $('#id_error_message').html('{% trans "An unknown error occured when saving goal, please see log." %}');
+                        console.log(error_json);
+                    }
+                ); // end Set Goal.
+            },
+            function(error_json) {
+                $('#error-popup').popup('open');
+                $('#id_error_title').html('{% trans "Savings" %}');
+                $('#id_error_message').html('{% trans "An unknown error occured when fetching goal, please see log." %}');
+                console.log(error_json);
+            }
+        ); // end Get Goal.
+    }
+</script>
