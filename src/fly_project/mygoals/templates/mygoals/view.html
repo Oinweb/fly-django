@@ -63,6 +63,7 @@
                 <p>{% trans "I want to raise my credit score by..." %}</p>
                 <input {% if credit_goal.is_locked %}disabled=true{% endif %}
                        id="credit-points"
+                    value="{% if credit_goal.amount %}{{ credit_goal.amount }}{% endif %}"
                      type="text"
               placeholder="{% trans 'number of points' %}"
                aria-label="{% trans 'Number of points' %}" />
@@ -71,7 +72,7 @@
                     <div class="ui-block-a">
                         <input {% if credit_goal.is_locked %}disabled=true{% endif %}
                                id="credit-period"
-                            value=""
+                            value="{% if credit_goal.amount %}{{ credit_goal.times }}{% endif %}"
                              type="text"
                       placeholder="{% trans 'time period' %}"
                        aria-label="{% trans 'Time period' %}" />
@@ -105,40 +106,47 @@
                 <img src="{% static 'img/oinweb-fly-goals.png' %}" />
                 <h2>{% trans "Goal" %}</h2>
                 <p>{% trans "I want to save..." %}</p>
-                <input id="goal-amount"
+                <input {% if final_goal.is_locked %}disabled=true{% endif %}
+                       id="goal-amount"
+                    value="{% if final_goal.amount %}{{ final_goal.amount }}{% endif %}"
                      type="text"
               placeholder="{% trans 'amount in dollars' %}"
                aria-label="{% trans 'Amount (to the nearest dollar)' %}" />
                 <p>{% trans "For..." %}</p>
                 <fieldset class="ui-grid-a">
-                    <select id="goal-for">
-                        <option value=1>
+                    <select {% if final_goal.is_locked %}disabled=true{% endif %} id="goal-for">
+                        <option value=1 {% if final_goal.for_want == 1  %}selected{% endif %}>
                             {% trans "House" %}
                         </option>
-                        <option value=2>
+                        <option value=2 {% if final_goal.for_want == 2  %}selected{% endif %}>
                             {% trans "Business" %}
                         </option>
-                        <option value=3>
+                        <option value=3 {% if final_goal.for_want == 3  %}selected{% endif %}>
                             {% trans "Education" %}
                         </option>
-                        <option value=4>
+                        <option value=4 {% if final_goal.for_want == 4  %}selected{% endif %}>
                             {% trans "Vacation" %}
                         </option>
-                        <option value=5>
+                        <option value=5 {% if final_goal.for_want == 5  %}selected{% endif %}>
                             {% trans "Goal" %}Retirement
                         </option>
-                        <option value=6>
+                        <option value=6 {% if final_goal.for_want == 6  %}selected{% endif %}>
                             {% trans "General Savings" %}
                         </option>
-                        <option value=7>
-                            {% trans "Other" %}
+                        <option value=7 {% if final_goal.for_want == 7  %}selected{% endif %}>
+                            {% trans "Other" %}{% if final_goal.for_other_want != ""  %} ({{  final_goal.for_other_want }}){% endif %}
                         </option>
                     </select>
                 </fieldset>
-                <button id="green-btn"
+                <button {% if final_goal.is_locked %}disabled=true{% endif %}
+                        id="green-btn"
                  data-icon="check"
-                   onclick="lockGreenBox();">
-                    {% trans "Set My Goal!" %}
+                   onclick="confirm_final_goal({{ final_goal.id }});">
+                   {% if final_goal.is_locked %}
+                       {% trans "Goal Locked (30 days)" %}
+                   {% else %}
+                       {% trans "Set My Goal!" %}
+                   {% endif %}
                 </button>
             </div>
             <!-- end Final Goal -->
