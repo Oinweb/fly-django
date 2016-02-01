@@ -49,7 +49,15 @@
             <li data-role="list-divider"></li>
             <li><a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
             <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li><a onclick="window.location='goals.html#goal-page';"><i class="fa fa-bullseye fa-fw"></i> My Goals</a></li>
+            <li data-icon="carat-d">
+                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
+                <ul id="goal-menu" style="display:none;">
+                    <li><a onclick="window.location='savings-goal.html';">Savings</a></li>
+                    <li><a onclick="window.location='credit-goal.html';">Credit</a></li>
+                    <li><a onclick="window.location='goal-goal.html';">Goal</a></li>
+                    <li><a onclick="window.location='goal-complete.html';">Completed Goal</a></li>
+                </ul>
+            </li>
             <li><a onclick="window.location='learning.html';"><i class="fa fa-edit fa-fw"></i> Learning</a></li>
             <li><a onclick="window.location='resources.html';"><i class="fa fa-link fa-fw"></i> Resources</a></li>
             <li><a onclick="window.location='modal-test.html';"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>

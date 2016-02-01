@@ -6,11 +6,13 @@
     <title></title>
 
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -23,19 +25,21 @@
                 <img src="img/oin-fly-logo.png" id="login-logo" alt="bizmula-logo" style="">
 
                 <div class="clearfix"></div>
-                <a onclick="loginFacebook()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
+                <a onclick="showError()" class="ui-btn ui-icon-fa ui-icon-fa-facebook ui-corner-all"
                    style="background-color:#4B7EBD;">
                     <span>Login With Facebook</span></a>
                 <div class="clearfix"></div>
-                <a href="dashboard.html" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
+                <a onclick="showError()" class="ui-btn ui-icon-fa ui-icon-fa-twitter ui-corner-all"
                    style="background-color:#0FD4FF;">
                     <span>Login With Twitter</span></a>
                 <div class="clearfix"></div>
-                <a onclick="loginGooglePlus()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
+                <a onclick="showError()" class="ui-btn ui-icon-fa ui-icon-fa-google-plus ui-corner-all"
                    style="background-color:#FD5D51;">
                     <span>Login With Google</span></a>
                 <a href="login.html" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>Generic Login</span></a>
                 <a href="register.html" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>Generic Register</span></a>
+
+                <div class="alert alert-danger" style="display:none;width:280px;margin:20px auto;">There was a problem logging in.</div>
             </div><!-- container -->
         </div>
     </div>
@@ -113,6 +117,10 @@
 </script>
 
 <script>
+    function showError(){
+        $('.alert-danger').text('There was an error logging in');
+        $('.alert-danger').show();
+    }
     //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
     function onLoadCallback()
     {
