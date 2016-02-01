@@ -7,20 +7,20 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from api.pagination import LargeResultsSetPagination
 from api.permissions import IsUser
-from api.serializers import GoalSerializer
-from api.models import Goal
+from api.serializers import FinalGoalSerializer
+from api.models import FinalGoal
 
 
-class GoalFilter(django_filters.FilterSet):
+class FinalGoalFilter(django_filters.FilterSet):
     class Meta:
-        model = Goal
-        fields = ['id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'type', 'amount', 'times', 'period', 'for_want', 'for_other_want',]
+        model = FinalGoal
+        fields = ['id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'for_want', 'for_other_want',]
 
 
-class GoalViewSet(viewsets.ModelViewSet):
-    queryset = Goal.objects.all()
-    serializer_class = GoalSerializer
+class FinalGoalViewSet(viewsets.ModelViewSet):
+    queryset = FinalGoal.objects.all()
+    serializer_class = FinalGoalSerializer
     pagination_class = LargeResultsSetPagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsUser,)
-    filter_class = GoalFilter
+    filter_class = FinalGoalFilter

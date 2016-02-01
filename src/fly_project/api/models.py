@@ -90,66 +90,10 @@ class ImageUpload(models.Model):
         return str(self.upload_id)
 
 
-class GoalManager(models.Manager):
-    def get_latest_savings_goal(self, user_id):
-        """
-            Function will lookup 'savings' type goal and then returns it.
-        """
-        try:
-            goals = Goal.objects.filter(
-                user_id=user_id,
-                type=constants.SAVINGS_MYGOAL_TYPE,
-            ).order_by('-created')
-            
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
-        except Goal.DoesNotExist:
-            return None
-
-    """
-        Function will lookup 'credit' type goal and then returns it.
-    """
-    def get_latest_credit_goal(self, user_id):
-        try:
-            goals = Goal.objects.filter(
-                user_id=user_id,
-                type=constants.CREDIT_MYGOAL_TYPE,
-            ).order_by('-created')
-
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
-        except Goal.DoesNotExist:
-            return None
-
-    """
-        Function will lookup 'final' type goal and then returns it.
-    """
-    def get_latest_final_goal(self, user_id):
-        try:
-            goals = Goal.objects.filter(
-                user_id=user_id,
-                type=constants.GOAL_MYGOAL_TYPE,
-            ).order_by('-created')
-                
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
-        except Goal.DoesNotExist:
-            return None
-
-
 class Goal(models.Model):
     class Meta:
-        app_label = 'api'
-        ordering = ('-created',)
-        db_table = 'fly_goals'
+        abstract = True
     
-    objects = GoalManager()
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_index=True,)
     
@@ -179,16 +123,32 @@ class Goal(models.Model):
         default=0,
     )
     
-    # This application has three types of goals and thus as a result this
-    # variable controls which of the three goals this goal is.
-    type = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(3)],
-        choices=constants.GOAL_TYPE_OPTIONS,
-        default=1,
-        db_index=True,
-    )
+    def __str__(self):
+        return str(self.id)
+
+
+class SavingsGoalManager(models.Manager):
+    def get_latest(self, user_id):
+        try:
+            goals = SavingsGoal.objects.filter(
+                user_id=user_id,
+            ).order_by('-created')
     
-    # The next set of variables are used to track goal specific information.
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except SavingsGoal.DoesNotExist:
+            return None
+
+
+class SavingsGoal(Goal):
+    class Meta:
+        app_label = 'api'
+        ordering = ('-created',)
+        db_table = 'fly_savings_goals'
+
+    objects = SavingsGoalManager()
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -198,22 +158,84 @@ class Goal(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(99)],
         default=0,
     )
-    
     period = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(2)],
         choices=constants.INTERVAL_OPTIONS,
         default=1,
     )
+
+
+class CreditGoalManager(models.Manager):
+    def get_latest(self, user_id):
+        try:
+            goals = CreditGoal.objects.filter(
+                user_id=user_id,
+            ).order_by('-created')
+                
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except CreditGoal.DoesNotExist:
+            return None
+
+
+class CreditGoal(Goal):
+    class Meta:
+        app_label = 'api'
+        ordering = ('-created',)
+        db_table = 'fly_credit_goals'
     
+    objects = CreditGoalManager()
+    points = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0.00,
+    )
+    times = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(99)],
+        default=0,
+    )
+    period = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(2)],
+        choices=constants.INTERVAL_OPTIONS,
+        default=1,
+    )
+
+
+class FinalGoalManager(models.Manager):
+    def get_latest(self, user_id):
+        try:
+            goals = FinalGoal.objects.filter(
+                user_id=user_id,
+            ).order_by('-created')
+                
+            if not goals:
+                return None
+            else:
+                return goals[:1][0]
+        except FinalGoal.DoesNotExist:
+            return None
+
+
+class FinalGoal(Goal):
+    class Meta:
+        app_label = 'api'
+        ordering = ('-created',)
+        db_table = 'fly_final_goals'
+    
+    objects = FinalGoalManager()
+    amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0.00,
+    )
     for_want = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(6)],
         choices=constants.FOR_WANT_OPTIONS,
         default=1,
     )
     for_other_want = models.CharField(max_length=63, null=True, blank=True)
-    
-    def __str__(self):
-        return str(self.id)
 
 
 class Badge(models.Model):

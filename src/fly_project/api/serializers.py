@@ -5,7 +5,9 @@ from api.models import ImageUpload
 from api.models import BannedDomain
 from api.models import BannedIP
 from api.models import BannedWord
-from api.models import Goal
+from api.models import SavingsGoal
+from api.models import CreditGoal
+from api.models import FinalGoal
 from api.models import Badge
 from api.models import XPLevel
 from api.models import Course
@@ -73,11 +75,22 @@ class BannedWordSerializer(serializers.ModelSerializer):
         fields = ('id','text','banned_on','reason',)
 
 
-class GoalSerializer(serializers.ModelSerializer):
+class SavingsGoalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Goal
-        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'type', 'amount', 'times', 'period', 'for_want', 'for_other_want',)
+        model = SavingsGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'times', 'period',)
 
+
+class CreditGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CreditGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'points', 'times', 'period',)
+
+
+class FinalGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinalGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'for_want', 'for_other_want',)
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
