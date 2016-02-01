@@ -1,0 +1,45 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- My Goals ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include "mygoals/savings/complete_js.html" %}
+    <div data-role="content">
+        <div class="text-center">
+            <!-- Savings -->
+            <div class="my-boxes red-box goals-box">
+                <img src="{% static 'img/savings.png' %}" class="goals-img" />
+                <h2>{% trans "Savings" %}</h2>
+                <p>{% trans "Did you complete your goal" %}, "{% trans "I want to save $" %}{{ savings_goal.amount }} {% trans "every" %}  {{ savings_goal.times }} {% if savings_goal.period == 1 %}{% trans "weeks" %}{% else %}{% trans "months" %}{% endif %}"?</p>
+                <select id="goal-switch" data-role="slider" data-mini="true">
+                    <option selected="true" value="False">No</option>
+                    <option value="True">Yes</option>
+                </select>
+                <button data-icon="check" onclick="ajax_finish_savings_goal({{ savings_goal.id }});">OK</button>
+            </div>
+            <!-- end Savings -->
+            
+        </div>
+        
+    </div><!-- /content -->
+    {% include "basepage/footer.html" %}
+
+    <!-- Error Modal -->
+    <div data-role="popup" id="error-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3><i class="fa fa-2x fa-times"></i><div id="id_error_title"></div></h3>
+            <p id="error-text"><div id="id_error_message"></div></p>
+            <button data-role="button"
+                class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                onclick="$('#error-popup').popup('close');">
+                Close
+            </button>
+        </div>
+    </div>
+    <!-- end Message Modal -->
+
+</div><!-- /page -->
+{% endblock content %}

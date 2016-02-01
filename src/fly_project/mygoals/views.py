@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta, timezone
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
@@ -10,14 +11,51 @@ from api.models import FinalGoal
 from rest_framework.authtoken.models import Token
 
 
+def count_days_between(dt1, dt2):
+    dt1 = dt1.replace(hour=0, minute=0, second=0, microsecond=0)
+    dt2 = dt2.replace(hour=0, minute=0, second=0, microsecond=0)
+    return (dt2 - dt1).days
+
+
+def count_days_between_today_and(dt2):
+    # Detect whether the unlocked time has elapsed and load the appropriate
+    # UI associated with this.
+    now = datetime.now(timezone.utc)  # Standardize date to a specific time-zone
+    
+    # Count how many days are left from today to the unlocked date.
+    return count_days_between(now,dt2)
+
+
 @login_required(login_url='/authentication')
 def savings_goals_page(request):
+    # Check to see if we have the latest SavingsGoal set, if not then
+    # create a new goal here.
     savings_goal = SavingsGoal.objects.get_latest(request.user.id)
     if not savings_goal:
         savings_goal = SavingsGoal.objects.create(
             user_id=request.user.id,
         )
-    return render(request, 'mygoals/savings/view.html',{
+    
+    # Check to see if the current SavingsGoal has 'is_closed=True' which means
+    # we need to create a new savings goal.
+    if savings_goal.is_closed == True:
+        savings_goal = SavingsGoal.objects.create(
+            user_id=request.user.id,
+        )
+    
+    days_count = count_days_between_today_and(savings_goal.unlocks)
+
+    # CASE 1 OF 2:
+    # Load the main goal settings UI.
+    url = ''
+    if days_count > 0:
+        url = 'mygoals/savings/goal.html'
+    # CASE 2 OF 2:
+    # Load the UI to handle whether the goal was set or not.
+    else:
+        url = 'mygoals/savings/complete.html'
+
+    return render(request, url,{
         'settings': settings,
         'constants': constants,
         'savings_goal': savings_goal,
@@ -49,6 +87,23 @@ def final_goal_page(request):
         )
 
     return render(request, 'mygoals/final/view.html',{
+        'settings': settings,
+        'constants': constants,
+        'final_goal': final_goal,
+    })
+
+
+@login_required(login_url='/authentication')
+def goal_complete_page(request, goal_type, goal_id):
+    goal = None
+    try:
+        if goal_type == constants.SAVINGS_MYGOAL_TYPE:
+            goal = SavingsGoal.objects.get(id=goal_id)
+    except Exception as e:
+        pass
+
+    final_goal = FinalGoal.objects.get_latest(request.user.id)
+    return render(request, 'mygoals/complete/view.html',{
         'settings': settings,
         'constants': constants,
         'final_goal': final_goal,
