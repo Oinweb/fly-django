@@ -30,16 +30,20 @@
 {% include "api/common_js.html" %}
 {% include "api/login.html" %}
 {% include "api/register.html" %}
-{% include "api/goal.html" %}
-{% include "api/badge.html" %}
-{% include "api/course.html" %}
-{% include "api/enrolled_course.html" %}
-{% include "api/me.html" %}
-{% include "api/question_submission.html" %}
-{% include "api/question.html" %}
-{% include "api/quiz_submission.html" %}
-{% include "api/quiz.html" %}
-{% include "api/xplevel.html" %}
+{% if request.user.is_authenticated %}
+    {% include "api/savings_goal.html" %}
+    {% include "api/credit_goal.html" %}
+    {% include "api/final_goal.html" %}
+    {% include "api/badge.html" %}
+    {% include "api/course.html" %}
+    {% include "api/enrolled_course.html" %}
+    {% include "api/me.html" %}
+    {% include "api/question_submission.html" %}
+    {% include "api/question.html" %}
+    {% include "api/quiz_submission.html" %}
+    {% include "api/quiz.html" %}
+    {% include "api/xplevel.html" %}
+{% endif %}
 
 <!-- Facebook SDK -->
 <script>

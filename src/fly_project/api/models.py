@@ -235,7 +235,7 @@ class FinalGoal(Goal):
         choices=constants.FOR_WANT_OPTIONS,
         default=1,
     )
-    for_other_want = models.CharField(max_length=63, null=True, blank=True)
+    for_other_want = models.CharField(max_length=63, default='', null=True, blank=True)
 
 
 class Badge(models.Model):

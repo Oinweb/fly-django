@@ -63,7 +63,7 @@
                 <p>{% trans "I want to raise my credit score by..." %}</p>
                 <input {% if credit_goal.is_locked %}disabled=true{% endif %}
                        id="credit-points"
-                    value="{% if credit_goal.amount %}{{ credit_goal.amount }}{% endif %}"
+                    value="{% if credit_goal.points %}{{ credit_goal.points }}{% endif %}"
                      type="text"
               placeholder="{% trans 'number of points' %}"
                aria-label="{% trans 'Number of points' %}" />

@@ -4,34 +4,33 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from fly_project import settings
 from fly_project import constants
-from api.models import Goal
+from api.models import SavingsGoal
+from api.models import CreditGoal
+from api.models import FinalGoal
 from rest_framework.authtoken.models import Token
 
 
 @login_required(login_url='/authentication')
 def mygoals_page(request):
     
-    savings_goal = Goal.objects.get_latest_savings_goal(request.user.id)
-    credit_goal = Goal.objects.get_latest_credit_goal(request.user.id)
-    final_goal = Goal.objects.get_latest_final_goal(request.user.id)
+    savings_goal = SavingsGoal.objects.get_latest(request.user.id)
+    credit_goal = CreditGoal.objects.get_latest(request.user.id)
+    final_goal = FinalGoal.objects.get_latest(request.user.id)
     
     if not savings_goal:
         print("Creating New Savings Goal")
-        savings_goal = Goal.objects.create(
+        savings_goal = SavingsGoal.objects.create(
             user_id=request.user.id,
-            type=constants.SAVINGS_MYGOAL_TYPE,
         )
     if not credit_goal:
         print("Creating New Credit Goal")
-        credit_goal = Goal.objects.create(
+        credit_goal = CreditGoal.objects.create(
             user_id=request.user.id,
-            type=constants.CREDIT_MYGOAL_TYPE,
         )
     if not final_goal:
         print("Creating New Final Goal")
-        credit_goal = Goal.objects.create(
+        credit_goal = FinalGoal.objects.create(
             user_id=request.user.id,
-            type=constants.GOAL_MYGOAL_TYPE,
         )
 
     return render(request, 'mygoals/view.html',{

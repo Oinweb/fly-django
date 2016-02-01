@@ -1,7 +1,7 @@
 <script>
-    function filter_goals(criteria, success_callback, error_callback)
+    function filter_credit_goals(criteria, success_callback, error_callback)
     {
-        var url = "/api/goals/?format=json";
+        var url = "/api/credit_goals/?format=json";
         for (var i = 0; i < criteria.length; i++) {
             url += "&";
             
@@ -33,11 +33,11 @@
         });
     }
     
-    function set_goal(data, success_callback, error_callback)
+    function set_credit_goal(data, success_callback, error_callback)
     {
         // Setup depending on whether we are inserting or updating.
         var type = "POST"; // Insert.
-        var url = "/api/goals/";
+        var url = "/api/credit_goals/";
         if (data['id'] > 0) {
             type = "PUT"; // Update
             url += data['id'] + "/";
@@ -68,8 +68,8 @@
         });
     }
 
-    function get_goal(id, success_callback, error_callback) {
-        var url = "/api/goals/" + id + "/?format=json";
+    function get_credit_goal(id, success_callback, error_callback) {
+        var url = "/api/credit_goals/" + id + "/?format=json";
         
         jQuery.ajax({
             url: url,
@@ -93,8 +93,8 @@
         });
     }
 
-    function search_goals(keyword, success_callback, error_callback) {
-        var url = "/api/goals/?format=json&search="+keyword;
+    function search_credit_goals(keyword, success_callback, error_callback) {
+        var url = "/api/credit_goals/?format=json&search="+keyword;
         jQuery.ajax({
             url: url,
             headers: {
