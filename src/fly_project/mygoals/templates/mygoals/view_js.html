@@ -2,8 +2,8 @@
 <input type="hidden" id="id_goal_id" value=0 />
 <input type="hidden" id="id_goal_type" value=0 />
 <input type="hidden" id="savings_goal_is_locked" value={{ savings_goal.is_locked }} />
-<input type="hidden" id="credit_goal_is_locked" value=0 />
-<input type="hidden" id="final_goal_is_locked" value=0 />
+<input type="hidden" id="credit_goal_is_locked" value={{ credit_goal.is_locked }} />
+<input type="hidden" id="final_goal_is_locked" value={{ final_goal.is_locked }} />
 <script type="text/javascript">
     $(document).ready(function(){
         loadUserData();
@@ -51,15 +51,51 @@
         $('#id_goal_type').val({{ constants.SAVINGS_MYGOAL_TYPE }});
     }
 
+
+    function confirm_credit_goal(goal_id)
+    {
+        if ($('#credit_goal_is_locked').val() == 1) {
+            return;
+        }
+    
+        // Defensive Code: Ensure that the values have been set.
+        if( $('#credit-points').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Credit" %}');
+            $('#id_error_message').html('{% trans "Please enter the number of credit points you want to earn (blue box)" %}');
+            return;
+        }
+        if( $('#credit-period').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Credit" %}');
+            $('#id_error_message').html('{% trans "Please enter your credit period." %}');
+            return;
+        }
+        if( $('#credit-time').val() == "" ){
+            $('#error-popup').popup('open');
+            $('#id_error_title').html('{% trans "Credit" %}');
+            $('#id_error_message').html('{% trans "Please enter your credit time." %}');
+            return;
+        }
+    
+        // Load the confirmation popup.
+        $('#confirm-popup').popup('open');
+    
+        // Save the goal
+        $('#id_goal_id').val(goal_id);
+        $('#id_goal_type').val({{ constants.CREDIT_MYGOAL_TYPE }});
+    }
+
     function save_goal()
     {
         var goal_type = $('#id_goal_type').val();
         if (goal_type == {{ constants.SAVINGS_MYGOAL_TYPE }}) {
             set_save_goal();
+        } else if (goal_type == {{ constants.CREDIT_MYGOAL_TYPE }}) {
+            set_save_goal();
         } else {
-            $('#error-popup').popup('open');
-            $('#id_error_title').html('{% trans "Error" %}');
-            $('#id_error_message').html('{% trans "Unknown goal selected." %}');
+            alert('{% trans "Unknown goal selected." %}');
+            console.log("Goal Type: "+goal_type);
         }
     }
 
@@ -73,30 +109,49 @@
             goal_id,
             function(goal) {
                 // Step 3: Update the values.
-                goal["amount"] = $('#save-dollars').val();
-                goal["times"] = parseInt( $('#save-period').val() );
-                goal["period"] = parseInt( $('#save-time').val() );
+                if (goal['type'] == {{ constants.SAVINGS_MYGOAL_TYPE }})
+                {
+                    goal["amount"] = $('#save-dollars').val();
+                    goal["times"] = parseInt( $('#save-period').val() );
+                    goal["period"] = parseInt( $('#save-time').val() );
+                }
+                else if (goal['type'] == {{ constants.CREDIT_MYGOAL_TYPE }})
+                {
+                    goal["amount"] = $('#credit-points').val();
+                    goal["times"] = parseInt( $('#credit-period').val() );
+                    goal["period"] = parseInt( $('#credit-time').val() );
+                }
+                else if (goal['type'] == {{ constants.GOAL_MYGOAL_TYPE }})
+                {
+                    goal["amount"] = $('#credit-points').val();
+                    goal["times"] = parseInt( $('#save-period').val() );
+                    goal["period"] = parseInt( $('#save-time').val() );
+                }
+            
+                // Step 4:
                 goal["is_locked"] = 'True';
                 var nowPlus30Days = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)); // Now + 30 days.
                 goal["unlocks"] = date_to_django_date(nowPlus30Days);
+                 
+                // Step 5:
                 set_goal(
                     goal,
                     function(goal) {
-                         // Step 4: Lock the particular box depending on what
+                         // Step 6: Lock the particular box depending on what
                          //         the 'type' is set as.
                          if (goal['type'] == {{ constants.SAVINGS_MYGOAL_TYPE }})
                          {
                              lockBox('red');
                              $('#savings_goal_is_locked').val(1);
                          }
-                         else if (goal['type'] == 2)
+                         else if (goal['type'] == {{ constants.CREDIT_MYGOAL_TYPE }})
                          {
                              lockBox('blue');
                              $('#credit_goal_is_locked').val(1);
                          }
                          else if (goal['green'] == 3)
                          {
-                             lockBox('red');
+                             lockBox('green');
                              $('#final_goal_is_locked').val(1);
                          }
                     },

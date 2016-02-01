@@ -34,9 +34,6 @@ def mygoals_page(request):
             type=constants.GOAL_MYGOAL_TYPE,
         )
 
-    token = Token.objects.get(user_id=request.user.id)
-    print(token)
-
     return render(request, 'mygoals/view.html',{
         'settings': settings,
         'constants': constants,

@@ -41,10 +41,10 @@
                         </select>
                     </div>
                 </fieldset>
-                <button id="red-btn"
+                <button {% if savings_goal.is_locked %}disabled=true{% endif %}
+                    id="red-btn"
                  data-icon="{% if savings_goal.is_locked %}lock{% else %}check{% endif %}"
-                   onclick="confirm_save_goal({{ savings_goal.id }});"
-                {% if savings_goal.is_locked %}disabled=true{% endif %}>
+                   onclick="confirm_save_goal({{ savings_goal.id }});">
                 
                 {% if savings_goal.is_locked %}
                     {% trans "Goal Locked (30 days)" %}
@@ -61,39 +61,46 @@
                 <img src="{% static 'img/oinweb-fly-credit.png' %}" />
                 <h2>{% trans "Credit" %}</h2>
                 <p>{% trans "I want to raise my credit score by..." %}</p>
-                <input id="credit-points"
+                <input {% if credit_goal.is_locked %}disabled=true{% endif %}
+                       id="credit-points"
                      type="text"
               placeholder="{% trans 'number of points' %}"
                aria-label="{% trans 'Number of points' %}" />
                 <p>{% trans "In..." %}</p>
                 <fieldset class="ui-grid-a">
                     <div class="ui-block-a">
-                        <input id="credit-period"
+                        <input {% if credit_goal.is_locked %}disabled=true{% endif %}
+                               id="credit-period"
                             value=""
                              type="text"
                       placeholder="{% trans 'time period' %}"
                        aria-label="{% trans 'Time period' %}" />
                     </div>
                     <div class="ui-block-b">
-                        <select id="credit-time">
-                            <option value="weeks">
+                        <select {% if credit_goal.is_locked %}disabled=true{% endif %} id="credit-time">
+                            <option value=1 {% if credit_goal.period == 1  %}selected{% endif %}>
                                 {% trans "Weeks" %}
                             </option>
-                            <option value="months">
+                            <option value=2 {% if credit_goal.period == 2  %}selected{% endif %}>
                                 {% trans "Months" %}
                             </option>
                         </select>
                     </div>
                 </fieldset>
-                <button id="blue-btn"
+                <button {% if credit_goal.is_locked %}disabled=true{% endif %}
+                        id="blue-btn"
                  data-icon="check"
-                   onclick="lockBlueBox();">
-                    {% trans "Set My Goal!" %}
+                   onclick="confirm_credit_goal({{ credit_goal.id }});">
+                   {% if credit_goal.is_locked %}
+                       {% trans "Goal Locked (30 days)" %}
+                   {% else %}
+                       {% trans "Set My Goal!" %}
+                   {% endif %}
                 </button>
             </div>
             <!-- end Credit -->
             
-            <!-- Goal -->
+            <!-- Final Goal -->
             <div class="my-boxes green-box goals-box">
                 <img src="{% static 'img/oinweb-fly-goals.png' %}" />
                 <h2>{% trans "Goal" %}</h2>
@@ -134,7 +141,7 @@
                     {% trans "Set My Goal!" %}
                 </button>
             </div>
-            <!-- end Goal -->
+            <!-- end Final Goal -->
             
         </div>
         
