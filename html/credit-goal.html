@@ -50,13 +50,12 @@
             <li data-role="list-divider"></li>
             <li><a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
             <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li data-icon="carat-d">
-                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
-                <ul id="goal-menu" style="display:none;">
+            <li>
+                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals <i class="fa fa-angle-down pull-right"></i></a>
+                <ul id="goal-menu">
                     <li><a onclick="window.location='savings-goal.html';">Savings</a></li>
                     <li><a onclick="window.location='credit-goal.html';">Credit</a></li>
                     <li><a onclick="window.location='goal-goal.html';">Goal</a></li>
-                    <li><a onclick="window.location='goal-complete.html';">Completed Goal</a></li>
                 </ul>
             </li>
             <li><a onclick="window.location='learning.html';"><i class="fa fa-edit fa-fw"></i> Learning</a></li>
@@ -68,22 +67,6 @@
 
     <div data-role="content">
         <div class="text-center">
-            <div class="my-boxes red-box goals-box">
-                <img src="img/savings.png" class="goals-img" />
-                <h2>Savings</h2>
-                <p>I want to save...</p>
-                <input type="text" id="save-dollars" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
-                <p>Every...</p>
-                <fieldset class="ui-grid-a">
-                    <div class="ui-block-a"><input type="text" id="save-period" placeholder="time period" aria-label="Time period"></div>
-                    <div class="ui-block-b"><select id="save-time">
-                        <option value="weeks">Weeks</option>
-                        <option value="months">Months</option>
-                    </select></div>
-                </fieldset>
-                <button data-icon="check" id="red-btn" onclick="lockRedBox();">Set My Goal!</button>
-            </div>
-
             <div class="my-boxes blue-box goals-box">
                 <img src="img/oinweb-fly-credit.png" />
                 <h2>Credit</h2>
@@ -100,26 +83,6 @@
                 </fieldset>
                 <button data-icon="check" id="blue-btn" onclick="lockBlueBox();">Set My Goal!</button>
             </div>
-
-            <div class="my-boxes green-box goals-box">
-                <img src="img/oinweb-fly-goals.png" />
-                <h2>Goal</h2>
-                <p>I want to save...</p>
-                <input type="text" id="goal-amount" placeholder="amount in dollars" aria-label="Amount (to the nearest dollar)">
-                <p>For...</p>
-                <fieldset class="ui-grid-a">
-                <select id="goal-for">
-                    <option value="house">House</option>
-                    <option value="business">Business</option>
-                    <option value="education">Education</option>
-                    <option value="vacation">Vacation</option>
-                    <option value="retirement">Retirement</option>
-                    <option value="savings">General Savings</option>
-                    <option value="other">Other</option>
-                </select>
-                </fieldset>
-                <button data-icon="check" id="green-btn" onclick="lockGreenBox();">Set My Goal!</button>
-            </div>
         </div>
     </div><!-- /content -->
 
@@ -132,13 +95,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small>
                 </p>
             </div>
-        </div>
-    </div>
-
-    <div data-role="popup" id="other-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div>
-            <input type="text" class="form-control" id="save-for-input" placeholder="Save for..." aria-label="Save for..."/>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" id="save-for-btn" onclick="">Save</button>
         </div>
     </div>
 
@@ -197,31 +153,126 @@
 
 </div><!-- /page -->
 
+<!-- ---------- dashboard ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page-complete">
+
+    <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center">
+        <div class="user-info">
+            <img src="img/photo.png" class="user-image"/>
+            <h5 class="level">
+                <span>Lvl 1</span>
+            </h5>
+        </div>
+        <div class="progress-bar-div">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    50/100 XP
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
+        </div>
+    </div><!-- /header -->
+
+    <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
+        <img src="img/photo.png" class="user-image" />
+        <h5 class="greeting">Hello, Rodolfo</h5>
+        <ul data-role="listview">
+            <li><a onclick="window.location='profile.html#profile-page';"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li><a onclick="window.location='notifications.html#notifications-page';"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
+            <li><a onclick="window.location='index.html';"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
+            <li data-role="list-divider"></li>
+            <li><a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+            <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+            <li data-icon="carat-d">
+                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
+                <ul id="goal-menu">
+                    <li><a onclick="window.location='savings-goal.html';">Savings</a></li>
+                    <li><a onclick="window.location='credit-goal.html';">Credit</a></li>
+                    <li><a onclick="window.location='goal-goal.html';">Goal</a></li>
+                    <li><a onclick="window.location='goal-complete.html';">Completed Goal</a></li>
+                </ul>
+            </li>
+            <li><a onclick="window.location='learning.html';"><i class="fa fa-edit fa-fw"></i> Learning</a></li>
+            <li><a onclick="window.location='resources.html';"><i class="fa fa-link fa-fw"></i> Resources</a></li>
+            <li><a onclick="window.location='modal-test.html';"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>
+        </ul>
+
+    </div><!-- /panel -->
+
+    <div data-role="content">
+        <div class="text-center">
+            <div class="my-boxes blue-box goals-box">
+                <img src="img/oinweb-fly-credit.png" />
+                <h2>Credit</h2>
+                <p>Did you complete your goal, 'I want to raise my credit score by 20 points in 2 weeks'?</p>
+                <select id="goals-switch" data-role="slider" data-mini="true">
+                    <option selected="true">No</option>
+                    <option>Yes</option>
+                </select>
+                <button data-icon="check" onclick="checkGoalStatus()">OK</button>
+            </div>
+        </div>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
+        <div class="row">
+            <div style="margin:auto;">
+                <p class="m5"><small>Provided by Ontario Immigrant Network <br/>
+                    <a href="#" onclick="$('#contacts2-popup').popup('open');">Contacts</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#privacy2-popup').popup('open');">Privacy Policy</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters2-popup').popup('open');">Supporters</a></small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="popup" id="contacts2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email - <a href="mailto:fly@oinweb.ca">fly@oinweb.ca</a></p>
+            <p>Twitter - <a href="http://twitter.com/oinweb">@oinweb</a></p>
+            <p>Website - <a href="http://oinweb.ca">oinweb.ca</a></p>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#contacts3-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+    <div data-role="popup" id="privacy2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div>
+            <h3>Privacy Statement</h3>
+            <h5>Introduction</h5>
+            <p>Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.</p>
+            <h5>Links to other sites</h5>
+            <p>The Ontario Immigrant Network web site provides links to other sites that may be of interest. This privacy statement covers the main Ontario Immigrant Network web site and those of Ontario Immigrant Network business units ONLY and not the web sites of other organizations. Each organization’s web site may have a different privacy statement depending on the nature of its site. You should review the privacy statement each time you submit personal information on a web site.</p>
+            <h5>Collection of information</h5>
+            <p>The only information collected that is used to identify you is information you give voluntarily. When you submit a question or comment, you may be asked for your name, e-mail address, or other information. This information is only used to process and respond to your question or comment. This information is not disclosed except to authorized personnel who need it to answer your question. In transit, the information that you send may not be secure. If you would prefer to raise a comment or question in person, please call Ontario Immigrant Network at 519-521-3135.</p>
+            <h5>Security</h5>
+            <p>Ontario Immigrant Network computer system uses software to monitor unauthorized attempts to upload or change information, or damage the service we provide. No attempt is made to identify users or their usage patterns except during investigations.</p>
+
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#privacy3-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+    <div data-role="popup" id="supporters2-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3>Thank you, our supporters</h3>
+            <a href="http://www.libro.ca"><img src="img/libro.png" alt="libro logo" class="supporter-image libro" /></a>
+            <a href="http://www.web-alchemist.com"><img src="img/webalchemists.png" alt="web alchemists logo" class="supporter-image" style="width:47%;float:left;padding:0;"/></a>
+            <a href="http://www.mikasoftware.com"><img src="img/mikasoftware.png" alt="academics today logo" class="supporter-image" style="width:49%;float:right;padding:0;margin-top:15px;" /></a>
+            <a href="http://www.vivacanada.com"><img src="img/vivacanada.jpg" alt="viva canada logo" class="supporter-image" /><br/></a>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters3-popup').popup('close');">Close</button>
+        </div>
+    </div>
+
+</div><!-- /page -->
+
 </body>
 </html>
 <script src="js/storage.js"></script>
 <script>
     var lock_goal = false;
     var cur_box = '';
-    function lockRedBox(){
-        var ans1 = $('#save-dollars').val();
-        var ans2 = $('#save-period').val();
-        cur_box = 'red';
-
-        if( $('#red-btn').data('icon') == "check" ) {
-            if (ans1 != "" && ans2 != "") {
-                $('#confirm-popup').popup('open');
-            }
-            else if (ans1 == "") {
-                $('#error-popup').popup('open');
-                $('#error-text').text('Please enter saving amount in dollars (red box)');
-            }
-            else if (ans2 == "") {
-                $('#error-popup').popup('open');
-                $('#error-text').text('Please enter number of ' + $('.red-box select').val() + " to save (red box)");
-            }
-        }
-    }
     function lockBlueBox(){
         var ans1 = $('#credit-points').val();
         var ans2 = $('#credit-period').val();
@@ -241,20 +292,6 @@
             }
         }
     }
-    function lockGreenBox(){
-        var ans1 = $('#green-amount').val();
-        cur_box = 'green';
-
-        if( $('#green-btn').data('icon') == "check" ) {
-            if (ans1 != "") {
-                $('#confirm-popup').popup('open');
-            }
-            else if (ans1 == "") {
-                $('#error-popup').popup('open');
-                $('#error-text').text('Please enter saving amount in dollars (green box)');
-            }
-        }
-    }
     function lockBoxItems(){
         if( lock_goal == true ) {
             $('.' + cur_box + '-box * input').attr('disabled', 'true');
@@ -266,27 +303,11 @@
         }
     }
 
+    function checkGoalStatus(){
+
+    }
+
     $(document).ready(function(){
         loadUserData();
-
-        $('#goal-for').on('change', function(){
-            if( $(this).val() == "other" ){
-                $('#other-popup').popup('open');
-            }
-        })
-        $('#save-for-btn').on('click', function(){
-            var ans = $('#save-for-input').val();
-            if( ans != "" ){
-                $('#goal-for option[value="other"]').text("Other (" + ans + ")");
-                $('#goal-for').selectmenu('refresh');
-            }
-            else{
-                $('#goal-for option[value="other"]').text("Other");
-                $('#goal-for').val('house');
-                $('#goal-for').selectmenu('refresh');
-            }
-            $('#save-for-input').val('');
-            $('#other-popup').popup('close');
-        })
     });
 </script>
