@@ -1,0 +1,104 @@
+{
+    "badges": [
+        {
+               "id": "1",
+               "type": "1",
+               "image": "",
+               "title": "The Quest Begins",
+               "description": "You’ve begin your financial literacy journey. Awesome :-)",
+               "level": "1",
+               "has_xp_requirement": "0",
+               "required_xp": "0"
+        },
+        {
+               "id": "2",
+               "type": "1",
+               "image": "",
+               "title": "Level 2",
+               "description": "Keep at it - there’s a lot left to learn!",
+               "level": "2",
+               "has_xp_requirement": "1",
+               "required_xp": "50"
+        },
+        {
+               "id": "3",
+               "type": "1",
+               "image": "",
+               "title": "Level 3",
+               "description": "Good work! Keep it up!",
+               "level": "3",
+               "has_xp_requirement": "1",
+               "required_xp": "75"
+        },
+        {
+               "id": "4",
+               "type": "1",
+               "image": "",
+               "title": "Level 4",
+               "description": "You’re getting pretty good at this!",
+               "level": "4",
+               "has_xp_requirement": "1",
+               "required_xp": "100"
+        },
+        {
+               "id": "5",
+               "type": "1",
+               "image": "",
+               "title": "Level 5",
+               "description": "Wow, you’re dedicated!",
+               "level": "5",
+               "has_xp_requirement": "1",
+               "required_xp": "150"
+        },
+        {
+               "id": "6",
+               "type": "1",
+               "image": "",
+               "title": "Level 6",
+               "description": "Financial literacy isn’t so bad, is it?",
+               "level": "6",
+               "has_xp_requirement": "1",
+               "required_xp": "200"
+        },
+        {
+               "id": "7",
+               "type": "1",
+               "image": "",
+               "title": "Level 7",
+               "description": "You’re learning quite a bit, huh?",
+               "level": "7",
+               "has_xp_requirement": "1",
+               "required_xp": "250"
+        },
+        {
+               "id": "8",
+               "type": "1",
+               "image": "",
+               "title": "Level 8",
+               "description": "Almost there...",
+               "level": "7",
+               "has_xp_requirement": "1",
+               "required_xp": "300"
+        },
+        {
+               "id": "9",
+               "type": "1",
+               "image": "",
+               "title": "Level 9",
+               "description": "Financial guru",
+               "level": "7",
+               "has_xp_requirement": "1",
+               "required_xp": "350"
+        },
+        {
+               "id": "10",
+               "type": "1",
+               "image": "",
+               "title": "Level 10",
+               "description": "You made it! Keep hitting those goals :-)",
+               "level": "7",
+               "has_xp_requirement": "1",
+               "required_xp": "450"
+        }
+    ]
+}

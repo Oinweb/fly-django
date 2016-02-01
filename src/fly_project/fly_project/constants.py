@@ -28,9 +28,10 @@ FOR_WANT_OPTIONS = (
 )
 
 BADGE_TYPE_OPTIONS = (
-    (1, _('Goal')),
-    (2, _('Education')),
-    (3, _('Resource')),
+    (1, _('Badge')),
+    (2, _('Goal Badge')),
+    (3, _('Education Badge')),
+    (4, _('Resource Badge')),
 )
 
 DURATION_IN_MINUTES_OPTIONS = (

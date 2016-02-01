@@ -246,7 +246,7 @@ class Badge(models.Model):
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     type = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(3)],
+        validators=[MinValueValidator(1), MaxValueValidator(4)],
         choices=constants.BADGE_TYPE_OPTIONS,
         default=1,
     )
