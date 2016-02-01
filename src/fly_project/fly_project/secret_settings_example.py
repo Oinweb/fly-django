@@ -38,6 +38,9 @@ SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'us_EN'}
 # Twitter ( https://apps.twitter.com/app/new )
 SECRET_SOCIAL_AUTH_TWITTER_KEY = ''
 SECRET_SOCIAL_AUTH_TWITTER_SECRET = ''
+# Google ( https://console.developers.google.com/ )
+SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 #---------------------------------------------------------------------------#
 # PayPal Settings                                                           #

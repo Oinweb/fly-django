@@ -1,0 +1,59 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- resources ------------- -->
+<div data-role="page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    <div data-role="content">
+        <div class="text-center">
+            <div class="my-boxes red-box resources-box">
+                <img src="{% static 'img/oinflyapp-social-media-icon.png' %}" />
+                <h2>{% trans "Social Media" %}</h2>
+                <ul data-role="listview" data-inset="true" class="m0">
+                    <li><a href="https://twitter.com/LibroCU">@LibroCU</a></li>
+                    <li><a href="https://twitter.com/rodolfo_oin">@rodolfo_oin</a></li>
+                    <li><a href="https://twitter.com/360finances">@360finances</a></li>
+                </ul>
+            </div>
+
+            <div class="my-boxes blue-box resources-box">
+                <img src="{% static 'img/oinflyapp-blogs-icon.png' %}" />
+                <h2>{% trans "Blogs" %}</h2>
+                <ul data-role="listview" data-inset="true" class="m0">
+                    <li><a href="http://www.youngadultmoney.com/">Young Adult Money</a></li>
+                    <li><a href="http://www.youngcheapliving.com/">Young, Cheap Living</a></li>
+                    <li><a href="http://moneylicious.org/">Moneylicious</a></li>
+                </ul>
+            </div>
+
+            <div class="my-boxes green-box resources-box">
+                <img src="{% static 'img/oinflyapp-apps-icon.png' %}" />
+                <h2>{% trans "Other Cool Apps" %}</h2>
+                <ul data-role="listview" data-inset="true" class="m0">
+                    <li><a id='mint-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.mint&hl=en">Mint.com</a></li>
+                    <li><a id='goodbudget-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.dayspringtech.envelopes&hl=en">GoodBudget</a></li>
+                    <li><a id='mvelopes-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.finicity.mvelopes&hl=en">Mvelopes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /content -->
+
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+
+<script>
+    $(document).ready(function(){
+        loadUserData();
+        // check if user is on an IOS device and change app links
+        if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+            $('#mint-link').attr('href','https://itunes.apple.com/ca/app/mint-money-manager-budget/id300238550?mt=8');
+            $('#goodbudget-link').attr('href','https://itunes.apple.com/ca/app/goodbudget-budget-planner/id471112395?mt=8')
+            $('#mvelopes-link').attr('href','https://itunes.apple.com/ca/app/mvelopes-personal-finance/id417933753?mt=8')
+        }
+    });
+</script>
+
+{% endblock content %}

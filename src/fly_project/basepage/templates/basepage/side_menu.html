@@ -1,0 +1,55 @@
+{% load staticfiles i18n %}
+{% if user.is_authenticated %}
+<div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
+    {% if request.me.avater.url != None %}
+        <img src="{{ request.avatar.url }}" class="user-image" />
+    {% else %}
+        <img src="{% static 'img/photo.png' %}" class="user-image" />
+    {% endif %}
+    <h5 class="greeting">{% trans "Hello" %}, {{ request.user.first_name }} </h5>
+    <ul data-role="listview">
+        <li>
+            <a onclick="window.location='/{{ request.language }}/account';"><i class="fa fa-user fa-fw"></i> {% trans "Profile" %}</a>
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/notifications';"><i class="fa fa-cog fa-fw"></i> {% trans "Notifications" %}</a>
+        </li>
+        <li>
+            <a onclick="ajax_logoff();"><i class="fa fa-power-off fa-fw"></i> {% trans "Log Out" %}</a>
+        </li>
+        <li data-role="list-divider">
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/help';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/dashboard';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/mygoals';"><i class="fa fa-bullseye fa-fw"></i> {% trans "My Goals" %}</a>
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/learning';"><i class="fa fa-edit fa-fw"></i> {% trans "Learning" %}</a>
+        </li>
+        <li>
+            <a onclick="window.location='/{{ request.language }}/resources';"><i class="fa fa-link fa-fw"></i> {% trans "Resources" %}</a>
+        </li>
+    </ul>
+</div><!-- /panel -->
+<script>
+    /**
+     *  Function will log out the user and return the user to the main authentication page.
+     */
+    function ajax_logoff()
+    {
+        sign_off(
+            function(ok) {
+                 window.location='/{{ request.language }}/authentication';
+            },
+            function(bad) {
+                 console.log(bad);
+            }
+        );
+    }
+</script>
+{% endif %}

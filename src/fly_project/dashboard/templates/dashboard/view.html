@@ -1,7 +1,48 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block content %}
 
-dashboard TODO
+<!-- ---------- dashboard ------------- -->
+<div data-role="page" id="dashboard">
+
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+
+    <div data-role="content">
+        <div class="text-center">
+
+            <div class="my-boxes dashboard-box red-box" >
+                <img src="{% static 'img/oinweb-fly-goals-menu-icon.png' %}" />
+                <h2>{% trans "My Goals" %}</h2>
+                <p>{% trans "Set goals for savings and credit score" %}</p>
+                <a onclick="window.location='/{{ request.language }}/mygoals'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Continue" %}</a>
+            </div>
+
+            <div class="my-boxes dashboard-box blue-box">
+                <img src="{% static 'img/oinweb-fly-learning.png' %}" />
+                <h2>{% trans "Learning" %}</h2>
+                <p>{% trans "Learn more about financial management" %}</p>
+                <a onclick="window.location='/{{ request.language }}/learning'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Continue" %}</a>
+            </div>
+
+            <div class="my-boxes dashboard-box green-box">
+                <img src="{% static 'img/oinweb-fly-resources.png' %}" />
+                <h2>{% trans "Resources" %}</h2>
+                <p>{% trans "Other helpful apps and sites" %}</p>
+                <a onclick="window.location='/{{ request.language }}/resources'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Continue" %}</a>
+            </div>
+
+        </div>
+    </div><!-- /content -->
+    
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+</script>
 
 {% endblock content %}

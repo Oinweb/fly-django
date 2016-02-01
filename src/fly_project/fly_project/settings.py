@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'social.apps.django_app.default',  # python social auth
+    'social.apps.django_app.default', 
+    'modeltranslation',
     'basepage',
     'landpage',
     'api',
@@ -66,6 +67,7 @@ INSTALLED_APPS = [
     'learning',
     'resources',
     'account',
+    'help',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,7 +82,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'fly_project.custom_middleware.PyFlyCustomMiddleware',
+    'fly_project.middleware.PyFlyLanguageMiddleware',
+    'fly_project.middleware.PyFlyMeMiddleware',
+    'fly_project.middleware.PyFlyTokenMiddleware',                      
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
@@ -261,9 +265,13 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_
 SOCIAL_AUTH_TWITTER_KEY = SECRET_SOCIAL_AUTH_TWITTER_KEY
 SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 
+# Google ( https://console.developers.google.com/ )
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
+
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
-#    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -277,6 +285,7 @@ LOGIN_REDIRECT_URL = '/dashboard'
 # https://github.com/OttoYiu/django-cors-headers
 
 CORS_ORIGIN_WHITELIST = (
+    'googleapis.com',
     'google.com',
     'facebook.com',
     'twitter.com',

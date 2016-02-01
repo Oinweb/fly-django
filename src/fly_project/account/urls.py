@@ -3,5 +3,7 @@ from . import views
 
 
 urlpatterns = patterns('',
-#     url(r'^dashboard$', views.dashboard_page, name='dashboard'),                  
+     url(r'^account$', views.account_page, name='account'),
+     url(r'^notifications$', views.notifications_page, name='notifications'),
+                       
 )

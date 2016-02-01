@@ -1,13 +1,22 @@
 from django.forms import widgets
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-
-#from api.models.ec.receipt import Receipt
-#from api.models.ec.helprequest import HelpRequest
 from api.models import ImageUpload
 from api.models import BannedDomain
 from api.models import BannedIP
 from api.models import BannedWord
+from api.models import SavingsGoal
+from api.models import CreditGoal
+from api.models import FinalGoal
+from api.models import Badge
+from api.models import XPLevel
+from api.models import Course
+from api.models import Quiz
+from api.models import Question
+from api.models import EnrolledCourse
+from api.models import QuizSubmission
+from api.models import QuestionSubmission
+from api.models import Me
 
 
 class LoginSerializer(serializers.Serializer):
@@ -64,3 +73,75 @@ class BannedWordSerializer(serializers.ModelSerializer):
     class Meta:
         model = BannedWord
         fields = ('id','text','banned_on','reason',)
+
+
+class SavingsGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SavingsGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'times', 'period',)
+
+
+class CreditGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CreditGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'points', 'times', 'period',)
+
+
+class FinalGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinalGoal
+        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'for_want', 'for_other_want',)
+
+class BadgeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Badge
+        fields = ('id', 'created', 'type', 'image', 'level', 'title', 'title_en', 'title_es', 'title_fr', 'description', 'description_en', 'description_es', 'description_fr', 'has_xp_requirement', 'required_xp',)
+
+
+class XPLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Badge
+        fields = ('id', 'created', 'level', 'min_xp', 'max_xp',)
+
+
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ('id', 'created', 'title', 'summary', 'description', 'title_en', 'summary_en', 'description_en', 'title_es', 'summary_es', 'description_es', 'title_fr', 'summary_fr', 'description_fr', 'video_url', 'duration', 'awarded_xp', 'prerequisites',)
+
+
+class QuizSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ('id', 'created', 'course', 'title', 'description', 'title_en', 'description_en', 'title_es', 'description_es', 'title_fr', 'description_fr',)
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = ('id', 'created', 'quiz', 'num', 'title', 'description', 'type', 'a', 'b', 'c', 'd', 'f', 'a_en', 'b_en', 'c_en', 'd_en', 'f_en', 'a_es', 'b_es', 'c_es', 'd_es', 'f_es', 'a_fr', 'b_fr', 'c_fr', 'd_fr', 'f_fr', 'a_is_correct', 'b_is_correct', 'c_is_correct', 'd_is_correct', 'e', 'e_is_correct', 'f_is_correct', 'true_choice', 'false_choice', 'true_choice_en', 'false_choice_en', 'true_choice_es', 'false_choice_es', 'true_choice_fr', 'false_choice_fr', 'answer',)
+
+
+class EnrolledCourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EnrolledCourse
+        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'marks',)
+
+
+class QuizSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuizSubmission
+        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'marks',)
+
+
+class QuestionSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionSubmission
+        fields = ('id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'tf_answer', 'marks',)
+
+
+class MeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Me
+        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses',)
+

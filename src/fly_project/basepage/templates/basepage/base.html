@@ -1,17 +1,21 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.language }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
 
     <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/share-button.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
         
     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
+    <script src="{% static 'js/share-button.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
     <!-- CSRF Token -->
@@ -22,11 +26,24 @@
     {% endblock %}
     <!-- /.CONTENT -->
 </body>
-<script type="text/javascript" src="{% static 'js/googleplus.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/storage.js' %}"></script>
 {% include "api/common_js.html" %}
 {% include "api/login.html" %}
 {% include "api/register.html" %}
+{% if request.user.is_authenticated %}
+    {% include "api/savings_goal.html" %}
+    {% include "api/credit_goal.html" %}
+    {% include "api/final_goal.html" %}
+    {% include "api/badge.html" %}
+    {% include "api/course.html" %}
+    {% include "api/enrolled_course.html" %}
+    {% include "api/me.html" %}
+    {% include "api/question_submission.html" %}
+    {% include "api/question.html" %}
+    {% include "api/quiz_submission.html" %}
+    {% include "api/quiz.html" %}
+    {% include "api/xplevel.html" %}
+{% endif %}
 
 <!-- Facebook SDK -->
 <script>
@@ -48,7 +65,4 @@
 </script>
 <!-- end Facebook SDK -->
 
-<!-- Google SDK -->
-{% include 'basepage/googleplus_js.html' %}
-<!-- end Google SDK -->
 </html>

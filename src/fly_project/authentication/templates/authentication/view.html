@@ -6,8 +6,9 @@
 <div data-role="page" id="login-page">
     <!-- ---------- login content ------------- -->
     <div data-role="content" align="center" data-theme="a" style="">
-        <div class="row">                            <!-- row -->
+        <div class="row"> <!-- row -->
             <div class="container" id="inner-login-container">
+                {% include "authentication/view_js.html" %}
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
                     
                 <div class="clearfix"></div>
@@ -35,23 +36,4 @@
     </div>
     {% include "basepage/footer.html" %}
 </div>
-
-<script>
-    /**
-     * Deprecated Functions
-     */
-    function fly_facebook_login()
-    {
-        window.location = "{% url 'social:begin' 'facebook' %}?next=/{{ request.language }}/dashboard";
-    }
-
-    function fly_twitter_login() {
-        window.location = "{% url 'social:begin' 'twitter' %}?next=/{{ request.language }}/dashboard";
-    }
-
-    function fly_google_login() {
-        window.location = "{% url 'social:begin' 'google-oauth2' %}?next=/{{ request.language }}/dashboard";
-    }
-</script>
-
 {% endblock content %}
