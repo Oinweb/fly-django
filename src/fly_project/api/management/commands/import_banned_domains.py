@@ -6,7 +6,7 @@ from django.db import connection, transaction
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 from fly_project import constants
-from api.models import BannedIP
+from api.models import BannedDomain
 
 class Command(BaseCommand):
     """
@@ -18,22 +18,25 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Get all our bad words.
         bad_words = []
-        with open('./api/management/commands/banned_ips.json') as data_file:
+        with open('./api/management/commands/banned_domains.json') as data_file:
             json_data = json.load(data_file)
-            for ip_list in json_data['ip_list']:
-                id = ip_list['id']
-                ip = ip_list['ip']
+            for domain in json_data['domain_list']:
+                id = domain['id']
+                name = domain['name']
+                reason = domain['reason']
                 try:
-                    ip_obj = BannedIP.objects.get(address=ip)
-                    ip_obj.address = ip
+                    ip_obj = BannedDomain.objects.get(name=name)
+                    ip_obj.name = name
+                    ip_obj.reason = reason
                     ip_obj.save()
-                    print("BannedIP - Updated", id)
-                except BannedIP.DoesNotExist:
-                    ip_obj = BannedIP.objects.create(
+                    print("BannedDomain - Updated", id)
+                except BannedDomain.DoesNotExist:
+                    ip_obj = BannedDomain.objects.create(
                         id=id,
-                        address=ip,
+                        name=name,
+                        reason=reason,
                     )
-                    print("BannedIP - Inserted", id)
+                    print("BannedDomain - Inserted", id)
     
         #-----------------
         # BUGFIX: We need to make sure our keys are synchronized.
@@ -43,7 +46,7 @@ class Command(BaseCommand):
         
         tables_info = [
             # eCantina Tables
-            {"tablename": "fly_banned_ips", "primarykey": "id",},
+            {"tablename": "fly_banned_domains", "primarykey": "id",},
         ]
         for table in tables_info:
             sql = table['tablename'] + '_' + table['primarykey'] + '_seq'
