@@ -1,0 +1,74 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- My Goals ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include "mygoals/credit/complete_js.html" %}
+    <div data-role="content">
+        <div class="text-center">
+            <!-- Credit -->
+            <div class="my-boxes blue-box goals-box">
+                <img src="{% static 'img/oinweb-fly-credit.png' %}" />
+                <h2>{% trans "Credit" %}</h2>
+                <p>{% if credit_goal.period == 1 %}
+                    {% blocktrans %}
+                        Did you complete your goal, "I want to raise my credit points by {{ credit_goal.points }} every {{ credit_goal.times }} weeks"?
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}
+                        Did you complete your goal, "I want to raise my credit points by {{ credit_goal.points }} every {{ credit_goal.times }} months"?
+                    {% endblocktrans %}
+                {% endif %}
+                </p>
+                <select id="goal-switch" data-role="slider" data-mini="true">
+                    <option selected="true" value="False">{% trans "No" %}</option>
+                    <option value="True">{% trans "Yes" %}</option>
+                </select>
+                <button data-icon="check" onclick="ajax_finish_credit_goal({{ credit_goal.id }});">{% trans "OK" %}</button>
+
+            </div>
+            <!-- end Credit -->
+            
+        </div>
+        
+    </div><!-- /content -->
+    {% include "basepage/footer.html" %}
+
+    <!-- Error Modal -->
+    <div data-role="popup" id="error-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3><i class="fa fa-2x fa-times"></i><div id="id_error_title"></div></h3>
+            <p id="error-text"><div id="id_error_message"></div></p>
+            <button data-role="button"
+                class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                onclick="$('#error-popup').popup('close');">
+                {% trans "Close" %}
+            </button>
+        </div>
+    </div>
+    <!-- end Message Modal -->
+    
+    <!-- Success Modal -->
+    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3>{% trans "Great you've set a goal!" %}</h3>
+            <p>{% trans "Once you confirm this goal you cannot change it for at least 30 days" %}</p>
+            <button data-role="button"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                      onclick="save_goal(); $('#confirm-popup').popup('close');">
+                {% trans "Lock Goal" %}
+            </button>
+            <button data-role="button"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
+                      onclick="$('#confirm-popup').popup('close');">
+                {% trans "Cancel" %}
+            </button>
+        </div>
+    </div>
+    <!-- end Success Modal -->
+
+</div><!-- /page -->
+{% endblock content %}

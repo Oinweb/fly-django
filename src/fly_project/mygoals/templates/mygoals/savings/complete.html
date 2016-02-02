@@ -13,15 +13,16 @@
             <div class="my-boxes red-box goals-box">
                 <img src="{% static 'img/savings.png' %}" class="goals-img" />
                 <h2>{% trans "Savings" %}</h2>
-                <p>{% if savings_goal.period == 1 %}
-                       {% blocktrans %}
-                           Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} weeks"?
-                       {% endblocktrans %}
-                   {% else %}
-                       {% blocktrans %}
-                           Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} months"?
-                       {% endblocktrans %}
-                   {% endif %}
+                <p>
+                {% if savings_goal.period == 1 %}
+                    {% blocktrans %}
+                        Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} weeks"?
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}
+                        Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} months"?
+                    {% endblocktrans %}
+                {% endif %}
                 </p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
                     <option selected="true" value="False">{% trans "No" %}</option>

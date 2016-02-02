@@ -1,0 +1,46 @@
+{% load staticfiles i18n %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+                      
+    function ajax_finish_credit_goal(goal_id)
+    {
+        // Step 1: Fetch the Goal model object from the API.
+        get_credit_goal(
+            goal_id,
+            function(goal) {
+                // Step 2: Update the goal.
+                goal["was_accomplished"] = $('#goal-switch').val();
+                goal["is_closed"] = 'True';
+                goal["earned_xp"] = 25;
+                                           
+                // Step 3: Save the goal.
+                set_credit_goal(
+                    goal,
+                    function(goal) {
+                        // Step 4: Load up the success UI if the goal was accomplished, else
+                        //         load the the savings UI.
+                        if ($('#goal-switch').val() == "True") {
+                            window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/complete";
+                        } else {
+                            window.location = "/{{ request.language }}/mygoals/credit";
+                        }
+                    },
+                    function(error_json) {
+                        $('#error-popup').popup('open');
+                        $('#id_error_title').html('{% trans "Credit" %}');
+                        $('#id_error_message').html('{% trans "An unknown error occured when saving goal, please see log." %}');
+                        console.log(error_json);
+                    }
+                );
+            },
+            function(error_json) {
+                $('#error-popup').popup('open');
+                $('#id_error_title').html('{% trans "Credit" %}');
+                $('#id_error_message').html('{% trans "An unknown error occured when fetching goal, please see log." %}');
+                console.log(error_json);
+            }
+        );
+    }
+</script>

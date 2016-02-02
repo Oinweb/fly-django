@@ -187,10 +187,9 @@ class CreditGoal(Goal):
         db_table = 'fly_credit_goals'
     
     objects = CreditGoalManager()
-    points = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        default=0.00,
+    points = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(850)],
+        default=0,
     )
     times = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(99)],

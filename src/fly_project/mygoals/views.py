@@ -140,6 +140,10 @@ def goal_complete_page(request, goal_type, goal_id):
     try:
         if goal_type == constants.SAVINGS_MYGOAL_TYPE:
             goal = SavingsGoal.objects.get(id=goal_id)
+        elif goal_type == constants.CREDIT_MYGOAL_TYPE:
+            goal = CreditGoal.objects.get(id=goal_id)
+        elif goal_type == constants.GOAL_MYGOAL_TYPE:
+            goal = FinalGoal.objects.get(id=goal_id)
     except Exception as e:
         pass
     
