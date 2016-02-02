@@ -113,8 +113,8 @@ def final_goal_page(request):
 
     # Check how many days are remaining from today to the unlock date.
     days_remaining = 99999
-    if credit_goal.unlocks:
-        days_remaining = count_days_between_today_and(credit_goal.unlocks)
+    if final_goal.unlocks:
+        days_remaining = count_days_between_today_and(final_goal.unlocks)
 
     # CASE 1 OF 2:
     # Load the main goal settings UI.

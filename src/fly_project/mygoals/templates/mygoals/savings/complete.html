@@ -15,12 +15,12 @@
                 <h2>{% trans "Savings" %}</h2>
                 <p>
                 {% if savings_goal.period == 1 %}
-                    {% blocktrans %}
-                        Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} weeks"?
+                    {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
+                        Did you complete your goal, "I want to save {{ amount }} every {{ times }} weeks"?
                     {% endblocktrans %}
                 {% else %}
-                    {% blocktrans %}
-                        Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} months"?
+                    {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
+                        Did you complete your goal, "I want to save {{ amount }} every {{ times }} months"?
                     {% endblocktrans %}
                 {% endif %}
                 </p>
