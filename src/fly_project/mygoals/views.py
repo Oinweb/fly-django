@@ -32,24 +32,23 @@ def savings_goals_page(request):
     # create a new goal here.
     savings_goal = SavingsGoal.objects.get_latest(request.user.id)
     if not savings_goal:
-        savings_goal = SavingsGoal.objects.create(
-            user_id=request.user.id,
-        )
+        savings_goal = SavingsGoal.objects.create(user_id=request.user.id,)
     
     # Check to see if the current SavingsGoal has 'is_closed=True' which means
     # we need to create a new savings goal.
     if savings_goal.is_closed == True:
-        savings_goal = SavingsGoal.objects.create(
-            user_id=request.user.id,
-        )
+        savings_goal = SavingsGoal.objects.create(user_id=request.user.id,)
     
-    days_count = count_days_between_today_and(savings_goal.unlocks)
+    # Check how many days are remaining from today to the unlock date.
+    days_remaining = 99999
+    if savings_goal.unlocks:
+        days_remaining = count_days_between_today_and(savings_goal.unlocks)
 
     # CASE 1 OF 2:
     # Load the main goal settings UI.
     url = ''
-    if days_count > 0:
-        url = 'mygoals/savings/goal.html'
+    if days_remaining > 0:
+        url = 'mygoals/savings/view.html'
     # CASE 2 OF 2:
     # Load the UI to handle whether the goal was set or not.
     else:
@@ -59,37 +58,79 @@ def savings_goals_page(request):
         'settings': settings,
         'constants': constants,
         'savings_goal': savings_goal,
+        'days_remaining': days_remaining,
     })
 
 
 @login_required(login_url='/authentication')
 def credit_goals_page(request):
+    # Check to see if we have the latest CreditGoal set, if not then
+    # create a new goal here.
     credit_goal = CreditGoal.objects.get_latest(request.user.id)
     if not credit_goal:
-        print("Creating New Credit Goal")
-        credit_goal = CreditGoal.objects.create(
-            user_id=request.user.id,
-        )
-    return render(request, 'mygoals/credit/view.html',{
+        credit_goal = CreditGoal.objects.create(user_id=request.user.id,)
+    
+    # Check to see if the current SavingsGoal has 'is_closed=True' which means
+    # we need to create a new savings goal.
+    if credit_goal.is_closed == True:
+        credit_goal = CreditGoal.objects.create(user_id=request.user.id,)
+    
+    # Check how many days are remaining from today to the unlock date.
+    days_remaining = 99999
+    if credit_goal.unlocks:
+        days_remaining = count_days_between_today_and(credit_goal.unlocks)
+
+    # CASE 1 OF 2:
+    # Load the main goal settings UI.
+    url = ''
+    if days_remaining > 0:
+        url = 'mygoals/credit/view.html'
+    # CASE 2 OF 2:
+    # Load the UI to handle whether the goal was set or not.
+    else:
+        url = 'mygoals/credit/complete.html'
+    
+    return render(request, url,{
         'settings': settings,
         'constants': constants,
         'credit_goal': credit_goal,
+        'days_remaining': days_remaining,
     })
 
 
 @login_required(login_url='/authentication')
 def final_goal_page(request):
+    # Check to see if we have the latest FinalGoal set, if not then
+    # create a new goal here.
     final_goal = FinalGoal.objects.get_latest(request.user.id)
     if not final_goal:
-        print("Creating New Final Goal")
-        credit_goal = FinalGoal.objects.create(
-            user_id=request.user.id,
-        )
+        credit_goal = FinalGoal.objects.create(user_id=request.user.id,)
 
-    return render(request, 'mygoals/final/view.html',{
+    # Check to see if the current FinalGoal has 'is_closed=True' which means
+    # we need to create a new final goal.
+    if final_goal.is_closed == True:
+        final_goal = FinalGoal.objects.create(user_id=request.user.id,)
+
+    # Check how many days are remaining from today to the unlock date.
+    days_remaining = 99999
+    if credit_goal.unlocks:
+        days_remaining = count_days_between_today_and(credit_goal.unlocks)
+
+    # CASE 1 OF 2:
+    # Load the main goal settings UI.
+    url = ''
+    if days_remaining > 0:
+        url = 'mygoals/final/view.html'
+    # CASE 2 OF 2:
+    # Load the UI to handle whether the goal was set or not.
+    else:
+        url = 'mygoals/final/complete.html'
+
+    return render(request, url,{
         'settings': settings,
         'constants': constants,
         'final_goal': final_goal,
+        'days_remaining': days_remaining,
     })
 
 
@@ -101,11 +142,12 @@ def goal_complete_page(request, goal_type, goal_id):
             goal = SavingsGoal.objects.get(id=goal_id)
     except Exception as e:
         pass
-
+    
     final_goal = FinalGoal.objects.get_latest(request.user.id)
     return render(request, 'mygoals/complete/view.html',{
         'settings': settings,
         'constants': constants,
-        'final_goal': final_goal,
+        'goal_id': int(goal_id),
+        'goal_type': int(goal_type),
     })
 

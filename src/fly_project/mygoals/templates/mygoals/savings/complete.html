@@ -13,12 +13,21 @@
             <div class="my-boxes red-box goals-box">
                 <img src="{% static 'img/savings.png' %}" class="goals-img" />
                 <h2>{% trans "Savings" %}</h2>
-                <p>{% trans "Did you complete your goal" %}, "{% trans "I want to save $" %}{{ savings_goal.amount }} {% trans "every" %}  {{ savings_goal.times }} {% if savings_goal.period == 1 %}{% trans "weeks" %}{% else %}{% trans "months" %}{% endif %}"?</p>
+                <p>{% if savings_goal.period == 1 %}
+                       {% blocktrans %}
+                           Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} weeks"?
+                       {% endblocktrans %}
+                   {% else %}
+                       {% blocktrans %}
+                           Did you complete your goal, "I want to save {{ savings_goal.amount }} every {{ savings_goal.times }} months"?
+                       {% endblocktrans %}
+                   {% endif %}
+                </p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
-                    <option selected="true" value="False">No</option>
-                    <option value="True">Yes</option>
+                    <option selected="true" value="False">{% trans "No" %}</option>
+                    <option value="True">{% trans "Yes" %}</option>
                 </select>
-                <button data-icon="check" onclick="ajax_finish_savings_goal({{ savings_goal.id }});">OK</button>
+                <button data-icon="check" onclick="ajax_finish_savings_goal({{ savings_goal.id }});">{% trans "OK" %}</button>
             </div>
             <!-- end Savings -->
             
@@ -35,7 +44,7 @@
             <button data-role="button"
                 class="ui-btn ui-corner-all ui-shadow ui-btn-b"
                 onclick="$('#error-popup').popup('close');">
-                Close
+                {% trans "Close" %}
             </button>
         </div>
     </div>

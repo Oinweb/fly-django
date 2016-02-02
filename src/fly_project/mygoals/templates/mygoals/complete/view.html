@@ -6,7 +6,7 @@
 <div data-role="page" style="background-color:#fff;" id="goal-page">
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    {% include "mygoals/credit/view_js.html" %}
+    {% include "mygoals/complete/view_js.html" %}
     <div data-role="content">
         <div class="text-center">
             <div class="text-center">
@@ -20,7 +20,7 @@
                 <div class="social-sharing">
                     <share-button></share-button>
                 </div>
-                <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="returnToGoal();">OK</button>
+                <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="load_goal();">OK</button>
             </div>
         </div>
     </div><!-- /content -->
