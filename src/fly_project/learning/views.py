@@ -14,7 +14,7 @@ def learning_page(request):
     except Course.DoesNotExist:
         courses = None
 
-    return render(request, 'learning/view.html',{
+    return render(request, 'learning/master/view.html',{
         'settings': settings,
         'courses': courses,
     })

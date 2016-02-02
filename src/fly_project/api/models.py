@@ -312,6 +312,7 @@ class Course(models.Model):
         db_table = 'fly_courses'
     
     id = models.AutoField(primary_key=True)
+    image = models.CharField(max_length=15, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=63, null=True, blank=True)
     summary = models.CharField(max_length=255, null=True, blank=True)

@@ -13,7 +13,7 @@ from api.models import Course
 class CourseFilter(django_filters.FilterSet):
     class Meta:
         model = Course
-        fields = ['id', 'created', 'title', 'summary', 'description', 'video_url', 'duration', 'awarded_xp', 'prerequisites',]
+        fields = ['id', 'created', 'image', 'title', 'summary', 'description', 'video_url', 'duration', 'awarded_xp', 'prerequisites',]
 
 
 class CourseViewSet(viewsets.ModelViewSet):

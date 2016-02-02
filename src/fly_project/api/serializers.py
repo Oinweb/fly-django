@@ -107,7 +107,7 @@ class XPLevelSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ('id', 'created', 'title', 'summary', 'description', 'title_en', 'summary_en', 'description_en', 'title_es', 'summary_es', 'description_es', 'title_fr', 'summary_fr', 'description_fr', 'video_url', 'duration', 'awarded_xp', 'prerequisites',)
+        fields = ('id', 'created', 'image', 'title', 'summary', 'description', 'title_en', 'summary_en', 'description_en', 'title_es', 'summary_es', 'description_es', 'title_fr', 'summary_fr', 'description_fr', 'video_url', 'duration', 'awarded_xp', 'prerequisites',)
 
 
 class QuizSerializer(serializers.ModelSerializer):
