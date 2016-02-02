@@ -10,54 +10,23 @@
     <div data-role="content">
         <div class="text-center">
             <div class="text-center">
-                <h2>Congratulations!</h2>
-                <h4>You completed your goal, 'I want to save $200 every 2 weeks'!</h4>
+                <h2>{% trans "Congratulations" %}!</h2>
+                <h4>{% trans "You completed your goal, this is awesome! " %}
+                
+                </h4>
                 <br/><br/>
-                <h4>You've Earned 50 xp and a fly badge!</h4>
+                <h4>{% trans "You've Earned 25 xp" %}</h4>
                 <p onclick="$('#badge-popup').popup('open')" style="margin-left:auto;margin-right:auto;border:2px solid #ddd;border-radius:50%;width:70px;padding:10px;">
                 <i class="fa fa-3x fa-thumbs-up" style="color:green;"></i></p>
                 
                 <div class="social-sharing">
                     <share-button></share-button>
                 </div>
-                <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="load_goal();">OK</button>
+                <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="load_goal();">{% trans "OK" %}</button>
             </div>
         </div>
     </div><!-- /content -->
     {% include "basepage/footer.html" %}
-
-    <!-- Error Modal -->
-    <div data-role="popup" id="error-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3><i class="fa fa-2x fa-times"></i><div id="id_error_title"></div></h3>
-            <p id="error-text"><div id="id_error_message"></div></p>
-            <button data-role="button"
-                class="ui-btn ui-corner-all ui-shadow ui-btn-b"
-                onclick="$('#error-popup').popup('close');">
-                Close
-            </button>
-        </div>
-    </div>
-    <!-- end Message Modal -->
     
-    <!-- Success Modal -->
-    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3>Great you've set a goal!</h3>
-            <p>Once you confirm this goal you cannot change it for at least 30 days</p>
-            <button data-role="button"
-                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
-                      onclick="save_goal(); $('#confirm-popup').popup('close');">
-                Lock Goal
-            </button>
-            <button data-role="button"
-                        class="ui-btn ui-corner-all ui-shadow ui-btn-b"
-                      onclick="$('#confirm-popup').popup('close');">
-                Cancel
-            </button>
-        </div>
-    </div>
-    <!-- end Success Modal -->
-
 </div><!-- /page -->
 {% endblock content %}
