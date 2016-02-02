@@ -10,11 +10,17 @@ from api.models import Course
 def learning_page(request):
     
     try:
-        courses = Course.objects.all()
+        unlocked_courses = Course.objects.filter(has_prerequisites=False).order_by("created")
     except Course.DoesNotExist:
-        courses = None
+        unlocked_courses = None
+
+    try:
+        locked_courses = Course.objects.filter(has_prerequisites=True).order_by("created")
+    except Course.DoesNotExist:
+        locked_courses = None
 
     return render(request, 'learning/master/view.html',{
         'settings': settings,
-        'courses': courses,
+        'unlocked_courses': unlocked_courses,
+        'locked_courses': locked_courses,
     })

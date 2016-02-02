@@ -90,6 +90,7 @@ class Command(BaseCommand):
             for json_course in json_data['courses']:
                 # Extract the JSON values
                 id = int(json_course['id'])
+                type = int(json_course['type'])
                 image = json_course['image']
                 title = json_course['title']
                 summary = json_course['summary']
@@ -97,12 +98,14 @@ class Command(BaseCommand):
                 video_url = json_course['video_url']
                 duration = json_course['duration']
                 awarded_xp = int(json_course['awarded_xp'])
+                has_prerequisites = bool(json_course['has_prerequisites'])
                 prerequisites = json_course['prerequisites']
                 
                 # Update or Insert a new XPLevel object base on the JSON values.
                 try:
                     # Update the Course.
                     course = Course.objects.get(id=id)
+                    course.type=type
                     course.image=image
                     course.title=title
                     course.summary=summary
@@ -110,6 +113,7 @@ class Command(BaseCommand):
                     course.video_url=video_url
                     course.duration=duration
                     course.awarded_xp=awarded_xp
+                    course.has_prerequisites=has_prerequisites
                     
                     # Update the Coure prerequisites.
                     # Step 1 of 2: Delete the existing prerequisites.
@@ -120,11 +124,13 @@ class Command(BaseCommand):
                     for prerequisite in prerequisites:
                         course.prerequisites.add(prerequisite)
                     
+                    course.save()
                     print("Course - Updated", id)
                 except Course.DoesNotExist:
                     # Created the Course.
                     course = Course.objects.create(
                         id=id,
+                        type=type,
                         image=image,
                         title=title,
                         summary=summary,
@@ -132,6 +138,7 @@ class Command(BaseCommand):
                         video_url=video_url,
                         duration=duration,
                         awarded_xp=awarded_xp,
+                        has_prerequisites=has_prerequisites,
                     )
                     
                     # Populated the Course prerequisites.

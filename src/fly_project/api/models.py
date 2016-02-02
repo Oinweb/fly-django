@@ -312,8 +312,14 @@ class Course(models.Model):
         db_table = 'fly_courses'
     
     id = models.AutoField(primary_key=True)
+    type = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
+        choices=constants.GOAL_TYPE_OPTIONS,
+        default=1,
+        db_index=True,
+    )
     image = models.CharField(max_length=15, null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True,db_index=True,)
     title = models.CharField(max_length=63, null=True, blank=True)
     summary = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=511, null=True, blank=True)
@@ -327,6 +333,7 @@ class Course(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         default=1,
     )
+    has_prerequisites = models.BooleanField(default=False,db_index=True,)
     prerequisites = models.ManyToManyField("self", blank=True,)
     
     def __str__(self):

@@ -2,6 +2,7 @@
     "courses": [
         {
             "id": "1",
+            "type": 1,
             "image": "img/course1.jpg",
             "title": "Finances 101",
             "summary": "Learn some tips, tricks, and hacks for managing your money",
@@ -9,10 +10,12 @@
             "video_url": "",
             "duration": "5",
             "awarded_xp": "0",
+            "has_prerequisites": 0,
             "prerequisites": []
         },
         {
             "id": "2",
+            "type": 2,
             "image": "img/course2.jpg",
             "title": "Saving & Budgeting",
             "summary": "Learn how easy saving can be and why you need to budget",
@@ -20,10 +23,12 @@
             "video_url": "",
             "duration": "30",
             "awarded_xp": "0",
+            "has_prerequisites": 0,
             "prerequisites": []
         },
         {
             "id": "3",
+            "type": 3,
             "image": "img/course3.jpg",
             "title": "Credit Score 101",
             "summary": "Not sure what it takes to have the credit you need? Start here",
@@ -31,10 +36,12 @@
             "video_url": "",
             "duration": "60",
             "awarded_xp": "0",
+            "has_prerequisites": 0,
             "prerequisites": []
         },
         {
             "id": "4",
+            "type": 1,
             "image": "img/course1.jpg",
             "title": "Finances II",
             "summary": "Learn some tips, tricks, and hacks for managing your money",
@@ -42,10 +49,12 @@
             "video_url": "",
             "duration": "5",
             "awarded_xp": "0",
+            "has_prerequisites": 1,
             "prerequisites": [1]
         },
         {
             "id": "5",
+            "type": 2,
             "image": "img/course2.jpg",
             "title": "Saving & Budgeting II",
             "summary": "Learn how easy saving can be and why you need to budget",
@@ -53,10 +62,12 @@
             "video_url": "",
             "duration": "30",
             "awarded_xp": "0",
+            "has_prerequisites": 1,
             "prerequisites": [2]
         },
         {
             "id": "6",
+            "type": 3,
             "image": "img/course3.jpg",
             "title": "Credit Scores II",
             "summary": "Not sure what it takes to have the credit you need? Start here",
@@ -64,6 +75,7 @@
             "video_url": "",
             "duration": "60",
             "awarded_xp": "0",
+            "has_prerequisites": 1,
             "prerequisites": [3]
         }
     ]

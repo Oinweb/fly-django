@@ -9,70 +9,62 @@
     {% include 'basepage/side_menu.html' %}
     {% include 'learning/master/view_js.html' %}
 
-{% for course in courses.all %}
-{{ course.title }}
-{% endfor %}
-
-{% trans "Continue" %}
-
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            <div class="my-boxes red-box learning-box">
-                <img src="img/course1.jpg" class="course-img" />
-                <h3>Finances 101</h3>
-                <p>Learn some tips, tricks, and hacks for managing your money</p>
-                <small class="short-course">Duration: 5 minutes</small>
-                <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" onclick="window.location='course.html';">Begin Course</button>
+            {% for course in unlocked_courses.all %}
+            <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box">
+                <img src="/static/{{ course.image }}" class="course-img" />
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.summary }}</p>
+                {% if course.duration == 5 %}
+                    <small class="short-course">Duration: 5 minutes</small>
+                {% elif course.duration == 30 %}
+                    <small class="moderate-course">Duration: 30 minutes</small>
+                {% elif course.duration == 60 %}
+                    <small class="long-course">Duration: 1 hour</small>
+                {% else %}
+                    <small class="short-course">Duration: Unknown duration!</small>
+                {% endif %}
+                <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course"
+                      onclick="window.location='course.html';">
+                    {% trans "Begin Course" %}
+                </button>
             </div>
+            {% endfor %}
         
-        <div class="my-boxes blue-box learning-box">
-            <img src="img/course2.jpg" class="course-img" />
-            <h3>Saving &amp; Budgeting</h3>
-            <p>Learn how easy saving can be and why you need to budget</p>
-            <small class="moderate-course">Duration: 30 minutes</small>
-            <a class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" onclick="window.location='course.html';">Begin Course</a>
+            <h3 class="ui-bar-a" style="max-width:800px;padding:10px;margin:20px auto;font-family:Arial;border-radius:5px;">
+                {% trans "Locked Courses" %}
+            </h3>
+        
+            {% for course in locked_courses.all %}
+            <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box locked">
+                <div class="locked-icon">
+                    <button class="ui-btn-inline">
+                        <i class="fa fa-5x fa-lock"></i>
+                    </button>
+                </div>
+                <img src="/static/{{ course.image }}" class="course-img locked-img" />
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.summary }}</p>
+                {% if course.duration == 5 %}
+                <small class="short-course">Duration: 5 minutes</small>
+                {% elif course.duration == 30 %}
+                <small class="moderate-course">Duration: 30 minutes</small>
+                {% elif course.duration == 60 %}
+                <small class="long-course">Duration: 1 hour</small>
+                {% else %}
+                <small class="short-course">Duration: Unknown duration!</small>
+                {% endif %}
+                <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled
+                      onclick="window.location='course.html';">
+                    {% trans "Begin Course" %}
+                </button>
+            </div>
+            {% endfor %}
         </div>
-        
-        <div class="my-boxes green-box learning-box">
-            <img src="img/course3.jpg" class="course-img" />
-            <h3>Credit Score 101</h3>
-            <p>Not sure what it takes to have the credit you need? Start here</p>
-            <small class="long-course">Duration: 1 hour</small>
-            <a class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" onclick="window.location='course.html';">Begin Course</a>
-        </div>
-        
-        <h3 class="ui-bar-a" style="max-width:800px;padding:10px;margin:20px auto;font-family:Arial;border-radius:5px;">Locked Courses</h3>
-        
-        <div class="my-boxes red-box learning-box locked">
-            <div class="locked-icon"><button class="ui-btn-inline"><i class="fa fa-5x fa-lock"></i></button></div>
-            <img src="img/course1.jpg" class="course-img locked-img" />
-            <h3>Finances II</h3>
-            <p>Learn some tips, tricks, and hacks for managing your money</p>
-            <small class="short-course">Duration: 5 minutes</small>
-            <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled onclick="window.location='course.html';">Begin Course</button>
-        </div>
-        
-        <div class="my-boxes red-box learning-box locked">
-            <div class="locked-icon"><button class="ui-btn-inline"><i class="fa fa-5x fa-lock"></i></button></div>
-            <img src="img/course2.jpg" class="course-img locked-img" />
-            <h3>Saving &amp; Budgeting II</h3>
-            <p>Learn how easy saving can be and why you need to budget</p>
-            <small class="moderate-course">Duration: 30 minutes</small>
-            <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled onclick="window.location='course.html';">Begin Course</button>
-        </div>
-        
-        <div class="my-boxes red-box learning-box locked">
-            <div class="locked-icon"><button class="ui-btn-inline"><i class="fa fa-5x fa-lock"></i></button></div>
-            <img src="img/course3.jpg" class="course-img locked-img" />
-            <h3>Credit Scores II</h3>
-            <p>Not sure what it takes to have the credit you need? Start here</p>
-            <small class="long-course">Duration: 1 hour</small>
-            <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled onclick="window.location='course.html';">Begin Course</button>
-        </div>
-    </div>
-</div><!-- end CONTENT -->
-    
+    </div><!-- end CONTENT -->
+     
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
