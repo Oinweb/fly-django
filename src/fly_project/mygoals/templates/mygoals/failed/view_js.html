@@ -1,0 +1,22 @@
+{% load staticfiles i18n %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+    
+    function load_goal()
+    {
+        {% if goal_type == constants.SAVINGS_MYGOAL_TYPE %}
+            window.location = "/{{ request.language }}/mygoals/savings";
+        {% elif goal_type == constants.CREDIT_MYGOAL_TYPE %}
+            window.location = "/{{ request.language }}/mygoals/credit";
+        {% elif goal_type == constants.GOAL_MYGOAL_TYPE %}
+            window.location = "/{{ request.language }}/mygoals/final";
+        {% else %}
+            alert("Unknown goal type detected.");
+            console.log("{{ goal_type }}");
+        {% endif %}
+   
+    }
+
+</script>

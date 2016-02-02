@@ -1,0 +1,23 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- My Goals ------------- -->
+<div data-role="page" style="background-color:#fff;" id="goal-page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include "mygoals/complete/view_js.html" %}
+    <div data-role="content">
+        <div class="text-center">
+            <div class="text-center">
+                <h2>{% trans "Sorry" %}</h2>
+                <h4>{% trans "Do not worry! There is always next time. Please try again!" %}</h4>
+                <br/><br/>
+                <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="load_goal();">OK</button>
+            </div>
+        </div>
+    </div><!-- /content -->
+    {% include "basepage/footer.html" %}
+    
+</div><!-- /page -->
+{% endblock content %}

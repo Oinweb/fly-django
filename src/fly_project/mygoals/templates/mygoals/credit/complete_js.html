@@ -24,7 +24,7 @@
                         if ($('#goal-switch').val() == "True") {
                             window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/complete";
                         } else {
-                            window.location = "/{{ request.language }}/mygoals/credit";
+                            window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/sorry";
                         }
                     },
                     function(error_json) {
