@@ -1,0 +1,29 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- dashboard ------------- -->
+<div data-role="page" id="dashboard">
+
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include 'learning/course/details/view_js.html' %}
+
+    <!-- CONTENT -->
+    <div data-role="content">
+        <div class="text-center">
+            
+        </div>
+    </div><!-- end CONTENT -->
+     
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+</script>
+
+{% endblock content %}

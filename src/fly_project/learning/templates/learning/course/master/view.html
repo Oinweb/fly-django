@@ -7,7 +7,7 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    {% include 'learning/master/view_js.html' %}
+    {% include 'learning/course/master/view_js.html' %}
 
     <!-- CONTENT -->
     <div data-role="content">
@@ -27,7 +27,7 @@
                     <small class="short-course">Duration: Unknown duration!</small>
                 {% endif %}
                 <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course"
-                      onclick="window.location='course.html';">
+                      onclick="window.location='/{{ request.language }}/course/{{ course.id }}/';">
                     {% trans "Begin Course" %}
                 </button>
             </div>
@@ -57,7 +57,7 @@
                 <small class="short-course">Duration: Unknown duration!</small>
                 {% endif %}
                 <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled
-                      onclick="window.location='course.html';">
+                      onclick="window.location='/{{ request.language }}/course/{{ course.id }}/';">
                     {% trans "Begin Course" %}
                 </button>
             </div>

@@ -3,12 +3,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from fly_project import settings
+from fly_project import constants
 from api.models import Course
 
 
 @login_required(login_url='/authentication')
 def learning_page(request):
-    
     try:
         unlocked_courses = Course.objects.filter(has_prerequisites=False).order_by("created")
     except Course.DoesNotExist:
@@ -19,8 +19,22 @@ def learning_page(request):
     except Course.DoesNotExist:
         locked_courses = None
 
-    return render(request, 'learning/master/view.html',{
+    return render(request, 'learning/course/master/view.html',{
         'settings': settings,
         'unlocked_courses': unlocked_courses,
         'locked_courses': locked_courses,
+    })
+
+
+@login_required(login_url='/authentication')
+def course_page(request, id):
+    try:
+        course = Course.objects.get(id=id)
+    except Course.DoesNotExist:
+        course = None
+
+    return render(request, 'learning/course/details/view.html',{
+        'settings': settings,
+        'constants': constants,
+        'course': course,
     })

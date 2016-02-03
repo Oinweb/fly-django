@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = patterns('',
-    url(r'^learning$', views.learning_page, name='learning'),                  
+    url(r'^learning$', views.learning_page, name='learning'),
+    url(r'^course/(\d+)/$', views.course_page, name='course'),
 )
