@@ -2,7 +2,7 @@ import django_filters
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, mixins
 from rest_framework.response import Response
-#from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from api.pagination import LargeResultsSetPagination
 from api.permissions import IsAdminUserOrReadOnly
@@ -20,5 +20,6 @@ class XPLevelViewSet(viewsets.ModelViewSet):
     queryset = XPLevel.objects.all()
     serializer_class = XPLevelSerializer
     pagination_class = LargeResultsSetPagination
+    authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminUserOrReadOnly,)
     filter_class = XPLevelFilter

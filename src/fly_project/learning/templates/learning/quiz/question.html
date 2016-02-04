@@ -12,34 +12,36 @@
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            <ul data-role="listview" data-inset="true">
+            <ul id="id_question"
+         data-role="listview"
+        data-inset="true">
                 <li data-role="list-divider">
                     <h4>
                         {% blocktrans with num=question.num text=question.text|escape|safe %}{{ num }}. {{ text }}{% endblocktrans %}
                     </h4>
                 </li>
                 {% if question.a %}
-                    <li class="quiz-answer">{{ question.a|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.a %}selected{% endif %}" value="a">{{ question.a|escape|safe }}</li>
                 {% endif %}
                 
                 {% if question.b %}
-                    <li class="quiz-answer">{{ question.b|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.b %}selected{% endif %}" value="b">{{ question.b|escape|safe }}</li>
                 {% endif %}
                 
                 {% if question.c %}
-                    <li class="quiz-answer">{{ question.c|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.c %}selected{% endif %}" value="c">{{ question.c|escape|safe }}</li>
                 {% endif %}
                 
                 {% if question.d %}
-                    <li class="quiz-answer">{{ question.d|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.d %}selected{% endif %}" value="d">{{ question.d|escape|safe }}</li>
                 {% endif %}
                 
                 {% if question.e %}
-                    <li class="quiz-answer">{{ question.e|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.e %}selected{% endif %}" value="e">{{ question.e|escape|safe }}</li>
                 {% endif %}
                 
                 {% if question.f %}
-                    <li class="quiz-answer">{{ question.f|escape|safe }}</li>
+                    <li class="quiz-answer {% if submission.f %}selected{% endif %}" value="f">{{ question.f|escape|safe }}</li>
                 {% endif %}
             </ul>
         </div>
@@ -64,16 +66,15 @@
         
         {% if next %}
             <!-- Load to Next Question page. -->
-            <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';"
+            <button onclick="ajax_submit_question(false);"
                       class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-left btnNext fright m5">
                 {% trans "Next" %}
             </button>
         {% else %}
             <!-- Load to Finished page. -->
-            <button id="btnFinishQuiz"
-               onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/finished';"
-                 class="fright m5 ui-btn ui-icon-check ui-btn-icon-left ui-corner-all"
-                 style="background-color:green;">
+            <button onclick="ajax_submit_question(true);"
+                      class="fright m5 ui-btn ui-icon-check ui-btn-icon-left ui-corner-all"
+                      style="background-color:green;">
                 {% trans "Score Quiz" %}
             </button>
         {% endif %}

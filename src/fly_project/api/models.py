@@ -454,7 +454,6 @@ class QuestionSubmission(models.Model):
     d = models.BooleanField(default=False)
     e = models.BooleanField(default=False)
     f = models.BooleanField(default=False)
-    tf_answer = models.BooleanField(default=False)
     marks = models.FloatField(
         validators=[MinValueValidator(0), MaxValueValidator(100),],
         default=0,

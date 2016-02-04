@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import filters
+from rest_framework.authentication import TokenAuthentication
 from api.pagination import LargeResultsSetPagination
 from api.permissions import IsAdminUserOrReadOnly
 from api.serializers import BannedWordSerializer

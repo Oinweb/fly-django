@@ -19,10 +19,60 @@
         loadUserData();
                   
         $('.quiz-answer').on('click', function(){
-            $('#course-quiz-' + curPage + ' .quiz-answer.selected').removeClass('selected');
+                  
+            // Get the value of the letter.
+            var letter = $(this).attr('value');
+                             
+            // Update Model.
+            ajax_pick(letter);
+                             
+            // Update the View.
             $(this).addClass('selected');
         });
                   
         bindEventTouch($('#quiz-answers'));
     });
+    
+    
+    function ajax_pick(letter)
+    {
+        get_question_submission(
+            {{ submission.id }},
+            function(submission) {
+                // Check to see if the letter has already been selected.
+                if (submission[letter] == true) {
+                    // If the letter was selected as True then select it to be False.
+                    submission[letter] = 'False';
+                } else {
+                    // Make the particular letter be False.
+                    submission[letter] = 'True';
+                }
+                
+                // Update the letter.
+                set_question_submission(
+                    submission,
+                    function(awk) {
+                        console.log(awk);
+                    },
+                    function(nawk) {
+                        console.log(nawk);
+                    }
+                ); // end Set Question Submission
+            },
+            function(error_json) {
+                console.log(error_json);
+            }
+        ); // end Get Question Submission
+    }
+
+
+    function ajax_submit_question(is_final)
+    {
+        // Load the 'Finished' page if 'is_final' is true.
+        if (is_final) {
+            window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/finished';
+        } else {
+            window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';
+        }
+    }
 </script>
