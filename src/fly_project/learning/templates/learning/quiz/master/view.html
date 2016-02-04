@@ -2,21 +2,43 @@
 {% load staticfiles i18n %}
 {% block content %}
 
-<!-- ---------- dashboard ------------- -->
-<div data-role="page" id="dashboard">
+<!-- ---------- quiz ------------- -->
+<div data-role="page" style="background-color:#fff;" id="course-quiz-begin">
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    {% include 'learning/quiz/master/details/view_js.html' %}
+    {% include 'learning/quiz/master/view_js.html' %}
 
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            
+            <h2 class="ui-bar ui-bar-a ui-corner-all">{{ quiz.title|escape|safe }}</h2>
+            <div class="ui-body ui-body-a ui-corner-all mt10">
+                {{ quiz.description|escape|safe }}
+            </div>
         </div>
-    </div><!-- end CONTENT -->
-     
-    {% include "basepage/footer.html" %}
+    </div>
+    <!-- end CONTENT -->
+    
+    <!-- Footer -->
+    <div data-role="footer"
+        data-theme="b"
+     data-position="fixed"
+           data-id="footer-nav"
+    data-tap-toggle="false">
+        <button onclick="window.location='/{{ request.language }}/course/{{ quiz.course.id }}/';"
+                  class="btnCloseQuiz ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left fleft m5"
+                  style="background-color:darkred;">
+                {% trans "Close Quiz" %}
+        </button>
+        <button id="btnBeginQuiz"
+           onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/';"
+             class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
+             style="background-color:green;">
+             {% trans "Begin" %}
+        </button>
+    </div>
+    <!-- end Footer -->
 
 </div><!-- /page -->
 

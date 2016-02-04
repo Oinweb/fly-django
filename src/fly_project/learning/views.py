@@ -55,13 +55,13 @@ def course_page(request, course_id):
 
 
 @login_required(login_url='/authentication')
-def quiz_page(request, quiz_id, question_id):
+def quiz_home_page(request, quiz_id):
     try:
         quiz = Quiz.objects.get(id=quiz_id)
     except Quiz.DoesNotExist:
         quiz = None
     
-    return render(request, 'learning/course/details/view.html',{
+    return render(request, 'learning/quiz/master/view.html',{
         'settings': settings,
         'constants': constants,
         'quiz': quiz,

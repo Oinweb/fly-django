@@ -2,8 +2,8 @@
 {% load staticfiles i18n %}
 {% block content %}
 
-<!-- ---------- dashboard ------------- -->
-<div data-role="page" id="dashboard">
+<!-- ---------- course_details ------------- -->
+<div data-role="page" id="course_details">
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
@@ -28,8 +28,8 @@
                data-setup="{}">
                     <source src="/static/{{ course.video_url }}" type='video/mp4' />
                         <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a web browser that
-                            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            {% trans "To view this video please enable JavaScript, and consider upgrading to a web browser that" %}
+                            <a href="http://videojs.com/html5-video-support/" target="_blank">{% trans "supports HTML5 video" %}</a>
                         </p>
                 </video>
                 <p>{{ course.description }}</p>
@@ -37,7 +37,7 @@
                  data-icon="info"
                      class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow"
                    onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/';">
-                    <span>Take Quiz</span>
+                    <span>{% trans "Take Quiz" %}</span>
                 </button>
             </div>
         </div>
