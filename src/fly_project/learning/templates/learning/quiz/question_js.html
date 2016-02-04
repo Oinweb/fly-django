@@ -1,1 +1,28 @@
 {% load staticfiles i18n %}
+<script type="text/javascript">
+    var curPage = 0;;
+
+    function bindEventTouch(element) {
+        element.bind('tap', function(event, ui) {
+            if(element.hasClass('ui-collapsible-collapsed')) {
+                $('#confirm-popup2').popup('open');
+            }
+        });
+        element.bind('click', function(event, ui) {
+            if(element.hasClass('ui-collapsible-collapsed')) {
+                $('#confirm-popup2').popup('open');
+            }
+        });
+     }
+
+    $(document).ready(function(){
+        loadUserData();
+                  
+        $('.quiz-answer').on('click', function(){
+            $('#course-quiz-' + curPage + ' .quiz-answer.selected').removeClass('selected');
+            $(this).addClass('selected');
+        });
+                  
+        bindEventTouch($('#quiz-answers'));
+    });
+</script>

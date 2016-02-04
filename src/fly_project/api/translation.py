@@ -33,7 +33,7 @@ class QuizTranslationOptions(TranslationOptions):
 
 @register(Question)
 class QuestionTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'a', 'b', 'c', 'd', 'e', 'f', 'true_choice', 'false_choice',)
+    fields = ('text', 'a', 'b', 'c', 'd', 'e', 'f',)
 
 
 # Register Objects to have Translations when in Admin

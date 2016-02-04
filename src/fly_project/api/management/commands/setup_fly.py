@@ -182,8 +182,7 @@ class Command(BaseCommand):
                 course_id = int(json_question['course_id'])
                 quiz_id = int(json_question['quiz_id'])
                 num = int(json_question['num'])
-                title = json_question['title']
-                description = json_question['description']
+                text = json_question['text']
                 type = int(json_question['type'])
                 a = json_question['a']
                 a_is_correct = bool(json_question['a_is_correct'])
@@ -197,16 +196,12 @@ class Command(BaseCommand):
                 e_is_correct = bool(json_question['e_is_correct'])
                 f = json_question['f']
                 f_is_correct = bool(json_question['f_is_correct'])
-                true_choice = json_question['true_choice']
-                false_choice = json_question['false_choice']
-                answer = bool(json_question['answer'])
     
                 try:
                     question = Question.objects.get(id=id)
                     question.quiz_id=quiz_id
                     question.num=num
-                    question.title=title
-                    question.description=description
+                    question.text=text
                     question.type=type
                     question.a=a
                     question.a_is_correct=a_is_correct
@@ -220,9 +215,6 @@ class Command(BaseCommand):
                     question.e_is_correct=e_is_correct
                     question.f=f
                     question.f_is_correct=f_is_correct
-                    question.true_choice=true_choice
-                    question.false_choice=false_choice
-                    question.answer=answer
                     question.save()
                     print("Question - Updated", id)
                 except Question.DoesNotExist:
@@ -230,8 +222,7 @@ class Command(BaseCommand):
                         id=id,
                         quiz_id=quiz_id,
                         num=num,
-                        title=title,
-                        description=description,
+                        text=text,
                         type=type,
                         a=a,
                         a_is_correct=a_is_correct,
@@ -244,10 +235,7 @@ class Command(BaseCommand):
                         e=e,
                         e_is_correct=e_is_correct,
                         f=f,
-                        f_is_correct=f_is_correct,
-                        true_choice=true_choice,
-                        false_choice=false_choice,
-                        answer=answer,
+                        f_is_correct=f_is_correct
                     )
                     print("Question - Inserted", id)
 

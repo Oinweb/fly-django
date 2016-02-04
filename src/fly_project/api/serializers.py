@@ -119,7 +119,7 @@ class QuizSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ('id', 'created', 'quiz', 'num', 'title', 'description', 'type', 'a', 'b', 'c', 'd', 'f', 'a_en', 'b_en', 'c_en', 'd_en', 'f_en', 'a_es', 'b_es', 'c_es', 'd_es', 'f_es', 'a_fr', 'b_fr', 'c_fr', 'd_fr', 'f_fr', 'a_is_correct', 'b_is_correct', 'c_is_correct', 'd_is_correct', 'e', 'e_is_correct', 'f_is_correct', 'true_choice', 'false_choice', 'true_choice_en', 'false_choice_en', 'true_choice_es', 'false_choice_es', 'true_choice_fr', 'false_choice_fr', 'answer',)
+        fields = ('id', 'created', 'quiz', 'num', 'text', 'type', 'a', 'b', 'c', 'd', 'f', 'a_en', 'b_en', 'c_en', 'd_en', 'f_en', 'a_es', 'b_es', 'c_es', 'd_es', 'f_es', 'a_fr', 'b_fr', 'c_fr', 'd_fr', 'f_fr', 'a_is_correct', 'b_is_correct', 'c_is_correct', 'd_is_correct', 'e', 'e_is_correct', 'f_is_correct',)
 
 
 class EnrolledCourseSerializer(serializers.ModelSerializer):

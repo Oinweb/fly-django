@@ -13,7 +13,7 @@ from api.models import Question
 class QuestionFilter(django_filters.FilterSet):
     class Meta:
         model = Question
-        fields = ['id', 'created', 'quiz', 'num', 'title', 'description', 'type', 'a', 'a_is_correct', 'b', 'b_is_correct', 'c', 'c_is_correct', 'd', 'd_is_correct', 'e', 'e_is_correct', 'f', 'f_is_correct', 'true_choice', 'false_choice', 'answer',]
+        fields = ['id', 'created', 'quiz', 'num', 'text', 'type', 'a', 'a_is_correct', 'b', 'b_is_correct', 'c', 'c_is_correct', 'd', 'd_is_correct', 'e', 'e_is_correct', 'f', 'f_is_correct',]
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

@@ -13,12 +13,34 @@
     <div data-role="content">
         <div class="text-center">
             <ul data-role="listview" data-inset="true">
-                <li data-role="list-divider"><h4>{{ question.num }}. This is question 1...</h4></li>
-                <li class="quiz-answer">This is answer A</li>
-                <li class="quiz-answer">This is answer B</li>
-                <li class="quiz-answer">This is answer C</li>
-                <li class="quiz-answer">This is answer D</li>
-                <li class="quiz-answer">Right Answer</li>
+                <li data-role="list-divider">
+                    <h4>
+                        {% blocktrans with num=question.num text=question.text|escape|safe %}{{ num }}. {{ text }}{% endblocktrans %}
+                    </h4>
+                </li>
+                {% if question.a %}
+                    <li class="quiz-answer">{{ question.a|escape|safe }}</li>
+                {% endif %}
+                
+                {% if question.b %}
+                    <li class="quiz-answer">{{ question.b|escape|safe }}</li>
+                {% endif %}
+                
+                {% if question.c %}
+                    <li class="quiz-answer">{{ question.c|escape|safe }}</li>
+                {% endif %}
+                
+                {% if question.d %}
+                    <li class="quiz-answer">{{ question.d|escape|safe }}</li>
+                {% endif %}
+                
+                {% if question.e %}
+                    <li class="quiz-answer">{{ question.e|escape|safe }}</li>
+                {% endif %}
+                
+                {% if question.f %}
+                    <li class="quiz-answer">{{ question.f|escape|safe }}</li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -26,23 +48,37 @@
     
     <!-- Footer -->
     <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
-        <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ previous }}/';"
-                  class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-left btnBack fleft m5">
-            {% trans "Back" %}
-        </button>
-        <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';"
-                  class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-left btnNext fright m5">
-            {% trans "Next" %}
-        </button>
+        {% if previous %}
+            <!-- Return to previous Question page. -->
+            <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ previous }}/';"
+                      class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-left btnBack fleft m5">
+                {% trans "Back" %}
+            </button>
+        {% else %}
+            <!-- Return to Quiz home page. -->
+            <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/';"
+                      class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-left btnBack fleft m5">
+                {% trans "Back" %}
+            </button>
+        {% endif %}
+        
+        {% if next %}
+            <!-- Load to Next Question page. -->
+            <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';"
+                      class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-left btnNext fright m5">
+                {% trans "Next" %}
+            </button>
+        {% else %}
+            <!-- Load to Finished page. -->
+            <button id="btnFinishQuiz"
+               onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/finished';"
+                 class="fright m5 ui-btn ui-icon-check ui-btn-icon-left ui-corner-all"
+                 style="background-color:green;">
+                {% trans "Score Quiz" %}
+            </button>
+        {% endif %}
     </div>
     <!-- end Footer -->
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
-
 {% endblock content %}

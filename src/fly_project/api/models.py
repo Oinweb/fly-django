@@ -367,8 +367,7 @@ class Question(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         default=1,
     )
-    title = models.CharField(max_length=63, null=True, blank=True)
-    description = models.CharField(max_length=511, null=True, blank=True)
+    text = models.CharField(max_length=511, null=True, blank=True)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(2)],
         choices=constants.QUESTION_TYPE_OPTIONS,
@@ -387,10 +386,6 @@ class Question(models.Model):
     e_is_correct = models.BooleanField(default=False)
     f = models.CharField(max_length=255, null=True, blank=True)
     f_is_correct = models.BooleanField(default=False)
-
-    true_choice = models.CharField(max_length=127, null=True, blank=True,)
-    false_choice = models.CharField(max_length=127, null=True, blank=True,)
-    answer = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)

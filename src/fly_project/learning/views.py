@@ -123,7 +123,8 @@ def quiz_question_page(request, quiz_id, question_id):
     except Question.DoesNotExist:
         return HttpResponseRedirect(dashboard_url)
     
-    # Fetch the User's Submission and if there is no Submission then create it.
+    # Fetch the User's Submission for this particular Question and if there
+    # is no Submission for it then create it here.
     try:
         submission = QuestionSubmission.objects.get(question_id=question_id)
     except QuestionSubmission.DoesNotExist:
@@ -134,15 +135,31 @@ def quiz_question_page(request, quiz_id, question_id):
             type=question.type,
         )
 
-    # Get the next and previous questions from the current. 
-    
+    # Fetch all the questions that belong to this Quiz.
+    questions = Question.objects.filter(quiz_id=quiz_id).order_by("num")
+
+    # Get the next and previous questions from the current.
+    next = None
+    previous = None
+    if len(questions) == 1:
+        pass
+    else:
+        pass
+
     return render(request, 'learning/quiz/question.html',{
         'settings': settings,
         'constants': constants,
         'quiz_id': int(quiz_id),
-        'next': 1,
-        'current': question,
-        'previous': 1,
+        'next': next,
+        'question': question,
+        'previous': previous,
         'submission': submission,
     })
 
+
+def quiz_final_question_page(request, quiz_id):
+    return render(request, 'learning/quiz/finished.html',{
+        'settings': settings,
+        'constants': constants,
+        'quiz_id': int(quiz_id),
+    })
