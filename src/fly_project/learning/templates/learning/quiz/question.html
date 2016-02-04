@@ -1,0 +1,48 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- quiz ------------- -->
+<div data-role="page" style="background-color:#fff;" id="course-quiz-1">
+
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    {% include 'learning/quiz/question_js.html' %}
+
+    <!-- CONTENT -->
+    <div data-role="content">
+        <div class="text-center">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider"><h4>{{ question.num }}. This is question 1...</h4></li>
+                <li class="quiz-answer">This is answer A</li>
+                <li class="quiz-answer">This is answer B</li>
+                <li class="quiz-answer">This is answer C</li>
+                <li class="quiz-answer">This is answer D</li>
+                <li class="quiz-answer">Right Answer</li>
+            </ul>
+        </div>
+    </div>
+    <!-- end CONTENT -->
+    
+    <!-- Footer -->
+    <div data-role="footer" data-theme="b" data-position="fixed" data-id="footer-nav" data-tap-toggle="false">
+        <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ previous }}/';"
+                  class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-left btnBack fleft m5">
+            {% trans "Back" %}
+        </button>
+        <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';"
+                  class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-left btnNext fright m5">
+            {% trans "Next" %}
+        </button>
+    </div>
+    <!-- end Footer -->
+
+</div><!-- /page -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+</script>
+
+{% endblock content %}

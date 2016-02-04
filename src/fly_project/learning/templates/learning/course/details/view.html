@@ -17,9 +17,9 @@
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            <h2 class="ui-bar ui-bar-a ui-corner-all">{{ course.title }}</h2>
+            <h2 class="ui-bar ui-bar-a ui-corner-all">{{ course.title|escape|safe }}</h2>
             <div class="ui-body ui-body-a ui-corner-all">
-                <p>{{ course.summary }}</p>
+                <p>{{ course.summary|escape|safe }}</p>
                 <video id="my-video"
                     class="video-js"
          controls preload="auto"
@@ -32,7 +32,7 @@
                             <a href="http://videojs.com/html5-video-support/" target="_blank">{% trans "supports HTML5 video" %}</a>
                         </p>
                 </video>
-                <p>{{ course.description }}</p>
+                <p>{{ course.description|escape|safe }}</p>
                 <button id="btnTakeQuiz"
                  data-icon="info"
                      class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow"

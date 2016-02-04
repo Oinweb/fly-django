@@ -7,7 +7,7 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    {% include 'learning/quiz/master/view_js.html' %}
+    {% include 'learning/quiz/start_js.html' %}
 
     <!-- CONTENT -->
     <div data-role="content">
@@ -31,12 +31,16 @@
                   style="background-color:darkred;">
                 {% trans "Close Quiz" %}
         </button>
-        <button id="btnBeginQuiz"
-           onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/';"
-             class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
-             style="background-color:green;">
-             {% trans "Begin" %}
-        </button>
+        {% for question in questions.all %}
+            {% if question.num == 1 %}
+                <button id="btnBeginQuiz"
+                   onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/question/{{ question.id }}/';"
+                     class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
+                     style="background-color:green;">
+                    {% trans "Begin" %}
+                </button>
+            {% endif %}
+        {% endfor %}
     </div>
     <!-- end Footer -->
 

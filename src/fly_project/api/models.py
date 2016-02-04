@@ -423,7 +423,7 @@ class QuizSubmission(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    course = models.ForeignKey(EnrolledCourse)
+    course = models.ForeignKey(Course,)
     user = models.ForeignKey(User, db_index=True,)
     quiz = models.ForeignKey(Quiz, db_index=True,)
     finished = models.DateTimeField(null=True, blank=True,)
@@ -445,7 +445,8 @@ class QuestionSubmission(models.Model):
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, db_index=True,)
-    quiz = models.ForeignKey(QuizSubmission)
+    question = models.ForeignKey(Question, db_index=True,)
+    quiz = models.ForeignKey(Quiz)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(2)],
         choices=constants.QUESTION_TYPE_OPTIONS,

@@ -15,8 +15,8 @@
             {% for course in unlocked_courses.all %}
             <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box">
                 <img src="/static/{{ course.image }}" class="course-img" />
-                <h3>{{ course.title }}</h3>
-                <p>{{ course.summary }}</p>
+                <h3>{{ course.title|escape|safe }}</h3>
+                <p>{{ course.summary|escape|safe }}</p>
                 {% if course.duration == 5 %}
                     <small class="short-course">Duration: 5 minutes</small>
                 {% elif course.duration == 30 %}
@@ -45,8 +45,8 @@
                     </button>
                 </div>
                 <img src="/static/{{ course.image }}" class="course-img locked-img" />
-                <h3>{{ course.title }}</h3>
-                <p>{{ course.summary }}</p>
+                <h3>{{ course.title|escape|safe }}</h3>
+                <p>{{ course.summary|escape|safe }}</p>
                 {% if course.duration == 5 %}
                 <small class="short-course">Duration: 5 minutes</small>
                 {% elif course.duration == 30 %}
