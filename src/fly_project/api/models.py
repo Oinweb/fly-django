@@ -423,8 +423,9 @@ class QuizSubmission(models.Model):
     
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, db_index=True,)
     course = models.ForeignKey(EnrolledCourse)
+    user = models.ForeignKey(User, db_index=True,)
+    quiz = models.ForeignKey(Quiz, db_index=True,)
     finished = models.DateTimeField(null=True, blank=True,)
     is_finished = models.BooleanField(default=False)
     marks = models.FloatField(

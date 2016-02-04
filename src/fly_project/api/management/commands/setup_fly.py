@@ -9,6 +9,9 @@ from fly_project import constants
 from api.models import XPLevel
 from api.models import Badge
 from api.models import Course
+from api.models import Quiz
+from api.models import Question
+
 
 class Command(BaseCommand):
     """
@@ -146,6 +149,109 @@ class Command(BaseCommand):
                         course.prerequisites.add(prerequisite)
                     print("Course - Inserted", id)
 
+
+        # Open up our 'quizzes.json' file and import our settings.
+        with open('./api/management/commands/quizzes.json') as data_file:
+            json_data = json.load(data_file)
+            for json_quiz in json_data['quizzes']:
+                # Extract the JSON values
+                id = int(json_quiz['id'])
+                course_id = int(json_quiz['course_id'])
+                title = json_quiz['title']
+                description = json_quiz['description']
+
+                try:
+                    quiz = Quiz.objects.get(id=id)
+                    print("Quiz - Updated", id)
+                except Quiz.DoesNotExist:
+                    quiz = Quiz.objects.create(
+                        id=id,
+                        course_id=course_id,
+                        title=title,
+                        description=description,
+                    )
+                    print("Quiz - Inserted", id)
+
+    
+        # Open up our 'quizzes.json' file and import our settings.
+        with open('./api/management/commands/questions.json') as data_file:
+            json_data = json.load(data_file)
+            for json_question in json_data['questions']:
+                # Extract the JSON values
+                id = int(json_question['id'])
+                course_id = int(json_question['course_id'])
+                quiz_id = int(json_question['quiz_id'])
+                num = int(json_question['num'])
+                title = json_question['title']
+                description = json_question['description']
+                type = int(json_question['type'])
+                a = json_question['a']
+                a_is_correct = bool(json_question['a_is_correct'])
+                b = json_question['b']
+                b_is_correct = bool(json_question['b_is_correct'])
+                c = json_question['c']
+                c_is_correct = bool(json_question['c_is_correct'])
+                d = json_question['d']
+                d_is_correct = bool(json_question['d_is_correct'])
+                e = json_question['e']
+                e_is_correct = bool(json_question['e_is_correct'])
+                f = json_question['f']
+                f_is_correct = bool(json_question['f_is_correct'])
+                true_choice = json_question['true_choice']
+                false_choice = json_question['false_choice']
+                answer = bool(json_question['answer'])
+    
+                try:
+                    question = Question.objects.get(id=id)
+                    question.quiz_id=quiz_id
+                    question.num=num
+                    question.title=title
+                    question.description=description
+                    question.type=type
+                    question.a=a
+                    question.a_is_correct=a_is_correct
+                    question.b=b
+                    question.b_is_correct=b_is_correct
+                    question.c=c
+                    question.c_is_correct=c_is_correct
+                    question.d=d
+                    question.d_is_correct=d_is_correct
+                    question.e=e
+                    question.e_is_correct=e_is_correct
+                    question.f=f
+                    question.f_is_correct=f_is_correct
+                    question.true_choice=true_choice
+                    question.false_choice=false_choice
+                    question.answer=answer
+                    question.save()
+                    print("Question - Updated", id)
+                except Question.DoesNotExist:
+                    question = Question.objects.create(
+                        id=id,
+                        quiz_id=quiz_id,
+                        num=num,
+                        title=title,
+                        description=description,
+                        type=type,
+                        a=a,
+                        a_is_correct=a_is_correct,
+                        b=b,
+                        b_is_correct=b_is_correct,
+                        c=c,
+                        c_is_correct=c_is_correct,
+                        d=d,
+                        d_is_correct=d_is_correct,
+                        e=e,
+                        e_is_correct=e_is_correct,
+                        f=f,
+                        f_is_correct=f_is_correct,
+                        true_choice=true_choice,
+                        false_choice=false_choice,
+                        answer=answer,
+                    )
+                    print("Question - Inserted", id)
+
+
         #-----------------
         # BUGFIX: We need to make sure our keys are synchronized.
         #-----------------
@@ -157,6 +263,8 @@ class Command(BaseCommand):
             {"tablename": "fly_xp_levels", "primarykey": "id",},
             {"tablename": "fly_badges", "primarykey": "id",},
             {"tablename": "fly_courses", "primarykey": "id",},
+            {"tablename": "fly_quizzes", "primarykey": "id",},
+            {"tablename": "fly_questions", "primarykey": "id",},
         ]
         for table in tables_info:
             sql = table['tablename'] + '_' + table['primarykey'] + '_seq'

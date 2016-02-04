@@ -1,0 +1,28 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "course_id": 1,
+            "quiz_id": 1,
+            "num": 1,
+            "title": "Finances 101 Quiz",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.",
+            "type": 1,
+            "a": "This is answer A",
+            "a_is_correct": false,
+            "b": "This is answer B",
+            "b_is_correct": false,
+            "c": "This is answer C",
+            "c_is_correct": false,
+            "d": "This is answer D",
+            "d_is_correct": false,
+            "e": "This is answer E",
+            "e_is_correct": false,
+            "f": "Right Answer",
+            "f_is_correct": true,
+            "true_choice": "",
+            "false_choice": "",
+            "answer": false
+        }
+    ]
+}

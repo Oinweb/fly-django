@@ -8,22 +8,44 @@
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
     {% include 'learning/course/details/view_js.html' %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            loadUserData();
+        });
+    </script>
 
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            
+            <h2 class="ui-bar ui-bar-a ui-corner-all">{{ course.title }}</h2>
+            <div class="ui-body ui-body-a ui-corner-all">
+                <p>{{ course.summary }}</p>
+                <video id="my-video"
+                    class="video-js"
+         controls preload="auto"
+                    width="255px"
+                   poster="/static/{{ course.image }}"
+               data-setup="{}">
+                    <source src="/static/{{ course.video_url }}" type='video/mp4' />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                </video>
+                <p>{{ course.description }}</p>
+                <button id="btnTakeQuiz"
+                 data-icon="info"
+                     class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow"
+                   onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/';">
+                    <span>Take Quiz</span>
+                </button>
+            </div>
         </div>
-    </div><!-- end CONTENT -->
+    </div>
+    <!-- end CONTENT -->
      
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
 
 {% endblock content %}
