@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n learning_extras %}
 {% block content %}
 
 <!-- ---------- learning ------------- -->
@@ -28,7 +28,11 @@
                 {% endif %}
                 <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course"
                       onclick="window.location='/{{ request.language }}/course/{{ course.id }}/';">
-                    {% trans "Begin Course" %}
+                      {% if request.user|has_completed:course %}
+                          {% trans "Finished" %}
+                      {% else %}
+                          {% trans "Begin Course" %}
+                      {% endif %}
                 </button>
             </div>
             {% endfor %}
@@ -38,12 +42,14 @@
             </h3>
         
             {% for course in locked_courses.all %}
-            <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box locked">
-                <div class="locked-icon">
-                    <button class="ui-btn-inline">
-                        <i class="fa fa-5x fa-lock"></i>
-                    </button>
-                </div>
+            <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box {% if request.user|has_prerequisites:course == False %}locked{% endif %}">
+                {% if request.user|has_prerequisites:course == False %}
+                    <div class="locked-icon">
+                        <button class="ui-btn-inline">
+                            <i class="fa fa-5x fa-lock"></i>
+                        </button>
+                    </div>
+                {% endif %}
                 <img src="/static/{{ course.image }}" class="course-img locked-img" />
                 <h3>{{ course.title|escape|safe }}</h3>
                 <p>{{ course.summary|escape|safe }}</p>
@@ -56,7 +62,8 @@
                 {% else %}
                 <small class="short-course">Duration: Unknown duration!</small>
                 {% endif %}
-                <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course" disabled
+                <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course"
+                    {% if request.user|has_prerequisites:course == False %}disabled{% endif %}
                       onclick="window.location='/{{ request.language }}/course/{{ course.id }}/';">
                     {% trans "Begin Course" %}
                 </button>
