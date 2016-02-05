@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.management import call_command
 from fly_project import settings
 from fly_project import constants
 from api.models import Course
@@ -95,7 +96,7 @@ def quiz_home_page(request, quiz_id):
     # Fetch the User's Quiz Submission and if there is no Submission then
     # create it.
     try:
-        submission = QuizSubmission.objects.get(quiz=quiz)
+        submission = QuizSubmission.objects.get(quiz=quiz,user_id=request.user.id)
     except QuizSubmission.DoesNotExist:
         submission = QuizSubmission.objects.create(
             user_id=request.user.id,
@@ -158,8 +159,27 @@ def quiz_question_page(request, quiz_id, question_id):
 
 
 def quiz_final_question_page(request, quiz_id):
+    # The URL to be used to redirect if anything is missing.
+    dashboard_url = '/' + request.language + '/dashboard'
+    
+    # Fetch the submitted Quiz for the id or redirect to dashboard.
+    try:
+        quiz_submission = QuizSubmission.objects.get(
+            quiz_id=int(quiz_id),
+            user_id=request.user.id,
+        )
+    except QuestionSubmission.DoesNotExist:
+        return HttpResponseRedirect(dashboard_url)
+    print(quiz_submission)
+
+    # Run the Command for evaluating the Quiz and tallying up the marks.
+    call_command('evaluate_quiz',str(quiz_submission.id))
+
+    # Fetch again the submitted Quiz
+
     return render(request, 'learning/quiz/finished.html',{
         'settings': settings,
         'constants': constants,
         'quiz_id': int(quiz_id),
+        'quiz_submission': quiz_submission,
     })

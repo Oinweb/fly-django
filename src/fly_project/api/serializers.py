@@ -125,19 +125,19 @@ class QuestionSerializer(serializers.ModelSerializer):
 class EnrolledCourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = EnrolledCourse
-        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'marks',)
+        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'final_mark',)
 
 
 class QuizSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuizSubmission
-        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'marks',)
+        fields = ('id', 'created', 'user', 'course', 'finished', 'is_finished', 'final_mark',)
 
 
 class QuestionSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionSubmission
-        fields = ('id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'marks',)
+        fields = ('id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'mark',)
 
 
 class MeSerializer(serializers.ModelSerializer):

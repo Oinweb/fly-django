@@ -13,7 +13,7 @@ from api.models import QuestionSubmission
 class QuestionSubmissionFilter(django_filters.FilterSet):
     class Meta:
         model = QuestionSubmission
-        fields = ['id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'marks',]
+        fields = ['id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'mark',]
 
 
 class QuestionSubmissionViewSet(viewsets.ModelViewSet):

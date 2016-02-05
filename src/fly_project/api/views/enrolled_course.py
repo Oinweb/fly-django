@@ -13,7 +13,7 @@ from api.models import EnrolledCourse
 class EnrolledCourseFilter(django_filters.FilterSet):
     class Meta:
         model = EnrolledCourse
-        fields = ['id', 'created', 'user', 'course', 'finished', 'is_finished', 'marks',]
+        fields = ['id', 'created', 'user', 'course', 'finished', 'is_finished', 'final_mark',]
 
 
 class EnrolledCourseViewSet(viewsets.ModelViewSet):

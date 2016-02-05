@@ -7,49 +7,15 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    {% include 'learning/quiz/finished_js.html' %}
+    <script>
+    </script>
 
     <!-- CONTENT -->
     <div data-role="content" class="ui-content" role="main">
         <div class="text-center">
             <h2>Quiz Finished!</h2>
-            <h4 class="quiz-score">Score: <span style="color:yellowgreen">66%</span></h4>
-            <div class="social-sharing">
-                <share-button class="sharer-0" style="">
-                    Share
-                    <div class="sb-social load sb-top sb-center networks-4">
-                        <ul>
-                            <li class="pinterest disabled" data-network="pinterest"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="twitter enabled" data-network="twitter"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="facebook enabled" data-network="facebook"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="whatsapp disabled" data-network="whatsapp"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="googlePlus enabled" data-network="googlePlus"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="reddit disabled" data-network="reddit"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="linkedin disabled" data-network="linkedin"><a onclick="return false" class="ui-link"></a></li>
-                            <li class="email enabled" data-network="email"><a onclick="return false" class="ui-link"></a></li>
-                        </ul>
-                    </div>
-                </share-button>
-            </div>
-            <div data-role="collapsible" style="margin-top:20px;" id="quiz-answers" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed">
-                <h4 style="background-color: #779ECB;" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-plus">Show Correct Answers<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4>
-                <div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
-                    <ul data-role="listview" class="ui-listview">
-                        <li class="ui-li-static ui-body-inherit ui-first-child">
-                            <h5>Question 1</h5>
-                            <p>E - Correct answer text here</p>
-                        </li>
-                        <li class="ui-li-static ui-body-inherit">
-                            <h5>Question 2</h5>
-                            <p>A - Correct answer text here</p>
-                        </li>
-                        <li class="ui-li-static ui-body-inherit ui-last-child">
-                            <h5>Question 3</h5>
-                            <p>C - Correct answer text here</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <h4 class="quiz-score">Score: <span style="color:yellowgreen">{{ quiz_submission.final_mark }}%</span></h4>
+            
         </div>
     </div>
     <!-- end CONTENT -->
@@ -66,7 +32,7 @@
             {% trans "Try Again" %}
         </button>
         <button id="btnBeginQuiz"
-           onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/question/{{ question.id }}/';"
+           onclick="window.location='/{{ request.language }}/course/{{ quiz_submission.course.id }}/';"
              class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
              style="background-color:green;">
             {% trans "Finish Quiz" %}

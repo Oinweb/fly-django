@@ -402,7 +402,7 @@ class EnrolledCourse(models.Model):
     course = models.ForeignKey(Course)
     finished = models.DateTimeField(null=True, blank=True,)
     is_finished = models.BooleanField(default=False)
-    marks = models.FloatField(
+    final_mark = models.FloatField(
         validators=[MinValueValidator(0), MaxValueValidator(100),],
         default=0,
     )
@@ -423,7 +423,7 @@ class QuizSubmission(models.Model):
     quiz = models.ForeignKey(Quiz, db_index=True,)
     finished = models.DateTimeField(null=True, blank=True,)
     is_finished = models.BooleanField(default=False)
-    marks = models.FloatField(
+    final_mark = models.FloatField(
         validators=[MinValueValidator(0), MaxValueValidator(100),],
         default=0,
     )
@@ -454,7 +454,7 @@ class QuestionSubmission(models.Model):
     d = models.BooleanField(default=False)
     e = models.BooleanField(default=False)
     f = models.BooleanField(default=False)
-    marks = models.FloatField(
+    mark = models.FloatField(
         validators=[MinValueValidator(0), MaxValueValidator(100),],
         default=0,
     )
@@ -483,11 +483,6 @@ class Me(models.Model):
     xplevel = models.ForeignKey(XPLevel)
     badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)
     courses = models.ManyToManyField(EnrolledCourse, blank=True, related_name='fly_user_enrolled_courses',)
-    
-    # Track the current goals the User is on at the moment.
-#    savings = models.ForeignKey(Goal, related_name='fly_user_savings', null=True, blank=True,)
-#    credit = models.ForeignKey(Goal, related_name='fly_user_credit', null=True, blank=True,)
-#    goal = models.ForeignKey(Goal, related_name='fly_user_mygoal', null=True, blank=True,)
 
     def __str__(self):
         return str(self.id)
