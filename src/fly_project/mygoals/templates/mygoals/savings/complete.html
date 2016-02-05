@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n mygoals_extras %}
 {% block content %}
 
 <!-- ---------- My Goals: Savings Final ------------- -->
@@ -13,16 +13,7 @@
             <div class="my-boxes red-box goals-box">
                 <img src="{% static 'img/savings.png' %}" class="goals-img" />
                 <h2>{% trans "Savings" %}</h2>
-                <p>
-                {% if savings_goal.period == 1 %}
-                    {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
-                        Did you complete your goal, "I want to save {{ amount }} every {{ times }} weeks"?
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
-                        Did you complete your goal, "I want to save {{ amount }} every {{ times }} months"?
-                    {% endblocktrans %}
-                {% endif %}
+                <p>{% trans "Did you complete your goal" %}, {% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}?
                 </p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
                     <option selected="true" value="False">{% trans "No" %}</option>

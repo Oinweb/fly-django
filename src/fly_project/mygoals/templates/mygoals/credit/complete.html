@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n mygoals_extras %}
 {% block content %}
 
 <!-- ---------- My Goals: Credit Final ------------- -->
@@ -13,17 +13,7 @@
             <div class="my-boxes blue-box goals-box">
                 <img src="{% static 'img/oinweb-fly-credit.png' %}" />
                 <h2>{% trans "Credit" %}</h2>
-                <p>
-                {% if credit_goal.period == 1 %}
-                    {% blocktrans with points=credit_goal.points times=credit_goal.times %}
-                        Did you complete your goal, "I want to raise my credit points by {{ points }} every {{ times }} weeks"?
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans with points=credit_goal.points times=credit_goal.times %}
-                        Did you complete your goal, "I want to raise my credit points by {{ points }} every {{ times }} months"?
-                    {% endblocktrans %}
-                {% endif %}
-                </p>
+                <p>{% show_goal_text credit_goal constants.CREDIT_MYGOAL_TYPE %}</p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
                     <option selected="true" value="False">{% trans "No" %}</option>
                     <option value="True">{% trans "Yes" %}</option>

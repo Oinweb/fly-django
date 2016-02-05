@@ -1,5 +1,5 @@
 {% extends 'basepage/base.html' %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n mygoals_extras %}
 {% block content %}
 
 <!-- ---------- My Goals: Final Complete ------------- -->
@@ -13,7 +13,7 @@
             <div class="my-boxes green-box goals-box">
                 <img src="{% static 'img/oinweb-fly-goals.png' %}" />
                 <h2>{% trans "Goal" %}</h2>
-                <p>{% blocktrans with amount=final_goal.amount want=final_goal.for_want other_want=final_goal.for_other_want %}Did you complete your goal, "I want to save ${{ amount }} for {% endblocktrans %}{% if final_goal.for_want == 1 %}{% trans "a House" %}{% elif final_goal.for_want == 2 %}{% trans "Business" %}{% elif final_goal.for_want == 3 %}{% trans "a Vacation" %}{% elif final_goal.for_want == 4 %}{% trans "Retirement" %}{% elif final_goal.for_want == 5 %}{% trans "General Savings" %}{% elif final_goal.for_want == 6 %}{{ other_want }}{% endif %}"?</p>
+                <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
                     <option selected="true" value="False">{% trans "No" %}</option>
                     <option value="True">{% trans "Yes" %}</option>
