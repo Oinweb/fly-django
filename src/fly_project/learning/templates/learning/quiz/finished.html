@@ -13,9 +13,49 @@
     <!-- CONTENT -->
     <div data-role="content" class="ui-content" role="main">
         <div class="text-center">
-            <h2>Quiz Finished!</h2>
-            <h4 class="quiz-score">Score: <span style="color:yellowgreen">{{ quiz_submission.final_mark }}%</span></h4>
+            <h2>{% trans "Quiz Finished!" %}</h2>
+            <h4 class="quiz-score">{% trans "Score:" %} <span style="color:yellowgreen">{{ quiz_submission.final_mark }}%</span></h4>
+            <div class="social-sharing">
+                <share-button></share-button>
+            </div>
             
+            {% if quiz_submission.final_mark >= 100 %}
+                <h5>{% trans "Perfect Quiz!" %}</h5><p>{% trans "All the questions where correct!" %}</p>
+            {% else %}
+                <div data-role="collapsible" style="margin-top:20px;" id="quiz-answers" style="background-color: #779ECB;color:#fff;">
+                    <h4 style="background-color: #779ECB;">{% trans "Show Correct Answers" %}</h4>
+                    <ul data-role="listview">
+                        {% for question_submission in question_submissions.all %}
+                        <li>
+                            <h5>{% trans "Question" %} {{ question_submission.question.num }}</h5>
+                            {% if question_submission.question.a_is_correct %}
+                                <p>A - {{ question_submission.question.a }}</p>
+                            {% endif %}
+                            
+                            {% if question_submission.question.b_is_correct %}
+                            <p>B - {{ question_submission.question.b }}</p>
+                            {% endif %}
+                            
+                            {% if question_submission.question.c_is_correct %}
+                            <p>C - {{ question_submission.question.c }}</p>
+                            {% endif %}
+                            
+                            {% if question_submission.question.d_is_correct %}
+                            <p>D - {{ question_submission.question.d }}</p>
+                            {% endif %}
+                            
+                            {% if question_submission.question.e_is_correct %}
+                            <p>E - {{ question_submission.question.e }}</p>
+                            {% endif %}
+                            
+                            {% if question_submission.question.f_is_correct %}
+                            <p>F - {{ question_submission.question.f }}</p>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
         </div>
     </div>
     <!-- end CONTENT -->

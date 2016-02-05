@@ -65,7 +65,9 @@ class Command(BaseCommand):
 
             if is_right:
                 question_submission.mark = 1
-                question_submission.save()
+            else:
+                question_submission.mark = 0
+            question_submission.save()
 
         # Step 3: Iterate through all the submitted Questions and perform a
         # total mark tally of the Quiz and then mark the Quiz either a success

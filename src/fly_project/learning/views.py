@@ -170,16 +170,27 @@ def quiz_final_question_page(request, quiz_id):
         )
     except QuestionSubmission.DoesNotExist:
         return HttpResponseRedirect(dashboard_url)
-    print(quiz_submission)
+
+    # Fetch all the submitted Questions for the particular Quiz, else redirect
+    # to dashboard if nothing exists.
+    try:
+        question_submissions = QuestionSubmission.objects.filter(quiz=quiz_submission.quiz)
+    except QuestionSubmission.DoesNotExist:
+        return HttpResponseRedirect(dashboard_url)
 
     # Run the Command for evaluating the Quiz and tallying up the marks.
     call_command('evaluate_quiz',str(quiz_submission.id))
 
-    # Fetch again the submitted Quiz
+    # Fetch again the newly evaluated submitted Quiz.
+    quiz_submission = QuizSubmission.objects.get(
+        quiz_id=int(quiz_id),
+        user_id=request.user.id,
+    )
 
     return render(request, 'learning/quiz/finished.html',{
         'settings': settings,
         'constants': constants,
         'quiz_id': int(quiz_id),
         'quiz_submission': quiz_submission,
+        'question_submissions': question_submissions,
     })
