@@ -104,6 +104,18 @@ def quiz_home_page(request, quiz_id):
             course=quiz.course,
         )
 
+    # Iterate to any existing submitted Questions and reset the selected
+    # values so the Quiz is brand new.
+    question_submissions = QuestionSubmission.objects.filter(quiz=quiz)
+    for question_submission in question_submissions.all():
+        question_submission.a = False
+        question_submission.b = False
+        question_submission.c = False
+        question_submission.d = False
+        question_submission.e = False
+        question_submission.f = False
+        question_submission.save()
+
     return render(request, 'learning/quiz/start.html',{
         'settings': settings,
         'constants': constants,
@@ -186,6 +198,19 @@ def quiz_final_question_page(request, quiz_id):
         quiz_id=int(quiz_id),
         user_id=request.user.id,
     )
+
+    # Fetch the EnrolledCourse for the User and evaluate it based off the
+    # submitted Quiz.
+    try:
+        enrolled_course = EnrolledCourse.objects.get(course=quiz_submission.quiz.course)
+        enrolled_course.final_mark = quiz_submission.final_mark
+        if quiz_submission.final_mark >= 50:
+            enrolled_course.is_finished= True
+        else:
+            enrolled_course.is_finished = False
+        enrolled_course.save()
+    except EnrolledCourse.DoesNotExist:
+        pass
 
     return render(request, 'learning/quiz/finished.html',{
         'settings': settings,
