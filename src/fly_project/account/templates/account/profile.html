@@ -8,7 +8,215 @@
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
 
-    {% trans "Continue" %}
+    <!-- Content -->
+    <div data-role="content">
+        <div class="text-center">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:#E66771;color:#fff;">
+                    <h4>{% trans "User Info" %}</h4>
+                </li>
+                <li>
+                    <span>{% trans "Name" %}</span>
+                    <span class="fright text-right">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+                </li>
+                <li>
+                    <span>{% trans "Date Joined" %}</span>
+                    <span class="fright text-right">{{ request.user.date_joined }}</span>
+                </li>
+                <li>
+                    <span>{% trans "Level" %} ({{ request.me.xplevel.level }})</span>
+                    <span class="fright text-right" style="color:goldenrod;">{{ request.me.xplevel.title|escape|safe }}</span>
+                </li>
+                <li>
+                    <span>{% trans "Experience" %}</span>
+                    <span class="fright text-right" style="color:green;">{{ request.me.xp }}/{{ request.me.xplevel.max_xp }} xp</span>
+                </li>
+            <!--
+                <li>
+                    <span>Linked By</span>
+                    <span class="fright text-right"><i class="fa fa-facebook-square fa-fw"></i> Facebook</span>
+                </li>
+            -->
+            </ul>
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider" style="background-color:#779ECB;color:#fff;">
+                <h4>{% trans "Current Goals" %}</h4>
+            </li>
+            <li>
+                <span>{% trans "Saving" %}</span>
+                {% if savings_goal %}
+                    <p>
+                        {% if savings_goal.period == 1 %}
+                            {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
+                                I want to save ${{ amount }} every {{ times }} weeks
+                            {% endblocktrans %}
+                        {% else %}
+                            {% blocktrans with amount=savings_goal.amount times=savings_goal.times %}
+                                I want to save ${{ amount }} every {{ times }} months
+                            {% endblocktrans %}
+                        {% endif %}
+                    </p>
+                {% else %}
+                    <p>{% trans "No savings goal was set." %}</p>
+                {% endif %}
+            </li>
+            <li>
+                <span>{% trans "Credit" %}</span>
+                {% if credit_goal %}
+                    <p>
+                        {% if credit_goal.period == 1 %}
+                            {% blocktrans with points=credit_goal.points times=credit_goal.times %}
+                                I want to raise my credit points by {{ points }} every {{ times }} weeks
+                            {% endblocktrans %}
+                        {% else %}
+                            {% blocktrans with points=credit_goal.points times=credit_goal.times %}
+                                I want to raise my credit points by {{ points }} every {{ times }} months
+                            {% endblocktrans %}
+                        {% endif %}
+                    </p>
+                {% else %}
+                    <p>{% trans "No credit goal was set." %}</p>
+                {% endif %}
+            </li>
+            <li>
+                <span>{% trans "Goal" %}</span>
+                {% if final_goal %}
+                    <p>{% blocktrans with amount=final_goal.amount want=final_goal.for_want other_want=final_goal.for_other_want %}
+                        I want to save ${{ amount }} for {% endblocktrans %}{% if final_goal.for_want == 1 %}{% trans "a House" %}{% elif final_goal.for_want == 2 %}{% trans "Business" %}{% elif final_goal.for_want == 3 %}{% trans "a Vacation" %}{% elif final_goal.for_want == 4 %}{% trans "Retirement" %}{% elif final_goal.for_want == 5 %}{% trans "General Savings" %}{% elif final_goal.for_want == 6 %}{{ other_want }}{% endif %}
+                    </p>
+                {% else %}
+                    <p>{% trans "No final goal was set." %}</p>
+                {% endif %}
+            </li>
+        </ul>
+        <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
+            <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
+                <h4>{% trans "Goal History" %}</h4>
+            </li>
+            <li style="padding: 0;margin: 0;">
+                <div data-role="collapsibleset" data-corners="true" style="margin: 0px;">
+                    <div data-role="collapsible" data-corners="false">
+                        <h4>{% trans "Last Month" %}</h4>
+                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
+                            <li class="goal-fail" data-icon="delete">
+                                <a>
+                                    <span>{% trans "Saving" %}</span>
+                                    <p>I want to save $20 every 2 days</p>
+                                </a>
+                            </li>
+                            <li class="goal-success" data-icon="check">
+                                <a>
+                                    <span>{% trans "Credit" %}</span>
+                                    <p>I want to raise my credit score by 20 points in 6 weeks</p>
+                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
+                                </a>
+                            </li>
+                            <li class="goal-locked" data-icon="lock">
+                                <a>
+                                    <span>{% trans "Goal" %}</span>
+                                    <p>I want to save $700 for general savings</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <div data-role="collapsible" data-corners="false">
+                        <h4>{% trans "December" %}</h4>
+                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
+                            <li class="goal-fail" data-icon="delete">
+                                <a>
+                                    <span>Saving</span>
+                                    <p>I want to save $20 every 2 days</p>
+                                </a>
+                            </li>
+                            <li class="goal-success" data-icon="check">
+                                <a>
+                                    <span>Credit</span>
+                                    <p>I want to raise my credit score by 20 points in 6 weeks</p>
+                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
+                                </a>
+                            </li>
+                            <li class="goal-success" data-icon="check">
+                                <a>
+                                    <span>Goal</span>
+                                    <p>I want to save $700 for general savings</p>
+                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div data-role="collapsible" data-corners="false">
+                        <h4>{% trans "November" %}</h4>
+                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
+                            <li class="goal-success" data-icon="check"><a><span>Saving</span><p>I want to save $20 every 2 days</p><h5 style="margin-top:5px;color:#fff;">+25 XP</h5></a></li>
+                            <li class="goal-success" data-icon="check"><a><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p><h5 style="margin-top:5px;color:#fff;">+25 XP</h5></a></li>
+                            <li class="goal-fail" data-icon="delete"><a><span>Goal</span><p>I want to save $700 for general savings</p></a></li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </li>
+        </ul>
+        
+        <ul data-role="listview" data-inset="true" id="courses">
+            <li data-role="list-divider" style="background-color:#E74C3C;color:#fff;">
+                <h4>{% trans "Courses Completed" %}</h4>
+            </li>
+            {% for enrollment in enrollments.all %}
+                <li>
+                    <a onclick="window.location='/{{ request.language }}/course/{{ enrollment.course.id }}/';">
+                        <span>{{ enrollment.course.title|escape|safe }}</span>
+                        {% if enrollment.final_mark >= 75 %}
+                            <span class="fright" style="color:green;">{{ enrollment.final_mark }}%</span>
+                        {% elif enrollment.final_mark >= 50 and enrollment.final_mark < 75 %}
+                            <span class="fright" style="color:yellow;">{{ enrollment.final_mark }}%</span>
+                        {% else %}
+                            <span class="fright" style="color:red;">{{ enrollment.final_mark }}%</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% empty %}
+                <li>
+                    {% trans "Not enrolled in any courses." %}
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <ul data-role="listview" data-inset="true" id="badges">
+            <li data-role="list-divider" style="background-color:darkturquoise;color:#fff;">
+                <h4>{% trans "FLY Badges" %}</h4>
+            </li>
+            <li>
+                <a onclick="$('#badges-popup').popup('open');" data-icon="thumbs-up">{% trans "View Badges" %}</a>
+            </li>
+        </ul>
+        
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider" style="background-color:goldenrod;color:#fff;">
+                <h4>{% trans "Newsletter Signup" %}</h4>
+            </li>
+            <li>
+                <span style="position:relative;top:10px;font-size:10pt;">{% trans "Receive Newsletter" %}</span><span class="text-right fright">
+                    <form>
+                        <select id="newsletter-switch" data-role="slider" data-mini="true">
+                            <option selected="true">{% trans "Off" %}</option>
+                            <option>{% trans "On" %}</option>
+                        </select>
+                    </form>
+                </span>
+                <button id="btnSaveChanges" style="display:none;" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:30px;">
+                    <span>{% trans "Save Changes" %}</span>
+                </button>
+            </li>
+        </ul>
+        <button data-icon="warning" id="btnDeleteAccount" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow">
+            <span>{% trans "Remove Account" %}</span>
+        </button>
+    </div>
+</div><!-- /content -->
     
     {% include "basepage/footer.html" %}
 

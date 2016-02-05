@@ -8,7 +8,6 @@ from fly_project import constants
 from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
-from rest_framework.authtoken.models import Token
 
 
 def count_days_between(dt1, dt2):

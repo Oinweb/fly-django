@@ -27,6 +27,7 @@ class Command(BaseCommand):
             for json_xplevel in json_data['xplevels']:
                 # Extract the JSON values
                 id = int(json_xplevel['id'])
+                title = int(json_xplevel['title'])
                 level = int(json_xplevel['level'])
                 min_xp = int(json_xplevel['min_xp'])
                 max_xp = int(json_xplevel['max_xp'])
@@ -34,6 +35,7 @@ class Command(BaseCommand):
                 # Update or Insert a new XPLevel object base on the JSON values.
                 try:
                     xplevel = XPLevel.objects.get(id=id)
+                    xplevel.title = title
                     xplevel.level = level
                     xplevel.min_xp = min_xp
                     xplevel.max_xp = max_xp
@@ -42,6 +44,7 @@ class Command(BaseCommand):
                 except XPLevel.DoesNotExist:
                     xplevel = XPLevel.objects.create(
                         id=id,
+                        title=title,
                         level=level,
                         min_xp=min_xp,
                         max_xp=max_xp,

@@ -288,6 +288,7 @@ class XPLevel(models.Model):
     objects = XPLevelManager()
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=15, null=True, blank=True)
     level = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         choices=constants.DURATION_IN_MINUTES_OPTIONS,

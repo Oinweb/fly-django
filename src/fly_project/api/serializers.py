@@ -101,7 +101,7 @@ class BadgeSerializer(serializers.ModelSerializer):
 class XPLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('id', 'created', 'level', 'min_xp', 'max_xp',)
+        fields = ('id', 'created', 'title', 'level', 'min_xp', 'max_xp',)
 
 
 class CourseSerializer(serializers.ModelSerializer):
