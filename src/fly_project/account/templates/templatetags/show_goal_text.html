@@ -1,0 +1,66 @@
+{% load staticfiles i18n %}
+{% if type == constants.SAVINGS_MYGOAL_TYPE %}
+
+    {% if goal %}
+        {% if goal.period == 1 %}
+            {% blocktrans with amount=goal.amount times=goal.times %}
+                I want to save ${{ amount }} every {{ times }} weeks
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with amount=goal.amount times=goal.times %}
+                I want to save ${{ amount }} every {{ times }} months
+            {% endblocktrans %}
+        {% endif %}
+    {% else %}
+        {% trans "No savings goal was set." %}
+    {% endif %}
+
+{% elif type == constants.CREDIT_MYGOAL_TYPE %}
+
+    {% if goal %}
+        {% if goal.period == 1 %}
+            {% blocktrans with points=goal.points times=goal.times %}
+                I want to raise my credit points by {{ points }} every {{ times }} weeks
+            {% endblocktrans %}
+        {% else %}
+            {% blocktrans with points=goal.points times=goal.times %}
+                I want to raise my credit points by {{ points }} every {{ times }} months
+            {% endblocktrans %}
+        {% endif %}
+    {% else %}
+        {% trans "No credit goal was set." %}
+    {% endif %}
+
+{% elif type == constants.GOAL_MYGOAL_TYPE %}
+
+    {% if goal %}
+        {% if goal.for_want == 1 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for a House
+            {% endblocktrans %}
+        {% elif goal.for_want == 2 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for Business
+            {% endblocktrans %}
+        {% elif goal.for_want == 3 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for a Vacation
+            {% endblocktrans %}
+        {% elif goal.for_want == 4 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for Retirement
+            {% endblocktrans %}
+        {% elif goal.for_want == 5 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for General Savings
+            {% endblocktrans %}
+        {% elif goal.for_want == 6 %}
+            {% blocktrans with amount=goal.amount want=goal.for_want other_want=goal.for_other_want %}
+                I want to save ${{ amount }} for {{ other_want }}
+            {% endblocktrans %}
+        {% endif %}
+    {% else %}
+        {% trans "No final goal was set." %}
+    {% endif %}
+
+{% endif %}

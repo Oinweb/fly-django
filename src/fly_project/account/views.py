@@ -23,7 +23,7 @@ def account_page(request):
         'savings_goal': SavingsGoal.objects.get_latest(request.user.id),
         'credit_goal': CreditGoal.objects.get_latest(request.user.id),
         'final_goal': FinalGoal.objects.get_latest(request.user.id),
-        'enrollments': EnrolledCourse.objects.filter(user=request.user.id),
+        'enrollments': EnrolledCourse.objects.filter(user=request.user.id).order_by("-created"),
     })
 
 
