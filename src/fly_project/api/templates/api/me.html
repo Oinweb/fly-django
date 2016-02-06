@@ -62,6 +62,9 @@
         var url = "/api/me/" + id + "/";
         jQuery.ajax({
             url: url,
+            headers: {
+                Authorization: 'Token ' + '{{ request.token }}'
+            },
             cache: false,
             contentType: false,
             processData: false,
