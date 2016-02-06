@@ -1,0 +1,89 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n account_extras %}
+{% block content %}
+
+<!-- ---------- profile ------------- -->
+<div data-role="page" id="profile">
+
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+
+    <!-- Content -->
+    <div data-role="content">
+        <div class="text-center">
+        
+        <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
+            <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
+                <h4>
+                    
+                    {% if goal_type == constants.SAVINGS_MYGOAL_TYPE %}
+                        {% trans "Goal History: Savings" %}
+                    {% elif goal_type == constants.CREDIT_MYGOAL_TYPE %}
+                        {% trans "Goal History: Credit" %}
+                    {% elif goal_type == constants.GOAL_MYGOAL_TYPE %}
+                        {% trans "Goal History: Final Goals" %}
+                    {% endif %}
+                </h4>
+            </li>
+            <li style="padding: 0;margin: 0;">
+                <div data-role="collapsibleset" data-corners="true" style="margin: 0px;">
+                    {% for goal in goals.all %}
+                        <div data-role="collapsible" data-corners="false">
+                            <h4>{{ goal|get_month_text }}</h4>
+                            <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
+                                {% comment %}
+                                    Note:
+                                    1 = Success
+                                    2 = Rejected
+                                    3 = Locked
+                                {% endcomment %}
+                                {% if goal|get_goal_status == 1 %}
+                                    <li class="goal-success" data-icon="check">
+                                        <a>
+                                            <span>{{ goal_type|get_goal_type_text }}</span>
+                                            <p>{% show_goal_text goal goal_type %}</p>
+                                            <h5 style="margin-top:5px;color:#fff;">+{{ goal.earned_xp }} XP</h5>
+                                        </a>
+                                    </li>
+                                {% elif goal|get_goal_status == 2 %}
+                                    <li class="goal-fail" data-icon="delete">
+                                        <a>
+                                            <span>{{ goal_type|get_goal_type_text }}</span>
+                                            <p>{% show_goal_text goal goal_type %}</p>
+                                        </a>
+                                    </li>
+                                {% elif goal|get_goal_status == 3 %}
+                                    <li class="goal-locked" data-icon="lock">
+                                        <a>
+                                            <span>{{ goal_type|get_goal_type_text }}</span>
+                                            <p>{% show_goal_text goal goal_type %}</p>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <p>Unknown goal.</p>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <p>{% trans "No goals set." %}</p>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+</div><!-- /content -->
+    
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadUserData();
+    });
+</script>
+
+{% endblock content %}

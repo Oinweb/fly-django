@@ -55,75 +55,25 @@
                 <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
             </li>
         </ul>
+                
         <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
             <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
                 <h4>{% trans "Goal History" %}</h4>
             </li>
-            <li style="padding: 0;margin: 0;">
-                <div data-role="collapsibleset" data-corners="true" style="margin: 0px;">
-                    <div data-role="collapsible" data-corners="false">
-                        <h4>{% trans "Last Month" %}</h4>
-                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
-                            <li class="goal-fail" data-icon="delete">
-                                <a>
-                                    <span>{% trans "Saving" %}</span>
-                                    <p>{% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}</p>
-                                </a>
-                            </li>
-                            <li class="goal-success" data-icon="check">
-                                <a>
-                                    <span>{% trans "Credit" %}</span>
-                                    <p>{% show_goal_text credit_goal constants.CREDIT_MYGOAL_TYPE %}</p>
-                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
-                                </a>
-                            </li>
-                            <li class="goal-locked" data-icon="lock">
-                                <a>
-                                    <span>{% trans "Goal" %}</span>
-                                    <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    
-                    <div data-role="collapsible" data-corners="false">
-                        <h4>{% trans "December" %}</h4>
-                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
-                            <li class="goal-fail" data-icon="delete">
-                                <a>
-                                    <span>Saving</span>
-                                    <p>I want to save $20 every 2 days</p>
-                                </a>
-                            </li>
-                            <li class="goal-success" data-icon="check">
-                                <a>
-                                    <span>Credit</span>
-                                    <p>I want to raise my credit score by 20 points in 6 weeks</p>
-                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
-                                </a>
-                            </li>
-                            <li class="goal-success" data-icon="check">
-                                <a>
-                                    <span>Goal</span>
-                                    <p>I want to save $700 for general savings</p>
-                                    <h5 style="margin-top:5px;color:#fff;">+25 XP</h5>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div data-role="collapsible" data-corners="false">
-                        <h4>{% trans "November" %}</h4>
-                        <ul data-role="listview" data-corners="false" data-inset="true" style="margin-bottom: 0px;">
-                            <li class="goal-success" data-icon="check"><a><span>Saving</span><p>I want to save $20 every 2 days</p><h5 style="margin-top:5px;color:#fff;">+25 XP</h5></a></li>
-                            <li class="goal-success" data-icon="check"><a><span>Credit</span><p>I want to raise my credit score by 20 points in 6 weeks</p><h5 style="margin-top:5px;color:#fff;">+25 XP</h5></a></li>
-                            <li class="goal-fail" data-icon="delete"><a><span>Goal</span><p>I want to save $700 for general savings</p></a></li>
-                        </ul>
-                    </div>
-                    
-                    
-                </div>
+            <li>
+                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.SAVINGS_MYGOAL_TYPE }}/';">
+                    <span>{% trans "Savings Goal" %}</span>
+                </a>
+            </li>
+            <li>
+                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.CREDIT_MYGOAL_TYPE }}/';">
+                    <span>{% trans "Credit Goal" %}</span>
+                </a>
+            </li>
+            <li>
+                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.GOAL_MYGOAL_TYPE}}/';">
+                    <span>{% trans "Final Goal" %}</span>
+                </a>
             </li>
         </ul>
         

@@ -33,3 +33,32 @@ def notifications_page(request):
         'settings': settings,
         'constants': constants,
     })
+
+
+@login_required(login_url='/authentication')
+def goal_history_page(request, goal_type):
+    goals = []
+    if int(goal_type) is constants.SAVINGS_MYGOAL_TYPE:
+        try:
+            goals = SavingsGoal.objects.filter(user_id=request.user.id).order_by("-created")
+        except SavingsGoal.DoesNotExist:
+            goals = None
+    elif int(goal_type) is constants.CREDIT_MYGOAL_TYPE:
+        try:
+            goals = CreditGoal.objects.filter(user_id=request.user.id).order_by("-created")
+        except CreditGoal.DoesNotExist:
+            goals = None
+    elif int(goal_type) is constants.GOAL_MYGOAL_TYPE:
+        try:
+            goals = FinalGoal.objects.filter(user_id=request.user.id).order_by("-created")
+        except CreditGoal.DoesNotExist:
+            goals = None
+
+    return render(request, 'account/goal_history.html',{
+        'settings': settings,
+        'constants': constants,
+        'goals': goals,
+        'goal_type': int(goal_type),
+    })
+
+
