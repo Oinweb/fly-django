@@ -13,7 +13,7 @@ from api.models import Me
 class MeFilter(django_filters.FilterSet):
     class Meta:
         model = Me
-        fields = ['id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses',]
+        fields = ['id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify',]
 
 
 class MeViewSet(viewsets.ModelViewSet):

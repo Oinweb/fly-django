@@ -66,7 +66,6 @@ class BannedWord(models.Model):
 class ImageUpload(models.Model):
     class Meta:
         app_label = 'api'
-        ordering = ('upload_date',)
         db_table = 'fly_image_uploads'
     
     upload_id = models.AutoField(primary_key=True)
@@ -145,7 +144,6 @@ class SavingsGoalManager(models.Manager):
 class SavingsGoal(Goal):
     class Meta:
         app_label = 'api'
-        ordering = ('-created',)
         db_table = 'fly_savings_goals'
 
     objects = SavingsGoalManager()
@@ -163,6 +161,12 @@ class SavingsGoal(Goal):
         choices=constants.INTERVAL_OPTIONS,
         default=1,
     )
+
+
+class OrderedSavingsGoal(SavingsGoal):
+    class Meta:
+        ordering = ('-created',)
+        proxy = True
 
 
 class CreditGoalManager(models.Manager):
@@ -183,7 +187,6 @@ class CreditGoalManager(models.Manager):
 class CreditGoal(Goal):
     class Meta:
         app_label = 'api'
-        ordering = ('-created',)
         db_table = 'fly_credit_goals'
     
     objects = CreditGoalManager()
@@ -200,6 +203,12 @@ class CreditGoal(Goal):
         choices=constants.INTERVAL_OPTIONS,
         default=1,
     )
+
+
+class OrderedCreditGoal(CreditGoal):
+    class Meta:
+        ordering = ('-created',)
+        proxy = True
 
 
 class FinalGoalManager(models.Manager):
@@ -220,7 +229,6 @@ class FinalGoalManager(models.Manager):
 class FinalGoal(Goal):
     class Meta:
         app_label = 'api'
-        ordering = ('-created',)
         db_table = 'fly_final_goals'
     
     objects = FinalGoalManager()
@@ -235,6 +243,12 @@ class FinalGoal(Goal):
         default=1,
     )
     for_other_want = models.CharField(max_length=63, default='', null=True, blank=True)
+
+
+class OrderedFinalGoal(FinalGoal):
+    class Meta:
+        ordering = ('-created',)
+        proxy = True
 
 
 class Badge(models.Model):
@@ -341,6 +355,12 @@ class Course(models.Model):
         return str(self.id)
 
 
+class OrderedCourse(Course):
+    class Meta:
+        ordering = ('created',)
+        proxy = True
+
+
 class Quiz(models.Model):
     class Meta:
         app_label = 'api'
@@ -390,6 +410,12 @@ class Question(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+class OrderedQuestion(Question):
+    class Meta:
+        ordering = ('num',)
+        proxy = True
 
 
 class EnrolledCourse(models.Model):
@@ -484,6 +510,10 @@ class Me(models.Model):
     xplevel = models.ForeignKey(XPLevel)
     badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)
     courses = models.ManyToManyField(EnrolledCourse, blank=True, related_name='fly_user_enrolled_courses',)
-
+    wants_newsletter = models.BooleanField(default=False)
+    wants_goal_notify = models.BooleanField(default=False)
+    wants_course_notify = models.BooleanField(default=False)
+    wants_resource_notify = models.BooleanField(default=False)
+    
     def __str__(self):
         return str(self.id)

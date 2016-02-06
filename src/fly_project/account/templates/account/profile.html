@@ -119,8 +119,8 @@
                     <span style="position:relative;top:10px;font-size:10pt;">{% trans "Receive Newsletter" %}</span><span class="text-right fright">
                         <form>
                             <select id="newsletter-switch" data-role="slider" data-mini="true">
-                                <option selected="true">{% trans "Off" %}</option>
-                                <option>{% trans "On" %}</option>
+                                <option {% if request.me.wants_newsletter == False %}selected="true"{% endif %}>{% trans "Off" %}</option>
+                                <option {% if request.me.wants_newsletter == True %}selected="true"{% endif %}>{% trans "On" %}</option>
                             </select>
                         </form>
                     </span>

@@ -6,11 +6,36 @@
             // delete the user's account info
             $('#confirm-popup .alert-confirm').removeClass('alert-danger').addClass('alert-success').text('Your account has been successfully deleted, you will now be redirected to the home page.');
             $('#confirm-popup .alert-confirm').show();
-            setTimeout(function(){ window.location="index.html"; }, 3000);
+            
+            setTimeout(function(){
+                window.location="index.html";
+            }, 3000);
+            
         }
         else{
             $('#confirm-popup .alert-confirm').show();
         }
+    }
+
+    function ajax_update_me_with_wants_notification(wants_newsletter, callback) {
+        get_me(
+            {{ request.me.id }},
+            function(me) {
+                me['wants_newsletter'] = wants_newsletter;
+                set_me(
+                    me,
+                    function(me2) {
+                        callback("OK");
+                    },
+                    function(error_json) {
+                        callback("BAD");
+                    }
+                ); // end Set Me.
+            },
+            function(error_json) {
+                callback("BAD");
+            }
+        ); // end Get Me.
     }
 
     $(document).ready(function(){
@@ -30,6 +55,21 @@
         });
                   
         $('#btnSaveChanges').on('click', function(){
+     
+            // Get the value of the "Wants Newsletter" and update "Me" object.
+            var wants_newsletter = $('#newsletter-switch').val();
+            if (wants_newsletter == "On") {
+                wants_newsletter = "True";
+            } else {
+                wants_newsletter = "False";
+            }
+            
+            // Update "Me" objects.
+            ajax_update_me_with_wants_notification(wants_newsletter, function(message) {
+                console.log(message);
+            });
+                
+            // Hide the button message.
             $(this).hide();
         });
         $('#btnDeleteAccount').on('click', function(){
