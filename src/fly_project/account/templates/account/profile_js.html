@@ -1,5 +1,18 @@
 {% load staticfiles i18n account_extras %}
 <script>
+    function ajax_delete_me(success_callback, error_callback) {
+        delete_me(
+            {{ request.me.id }},
+            function(me) {
+                success_callback("Was deleted");
+            },
+            function(error_json) {
+                console.log(error_json);
+                error_callback("Failed Deletion");
+            }
+        ); // end Delete.
+    }
+    
     function deleteAccount(){
         $('#confirm-popup .alert-confirm').hide();
         if( $('#txtDeleteConfirm').val() == "delete" ){
@@ -7,10 +20,21 @@
             $('#confirm-popup .alert-confirm').removeClass('alert-danger').addClass('alert-success').text('Your account has been successfully deleted, you will now be redirected to the home page.');
             $('#confirm-popup .alert-confirm').show();
             
-            setTimeout(function(){
-                window.location="index.html";
-            }, 3000);
-            
+            // Handle deleting the user account.
+            ajax_delete_me(
+                function(message) {
+                    console.log(message); // For debugging purposes only.
+                        
+                    // Add a minor deley before redirecting to the home page.
+                    setTimeout(function(){
+                        console.log("Delete now"); // For debugging purposes only.
+                        window.location="/{{ request.language }}/"; // Redirect.
+                    }, 300);
+                },
+                function(error_json) {
+                    console.log(error_json); // For debugging purposes only.
+                }
+            ); // end Delete.
         }
         else{
             $('#confirm-popup .alert-confirm').show();

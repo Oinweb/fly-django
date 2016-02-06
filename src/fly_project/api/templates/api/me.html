@@ -58,17 +58,14 @@
         });
     }
 
-    function search_me(keyword, success_callback, error_callback) {
-        var url = "/api/me/?format=json&search="+keyword;
+    function delete_me(id, success_callback, error_callback) {
+        var url = "/api/me/" + id + "/";
         jQuery.ajax({
             url: url,
-            headers: {
-                Authorization: 'Token ' + '{{ request.token }}'
-            },
             cache: false,
             contentType: false,
             processData: false,
-            type: 'GET',
+            type: 'DELETE',
             success: function(json_results){
                 success_callback(json_results);
             },
