@@ -7,6 +7,7 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
+    {% include 'account/profile_js.html' %}
 
     <!-- Content -->
     <div data-role="content">
@@ -38,110 +39,159 @@
                 </li>
             -->
             </ul>
-        <ul data-role="listview" data-inset="true">
-            <li data-role="list-divider" style="background-color:#779ECB;color:#fff;">
-                <h4>{% trans "Current Goals" %}</h4>
-            </li>
-            <li>
-                <span>{% trans "Saving" %}</span>
-                <p>{% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}</p>
-            </li>
-            <li>
-                <span>{% trans "Credit" %}</span>
-                <p>{% show_goal_text credit_goal constants.CREDIT_MYGOAL_TYPE %}</p>
-            </li>
-            <li>
-                <span>{% trans "Goal" %}</span>
-                <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
-            </li>
-        </ul>
-                
-        <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
-            <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
-                <h4>{% trans "Goal History" %}</h4>
-            </li>
-            <li>
-                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.SAVINGS_MYGOAL_TYPE }}/';">
-                    <span>{% trans "Savings Goal" %}</span>
-                </a>
-            </li>
-            <li>
-                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.CREDIT_MYGOAL_TYPE }}/';">
-                    <span>{% trans "Credit Goal" %}</span>
-                </a>
-            </li>
-            <li>
-                <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.GOAL_MYGOAL_TYPE}}/';">
-                    <span>{% trans "Final Goal" %}</span>
-                </a>
-            </li>
-        </ul>
-        
-        <ul data-role="listview" data-inset="true" id="courses">
-            <li data-role="list-divider" style="background-color:#E74C3C;color:#fff;">
-                <h4>{% trans "Courses Completed" %}</h4>
-            </li>
-            {% for enrollment in enrollments.all %}
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:#779ECB;color:#fff;">
+                    <h4>{% trans "Current Goals" %}</h4>
+                </li>
                 <li>
-                    <a onclick="window.location='/{{ request.language }}/course/{{ enrollment.course.id }}/';">
-                        <span>{{ enrollment.course.title|escape|safe }}</span>
-                        {% if enrollment.final_mark >= 75 %}
-                            <span class="fright" style="color:green;">{{ enrollment.final_mark }}%</span>
-                        {% elif enrollment.final_mark >= 50 and enrollment.final_mark < 75 %}
-                            <span class="fright" style="color:yellow;">{{ enrollment.final_mark }}%</span>
-                        {% else %}
-                            <span class="fright" style="color:red;">{{ enrollment.final_mark }}%</span>
-                        {% endif %}
+                    <span>{% trans "Saving" %}</span>
+                    <p>{% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}</p>
+                </li>
+                <li>
+                    <span>{% trans "Credit" %}</span>
+                    <p>{% show_goal_text credit_goal constants.CREDIT_MYGOAL_TYPE %}</p>
+                </li>
+                <li>
+                    <span>{% trans "Goal" %}</span>
+                    <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
+                </li>
+            </ul>
+                
+            <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
+                <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
+                    <h4>{% trans "Goal History" %}</h4>
+                </li>
+                <li>
+                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.SAVINGS_MYGOAL_TYPE }}/';">
+                        <span>{% trans "Savings Goal" %}</span>
                     </a>
                 </li>
-            {% empty %}
                 <li>
-                    {% trans "Not enrolled in any courses." %}
+                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.CREDIT_MYGOAL_TYPE }}/';">
+                        <span>{% trans "Credit Goal" %}</span>
+                    </a>
                 </li>
-            {% endfor %}
-        </ul>
+                <li>
+                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.GOAL_MYGOAL_TYPE}}/';">
+                        <span>{% trans "Final Goal" %}</span>
+                    </a>
+                </li>
+            </ul>
         
-        <ul data-role="listview" data-inset="true" id="badges">
-            <li data-role="list-divider" style="background-color:darkturquoise;color:#fff;">
-                <h4>{% trans "FLY Badges" %}</h4>
-            </li>
-            <li>
-                <a onclick="$('#badges-popup').popup('open');" data-icon="thumbs-up">{% trans "View Badges" %}</a>
-            </li>
-        </ul>
+            <ul data-role="listview" data-inset="true" id="courses">
+                <li data-role="list-divider" style="background-color:#E74C3C;color:#fff;">
+                    <h4>{% trans "Courses Completed" %}</h4>
+                </li>
+                {% for enrollment in enrollments.all %}
+                    <li>
+                        <a onclick="window.location='/{{ request.language }}/course/{{ enrollment.course.id }}/';">
+                            <span>{{ enrollment.course.title|escape|safe }}</span>
+                            {% if enrollment.final_mark >= 75 %}
+                                <span class="fright" style="color:green;">{{ enrollment.final_mark }}%</span>
+                            {% elif enrollment.final_mark >= 50 and enrollment.final_mark < 75 %}
+                                <span class="fright" style="color:yellow;">{{ enrollment.final_mark }}%</span>
+                            {% else %}
+                                <span class="fright" style="color:red;">{{ enrollment.final_mark }}%</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>
+                        {% trans "Not enrolled in any courses." %}
+                    </li>
+                {% endfor %}
+            </ul>
         
-        <ul data-role="listview" data-inset="true">
-            <li data-role="list-divider" style="background-color:goldenrod;color:#fff;">
-                <h4>{% trans "Newsletter Signup" %}</h4>
-            </li>
-            <li>
-                <span style="position:relative;top:10px;font-size:10pt;">{% trans "Receive Newsletter" %}</span><span class="text-right fright">
-                    <form>
-                        <select id="newsletter-switch" data-role="slider" data-mini="true">
-                            <option selected="true">{% trans "Off" %}</option>
-                            <option>{% trans "On" %}</option>
-                        </select>
-                    </form>
-                </span>
-                <button id="btnSaveChanges" style="display:none;" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:30px;">
-                    <span>{% trans "Save Changes" %}</span>
-                </button>
-            </li>
-        </ul>
-        <button data-icon="warning" id="btnDeleteAccount" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow">
-            <span>{% trans "Remove Account" %}</span>
-        </button>
+            <ul data-role="listview" data-inset="true" id="badges">
+                <li data-role="list-divider" style="background-color:darkturquoise;color:#fff;">
+                    <h4>{% trans "FLY Badges" %}</h4>
+                </li>
+                <li>
+                    <a onclick="$('#badges-popup').popup('open');" data-icon="thumbs-up">{% trans "View Badges" %}</a>
+                </li>
+            </ul>
+        
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" style="background-color:goldenrod;color:#fff;">
+                    <h4>{% trans "Newsletter Signup" %}</h4>
+                </li>
+                <li>
+                    <span style="position:relative;top:10px;font-size:10pt;">{% trans "Receive Newsletter" %}</span><span class="text-right fright">
+                        <form>
+                            <select id="newsletter-switch" data-role="slider" data-mini="true">
+                                <option selected="true">{% trans "Off" %}</option>
+                                <option>{% trans "On" %}</option>
+                            </select>
+                        </form>
+                    </span>
+                    <button id="btnSaveChanges" style="display:none;" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:30px;">
+                        <span>{% trans "Save Changes" %}</span>
+                    </button>
+                </li>
+            </ul>
+            <button data-icon="warning" id="btnDeleteAccount" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow">
+                <span>{% trans "Remove Account" %}</span>
+            </button>
+        </div>
     </div>
-</div><!-- /content -->
+    <!-- /.content -->
     
+    <!-- Footer -->
     {% include "basepage/footer.html" %}
-
-</div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
-
+    <!-- /.Footer -->
+    
+    <!-- Delete Confirmation -->
+    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <h3>Delete your account?</h3>
+            <p>If you delete your account you will lose all account information and achievements.  Type 'delete' below to confirm deleting your account.</p>
+            <div class="alert alert-danger alert-confirm" style="display:none;">Please type 'delete' below to delete your account.</div>
+            <input type="text" id="txtDeleteConfirm" />
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="deleteAccount();">Delete Account</button>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#confirm-popup').popup('close');">Cancel</button>
+        </div>
+    </div>
+    <!-- /.Delete Confirmation -->
+    
+    <!-- Badges -->
+    <div data-role="popup" id="badges-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+        <div class="text-center">
+            <div class="ui-grid-a">
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-thumbs-up" style="color:green;"></i>
+                    <h4>Badge 1</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-tasks" style="color:orangered;"></i>
+                    <h4>Badge 2</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-lock" style="color:darkgoldenrod;"></i>
+                    <h4>Badge 3</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-edit" style="color:purple;"></i>
+                    <h4>Badge 4</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-a badges">
+                    <i class="fa fa-3x fa-tablet" style="color:orange;"></i>
+                    <h4>Badge 5</h4>
+                    <p>Earned for doing something</p>
+                </div>
+                <div class="ui-block-b badges">
+                    <i class="fa fa-3x fa-calculator" style="color:blue;"></i>
+                    <h4>Badge 6</h4>
+                    <p>Earned for doing something</p>
+                </div>
+            </div>
+            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#badges-popup').popup('close');">Close</button>
+        </div>
+    </div>
+    <!-- /.Badges -->
+    
+</div><!-- /.page -->
 {% endblock content %}

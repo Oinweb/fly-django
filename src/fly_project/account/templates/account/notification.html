@@ -7,17 +7,15 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            loadUserData();
+        });
+    </script>
 
     {% trans "Continue" %}
     
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
-
 {% endblock content %}

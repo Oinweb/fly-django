@@ -6,6 +6,20 @@
 <div data-role="page">
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
+    <script>
+        $(document).ready(function(){
+            loadUserData();
+                          
+            // check if user is on an IOS device and change app links
+            if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+                $('#mint-link').attr('href','https://itunes.apple.com/ca/app/mint-money-manager-budget/id300238550?mt=8');
+                $('#goodbudget-link').attr('href','https://itunes.apple.com/ca/app/goodbudget-budget-planner/id471112395?mt=8')
+                $('#mvelopes-link').attr('href','https://itunes.apple.com/ca/app/mvelopes-personal-finance/id417933753?mt=8')
+            }
+        });
+    </script>
+
+    
     <div data-role="content">
         <div class="text-center">
             <div class="my-boxes red-box resources-box">
@@ -43,17 +57,4 @@
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
-
-<script>
-    $(document).ready(function(){
-        loadUserData();
-        // check if user is on an IOS device and change app links
-        if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
-            $('#mint-link').attr('href','https://itunes.apple.com/ca/app/mint-money-manager-budget/id300238550?mt=8');
-            $('#goodbudget-link').attr('href','https://itunes.apple.com/ca/app/goodbudget-budget-planner/id471112395?mt=8')
-            $('#mvelopes-link').attr('href','https://itunes.apple.com/ca/app/mvelopes-personal-finance/id417933753?mt=8')
-        }
-    });
-</script>
-
 {% endblock content %}

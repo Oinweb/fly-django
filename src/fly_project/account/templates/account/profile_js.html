@@ -1,0 +1,39 @@
+{% load staticfiles i18n account_extras %}
+<script>
+    function deleteAccount(){
+        $('#confirm-popup .alert-confirm').hide();
+        if( $('#txtDeleteConfirm').val() == "delete" ){
+            // delete the user's account info
+            $('#confirm-popup .alert-confirm').removeClass('alert-danger').addClass('alert-success').text('Your account has been successfully deleted, you will now be redirected to the home page.');
+            $('#confirm-popup .alert-confirm').show();
+            setTimeout(function(){ window.location="index.html"; }, 3000);
+        }
+        else{
+            $('#confirm-popup .alert-confirm').show();
+        }
+    }
+
+    $(document).ready(function(){
+        loadUserData();
+                  
+        new ShareButton({
+            networks: {
+                pinterest: { enabled: false },
+                reddit: { enabled: false },
+                linkedin: { enabled: false },
+                whatsapp: { enabled: false }
+            }
+        });
+                  
+        $('#newsletter-switch').on('change', function(){
+            $('#btnSaveChanges').show();
+        });
+                  
+        $('#btnSaveChanges').on('click', function(){
+            $(this).hide();
+        });
+        $('#btnDeleteAccount').on('click', function(){
+            $('#confirm-popup').popup('open');
+        });
+    });
+</script>
