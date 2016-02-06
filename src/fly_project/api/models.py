@@ -89,6 +89,26 @@ class ImageUpload(models.Model):
         return str(self.upload_id)
 
 
+class ResourceLink(models.Model):
+    class Meta:
+        app_label = 'api'
+        db_table = 'fly_resource_links'
+    
+    id = models.AutoField(primary_key=True)
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=127,)
+    url = models.URLField()
+    type = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
+        choices=constants.RESOURCE_TYPE_OPTIONS,
+        default=1,
+        db_index=True,
+    )
+
+    def __str__(self):
+        return str(self.url)
+
+
 class Goal(models.Model):
     class Meta:
         abstract = True

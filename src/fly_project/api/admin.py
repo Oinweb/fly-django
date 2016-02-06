@@ -3,6 +3,7 @@ from api.models import ImageUpload
 from api.models import BannedDomain
 from api.models import BannedIP
 from api.models import BannedWord
+#from api.models import ResourceLink
 from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
@@ -21,6 +22,7 @@ admin.site.register(ImageUpload)
 admin.site.register(BannedDomain)
 admin.site.register(BannedIP)
 admin.site.register(BannedWord)
+#admin.site.register(ResourceLink)
 admin.site.register(SavingsGoal)
 admin.site.register(CreditGoal)
 admin.site.register(FinalGoal)

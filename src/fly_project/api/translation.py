@@ -5,6 +5,7 @@ from api.models import Badge
 from api.models import Course
 from api.models import Quiz
 from api.models import Question
+from api.models import ResourceLink
 """
     Translation.py (Required for "django-modeltranslation" third party library)
     This file is used to apply multi-linguagl support for the particular
@@ -36,6 +37,11 @@ class QuestionTranslationOptions(TranslationOptions):
     fields = ('text', 'a', 'b', 'c', 'd', 'e', 'f',)
 
 
+@register(ResourceLink)
+class ResourceLinkTranslationOptions(TranslationOptions):
+    fields = ('title',)
+
+
 # Register Objects to have Translations when in Admin
 #
 
@@ -55,3 +61,7 @@ admin.site.register(Quiz, QuizAdmin)
 class QuestionAdmin(TranslationAdmin):
     pass
 admin.site.register(Question, QuestionAdmin)
+
+class ResourceLinkAdmin(TranslationAdmin):
+    pass
+admin.site.register(ResourceLink, ResourceLinkAdmin)

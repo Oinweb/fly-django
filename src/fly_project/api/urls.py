@@ -3,6 +3,7 @@ from api.views import imageupload
 from api.views import banned_domain
 from api.views import banned_ip
 from api.views import banned_word
+from api.views import resource_link
 from api.views import register
 from api.views import login
 from api.views import savings_goal
@@ -26,6 +27,7 @@ router.register(r'imageuploads', imageupload.ImageUploadViewSet)
 router.register(r'banned_domains', banned_domain.BannedDomainViewSet)
 router.register(r'banned_ips', banned_ip.BannedIPViewSet)
 router.register(r'banned_words', banned_word.BannedWordViewSet)
+router.register(r'resource_links', resource_link.ResourceLinkViewSet)
 router.register(r'registers', register.RegisterViewSet)
 router.register(r'logins', login.LoginViewSet)
 router.register(r'savings_goals', savings_goal.SavingsGoalViewSet)

@@ -5,6 +5,7 @@ from api.models import ImageUpload
 from api.models import BannedDomain
 from api.models import BannedIP
 from api.models import BannedWord
+from api.models import ResourceLink
 from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
@@ -73,6 +74,12 @@ class BannedWordSerializer(serializers.ModelSerializer):
     class Meta:
         model = BannedWord
         fields = ('id','text','banned_on','reason',)
+
+
+class ResourceLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResourceLink
+        fields = ('id','created','title','url','type',)
 
 
 class SavingsGoalSerializer(serializers.ModelSerializer):

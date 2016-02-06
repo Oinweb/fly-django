@@ -44,3 +44,9 @@ QUESTION_TYPE_OPTIONS = (
     (1, _('Multiple Choice')),
     (2, _('True / False')),
 )
+
+RESOURCE_TYPE_OPTIONS = (
+    (1, _('Social Media')),
+    (2, _('Blogs')),
+    (3, _('Other Cool Apps')),
+)
