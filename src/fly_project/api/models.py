@@ -283,7 +283,8 @@ class Badge(models.Model):
         choices=constants.BADGE_TYPE_OPTIONS,
         default=1,
     )
-    image = models.ImageField(upload_to='upload', null=True, blank=True)
+    icon = models.CharField(max_length=31, null=True, blank=True)
+    colour = models.CharField(max_length=31, null=True, blank=True)
     level = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         default=1,

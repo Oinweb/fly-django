@@ -13,7 +13,7 @@ from api.models import Badge
 class BadgeFilter(django_filters.FilterSet):
     class Meta:
         model = Badge
-        fields = ['id', 'created', 'type', 'image', 'level', 'title', 'description', 'has_xp_requirement', 'required_xp',]
+        fields = ['id', 'created', 'type', 'icon', 'colour', 'level', 'title', 'description', 'has_xp_requirement', 'required_xp',]
 
 
 class BadgeViewSet(viewsets.ModelViewSet):

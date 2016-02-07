@@ -102,7 +102,7 @@ class FinalGoalSerializer(serializers.ModelSerializer):
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('id', 'created', 'type', 'image', 'level', 'title', 'title_en', 'title_es', 'title_fr', 'description', 'description_en', 'description_es', 'description_fr', 'has_xp_requirement', 'required_xp',)
+        fields = ('id', 'created', 'type', 'icon', 'colour', 'level', 'title', 'title_en', 'title_es', 'title_fr', 'description', 'description_en', 'description_es', 'description_fr', 'has_xp_requirement', 'required_xp',)
 
 
 class XPLevelSerializer(serializers.ModelSerializer):

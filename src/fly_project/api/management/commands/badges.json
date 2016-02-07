@@ -3,7 +3,8 @@
         {
                "id": "1",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "The Quest Begins",
                "description": "You’ve begin your financial literacy journey. Awesome :-)",
                "level": "1",
@@ -13,7 +14,8 @@
         {
                "id": "2",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 2",
                "description": "Keep at it - there’s a lot left to learn!",
                "level": "2",
@@ -23,7 +25,8 @@
         {
                "id": "3",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 3",
                "description": "Good work! Keep it up!",
                "level": "3",
@@ -33,7 +36,8 @@
         {
                "id": "4",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 4",
                "description": "You’re getting pretty good at this!",
                "level": "4",
@@ -43,7 +47,8 @@
         {
                "id": "5",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 5",
                "description": "Wow, you’re dedicated!",
                "level": "5",
@@ -53,7 +58,8 @@
         {
                "id": "6",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 6",
                "description": "Financial literacy isn’t so bad, is it?",
                "level": "6",
@@ -63,7 +69,8 @@
         {
                "id": "7",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 7",
                "description": "You’re learning quite a bit, huh?",
                "level": "7",
@@ -73,7 +80,8 @@
         {
                "id": "8",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 8",
                "description": "Almost there...",
                "level": "7",
@@ -83,7 +91,8 @@
         {
                "id": "9",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 9",
                "description": "Financial guru",
                "level": "7",
@@ -93,7 +102,8 @@
         {
                "id": "10",
                "type": "1",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Level 10",
                "description": "You made it! Keep hitting those goals :-)",
                "level": "7",
@@ -103,7 +113,8 @@
         {
                "id": "11",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First Course Complete",
                "description": "Great - now try another one!",
                "level": "1",
@@ -113,7 +124,8 @@
         {
                "id": "12",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Knowledge Sharer",
                "description": "Thanks for letting your friends know!",
                "level": "1",
@@ -123,7 +135,8 @@
         {
                "id": "13",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Completed Finances 101",
                "description": "Great, now try Finance II!",
                "level": "1",
@@ -133,7 +146,8 @@
         {
                "id": "14",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Completed Finances II ",
                "description": "You did it!",
                "level": "1",
@@ -143,7 +157,8 @@
         {
                "id": "15",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Completed Saving & Budgeting 101",
                "description": "Great, now try Saving & Budgeting II!",
                "level": "1",
@@ -153,7 +168,8 @@
         {
                "id": "16",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Saving & Budgeting II",
                "description": "Great, now try Credit Score II!",
                "level": "1",
@@ -163,7 +179,8 @@
         {
                "id": "17",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Completed Credit Score 101",
                "description": "Great, now try Credit Score II!",
                "level": "1",
@@ -173,7 +190,8 @@
         {
                "id": "18",
                "type": "3",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Completed Credit Score II",
                "description": "You did it!",
                "level": "1",
@@ -183,7 +201,8 @@
         {
                "id": "19",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First goal achieved",
                "description": "You hit your first goal! Awesome!",
                "level": "1",
@@ -193,7 +212,8 @@
         {
                "id": "20",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Goal Sharing",
                "description": "Be proud of hitting your goals!",
                "level": "1",
@@ -203,7 +223,8 @@
         {
                "id": "21",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First goal failed",
                "description": "Don’t give up!",
                "level": "1",
@@ -213,7 +234,8 @@
         {
                "id": "22",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First savings goal achieved",
                "description": "Great saving! Keep it up!",
                "level": "1",
@@ -223,7 +245,8 @@
         {
                "id": "23",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First credit goal achieved",
                "description": "Good job!",
                "level": "1",
@@ -233,7 +256,8 @@
         {
                "id": "24",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "First big goal achieved",
                "description": "That wasn’t so hard, now was it?",
                "level": "1",
@@ -243,7 +267,8 @@
         {
                "id": "25",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Savings champ",
                "description": "Great saving! Keep it up!",
                "level": "1",
@@ -253,7 +278,8 @@
         {
                "id": "26",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Credit score champ",
                "description": "Good job!",
                "level": "1",
@@ -263,7 +289,8 @@
         {
                "id": "27",
                "type": "2",
-               "image": "",
+               "icon": "",
+               "colour": "",
                "title": "Big saver!",
                "description": "That wasn’t so hard, now was it?",
                "level": "1",

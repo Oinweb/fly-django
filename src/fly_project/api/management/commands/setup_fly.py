@@ -86,7 +86,8 @@ class Command(BaseCommand):
                 # Extract the JSON values
                 id = int(badge['id'])
                 type = int(badge['type'])
-                image = badge['image']
+                icon = badge['icon']
+                colour = badge['colour']
                 level = int(badge['level'])
                 title = badge['title']
                 description = badge['description']
@@ -98,7 +99,8 @@ class Command(BaseCommand):
                     badge = Badge.objects.get(id=id)
                     badge.level=level
                     badge.type=type
-                    badge.image=image
+                    badge.icon=icon
+                    badge.colour=colour
                     badge.title=title
                     badge.description=description
                     badge.has_xp_requirement=has_xp_requirement
@@ -109,7 +111,8 @@ class Command(BaseCommand):
                     badge = Badge.objects.create(
                         id=id,
                         type=type,
-                        image=image,
+                        icon=icon,
+                        colour=colour,
                         level=level,
                         title=title,
                         description=description,
