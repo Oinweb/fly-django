@@ -11,6 +11,7 @@ from api.models import Badge
 from api.models import Course
 from api.models import Quiz
 from api.models import Question
+from api.models import ResourceLink
 
 
 class Command(BaseCommand):
@@ -22,12 +23,39 @@ class Command(BaseCommand):
     
     def handle(self, *args, **options):
         # Open up our 'xplevel.json' file and import our settings.
+        with open('./api/management/commands/resources.json') as data_file:
+            json_data = json.load(data_file)
+            for json_resource in json_data['resources']:
+                # Extract the JSON values
+                id = int(json_resource['id'])
+                title = json_resource['title']
+                url = json_resource['url']
+                type = int(json_resource['type'])
+                
+                # Update or Insert a new XPLevel object base on the JSON values.
+                try:
+                    resource = ResourceLink.objects.get(id=id)
+                    resource.title = title
+                    resource.url = url
+                    resource.type = type
+                    resource.save()
+                    print("ResourceLink - Updated", id)
+                except ResourceLink.DoesNotExist:
+                    resource = ResourceLink.objects.create(
+                        id=id,
+                        title=title,
+                        url=url,
+                        type=type,
+                    )
+                    print("ResourceLink - Inserted", id)
+
+        # Open up our 'xplevel.json' file and import our settings.
         with open('./api/management/commands/xplevels.json') as data_file:
             json_data = json.load(data_file)
             for json_xplevel in json_data['xplevels']:
                 # Extract the JSON values
                 id = int(json_xplevel['id'])
-                title = int(json_xplevel['title'])
+                title = json_xplevel['title']
                 level = int(json_xplevel['level'])
                 min_xp = int(json_xplevel['min_xp'])
                 max_xp = int(json_xplevel['max_xp'])
@@ -256,6 +284,7 @@ class Command(BaseCommand):
             {"tablename": "fly_courses", "primarykey": "id",},
             {"tablename": "fly_quizzes", "primarykey": "id",},
             {"tablename": "fly_questions", "primarykey": "id",},
+            {"tablename": "fly_resource_links", "primarykey": "id",},
         ]
         for table in tables_info:
             sql = table['tablename'] + '_' + table['primarykey'] + '_seq'

@@ -289,4 +289,8 @@ CORS_ORIGIN_WHITELIST = (
     'google.com',
     'facebook.com',
     'twitter.com',
+    'youngcheapliving.com',
+    'moneylicious.org',
+    'mint.com',
+    'play.google.com',
 )

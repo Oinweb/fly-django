@@ -19,16 +19,22 @@
         });
     </script>
 
-    
+    <!-- Content -->
     <div data-role="content">
         <div class="text-center">
             <div class="my-boxes red-box resources-box">
                 <img src="{% static 'img/oinflyapp-social-media-icon.png' %}" />
                 <h2>{% trans "Social Media" %}</h2>
                 <ul data-role="listview" data-inset="true" class="m0">
-                    <li><a href="https://twitter.com/LibroCU">@LibroCU</a></li>
-                    <li><a href="https://twitter.com/rodolfo_oin">@rodolfo_oin</a></li>
-                    <li><a href="https://twitter.com/360finances">@360finances</a></li>
+                    {% for resource in resources.all %}
+                        {% if resource.type == 1 %}
+                            <li>
+                                <a href="{{ resource.url }}">
+                                    {{ resource.title|escape|safe }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -36,9 +42,15 @@
                 <img src="{% static 'img/oinflyapp-blogs-icon.png' %}" />
                 <h2>{% trans "Blogs" %}</h2>
                 <ul data-role="listview" data-inset="true" class="m0">
-                    <li><a href="http://www.youngadultmoney.com/">Young Adult Money</a></li>
-                    <li><a href="http://www.youngcheapliving.com/">Young, Cheap Living</a></li>
-                    <li><a href="http://moneylicious.org/">Moneylicious</a></li>
+                    {% for resource in resources.all %}
+                        {% if resource.type == 2 %}
+                            <li>
+                                <a href="{{ resource.url }}">
+                                    {{ resource.title|escape|safe }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -46,13 +58,20 @@
                 <img src="{% static 'img/oinflyapp-apps-icon.png' %}" />
                 <h2>{% trans "Other Cool Apps" %}</h2>
                 <ul data-role="listview" data-inset="true" class="m0">
-                    <li><a id='mint-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.mint&hl=en">Mint.com</a></li>
-                    <li><a id='goodbudget-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.dayspringtech.envelopes&hl=en">GoodBudget</a></li>
-                    <li><a id='mvelopes-link' target="_blank" href="https://play.google.com/store/apps/details?id=com.finicity.mvelopes&hl=en">Mvelopes</a></li>
+                    {% for resource in resources.all %}
+                        {% if resource.type == 3 %}
+                            <li>
+                                <a target="_blank" href="{{ resource.url }}">
+                                    {{ resource.title|escape|safe }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>
-    </div><!-- /content -->
+    </div>
+    <!-- /content -->
 
     {% include "basepage/footer.html" %}
 
