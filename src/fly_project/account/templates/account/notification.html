@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- ---------- notification ------------- -->
-<div data-role="page" id="notification">
+<div data-role="page" style="background-color:#fff;" id="notifications-page">
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
@@ -11,9 +11,148 @@
         $(document).ready(function(){
             loadUserData();
         });
+        
+        function ajax_me_wants_goal_notify(wants_goal_notify, callback) {
+            get_me(
+                {{ request.me.id }},
+                function(me) {
+                    me['wants_goal_notify'] = wants_goal_notify;
+                    set_me(
+                        me,
+                        function(me2) {
+                            callback("OK");
+                        },
+                        function(error_json) {
+                            callback("BAD");
+                        }
+                    ); // end Set Me.
+                },
+                function(error_json) {
+                    callback("BAD");
+                }
+            ); // end Get Me.
+        }
+    
+        function ajax_me_wants_course_notify(wants_course_notify, callback) {
+            get_me(
+                {{ request.me.id }},
+                function(me) {
+                    me['wants_course_notify'] = wants_course_notify;
+                    set_me(
+                        me,
+                        function(me2) {
+                            callback("OK");
+                        },
+                        function(error_json) {
+                            callback("BAD");
+                        }
+                    ); // end Set Me.
+                },
+                function(error_json) {
+                    callback("BAD");
+                }
+            ); // end Get Me.
+        }
+    
+        function ajax_me_wants_resource_notify(wants_resource_notify, callback) {
+            get_me(
+                {{ request.me.id }},
+                function(me) {
+                    me['wants_resource_notify'] = wants_resource_notify;
+                    set_me(
+                        me,
+                        function(me2) {
+                            callback("OK");
+                        },
+                        function(error_json) {
+                            callback("BAD");
+                        }
+                    ); // end Set Me.
+                },
+                function(error_json) {
+                    callback("BAD");
+                }
+            ); // end Get Me.
+        }
+    
+        function ajax_save_notify() {
+            var wants_goal_notify = $('#goals-switch').val();
+            if (wants_goal_notify == "On") {
+                wants_goal_notify = "True";
+            } else {
+                wants_goal_notify = "False";
+            }
+            
+            var wants_course_notify = $('#course-switch').val();
+            if (wants_course_notify == "On") {
+                wants_course_notify = "True";
+            } else {
+                wants_course_notify = "False";
+            }
+            
+            var wants_resource_notify = $('#resource-switch').val();
+            if (wants_resource_notify == "On") {
+                wants_resource_notify = "True";
+            } else {
+                wants_resource_notify = "False";
+            }
+            
+            ajax_me_wants_goal_notify(wants_goal_notify, function(message) {
+                ajax_me_wants_course_notify(wants_course_notify, function(message2) {
+                    ajax_me_wants_resource_notify(wants_resource_notify, function(message3) {
+                        console.log("Finished");
+                        location.reload(true); // Reload page with cache cleared.
+                    });
+                });
+            });
+        }
+
     </script>
 
-    {% trans "Continue" %}
+    <!-- Content -->
+    <div data-role="content">
+        <div class="text-center">
+            <form>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" style="background-color:#E66771;color:#fff;">
+                        <h4>{% trans "Notifications" %}</h4>
+                    </li>
+                    <li>
+                        <span style="position:relative;top:10px;font-size:10pt;">{% trans "Set New Goal" %}</span>
+                        <span class="text-right fright">
+                            <select id="goals-switch" data-role="slider" data-mini="true">
+                                <option {% if request.me.wants_goal_notify == False %}selected="true"{% endif %}>{% trans "Off" %}</option>
+                                <option {% if request.me.wants_goal_notify == True %}selected="true"{% endif %}>{% trans "On" %}</option>
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <span style="position:relative;top:10px;font-size:10pt;">{% trans "New Course Available" %}</span>
+                        <span class="text-right fright">
+                            <select id="course-switch" data-role="slider" data-mini="true">
+                                <option {% if request.me.wants_course_notify == False %}selected="true"{% endif %}>{% trans "Off" %}</option>
+                                <option {% if request.me.wants_course_notify == True %}selected="true"{% endif %}>{% trans "On" %}</option>
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <span style="position:relative;top:10px;font-size:10pt;">{% trans "New Resource Available" %}</span>
+                        <span class="text-right fright">
+                            <select id="resource-switch" data-role="slider" data-mini="true">
+                                <option {% if request.me.wants_resource_notify == False %}selected="true"{% endif %}>{% trans "Off" %}</option>
+                                <option {% if request.me.wants_resource_notify == True %}selected="true"{% endif %}>{% trans "On" %}</option>
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <button onclick="ajax_save_notify();" id="btnSaveChanges" class="mt10 ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:10px;">
+                            <span>{% trans "Save Changes" %}</span>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div><!-- /content -->
     
     {% include "basepage/footer.html" %}
 
