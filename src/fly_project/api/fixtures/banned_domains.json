@@ -1,0 +1,128 @@
+[
+  {
+    "model": "api.BannedDomain",
+    "pk": 1,
+    "fields": {
+      "name": "euaqa.com",
+      "banned_on": "2016-01-01",
+      "reason": "10minutemail.net"
+     }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 2,
+    "fields": {
+      "name": "trbvn.com",
+      "banned_on": "2016-01-01",
+      "reason": "10minutemail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 3,
+    "fields": {
+      "name": "sharklasers.com",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 4,
+    "fields": {
+      "name": "grr.la",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 5,
+    "fields": {
+      "name": "guerrillamail.biz",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 6,
+    "fields": {
+      "name": "guerrillamail.com",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 7,
+    "fields": {
+      "name": "guerrillamail.de",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 8,
+    "fields": {
+      "name": "guerrillamail.net",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 9,
+    "fields": {
+      "name": "guerrillamail.org",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 10,
+    "fields": {
+      "name": "guerrillamailblock.com",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 11,
+    "fields": {
+      "name": "spam4.me",
+      "banned_on": "2016-01-01",
+      "reason": "guerrillamail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 12,
+    "fields": {
+      "name": "dispostable.com",
+      "banned_on": "2016-01-01",
+      "reason": "dispostable.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 13,
+    "fields": {
+      "name": "tryalert.com",
+      "banned_on": "2016-01-01",
+      "reason": "getairmail.com"
+    }
+  },
+  {
+    "model": "api.BannedDomain",
+    "pk": 14,
+    "fields": {
+      "name": "yopmail.com",
+      "banned_on": "2016-01-01",
+      "reason": "yopmail.com"
+    }
+  }
+]
