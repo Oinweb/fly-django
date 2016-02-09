@@ -8,7 +8,8 @@ from api.pagination import LargeResultsSetPagination
 from api.permissions import IsUser
 from api.serializers import MeSerializer
 from api.models import Me
-
+from rest_framework.decorators import detail_route
+from django.core.management import call_command
 
 class MeFilter(django_filters.FilterSet):
     class Meta:
@@ -23,3 +24,17 @@ class MeViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsUser,)
     filter_class = MeFilter
+
+
+    @detail_route(methods=['get'], permission_classes=[IsUser])
+    def run_game_loop(self, request, pk=None):
+        """
+            Function will perform the following:
+            - Iterate through all the Goals and re-compute the score
+            - Add Badge(s) when the User reaches a certain XP-Level
+            -
+        """
+        #TODO: Implement!
+        
+        #call_command('me_tally_up',str(pk))
+        return Response({'status': 'success', 'message': 'successfully ran game loop for user.'})

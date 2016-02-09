@@ -148,7 +148,10 @@ class QuestionSubmissionSerializer(serializers.ModelSerializer):
 
 
 class MeSerializer(serializers.ModelSerializer):
+    level = serializers.IntegerField(source='xplevel.level', read_only=True)
+    min_xp = serializers.IntegerField(source='xplevel.min_xp', read_only=True)
+    max_xp = serializers.IntegerField(source='xplevel.max_xp', read_only=True)
     class Meta:
         model = Me
-        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify',)
+        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify', 'level', 'min_xp', 'max_xp',)
 
