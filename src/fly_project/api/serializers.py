@@ -18,6 +18,7 @@ from api.models import EnrolledCourse
 from api.models import QuizSubmission
 from api.models import QuestionSubmission
 from api.models import Me
+from api.models import Notification
 
 
 class LoginSerializer(serializers.Serializer):
@@ -108,7 +109,7 @@ class BadgeSerializer(serializers.ModelSerializer):
 class XPLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('id', 'created', 'title', 'level', 'min_xp', 'max_xp',)
+        fields = ('id', 'created', 'title', 'num', 'min_xp', 'max_xp',)
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -148,10 +149,18 @@ class QuestionSubmissionSerializer(serializers.ModelSerializer):
 
 
 class MeSerializer(serializers.ModelSerializer):
-    level = serializers.IntegerField(source='xplevel.level', read_only=True)
+    num = serializers.IntegerField(source='xplevel.num', read_only=True)
     min_xp = serializers.IntegerField(source='xplevel.min_xp', read_only=True)
     max_xp = serializers.IntegerField(source='xplevel.max_xp', read_only=True)
     class Meta:
         model = Me
-        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify', 'level', 'min_xp', 'max_xp',)
+        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify', 'num', 'min_xp', 'max_xp',)
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ('id', 'type','title', 'text', 'user', 'xplevel', 'badge',)
+
+
 

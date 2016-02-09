@@ -50,3 +50,9 @@ RESOURCE_TYPE_OPTIONS = (
     (2, _('Blogs')),
     (3, _('Other Cool Apps')),
 )
+
+NOTIFICATION_TYPE_OPTIONS = (
+    (1, _('Level Up Notifiction')),
+    (2, _('New Badge Notification')),
+    (3, _('Custom Notification')),
+)

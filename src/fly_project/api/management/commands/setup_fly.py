@@ -64,7 +64,7 @@ class Command(BaseCommand):
                 try:
                     xplevel = XPLevel.objects.get(id=id)
                     xplevel.title = title
-                    xplevel.level = level
+                    xplevel.num = level
                     xplevel.min_xp = min_xp
                     xplevel.max_xp = max_xp
                     xplevel.save()
@@ -73,7 +73,7 @@ class Command(BaseCommand):
                     xplevel = XPLevel.objects.create(
                         id=id,
                         title=title,
-                        level=level,
+                        num=level,
                         min_xp=min_xp,
                         max_xp=max_xp,
                     )

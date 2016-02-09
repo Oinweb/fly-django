@@ -129,7 +129,7 @@ class Goal(models.Model):
     
     # Variable controls whether this particular goal was finished and thus
     # cannot be modified after it was closed.
-    is_closed = models.BooleanField(default=False)
+    is_closed = models.BooleanField(default=False, db_index=True,)
     
     # When 'is_closed=True' variable was set, this variable controls whether
     # the User has actually finished this goal with success or not.
@@ -309,7 +309,7 @@ class XPLevelManager(models.Manager):
             return XPLevel.objects.get(level=1)
         except XPLevel.DoesNotExist:
             return self.create(
-                level=1,
+                num=1,
                 min_xp=0,
                 max_xp=25,
             )
@@ -324,7 +324,7 @@ class XPLevel(models.Model):
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=15, null=True, blank=True)
-    level = models.PositiveSmallIntegerField(
+    num = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         choices=constants.DURATION_IN_MINUTES_OPTIONS,
         default=1,
@@ -529,7 +529,7 @@ class Me(models.Model):
         default=0,
     )
     xplevel = models.ForeignKey(XPLevel)
-    badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_awarded_badges',)
+    badges = models.ManyToManyField(Badge, blank=True, related_name='fly_user_badges',)
     courses = models.ManyToManyField(EnrolledCourse, blank=True, related_name='fly_user_enrolled_courses',)
     wants_newsletter = models.BooleanField(default=False)
     wants_goal_notify = models.BooleanField(default=False)
@@ -538,3 +538,23 @@ class Me(models.Model):
     
     def __str__(self):
         return str(self.id)
+
+
+class Notification(models.Model):
+    class Meta:
+        app_label = 'api'
+        db_table = 'fly_notifications'
+    id = models.AutoField(primary_key=True)
+    created = models.DateTimeField(auto_now_add=True)
+    type = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
+        choices=constants.NOTIFICATION_TYPE_OPTIONS,
+        default=1,
+        db_index=True,
+    )
+    title = models.CharField(max_length=511, null=True, blank=True)
+    text = models.CharField(max_length=511, null=True, blank=True)
+    user = models.ForeignKey(User, db_index=True,)
+    xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
+    badge = models.ForeignKey(Badge, null=True, blank=True,)
+

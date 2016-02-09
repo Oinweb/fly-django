@@ -27,14 +27,12 @@ class MeViewSet(viewsets.ModelViewSet):
 
 
     @detail_route(methods=['get'], permission_classes=[IsUser])
-    def run_game_loop(self, request, pk=None):
+    def evaluate_me(self, request, pk=None):
         """
             Function will perform the following:
             - Iterate through all the Goals and re-compute the score
             - Add Badge(s) when the User reaches a certain XP-Level
             -
         """
-        #TODO: Implement!
-        
-        #call_command('me_tally_up',str(pk))
+        call_command('evaluate_me',str(pk))
         return Response({'status': 'success', 'message': 'successfully ran game loop for user.'})

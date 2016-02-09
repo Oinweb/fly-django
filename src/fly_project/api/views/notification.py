@@ -6,20 +6,20 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from api.pagination import LargeResultsSetPagination
 from api.permissions import IsAdminUserOrReadOnly
-from api.serializers import XPLevelSerializer
-from api.models import XPLevel
+from api.serializers import NotificationSerializer
+from api.models import Notification
 
 
-class XPLevelFilter(django_filters.FilterSet):
+class NotificationFilter(django_filters.FilterSet):
     class Meta:
-        model = XPLevel
-        fields = ['id', 'created', 'title', 'num', 'min_xp', 'max_xp',]
+        model = Notification
+        fields = ['id', 'type', 'created', 'title', 'text', 'user', 'xplevel', 'badge',]
 
 
-class XPLevelViewSet(viewsets.ModelViewSet):
-    queryset = XPLevel.objects.all()
-    serializer_class = XPLevelSerializer
+class NotificationViewSet(viewsets.ModelViewSet):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
     pagination_class = LargeResultsSetPagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminUserOrReadOnly,)
-    filter_class = XPLevelFilter
+    filter_class = NotificationFilter
