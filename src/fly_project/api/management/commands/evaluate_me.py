@@ -1,6 +1,7 @@
 import os
 import sys
 from decimal import *
+from django.db.models import Sum
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext_lazy as _
@@ -38,22 +39,18 @@ class Command(BaseCommand):
             Function will iterate through all the Goals and sum the XP score.
         """
         xp_score = 0
-        savings_goals = SavingsGoal.objects.filter(user=me.user,is_closed=True)
-        for goal in savings_goals:
-            if goal.was_accomplished:
-                xp_score += goal.earned_xp
+        sum1 = SavingsGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
+        if sum1['earned_xp__sum']:
+            me.xp = sum1['earned_xp__sum']
+        
+        sum2 = CreditGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
+        if sum2['earned_xp__sum']:
+            me.xp = sum2['earned_xp__sum']
 
-        credit_goals = CreditGoal.objects.filter(user=me.user,is_closed=True)
-        for goal in credit_goals:
-            if goal.was_accomplished:
-                xp_score += goal.earned_xp
-
-        final_goals = FinalGoal.objects.filter(user=me.user,is_closed=True)
-        for goal in final_goals:
-            if goal.was_accomplished:
-                xp_score += goal.earned_xp
-
-        me.xp = xp_score
+        sum3 = FinalGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
+        if sum3['earned_xp__sum']:
+            me.xp = sum3['earned_xp__sum']
+        
         me.save()
 
     def process_xp_level_up(self, me):
