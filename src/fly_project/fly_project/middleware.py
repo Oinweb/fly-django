@@ -1,4 +1,4 @@
-from django.http import HttpResponseBadRequest, HttpResponseRedirect
+from django.http import HttpResponseBadRequest
 from django.utils.translation import get_language
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token

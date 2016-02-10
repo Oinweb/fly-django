@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.management import call_command
@@ -15,18 +15,15 @@ from api.models import QuestionSubmission
 
 @login_required(login_url='/authentication')
 def learning_page(request):
-    # The URL to be used to redirect if anything is missing.
-    dashboard_url = '/' + request.language + '/dashboard'
-    
     try:
         unlocked_courses = Course.objects.filter(has_prerequisites=False).order_by("created")
     except Course.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("No courses where found.")
 
     try:
         locked_courses = Course.objects.filter(has_prerequisites=True).order_by("created")
     except Course.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("No locked courses where found.")
 
     return render(request, 'learning/course/master/view.html',{
         'settings': settings,
@@ -37,20 +34,17 @@ def learning_page(request):
 
 @login_required(login_url='/authentication')
 def course_page(request, course_id):
-    # The URL to be used to redirect if anything is missing.
-    dashboard_url = '/' + request.language + '/dashboard'
-    
     # Fetch the Course for the id or redirect to dashboard.
     try:
         course = Course.objects.get(id=course_id)
     except Course.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Course does not exist.")
 
     # Fetch the Quiz for the id or redirect to dashboard.
     try:
         quiz = Quiz.objects.get(course=course)
     except Quiz.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Quiz does not exist.")
 
 
     #TODO: Add defensive code to prevent course enrollment if the
@@ -78,20 +72,17 @@ def course_page(request, course_id):
 
 @login_required(login_url='/authentication')
 def quiz_home_page(request, quiz_id):
-    # The URL to be used to redirect if anything is missing.
-    dashboard_url = '/' + request.language + '/dashboard'
-    
-    # Fetch the Quiz for the id or redirect to dashboard.
+    # Fetch the Quiz for the id or error.
     try:
         quiz = Quiz.objects.get(id=quiz_id)
     except Quiz.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Quiz does not exist.")
 
-    # Fetch the Questions for the Quiz or redirect to dashboard.
+    # Fetch the Questions for the Quiz or error.
     try:
         questions = Question.objects.filter(quiz=quiz)
     except Question.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Question does not exist.")
 
     # Fetch the User's Quiz Submission and if there is no Submission then
     # create it.
@@ -127,14 +118,11 @@ def quiz_home_page(request, quiz_id):
 
 @login_required(login_url='/authentication')
 def quiz_question_page(request, quiz_id, question_id):
-    # The URL to be used to redirect if anything is missing.
-    dashboard_url = '/' + request.language + '/dashboard'
-    
-    # Fetch the Questions for the Quiz or redirect to dashboard.
+    # Fetch the Questions for the Quiz or error.
     try:
         question = Question.objects.get(id=question_id)
     except Question.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Question does not exist.")
     
     # Fetch the User's Submission for this particular Question and if there
     # is no Submission for it then create it here.
@@ -171,24 +159,20 @@ def quiz_question_page(request, quiz_id, question_id):
 
 
 def quiz_final_question_page(request, quiz_id):
-    # The URL to be used to redirect if anything is missing.
-    dashboard_url = '/' + request.language + '/dashboard'
-    
-    # Fetch the submitted Quiz for the id or redirect to dashboard.
+    # Fetch the submitted Quiz for the id or error.
     try:
         quiz_submission = QuizSubmission.objects.get(
             quiz_id=int(quiz_id),
             user_id=request.user.id,
         )
     except QuestionSubmission.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Quiz Submission does not exist.")
 
-    # Fetch all the submitted Questions for the particular Quiz, else redirect
-    # to dashboard if nothing exists.
+    # Fetch all the submitted Questions for the particular Quiz, else error.
     try:
         question_submissions = QuestionSubmission.objects.filter(quiz=quiz_submission.quiz)
     except QuestionSubmission.DoesNotExist:
-        return HttpResponseRedirect(dashboard_url)
+        return HttpResponseBadRequest("Question Submission does not exist.")
 
     # Run the Command for evaluating the Quiz and tallying up the marks.
     call_command('evaluate_quiz',str(quiz_submission.id))
