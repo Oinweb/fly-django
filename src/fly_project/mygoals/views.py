@@ -103,7 +103,7 @@ def final_goal_page(request):
     # create a new goal here.
     final_goal = FinalGoal.objects.get_latest(request.user.id)
     if not final_goal:
-        credit_goal = FinalGoal.objects.create(user_id=request.user.id,)
+        final_goal = FinalGoal.objects.create(user_id=request.user.id,)
 
     # Check to see if the current FinalGoal has 'is_closed=True' which means
     # we need to create a new final goal.

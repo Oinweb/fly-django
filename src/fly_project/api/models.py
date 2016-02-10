@@ -149,14 +149,7 @@ class Goal(models.Model):
 class SavingsGoalManager(models.Manager):
     def get_latest(self, user_id):
         try:
-            goals = SavingsGoal.objects.filter(
-                user_id=user_id,
-            ).order_by('-created')
-    
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
+            return SavingsGoal.objects.filter(user_id=user_id).latest('created')
         except SavingsGoal.DoesNotExist:
             return None
 
@@ -192,14 +185,7 @@ class OrderedSavingsGoal(SavingsGoal):
 class CreditGoalManager(models.Manager):
     def get_latest(self, user_id):
         try:
-            goals = CreditGoal.objects.filter(
-                user_id=user_id,
-            ).order_by('-created')
-                
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
+            return CreditGoal.objects.filter(user_id=user_id).latest('created')
         except CreditGoal.DoesNotExist:
             return None
 
@@ -234,14 +220,7 @@ class OrderedCreditGoal(CreditGoal):
 class FinalGoalManager(models.Manager):
     def get_latest(self, user_id):
         try:
-            goals = FinalGoal.objects.filter(
-                user_id=user_id,
-            ).order_by('-created')
-                
-            if not goals:
-                return None
-            else:
-                return goals[:1][0]
+            return FinalGoal.objects.filter(user_id=user_id,).latest('created')
         except FinalGoal.DoesNotExist:
             return None
 
