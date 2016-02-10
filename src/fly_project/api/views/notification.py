@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from api.pagination import LargeResultsSetPagination
-from api.permissions import IsAdminUserOrReadOnly
+from api.permissions import IsUser
 from api.serializers import NotificationSerializer
 from api.models import Notification
 
@@ -13,7 +13,7 @@ from api.models import Notification
 class NotificationFilter(django_filters.FilterSet):
     class Meta:
         model = Notification
-        fields = ['id', 'type', 'created', 'title', 'text', 'user', 'xplevel', 'badge',]
+        fields = ['id', 'type', 'created', 'title', 'description', 'user', 'xplevel', 'badge',]
 
 
 class NotificationViewSet(viewsets.ModelViewSet):
@@ -21,5 +21,5 @@ class NotificationViewSet(viewsets.ModelViewSet):
     serializer_class = NotificationSerializer
     pagination_class = LargeResultsSetPagination
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAdminUserOrReadOnly,)
+    permission_classes = (IsUser,)
     filter_class = NotificationFilter

@@ -10,6 +10,11 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
+                          
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
         });
         
         function ajax_me_wants_goal_notify(wants_goal_notify, callback) {
@@ -154,6 +159,7 @@
         </div>
     </div><!-- /content -->
     
+    {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->

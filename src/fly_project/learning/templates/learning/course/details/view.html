@@ -11,6 +11,11 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
+                          
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
         });
     </script>
 
@@ -43,7 +48,8 @@
         </div>
     </div>
     <!-- end CONTENT -->
-     
+    
+    {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->

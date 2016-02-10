@@ -1,0 +1,80 @@
+{% load staticfiles i18n %}
+
+<div data-role="popup" id="levelup-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+    <div class="text-center">
+        <h3>{% trans "You've earned a new FLY level!" %}</h3>
+        <p class="text-left">{% trans "Congratulations! You've just leveled up your financial skills! Let your friends know, and keep up the good work!" %}</p>
+        <fieldset class="level-up-fieldset">
+            <h3 class="level">
+                <div id="id_levelup_num">{% trans "Level" %} 4</div>
+            </h3>
+            <h4 class="level-title">
+                <div id="id_levelup_title">{% trans "Financial Guru" %}</div>
+            </h4>
+        </fieldset>
+        <div class="social-sharing">
+            <share-button></share-button>
+        </div>
+        <button onclick="$('#levelup-popup').popup('close');"
+              data-role="button"
+                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
+    </div>
+</div>
+
+<script>
+    /**
+     *  Function will lookup any Notifications in Queue and then load the
+     *  associated modal popup for the found Notifications.
+     */
+    function handle_fly_notifications()
+    {
+        var criteria = Array();
+        criteria.push({ 'user': {{ request.user.id }} });
+        
+        filter_notifications(
+            criteria,
+            function(json_result) {
+                $(json_result).each(function(iter,notifications){
+                    $(notifications['results']).each(function(iter2,notification){
+                        var type = notification['type'];
+                        if (type == 1) {
+                            popup_level_up_modal(notification);
+                        }
+                    });
+                });
+            },
+            function(error_json) {
+                console.log(error_json);
+            }
+        );
+    }
+
+    /**
+     *  Function will delete the Notification object and then load-up
+     *  the modal indicating a modal.
+     */
+    function popup_level_up_modal(notification) {
+        // Extract data from the notification.
+        var id = notification['id'];
+        var num = notification['xplevel_num'];
+        var title = notification['xplevel_title'];
+        
+        // Delete the notification in the database.
+        delete_notification(
+            id,
+            function(ok) {
+                // Do Nothing.
+            },
+            function(error_json) {
+                console.log(error_json);
+            }
+        ); // end Delete Notification.
+        
+        // Load up the UI on the page.
+        $('#id_levelup_num').html("Level "+num);
+        $('#id_levelup_title').html(title);
+        $('#levelup-popup').popup('open');
+    }
+
+</script>
+

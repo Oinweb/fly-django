@@ -8,6 +8,16 @@
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
     {% include 'learning/quiz/question_js.html' %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            loadUserData();
+                          
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
+        });
+    </script>
 
     <!-- CONTENT -->
     <div data-role="content">

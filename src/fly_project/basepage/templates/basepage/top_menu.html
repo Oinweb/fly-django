@@ -33,7 +33,7 @@
             get_me(
                 {{ request.me.id }},
                 function(me) {
-                    var level = me['level'];
+                    var level = me['num'];
                     $('#id_me_xp_level').html("Lvl "+level);
                    
                     var xp_score = me['xp'] + "/" + me['max_xp'];

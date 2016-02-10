@@ -553,7 +553,7 @@ class Notification(models.Model):
         db_index=True,
     )
     title = models.CharField(max_length=511, null=True, blank=True)
-    text = models.CharField(max_length=511, null=True, blank=True)
+    description = models.CharField(max_length=511, null=True, blank=True)
     user = models.ForeignKey(User, db_index=True,)
     xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
     badge = models.ForeignKey(Badge, null=True, blank=True,)

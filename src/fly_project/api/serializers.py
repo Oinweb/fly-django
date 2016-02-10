@@ -158,9 +158,11 @@ class MeSerializer(serializers.ModelSerializer):
 
 
 class NotificationSerializer(serializers.ModelSerializer):
+    xplevel_num = serializers.IntegerField(source='xplevel.num', read_only=True)
+    xplevel_title = serializers.CharField(source='xplevel.title', read_only=True)
     class Meta:
         model = Notification
-        fields = ('id', 'type','title', 'text', 'user', 'xplevel', 'badge',)
+        fields = ('id', 'type', 'title', 'description', 'user', 'xplevel', 'badge', 'xplevel_num', 'xplevel_title',)
 
 
 

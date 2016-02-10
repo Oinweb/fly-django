@@ -9,6 +9,11 @@
     <script>
         $(document).ready(function(){
             loadUserData();
+                     
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
                           
             // check if user is on an IOS device and change app links
             if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
@@ -73,6 +78,7 @@
     </div>
     <!-- /content -->
 
+    {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->

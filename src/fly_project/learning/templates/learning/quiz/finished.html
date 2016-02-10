@@ -7,7 +7,15 @@
 
     {% include 'basepage/top_menu.html' %}
     {% include 'basepage/side_menu.html' %}
-    <script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            loadUserData();
+                          
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
+        });
     </script>
 
     <!-- CONTENT -->
@@ -81,11 +89,5 @@
     <!-- end Footer -->
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        loadUserData();
-    });
-</script>
 
 {% endblock content %}

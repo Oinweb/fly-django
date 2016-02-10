@@ -3,12 +3,15 @@ import sys
 from decimal import *
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.translation import ugettext_lazy as _
 from fly_project import constants
 from api.models import Me
 from api.models import XPLevel
 from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
+from api.models import Notification
+
 
 class Command(BaseCommand):
     help = 'Evaluate the User\'s profile and grant reward and calculate XP.'
@@ -68,11 +71,22 @@ class Command(BaseCommand):
         xp_tiers = XPLevel.objects.all().order_by("num")
         for xp_tier in xp_tiers:
             if me.xplevel.num < xp_tier.num:
-                print(xp_tier)
                 if me.xp >= xp_tier.min_xp and me.xp < xp_tier.max_xp:
-                    print("Level Up!")
-                    print("Min:", xp_tier.min_xp)
-                    print("Max:", xp_tier.max_xp)
+                    me.xplevel = xp_tier
+                    me.save()
+                    self.create_level_up_notification(me, xp_tier)
 
+    def create_level_up_notification(self,me, xp_tier):
+        title = _("You've earned a new FLY level!")
+        description = _("Congratulations! You've just leveled up your financial skills! Let your friends know, and keep up the good work!")
+        Notification.objects.create(
+            type=1,
+            title=title,
+            description=description,
+            user=me.user,
+            xplevel=xp_tier,
+            badge=None,
+        )
+    
     def process_badges(self, me):
         pass

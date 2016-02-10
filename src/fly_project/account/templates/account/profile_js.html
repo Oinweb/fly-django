@@ -64,7 +64,12 @@
 
     $(document).ready(function(){
         loadUserData();
-                  
+           
+        // Add a slight deley before detect any notications and load UI.
+        setTimeout(function(){
+            handle_fly_notifications();
+        }, 500);
+                      
         new ShareButton({
             networks: {
                 pinterest: { enabled: false },

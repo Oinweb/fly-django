@@ -3,6 +3,11 @@
     $(document).ready(function(){
         loadUserData();
         ajax_refresh_me_top_menu();
+                    
+        // Add a slight deley before detect any notications and load UI.
+        setTimeout(function(){
+            handle_fly_notifications();
+        }, 500);
     });
     
     function ajax_finish_savings_goal(goal_id)
