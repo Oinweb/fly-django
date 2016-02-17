@@ -28,9 +28,13 @@ class Command(BaseCommand):
                 me = Me.objects.get(id=id)
                 self.begin_processing(me)
             except Me.DoesNotExist:
-                pass
+                print("Error - No Me profile object detected for ID: "+str(id))
 
     def begin_processing(self, me):
+        """
+            Function looks at the User's profile and evaluate this account
+            to determine various gamefication elements.
+        """
         self.process_xp_score(me)
         self.process_xp_level_up(me)
         self.process_badges(me)
@@ -75,6 +79,9 @@ class Command(BaseCommand):
                     self.create_level_up_notification(me, xp_tier)
 
     def create_level_up_notification(self,me, xp_tier):
+        """
+            Function will create a "New Experience Level" type of notification.
+        """
         title = _("You've earned a new FLY level!")
         description = _("Congratulations! You've just leveled up your financial skills! Let your friends know, and keep up the good work!")
         Notification.objects.create(
@@ -87,5 +94,33 @@ class Command(BaseCommand):
         )
     
     def process_badges(self, me):
-        badges = Badge.objects.all()
-        print(badges)
+        """
+            Function will iterate through all the badges in our application
+            and evaluate whether to grant the User the particular Badge.
+        """
+        badges = Badge.objects.filter(has_xp_requirement=True)
+        for badge in badges.all():
+            if badge not in me.badges.all():
+                # Evaluate the Badge and User's Me profile by comparing the
+                # experience points.
+                if me.xp >= badge.required_xp:
+                    # Grant the badge to the User.
+                    me.badges.add(badge)
+                    
+                    # Create a notification
+                    self.create_new_badge_notification(me, badge)
+                    print("New Badge Earned!")
+
+    def create_new_badge_notification(self,me, badge):
+        """
+            Function will create a "New Badge" type of notification.
+        """
+        title = _("You've earned a new Badge:")+" "+badge.title
+        Notification.objects.create(
+            type=2,
+            title=title,
+            description=badge.description,
+            user=me.user,
+            xplevel=None,
+            badge=badge,
+        )

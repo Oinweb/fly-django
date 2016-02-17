@@ -1,23 +1,48 @@
 {% load staticfiles i18n %}
 
+<input id="notification_id" type="hidden" value=0 />
+
 <div data-role="popup" id="levelup-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
     <div class="text-center">
         <h3>{% trans "You've earned a new FLY level!" %}</h3>
         <p class="text-left">{% trans "Congratulations! You've just leveled up your financial skills! Let your friends know, and keep up the good work!" %}</p>
         <fieldset class="level-up-fieldset">
-            <h3 class="level">
-                <div id="id_levelup_num">{% trans "Level" %} 4</div>
+            <h3 class="level" id="id_levelup_num">
+                <!-- Level Number Placeholder -->
             </h3>
-            <h4 class="level-title">
-                <div id="id_levelup_title">{% trans "Financial Guru" %}</div>
+            <h4 class="level-title"  id="id_levelup_title">
+                <!-- Description Placeholder -->
             </h4>
         </fieldset>
         <div class="social-sharing">
             <share-button></share-button>
         </div>
-        <button onclick="$('#levelup-popup').popup('close');"
+        <button onclick="ajax_delete_this_notification(); $('#levelup-popup').popup('close');"
               data-role="button"
-                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
+                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+                  {% trans "OK" %}
+        </button>
+    </div>
+</div>
+
+<div data-role="popup" id="badge-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
+    <div class="text-center">
+        <h3 id="id_new_badge_title">
+            <!-- Title Placeholder -->
+        </h3>
+        <p class="text-left" id="id_new_badge_description">
+            <!-- Description Placeholder -->
+        </p>
+        <p><i class="fa fa-3x fa-thumbs-up"></i></p>
+        
+        <div class="social-sharing">
+            <share-button></share-button>
+        </div>
+        <button onclick="ajax_delete_this_notification(); $('#badge-popup').popup('close');"
+              data-role="button"
+                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+                  {% trans "OK" %}
+        </button>
     </div>
 </div>
 
@@ -39,11 +64,19 @@
                         var type = notification['type'];
                         if (type == 1) {
                             popup_level_up_modal(notification);
+                        } else if (type == 2) {
+                            popup_new_badge_modal(notification);
                         }
+                        console.log("Create Popup of Type: "+type);
+                                                     
+                        // Stop the current iteration which will result handling
+                        // only a single notification at a time.
+                        return false;
                     });
                 });
             },
             function(error_json) {
+                alert("Unknown error with notifications. See console log.");
                 console.log(error_json);
             }
         );
@@ -59,6 +92,32 @@
         var num = notification['xplevel_num'];
         var title = notification['xplevel_title'];
         
+        // Load up the UI on the page.
+        $('#id_levelup_num').html("Level "+num);
+        $('#id_levelup_title').html(title);
+        $('#notification_id').val(id);
+        $('#levelup-popup').popup('open');
+    }
+
+    function popup_new_badge_modal(notification) {
+        // Extract data from the notification.
+        var id = notification['id'];
+        var description = notification['description'];
+        var title = notification['title'];
+    
+        // Load up the UI on the page.
+        $('#id_new_badge_description').html(description);
+        $('#id_new_badge_title').html(title);
+        $('#notification_id').val(id);
+        $('#badge-popup').popup('open');
+    }
+
+    /**
+     *  Function will delete the currently popped notification.
+     */
+    function ajax_delete_this_notification() {
+        var id = parseInt( $('#notification_id').val() );
+        
         // Delete the notification in the database.
         delete_notification(
             id,
@@ -66,14 +125,10 @@
                 // Do Nothing.
             },
             function(error_json) {
+                alert("Unknown error with notification deletion. See console log.");
                 console.log(error_json);
             }
         ); // end Delete Notification.
-        
-        // Load up the UI on the page.
-        $('#id_levelup_num').html("Level "+num);
-        $('#id_levelup_title').html(title);
-        $('#levelup-popup').popup('open');
     }
 
 </script>
