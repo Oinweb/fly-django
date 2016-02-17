@@ -27,7 +27,18 @@
                         // Step 4: Load up the success UI if the goal was accomplished, else
                         //         load the the savings UI.
                         if ($('#goal-switch').val() == "True") {
-                            window.location = "/{{ request.language }}/mygoals/{{ constants.GOAL_MYGOAL_TYPE }}/"+goal['id']+"/complete";
+                            evaluate_me(
+                                {{ request.me.id }},
+                                function(me) {
+                                    window.location = "/{{ request.language }}/mygoals/{{ constants.GOAL_MYGOAL_TYPE }}/"+goal['id']+"/complete";
+                                },
+                                function(error_json3) {
+                                    $('#error-popup').popup('open');
+                                    $('#id_error_title').html('{% trans "Final" %}');
+                                    $('#id_error_message').html('{% trans "An unknown error occured when final goal, please see log." %}');
+                                    console.log(error_json3);
+                                }
+                            ); // end Run Game Loop.
                         } else {
                             window.location = "/{{ request.language }}/mygoals/{{ constants.GOAL_MYGOAL_TYPE }}/"+goal['id']+"/sorry";
                         }

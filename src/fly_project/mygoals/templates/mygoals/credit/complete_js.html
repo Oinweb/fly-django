@@ -22,7 +22,19 @@
                         // Step 4: Load up the success UI if the goal was accomplished, else
                         //         load the the savings UI.
                         if ($('#goal-switch').val() == "True") {
-                            window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/complete";
+                            // Step 5: Update the gamified metrics for the User.
+                            evaluate_me(
+                                {{ request.me.id }},
+                                function(me) {
+                                    window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/complete";
+                                },
+                                function(error_json3) {
+                                    $('#error-popup').popup('open');
+                                    $('#id_error_title').html('{% trans "Credit" %}');
+                                    $('#id_error_message').html('{% trans "An unknown error occured when credit goal, please see log." %}');
+                                    console.log(error_json3);
+                                }
+                            ); // end Run Game Loop.
                         } else {
                             window.location = "/{{ request.language }}/mygoals/{{ constants.CREDIT_MYGOAL_TYPE }}/"+goal['id']+"/sorry";
                         }
