@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta, timezone
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext_lazy as _
 from fly_project import settings
 from fly_project import constants
 from api.models import SavingsGoal

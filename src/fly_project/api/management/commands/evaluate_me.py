@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext_lazy as _
 from fly_project import constants
+from api.models import Badge
 from api.models import Me
 from api.models import XPLevel
 from api.models import SavingsGoal
@@ -86,4 +87,5 @@ class Command(BaseCommand):
         )
     
     def process_badges(self, me):
-        pass
+        badges = Badge.objects.all()
+        print(badges)
