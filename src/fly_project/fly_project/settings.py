@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'corsheaders',
+    'compressor',
     'rest_framework',
     'rest_framework.authtoken',
     'social.apps.django_app.default', 
@@ -174,14 +175,21 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale"),
 )
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "media"),
+    os.path.join(BASE_DIR, 'static'),
 )
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',  # Django-Compressor
+]
 
 
 # User uploaded content.
@@ -209,25 +217,39 @@ SERVER_EMAIL = SECRET_EMAIL_HOST_USER
 # Error Emailing
 # https://docs.djangoproject.com/en/dev/topics/logging/
 
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    'handlers': {
+#        'mail_admins': {
+#            'level': 'ERROR',
+#            'class': 'django.utils.log.AdminEmailHandler',
+#            'include_html': False, # Set to this value to prevent spam
+#        }
+#    },
+#    'loggers': {
+#        'django.request': {
+#            'handlers': ['mail_admins'],
+#            'level': 'ERROR',
+#            'propagate': False,
+#        },
+#    },
+#}
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'include_html': False, # Set to this value to prevent spam
-        }
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
 }
-
 
 
 # The Google Analytics Key

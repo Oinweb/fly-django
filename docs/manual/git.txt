@@ -193,6 +193,7 @@ env/
 # Application Specific Ignores
 #—————————————————————————————
 src/fly_project/fly_project/secret_settings.py
+src/fly_project/static/CACHE/*
 — - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
 
 

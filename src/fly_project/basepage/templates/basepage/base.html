@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles compress %}
 <!DOCTYPE html>
 <html lang="{{ request.language }}">
 <head>
@@ -25,18 +25,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-
+<link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
+    {% compress css %}
     <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.4.5.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/share-button.min.css' %}">
-    <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        
+    {% endcompress %}
+    
+    {% compress js %}
     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <script src="{% static 'js/jquery.mobile-1.4.5.min.js' %}"></script>
     <script src="{% static 'js/share-button.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endcompress %}
     <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
 </head>
 <body>

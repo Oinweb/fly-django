@@ -3,7 +3,9 @@ Markdown==2.6.5
 Pillow==3.1.0
 PyJWT==1.4.0
 defusedxml==0.4.1
+django-appconf==1.0.1
 django-braces==1.8.1
+django-compressor==2.0
 django-cors-headers==1.1.0
 django-filter==0.12.0
 django-modeltranslation==0.11rc2
@@ -14,6 +16,8 @@ oauthlib==1.0.3
 psycopg2==2.6.1
 python-social-auth==0.2.14
 python3-openid==3.0.9
+rcssmin==1.0.6
 requests==2.9.1
 requests-oauthlib==0.6.0
+rjsmin==1.0.12
 six==1.10.0
