@@ -5,6 +5,7 @@ from datetime import datetime
 from django.db import connection, transaction
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 from fly_project import constants
 from api.models import QuizSubmission
 from api.models import QuestionSubmission
@@ -15,7 +16,7 @@ class Command(BaseCommand):
         Run in your console:
         $ python manage.py evaluate_quiz {{ quiz_submission_id }}
     """
-    help = 'Command will mark and score the User\'s submitted quiz.'
+    help = _('Command will mark and score the User\'s submitted quiz.')
     
     def add_arguments(self, parser):
         parser.add_argument('id', nargs='+')

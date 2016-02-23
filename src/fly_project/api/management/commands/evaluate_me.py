@@ -16,7 +16,7 @@ from api.models import Notification
 
 
 class Command(BaseCommand):
-    help = 'Evaluate the User\'s profile and grant reward and calculate XP.'
+    help = _('Evaluate the User\'s profile and grant reward and calculate XP.')
     
     def add_arguments(self, parser):
         parser.add_argument('id', nargs='+')
