@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.management import call_command
@@ -35,22 +35,11 @@ def learning_page(request):
 
 @login_required(login_url='/authentication')
 def course_page(request, course_id):
-    # Fetch the Course for the id or redirect to dashboard.
-    try:
-        course = Course.objects.get(id=course_id)
-    except Course.DoesNotExist:
-        return HttpResponseBadRequest(_("Course does not exist."))
-
-    # Fetch the Quiz for the id or redirect to dashboard.
-    try:
-        quiz = Quiz.objects.get(course=course)
-    except Quiz.DoesNotExist:
-        return HttpResponseBadRequest(_("Quiz does not exist."))
-
+    course = get_object_or_404(Course, id=course_id)
+    quiz = get_object_or_404(Quiz, course=course)
 
     #TODO: Add defensive code to prevent course enrollment if the
     #      prerequisites where not made.
-
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
     # create it now.
@@ -73,17 +62,8 @@ def course_page(request, course_id):
 
 @login_required(login_url='/authentication')
 def quiz_home_page(request, quiz_id):
-    # Fetch the Quiz for the id or error.
-    try:
-        quiz = Quiz.objects.get(id=quiz_id)
-    except Quiz.DoesNotExist:
-        return HttpResponseBadRequest(_("Quiz does not exist."))
-
-    # Fetch the Questions for the Quiz or error.
-    try:
-        questions = Question.objects.filter(quiz=quiz)
-    except Question.DoesNotExist:
-        return HttpResponseBadRequest(_("Question does not exist."))
+    quiz = get_object_or_404(Quiz, id=quiz_id)
+    questions = get_list_or_404(Question, quiz=quiz)
 
     # Fetch the User's Quiz Submission and if there is no Submission then
     # create it.
@@ -119,11 +99,7 @@ def quiz_home_page(request, quiz_id):
 
 @login_required(login_url='/authentication')
 def quiz_question_page(request, quiz_id, question_id):
-    # Fetch the Questions for the Quiz or error.
-    try:
-        question = Question.objects.get(id=question_id)
-    except Question.DoesNotExist:
-        return HttpResponseBadRequest(_("Question does not exist."))
+    question = get_object_or_404(Question, id=question_id)
     
     # Fetch the User's Submission for this particular Question and if there
     # is no Submission for it then create it here.
@@ -160,20 +136,8 @@ def quiz_question_page(request, quiz_id, question_id):
 
 
 def quiz_final_question_page(request, quiz_id):
-    # Fetch the submitted Quiz for the id or error.
-    try:
-        quiz_submission = QuizSubmission.objects.get(
-            quiz_id=int(quiz_id),
-            user_id=request.user.id,
-        )
-    except QuestionSubmission.DoesNotExist:
-        return HttpResponseBadRequest(_("Quiz Submission does not exist."))
-
-    # Fetch all the submitted Questions for the particular Quiz, else error.
-    try:
-        question_submissions = QuestionSubmission.objects.filter(quiz=quiz_submission.quiz)
-    except QuestionSubmission.DoesNotExist:
-        return HttpResponseBadRequest(_("Question Submission does not exist."))
+    quiz_submission = get_object_or_404(QuizSubmission,  quiz_id=int(quiz_id), user_id=request.user.id,)
+    question_submissions = get_list_or_404(QuestionSubmission, quiz=quiz_submission.quiz)
 
     # Run the Command for evaluating the Quiz and tallying up the marks.
     call_command('evaluate_quiz',str(quiz_submission.id))
