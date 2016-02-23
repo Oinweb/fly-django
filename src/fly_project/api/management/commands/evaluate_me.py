@@ -93,6 +93,32 @@ class Command(BaseCommand):
             badge=None,
         )
     
+    def process_xp_level_up_badges(self, me, badge):
+        """
+            Function will grant the Badge to the User if it meets the requirement.
+        """
+        if me.xp >= badge.required_xp:
+            # Grant the badge to the User.
+            me.badges.add(badge)
+                
+            # Create a notification
+            self.create_new_badge_notification(me, badge)
+            print("New XP Level Badge Earned!")
+
+    def process_courses_badges(self, me, badge):
+        """
+            Function will grant the Badge to the User if the specific Course
+            requirements are met.
+        """
+        print("New Course Badge Earned!")  #TODO: Implement
+    
+    def process_goals_badges(self, me, badge):
+        """
+            Function will grant the Badge to the User if a particular goals 
+            requirements have been met.
+        """
+        print("New Goal Badge Earned!")  #TODO: Implement
+    
     def process_badges(self, me):
         """
             Function will iterate through all the badges in our application
@@ -101,15 +127,17 @@ class Command(BaseCommand):
         badges = Badge.objects.filter(has_xp_requirement=True)
         for badge in badges.all():
             if badge not in me.badges.all():
-                # Evaluate the Badge and User's Me profile by comparing the
+                # (1) Evaluate the Badge and User's Me profile by comparing the
                 # experience points.
-                if me.xp >= badge.required_xp:
-                    # Grant the badge to the User.
-                    me.badges.add(badge)
-                    
-                    # Create a notification
-                    self.create_new_badge_notification(me, badge)
-                    print("New Badge Earned!")
+                self.process_xp_level_up_badges(me, badge)
+
+                #(2) Evaluate Badge and the User's Courses to see if the User
+                # should be granted a Badge.
+                self.process_courses_badges(me, badge)
+            
+                # (3) Evaluate Badge and the User's Goals to see if the User
+                # should be granted a Badge.
+                self.process_goals_badges(me, badge)
 
     def create_new_badge_notification(self,me, badge):
         """

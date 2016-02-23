@@ -23,8 +23,8 @@ class Command(BaseCommand):
             'resources.json',
             'badges.json',
             'courses.json',
+            'quizzes.json',
             'questions.json',
-            'quizzes.json'
         ]
         
         # Iterate through all the filenames and load them into database.

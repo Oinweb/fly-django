@@ -152,6 +152,9 @@ def quiz_final_question_page(request, quiz_id):
     except EnrolledCourse.DoesNotExist:
         pass
 
+    # Run the Command for evaluating the current User's Profile.
+    call_command('evaluate_me', str(request.me.id))
+
     return render(request, 'learning/quiz/finished.html',{
         'settings': settings,
         'constants': constants,
