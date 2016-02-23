@@ -1,59 +1,11 @@
-{
-    "resources": [
-        {
-            "id": 1,
-            "title": "@LibroCU",
-            "url": "https://twitter.com/LibroCU",
-            "type": 1
-        },
-        {
-            "id": 2,
-            "title": "@rodolfo_oin",
-            "url": "https://twitter.com/rodolfo_oin",
-            "type": 1
-        },
-        {
-            "id": 3,
-            "title": "@360finances",
-            "url": "https://twitter.com/360finances",
-            "type": 1
-        },
-        {
-            "id": 4,
-            "title": "Young Adult Money",
-            "url": "http://www.youngadultmoney.com/",
-            "type": 2
-        },
-        {
-            "id": 5,
-            "title": "Young, Cheap Living",
-            "url": "http://www.youngcheapliving.com/",
-            "type": 2
-        },
-        {
-            "id": 6,
-            "title": "Moneylicious",
-            "url": "http://moneylicious.org/",
-            "type": 2
-        },
-        {
-            "id": 7,
-            "title": "Mint.com",
-            "url": "https://play.google.com/store/apps/details?id=com.mint&hl=en",
-            "type": 3
-        },
-        {
-            "id": 8,
-            "title": "GoodBudget",
-            "url": "https://play.google.com/store/apps/details?id=com.dayspringtech.envelopes&hl=en",
-            "type": 3
-        },
-        {
-            "id": 9,
-            "title": "Mvelopes",
-            "url": "https://play.google.com/store/apps/details?id=com.finicity.mvelopes&hl=en",
-            "type": 3
-        }
-    ]
-}
-
+[
+{"model": "api.resourcelink", "pk": 1, "fields": {"created": "2016-02-07T16:17:58.609Z", "title": "@LibroCU", "title_en": "@LibroCU", "title_fr": null, "title_es": null, "url": "https://twitter.com/LibroCU", "type": 1}},
+ {"model": "api.resourcelink", "pk": 2, "fields": {"created": "2016-02-07T16:20:16.765Z", "title": "@rodolfo_oin", "title_en": "@rodolfo_oin", "title_fr": null, "title_es": null, "url": "https://twitter.com/rodolfo_oin", "type": 1}},
+ {"model": "api.resourcelink", "pk": 3, "fields": {"created": "2016-02-07T16:20:16.767Z", "title": "@360finances", "title_en": "@360finances", "title_fr": null, "title_es": null, "url": "https://twitter.com/360finances", "type": 1}},
+ {"model": "api.resourcelink", "pk": 4, "fields": {"created": "2016-02-07T16:22:54.588Z", "title": "Young Adult Money", "title_en": "Young Adult Money", "title_fr": null, "title_es": null, "url": "http://www.youngadultmoney.com/", "type": 2}},
+ {"model": "api.resourcelink", "pk": 5, "fields": {"created": "2016-02-07T16:22:54.590Z", "title": "Young, Cheap Living", "title_en": "Young, Cheap Living", "title_fr": null, "title_es": null, "url": "http://www.youngcheapliving.com/", "type": 2}},
+ {"model": "api.resourcelink", "pk": 6, "fields": {"created": "2016-02-07T16:22:54.592Z", "title": "Moneylicious", "title_en": "Moneylicious", "title_fr": null, "title_es": null, "url": "http://moneylicious.org/", "type": 2}},
+ {"model": "api.resourcelink", "pk": 7, "fields": {"created": "2016-02-07T16:25:39.056Z", "title": "Mint.com", "title_en": "Mint.com", "title_fr": null, "title_es": null, "url": "https://play.google.com/store/apps/details?id=com.mint&hl=en", "type": 3}},
+ {"model": "api.resourcelink", "pk": 8, "fields": {"created": "2016-02-07T16:25:39.059Z", "title": "GoodBudget", "title_en": "GoodBudget", "title_fr": null, "title_es": null, "url": "https://play.google.com/store/apps/details?id=com.dayspringtech.envelopes&hl=en", "type": 3}},
+ {"model": "api.resourcelink", "pk": 9, "fields": {"created": "2016-02-07T16:25:39.061Z", "title": "Mvelopes", "title_en": "Mvelopes", "title_fr": null, "title_es": null, "url": "https://play.google.com/store/apps/details?id=com.finicity.mvelopes&hl=en", "type": 3}}
+]

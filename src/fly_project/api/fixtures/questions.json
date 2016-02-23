@@ -1,24 +1,3 @@
-{
-    "questions": [
-        {
-            "id": 1,
-            "course_id": 1,
-            "quiz_id": 1,
-            "num": 1,
-            "text": "This is question 1...",
-            "type": 1,
-            "a": "This is answer A",
-            "a_is_correct": false,
-            "b": "This is answer B",
-            "b_is_correct": false,
-            "c": "This is answer C",
-            "c_is_correct": false,
-            "d": "This is answer D",
-            "d_is_correct": false,
-            "e": "This is answer E",
-            "e_is_correct": false,
-            "f": "Right Answer",
-            "f_is_correct": true
-        }
-    ]
-}
+[
+{"model": "api.question", "pk": 1, "fields": {"created": "2016-02-04T00:21:42.048Z", "quiz": 1, "num": 1, "text": "This is question 1...", "text_en": "This is question 1...", "text_fr": null, "text_es": null, "type": 1, "a": "This is answer A", "a_en": "This is answer A", "a_fr": null, "a_es": null, "a_is_correct": false, "b": "This is answer B", "b_en": "This is answer B", "b_fr": null, "b_es": null, "b_is_correct": false, "c": "This is answer C", "c_en": "This is answer C", "c_fr": null, "c_es": null, "c_is_correct": false, "d": "This is answer D", "d_en": "This is answer D", "d_fr": null, "d_es": null, "d_is_correct": false, "e": "This is answer E", "e_en": "This is answer E", "e_fr": null, "e_es": null, "e_is_correct": false, "f": "Right Answer", "f_en": "Right Answer", "f_fr": null, "f_es": null, "f_is_correct": true}}
+]
