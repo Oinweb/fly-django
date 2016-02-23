@@ -20,7 +20,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 5,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": false,
             "prerequisites": [4]
         }
@@ -46,7 +46,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 30,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": false,
             "prerequisites": [5]
         }
@@ -72,7 +72,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 60,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": false,
             "prerequisites": [6]
         }
@@ -98,7 +98,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 5,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": true,
             "prerequisites": [1]
         }
@@ -124,7 +124,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 30,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": true,
             "prerequisites": [2]
         }
@@ -150,7 +150,7 @@
             "description_es": null,
             "video_url": "mov/vid1.mp4",
             "duration": 60,
-            "awarded_xp": 0,
+            "awarded_xp": 50,
             "has_prerequisites": true,
             "prerequisites": [3]
         }
