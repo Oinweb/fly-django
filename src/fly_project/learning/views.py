@@ -43,13 +43,10 @@ def course_page(request, course_id):
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
     # create it now.
-    try:
-        enrolled_course = EnrolledCourse.objects.get(course=course)
-    except EnrolledCourse.DoesNotExist:
-        enrolled_course = EnrolledCourse.objects.create(
-            user_id=request.user.id,
-            course=course,
-        )
+    enrolled_course = EnrolledCourse.objects.get_or_create(
+        user_id=request.user.id,
+        course=course,
+    )
 
     return render(request, 'learning/course/details/view.html',{
         'settings': settings,
@@ -67,14 +64,11 @@ def quiz_home_page(request, quiz_id):
 
     # Fetch the User's Quiz Submission and if there is no Submission then
     # create it.
-    try:
-        submission = QuizSubmission.objects.get(quiz=quiz,user_id=request.user.id)
-    except QuizSubmission.DoesNotExist:
-        submission = QuizSubmission.objects.create(
-            user_id=request.user.id,
-            quiz=quiz,
-            course=quiz.course,
-        )
+    submission = QuizSubmission.objects.get_or_create(
+        quiz=quiz,
+        user_id=request.user.id,
+        course=quiz.course,
+    )
 
     # Iterate to any existing submitted Questions and reset the selected
     # values so the Quiz is brand new.
@@ -103,15 +97,12 @@ def quiz_question_page(request, quiz_id, question_id):
     
     # Fetch the User's Submission for this particular Question and if there
     # is no Submission for it then create it here.
-    try:
-        submission = QuestionSubmission.objects.get(question_id=question_id)
-    except QuestionSubmission.DoesNotExist:
-        submission = QuestionSubmission.objects.create(
-            user_id=request.user.id,
-            quiz_id=quiz_id,
-            question=question,
-            type=question.type,
-        )
+    submission = QuestionSubmission.objects.get_or_create(
+        user_id=request.user.id,
+        quiz_id=quiz_id,
+        question=question,
+        type=question.type,
+    )
 
     # Fetch all the questions that belong to this Quiz.
     questions = Question.objects.filter(quiz_id=quiz_id).order_by("num")
