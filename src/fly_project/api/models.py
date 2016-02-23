@@ -285,7 +285,7 @@ class XPLevelManager(models.Manager):
             Function will lookup
         """
         try:
-            return XPLevel.objects.get(level=1)
+            return XPLevel.objects.get(num=1)
         except XPLevel.DoesNotExist:
             return self.create(
                 num=1,
