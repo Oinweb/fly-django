@@ -41,7 +41,7 @@
                   style="background-color:darkred;">
                 {% trans "Close Quiz" %}
         </button>
-        {% for question in questions.all %}
+        {% for question in questions %}
             {% if question.num == 1 %}
                 <button id="btnBeginQuiz"
                    onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/question/{{ question.id }}/';"

@@ -1,11 +1,11 @@
 [
-  {
-    "model": "api.BannedIP",
-    "pk": 1,
-    "fields": {
-      "address": "61.49.3.254",
-      "reason": "",
-      "banned_on": "2016-01-01"
+    {
+        "model": "api.BannedIP",
+        "pk": 1,
+        "fields": {
+            "address": "61.49.3.254",
+            "reason": "",
+            "banned_on": "2016-01-01"
+        }
     }
-  }
 ]

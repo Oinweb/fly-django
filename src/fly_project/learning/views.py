@@ -43,7 +43,7 @@ def course_page(request, course_id):
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
     # create it now.
-    enrolled_course = EnrolledCourse.objects.get_or_create(
+    enrolled_course, created = EnrolledCourse.objects.get_or_create(
         user_id=request.user.id,
         course=course,
     )
@@ -64,7 +64,7 @@ def quiz_home_page(request, quiz_id):
 
     # Fetch the User's Quiz Submission and if there is no Submission then
     # create it.
-    submission = QuizSubmission.objects.get_or_create(
+    submission, created  = QuizSubmission.objects.get_or_create(
         quiz=quiz,
         user_id=request.user.id,
         course=quiz.course,
@@ -97,7 +97,7 @@ def quiz_question_page(request, quiz_id, question_id):
     
     # Fetch the User's Submission for this particular Question and if there
     # is no Submission for it then create it here.
-    submission = QuestionSubmission.objects.get_or_create(
+    submission, created  = QuestionSubmission.objects.get_or_create(
         user_id=request.user.id,
         quiz_id=quiz_id,
         question=question,
@@ -107,13 +107,27 @@ def quiz_question_page(request, quiz_id, question_id):
     # Fetch all the questions that belong to this Quiz.
     questions = Question.objects.filter(quiz_id=quiz_id).order_by("num")
 
-    # Get the next and previous questions from the current.
+    # Get "NEXT"
     next = None
+    if len(questions) > 1:
+        for current_question in questions.all():
+            # Detect the previous question.
+            if current_question.num > question.num:
+                next = current_question
+                break
+
+    # Get "PREVIOUS"
     previous = None
-    if len(questions) == 1:
-        pass
-    else:
-        pass
+    if len(questions) > 1:
+        for current_question in questions.all():
+            if (question.num - 1) == current_question.num:
+                previous = current_question
+                break
+    
+    # Debugging Purposes Only.
+    print("NEXT", next)
+    print("CURRENT",question.num)
+    print("PREVIOUS", previous)
 
     return render(request, 'learning/quiz/question.html',{
         'settings': settings,
@@ -151,9 +165,6 @@ def quiz_final_question_page(request, quiz_id):
         enrolled_course.save()
     except EnrolledCourse.DoesNotExist:
         pass
-
-    # Run the Command for evaluating the current User's Profile.
-    call_command('evaluate_me', str(request.me.id))
 
     return render(request, 'learning/quiz/finished.html',{
         'settings': settings,
