@@ -36,10 +36,3 @@ before_script:
 script:
   - python manage.py migrate
   - python manage.py test
-
-
-/usr/local/bin/createdb fly_db;
-/usr/local/bin/psql fly_db;
-CREATE USER django WITH PASSWORD '123password';
-GRANT ALL PRIVILEGES ON DATABASE fly_db to django;
-ALTER USER django CREATEDB;
