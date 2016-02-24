@@ -34,5 +34,4 @@ before_script:
   - cp config/database.yml.travis config/database.yml
 
 script:
-  - python manage.py migrate
   - python manage.py test
