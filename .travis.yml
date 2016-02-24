@@ -27,7 +27,7 @@ install:
   - pip install django_compressor==2.0
 
 before_script:
-  - psql -c 'create database fly_db;' -U django
+  - echo "123password" | psql -c 'create database fly_db;' -U django --password
   - cp src/fly_project/fly_project/secret_settings_example.py src/fly_project/fly_project/secret_settings.py
   - cd src/fly_project
 
