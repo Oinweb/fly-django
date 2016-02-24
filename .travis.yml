@@ -1,12 +1,38 @@
+# Tell Travis you want a Python environment to test in
 language: python
+
+# List the versions of Python you'd like to test against
 python:
   - "3.4"
 
+# List the versions of Django you'd like to test against
+env:
+  - DJANGO_VERSION=1.9.1
+
+# Add Our Database
+addons:
+  postgresql: "9.4"
+
+services:
+  - postgresql
+
+# Tell it the things it will need to install when it boots
 install:
-  - pip install -r requirements.txt
-#  - pip install coveralls
+  - pip install -q Django==$DJANGO_VERSION --use-mirrors
+  - pip install psycopg2
+  - pip install gunicorn
+  - pip install Pillow
+  - pip install djangorestframework
+  - pip install markdown
+  - pip install django-filter
+  - pip install python-social-auth
+  - pip install django-cors-headers
+  - pip install django-modeltranslation==0.11rc2
+  - pip install django_compressor
+
+before_script:
+  - psql -c 'create database fly_db;' -U django --password 123password
+  - python manage.py migrate
 
 script:
   - python manage.py test
-#  - coverage run --source=home manage.py test home
-#after_success: coveralls
