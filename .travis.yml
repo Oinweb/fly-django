@@ -28,7 +28,7 @@ install:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - cp src/fly_project/secret_settings_example.py src/fly_project/secret_setting.py
+  - cp src/fly_project/fly_project/secret_settings_example.py src/fly_project/fly_project/secret_setting.py
   - cd src/fly_project
 
 script: python manage.py test
