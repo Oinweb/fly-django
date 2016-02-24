@@ -18,9 +18,8 @@ services:
 
 # Tell it the things it will need to install when it boots
 install:
-  - pip install -q Django==$DJANGO_VERSION --use-mirrors
-  - pip install -q . --use-mirrors
-  - pip install -q -r requirements.txt --use-mirrors
+  - pip install -q Django==$DJANGO_VERSION
+  - pip install -q -r requirements.txt
 
 before_script:
   - cp config/database.yml.travis config/database.yml
