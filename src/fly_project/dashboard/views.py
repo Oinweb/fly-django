@@ -24,6 +24,11 @@ def dashboard_page(request):
             badge=badge,
         )
 
+    # Run the Command for evaluating the current User's Profile.
+    # DEBUGGING PURPOSES ONLY
+    from django.core.management import call_command
+    call_command('evaluate_me', str(request.me.id))
+
     return render(request, 'dashboard/view.html',{
         'settings': settings,
     })

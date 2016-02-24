@@ -131,11 +131,7 @@ Update your database settings to use your Postgres SQL DB.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fly_db",
-        "USER": "django",
-        "PASSWORD": "123password",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": "fly_db"
     }
 }
 - - - - - - - - - - - - - - - - - - - - - - - - - -

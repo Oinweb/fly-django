@@ -118,11 +118,7 @@ WSGI_APPLICATION = 'fly_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fly_db",
-#        "USER": SECRET_DB_USER,
-#        "PASSWORD": SECRET_DB_PASSWORD,
-#        "HOST": SECRET_DB_HOST,
-#        "PORT": SECRET_DB_PORT,
+        "NAME": "fly_db"
     }
 }
 
