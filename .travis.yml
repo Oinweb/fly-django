@@ -24,6 +24,6 @@ before_script:
   - cd src/fly_project
 script:
   - python manage.py test
-  - coverage run --source=manage.py test
+  - coverage run --source=account,api,authentication,basepage,dashboard,help,landpage,learning,mygoals,resources manage.py test
 after_success:
   - coveralls
