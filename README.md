@@ -1,4 +1,4 @@
-# py-fly
+# py-fly [![Build Status](https://travis-ci.org/Oinweb/py-fly.svg?branch=master)](https://travis-ci.org/Oinweb/py-fly)
 ## Description
 An open-source, cross platform, mobile app, supported by a Django/Python web service, which is meant to teach youth financial literacy in multiple languages, while also introducing them to the concept of entrepreneurship.
 
