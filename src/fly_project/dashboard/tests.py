@@ -76,6 +76,6 @@ class DashboardTest(TestCase):
         )
         response = client.get(dashboard_url)
         self.assertEqual(response.status_code, 200)
-        me = Me.objects.get(id=1)
+        me = Me.objects.all()[:1][0]  # Fetch the only instance of 'Me' object.
         badge = Badge.objects.get(id=1)
         self.assertIn(badge,me.badges.all())
