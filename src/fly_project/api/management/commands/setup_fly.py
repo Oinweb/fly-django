@@ -11,9 +11,6 @@ class Command(BaseCommand):
     help = _('Loads all the data necessary to operate this application.')
     
     def handle(self, *args, **options):
-        # Clear the console text.
-        os.system('clear;')
-        
         # The filename of all the objects to be imported.
         ordered_file_names = [
             'banned_domains.json',

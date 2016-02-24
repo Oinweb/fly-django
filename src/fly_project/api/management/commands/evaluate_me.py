@@ -22,13 +22,12 @@ class Command(BaseCommand):
         parser.add_argument('id', nargs='+')
     
     def handle(self, *args, **options):
-        os.system('clear;')  # Clear the console text.
         for id in options['id']:
             try:
                 me = Me.objects.get(id=id)
                 self.begin_processing(me)
             except Me.DoesNotExist:
-                print("Error - No Me profile object detected for ID: "+str(id))
+                print(_("Error - No Me profile object detected for ID: ")+str(id))
 
     def begin_processing(self, me):
         """
