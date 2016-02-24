@@ -28,9 +28,9 @@ install:
 
 before_script:
   - psql <<EOF
-  - \x
   - create database fly_db;
   - \c fly_db
+  - CREATE USER django WITH PASSWORD '123password';
   - GRANT ALL PRIVILEGES ON DATABASE fly_db to django;
   - ALTER USER django CREATEDB;
   - EOF
