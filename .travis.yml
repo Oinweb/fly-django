@@ -5,10 +5,6 @@ language: python
 python:
   - "3.4"
 
-# List the versions of Django you'd like to test against
-env:
-  - DJANGO_VERSION=1.9.1
-
 # Add Our Database
 addons:
   postgresql: "9.4"
@@ -18,7 +14,7 @@ services:
 
 # Tell it the things it will need to install when it boots
 install:
-  - pip install -q Django==$DJANGO_VERSION
+  - pip install Django==1.9.1
   - pip install psycopg2==2.6.1
   - pip install gunicorn==19.4.5
   - pip install Pillow==3.1.0
