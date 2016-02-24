@@ -60,7 +60,7 @@ class DashboardTest(TestCase):
         self.assertIn(b'My Goals',response.content)
 
     def test_dashboard_page_is_secure(self):
-        """Ensure going to '/en/dashboard' page without login will be prevented."""
+        """Ensure going to this page without login will be prevented."""
         dashboard_url = reverse('dashboard')
         client = Client()
         response = client.get(dashboard_url)
