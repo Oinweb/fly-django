@@ -1,20 +1,29 @@
-import json
-from django.core.urlresolvers import resolve
-from django.http import HttpRequest
-from django.http import QueryDict
-from django.test import TestCase
-from django.test import Client
+from django.core.urlresolvers import resolve, reverse
+from django.test import TestCase, Client
+from django.utils import translation
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from landpage import views
 
 
 class LandpageTest(TestCase):
+    fixtures = [
+        'banned_domains.json',
+        'banned_ips.json',
+        'banned_words.json',
+        'xplevels.json',
+        'resources.json',
+        'badges.json',
+        'courses.json',
+        'quizzes.json',
+        'questions.json',
+    ]
+    
     def tearDown(self):
         pass
 
     def setUp(self):
-        pass
+        translation.activate('en')
 
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/en/')
@@ -28,4 +37,6 @@ class LandpageTest(TestCase):
             data=parameters,
         )
         self.assertEqual(response.status_code, 200)
+        
+        #TODO: Fixed to have the actual content once it was implemented.
         self.assertIn(b'Generic Login',response.content)
