@@ -7,6 +7,7 @@ from django.utils import translation
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from dashboard import views
+from api.models import Me, Badge
 
 
 TEST_USER_EMAIL = "ledo@gah.com"
@@ -41,11 +42,13 @@ class DashboardTest(TestCase):
         translation.activate('en')  # Set English
 
     def test_url_resolves_to_dashboard_page_view(self):
+        """Verify URL resolves to this app."""
         dashboard_url = reverse('dashboard')
         found = resolve(dashboard_url)
         self.assertEqual(found.func,views.dashboard_page)
 
     def test_dashboard_page_returns_correct_html(self):
+        """Verify page loads up."""
         dashboard_url = reverse('dashboard')
         client = Client()
         client.login(
@@ -56,4 +59,23 @@ class DashboardTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'My Goals',response.content)
 
+    def test_dashboard_page_is_secure(self):
+        """Ensure going to '/en/dashboard' page without login will be prevented."""
+        dashboard_url = reverse('dashboard')
+        client = Client()
+        response = client.get(dashboard_url)
+        self.assertEqual(response.status_code, 302)
 
+    def test_dashboard_page_grants_badge(self):
+        """Verify a Badge is granted to User on initial load of page."""
+        dashboard_url = reverse('dashboard')
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get(dashboard_url)
+        self.assertEqual(response.status_code, 200)
+        me = Me.objects.get(id=1)
+        badge = Badge.objects.get(id=1)
+        self.assertIn(badge,me.badges.all())
