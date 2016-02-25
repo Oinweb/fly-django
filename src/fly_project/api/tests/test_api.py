@@ -40,37 +40,148 @@ class APITest(TestCase):
         translation.activate('en')  # Set English
 
     def test_api_page_returns_correct_html(self):
-        """Verify API page loads up."""
         client = Client()
-        client.login(
-            username=TEST_USER_USERNAME,
-            password=TEST_USER_PASSWORD
-        )
         response = client.get('/api/?format=json')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'/api/me/',response.content)
-        self.assertIn(b'api/courses/',response.content)
 
     def test_api_banned_domains_page_returns_correct_html(self):
-        """Verify API 'Banned Domains' page loads up."""
         client = Client()
-        client.login(
-            username=TEST_USER_USERNAME,
-            password=TEST_USER_PASSWORD
-        )
         response = client.get('/api/banned_domains/?format=json')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'guerrillamail.com',response.content)
-        self.assertIn(b'dispostable.com',response.content)
-        self.assertIn(b'yopmail.com',response.content)
 
-    def test_api_banned_ips_page_returns_correct_html(self):
-        """Verify API 'Banned IPs' page loads up."""
+    def test_api_banned_ips_page(self):
+        client = Client()
+        response = client.get('/api/banned_ips/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_banned_words_page(self):
+        client = Client()
+        response = client.get('/api/banned_words/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_resource_links(self):
         client = Client()
         client.login(
             username=TEST_USER_USERNAME,
             password=TEST_USER_PASSWORD
         )
-        response = client.get('/api/banned_ips/?format=json')
+        response = client.get('/api/resource_links/?format=json')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'61.49.3.254',response.content)
+
+    def test_api_savings_goals(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/savings_goals/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_credit_goals(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/credit_goals/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_final_goals(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/final_goals/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_badges(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/badges/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_xplevels(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/xplevels/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_courses(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/courses/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_questions(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/questions/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_enrolled_courses(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/enrolled_courses/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_quiz_submissions(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/quiz_submissions/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_quizzes(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/quizzes/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_question_submissions(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/question_submissions/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_me(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/me/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_notifications(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/notifications/?format=json')
+        self.assertEqual(response.status_code, 200)
+
