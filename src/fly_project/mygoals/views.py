@@ -25,6 +25,13 @@ def count_days_between_today_and(dt2):
 
 
 @login_required(login_url='/authentication')
+def mygoals_page(request):
+    return render(request, 'mygoals/type/view.html',{
+        'settings': settings,
+    })
+
+
+@login_required(login_url='/authentication')
 def savings_goals_page(request):
     # Check to see if we have the latest SavingsGoal set, if not then
     # create a new goal here.

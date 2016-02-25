@@ -125,7 +125,7 @@ class Goal(models.Model):
 
     # Variable controls when this particular goal can be closed. Closure
     # involves modifying 'is_closed' and 'earned_xp' values.
-    unlocks = models.DateTimeField(null=True,blank=True)
+    unlocks = models.DateTimeField(null=True, blank=True)
 
     # Variable controls whether this particular goal was finished and thus
     # cannot be modified after it was closed.
@@ -133,7 +133,7 @@ class Goal(models.Model):
 
     # When 'is_closed=True' variable was set, this variable controls whether
     # the User has actually finished this goal with success or not.
-    was_accomplished = models.BooleanField(default=False)
+    was_accomplished = models.BooleanField(default=False, db_index=True)
 
     # When 'is_closed=True' variable was set, this variable controls what
     # amount of experience points where earned for accomplishing it.
@@ -255,7 +255,7 @@ class Badge(models.Model):
         app_label = 'api'
         db_table = 'fly_badges'
 
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(4)],
@@ -335,7 +335,7 @@ class Course(models.Model):
         db_table = 'fly_courses'
 
     objects = CourseManager()
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_index=True)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(3)],
         choices=constants.GOAL_TYPE_OPTIONS,
@@ -545,3 +545,24 @@ class Notification(models.Model):
     user = models.ForeignKey(User, db_index=True,)
     xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
     badge = models.ForeignKey(Badge, null=True, blank=True,)
+
+
+
+class Share(models.Model):
+    class Meta:
+        app_label = 'api'
+        db_table = 'fly_shares'
+    
+    id = models.AutoField(primary_key=True, db_index=True)
+    created = models.DateTimeField(auto_now_add=True)
+    type = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
+        choices=constants.SHARE_TYPE_OPTIONS,
+        default=1,
+    )
+    user = models.ForeignKey(User, db_index=True,)
+    xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
+    badge = models.ForeignKey(Badge, null=True, blank=True,)
+    custom_title = models.CharField(max_length=511, null=True, blank=True)
+    custom_description = models.CharField(max_length=511, null=True, blank=True)
+    custom_url = models.URLField(null=True, blank=True)

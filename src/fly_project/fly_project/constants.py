@@ -56,3 +56,10 @@ NOTIFICATION_TYPE_OPTIONS = (
     (2, _('New Badge Notification')),
     (3, _('Custom Notification')),
 )
+
+
+SHARE_TYPE_OPTIONS = (
+    (1, _('Level Up Share')),
+    (2, _('New Badge Share')),
+    (3, _('Custom Share')),
+)

@@ -148,6 +148,7 @@ python manage.py startapp learning
 python manage.py startapp resources
 python manage.py startapp account
 python manage.py startapp help
+python manage.py startapp share
 
 
 (11) Then go to ecantina_project/settings.py and make sure to include the following:
@@ -177,6 +178,7 @@ INSTALLED_APPS = (
     'resources',
     'account',
     'help',
+    'share',
 )
 - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -213,6 +215,7 @@ urlpatterns = [
     url(r'', include('resources.urls')),
     url(r'', include('account.urls')),
     url(r'', include('help.urls')),
+    url(r'', include('share.urls')),
 
     # Sitemap
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),

@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'resources',
     'account',
     'help',
+    'share',
 ]
 
 MIDDLEWARE_CLASSES = [
