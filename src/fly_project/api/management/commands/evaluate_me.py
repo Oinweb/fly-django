@@ -178,7 +178,7 @@ class Command(BaseCommand):
             was_accomplished = False,
             is_closed = True,
         ).count()
-        print("Processing Badge 21")
+        
         if savings_goals_failure_count or credit_goals_failure_count or final_goals_failure_count:
             print("Badge", badge.id)
             me.badges.add(badge)

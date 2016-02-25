@@ -30,9 +30,6 @@ class Command(BaseCommand):
             except QuizSubmission.DoesNotExist:
                 pass
 
-        # Finish Message!
-        self.stdout.write('Quiz has been marked')
-
     def begin_processing(self, submission):
         """
             Function will load up the Quiz Submission and iterate through all

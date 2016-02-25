@@ -141,11 +141,6 @@ def quiz_question_page(request, quiz_id, question_id):
                 previous = current_question
                 break
 
-    # Debugging Purposes Only.
-    print("NEXT", next)
-    print("CURRENT",question.num)
-    print("PREVIOUS", previous)
-
     return render(request, 'learning/quiz/question.html',{
         'settings': settings,
         'constants': constants,
