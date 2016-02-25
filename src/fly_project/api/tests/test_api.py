@@ -39,12 +39,17 @@ class APITest(TestCase):
     def setUp(self):
         translation.activate('en')  # Set English
 
-    def test_api_page_returns_correct_html(self):
+    def test_api_page(self):
         client = Client()
         response = client.get('/api/?format=json')
         self.assertEqual(response.status_code, 200)
 
-    def test_api_banned_domains_page_returns_correct_html(self):
+    def test_api_image_uploads_page(self):
+        client = Client()
+        response = client.get('/api/imageuploads/?format=json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_banned_domains_page(self):
         client = Client()
         response = client.get('/api/banned_domains/?format=json')
         self.assertEqual(response.status_code, 200)

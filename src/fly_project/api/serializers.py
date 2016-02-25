@@ -37,7 +37,7 @@ class RegisterSerializer(serializers.Serializer):
 class ImageUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageUpload
-        fields = ('upload_id', 'upload_date', 'is_assigned', 'image', 'user',)
+        fields = ('upload_id', 'upload_date', 'image', 'user',)
 
 
 class UserSerializer(serializers.ModelSerializer):

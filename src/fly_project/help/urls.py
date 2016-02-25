@@ -4,5 +4,4 @@ from . import views
 
 urlpatterns = patterns('',
      url(r'^help$', views.help_page, name='help'),
-                       
 )
