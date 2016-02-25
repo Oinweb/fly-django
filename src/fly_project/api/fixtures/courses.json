@@ -22,7 +22,7 @@
             "duration": 5,
             "awarded_xp": 50,
             "has_prerequisites": false,
-            "prerequisites": [4]
+            "prerequisites": []
         }
     },
     {
@@ -48,7 +48,7 @@
             "duration": 30,
             "awarded_xp": 50,
             "has_prerequisites": false,
-            "prerequisites": [5]
+            "prerequisites": []
         }
     },
     {
@@ -74,7 +74,7 @@
             "duration": 60,
             "awarded_xp": 50,
             "has_prerequisites": false,
-            "prerequisites": [6]
+            "prerequisites": []
         }
     },
     {

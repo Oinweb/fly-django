@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, get_list_or_404
+from django.http import HttpResponseBadRequest
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.management import call_command
@@ -33,13 +34,29 @@ def learning_page(request):
     })
 
 
+def has_course_prerequisites(course, enrollments):
+    """Function will return True/False depending on if pre-requisites are met."""
+    if course.has_prerequisites == False:
+        return True
+    
+    prerequisite_count = 0
+    for prerequisite in course.prerequisites.all():
+        for enrollment in enrollments.all():
+            if enrollment.course == prerequisite:
+                if enrollment.is_finished:
+                    prerequisite_count += 1
+   
+    return prerequisite_count == len(course.prerequisites.all())
+
+
 @login_required(login_url='/authentication')
 def course_page(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     quiz = get_object_or_404(Quiz, course=course)
 
-    #TODO: Add defensive code to prevent course enrollment if the
-    #      prerequisites where not made.
+    # Security: Prevent course access if pre-requisites not met.
+    if has_course_prerequisites(course, request.me.courses) == False:
+        return HttpResponseBadRequest(_("Access Denied: Course pre-requistes not met."))
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
     # create it now.
