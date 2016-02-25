@@ -1,17 +1,15 @@
 from datetime import datetime, timedelta, timezone
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.core.management import call_command
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
-from fly_project import settings
-from fly_project import constants
-from api.models import SavingsGoal
-from api.models import CreditGoal
-from api.models import FinalGoal
+from fly_project import settings, constants
+from api.models import SavingsGoal, CreditGoal, FinalGoal
 
 
 def count_days_between(dt1, dt2):
+    """Function will return an integer of day numbers between two dates."""
     dt1 = dt1.replace(hour=0, minute=0, second=0, microsecond=0)
     dt2 = dt2.replace(hour=0, minute=0, second=0, microsecond=0)
     return (dt2 - dt1).days
@@ -168,6 +166,10 @@ def goal_failed_page(request, goal_type, goal_id):
             goal = FinalGoal.objects.get(id=goal_id)
     except Exception as e:
         pass
+
+
+    # Evaulate the User's profile
+    call_command('evaluate_me', str(request.me.id))
 
     final_goal = FinalGoal.objects.get_latest(request.user.id)
     return render(request, 'mygoals/failed/view.html',{

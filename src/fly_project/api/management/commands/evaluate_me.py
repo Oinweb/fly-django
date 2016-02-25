@@ -115,6 +115,7 @@ class Command(BaseCommand):
             # If the User does not have a record of this course then add it
             # to the User's profile and grant the badge and make notification.
             if completed_course not in me.courses.all():
+                print("Badge",badge.id)
                 me.courses.add(completed_course)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
@@ -156,26 +157,111 @@ class Command(BaseCommand):
 
         # First Course - #11
         if badge.id == 11:
-            if me.badges.count() == 1:
+            if me.courses.count() == 1:
+                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
+
+    def process_badge_21(self, me, badge):
+        savings_goals_failure_count = SavingsGoal.objects.filter(
+            user=me.user,
+            was_accomplished = False,
+            is_closed = True,
+        ).count()
+        credit_goals_failure_count = CreditGoal.objects.filter(
+            user=me.user,
+            was_accomplished = False,
+            is_closed = True,
+        ).count()
+        final_goals_failure_count = FinalGoal.objects.filter(
+            user=me.user,
+            was_accomplished = False,
+            is_closed = True,
+        ).count()
+        print("Processing Badge 21")
+        if savings_goals_failure_count or credit_goals_failure_count or final_goals_failure_count:
+            print("Badge", badge.id)
+            me.badges.add(badge)
+            self.create_new_badge_notification(me, badge)
 
     def process_goals_badges(self, me, badge):
         """
             Function will grant the Badge to the User if a particular goals
             requirements have been met.
         """
-        # First goal achieved - #19
         # Goal Sharing - #20
+        #TODO: Implement
+        
+        # Fetch all the goals accomplished for this user which we will use
+        # to evaluate handing out Badges to if certain criteria are met.
+        savings_goals_count = SavingsGoal.objects.filter(
+            user=me.user,
+            was_accomplished = True,
+            is_closed = True,
+        ).count()
+        credit_goals_count = CreditGoal.objects.filter(
+            user=me.user,
+            was_accomplished = True,
+            is_closed = True,
+        ).count()
+        final_goals_count = FinalGoal.objects.filter(
+            user=me.user,
+            was_accomplished = True,
+            is_closed = True,
+        ).count()
+        
+        # First goal achieved - #19
+        if badge.id == 19:
+            if savings_goals_count or credit_goals_count or final_goals_count:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+        
         # First goal failed - #21
+        if badge.id == 21:
+            self.process_badge_21(me, badge)
+        
         # First savings goal achieved - #22
+        if badge.id == 22:
+            if savings_goals_count:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+        
         # First credit goal achieved - #23
+        if badge.id == 23:
+            if credit_goals_count:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+        
         # First big goal achieved - #24
+        if badge.id == 24:
+            if final_goals_count:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+    
         # Savings champ - #25
+        if badge.id == 25:
+            if savings_goals_count >= 3:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+    
         # Credit score champ - #26
+        if badge.id == 26:
+            if credit_goals_count >= 3:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+
         # Big saver! - #27
-        pass
-        # print("New Goal Badge Earned!")  #TODO: Implement
+        if badge.id == 27:
+            if final_goals_count >= 3:
+                print("Badge", badge.id)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
 
     def process_badges(self, me):
         """
@@ -198,9 +284,7 @@ class Command(BaseCommand):
                 self.process_goals_badges(me, badge)
 
     def create_new_badge_notification(self, me, badge):
-        """
-            Function will create a "New Badge" type of notification.
-        """
+        """Function will create a "New Badge" type of notification."""
         title = _("You've earned a new Badge:")+" "+badge.title
         Notification.objects.create(
             type=2,
