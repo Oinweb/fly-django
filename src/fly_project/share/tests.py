@@ -43,7 +43,7 @@ class ShareTest(TestCase):
         found = resolve('/en/share/1/')
         self.assertEqual(found.func,views.share_page)
     
-    def test_resources_page_returns_correct_html(self):
+    def test_share_page_returns_correct_html(self):
         client = Client()
         client.login(
             username=TEST_USER_USERNAME,

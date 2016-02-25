@@ -67,7 +67,7 @@ class DashboardTest(TestCase):
         found = resolve('/en/quiz/1/question/finished')
         self.assertEqual(found.func,views.quiz_final_question_page)
 
-    def test_dashboard_page_returns_correct_html(self):
+    def test_learning_page_returns_correct_html(self):
         """Verify course list page loads up."""
         learning_url = reverse('learning')
         client = Client()
@@ -78,6 +78,13 @@ class DashboardTest(TestCase):
         response = client.get(learning_url)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Begin Course',response.content)
+
+    def test_learning_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        url = reverse('learning')
+        client = Client()
+        response = client.get(url)
+        self.assertEqual(response.status_code, 302)
 
     def test_course_page_returns_correct_html(self):
         """Verify course page loads up."""
@@ -111,6 +118,12 @@ class DashboardTest(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn(b'Access Denied: Course prerequisites not met.',response.content)
 
+    def test_course_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/course/1/')
+        self.assertEqual(response.status_code, 302)
+
     def test_quiz_page_returns_correct_html(self):
         """Verify Quiz start page loads up."""
         client = Client()
@@ -125,6 +138,12 @@ class DashboardTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Close Quiz',response.content)
         self.assertIn(b'Begin',response.content)
+
+    def test_quiz_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/quiz/1/')
+        self.assertEqual(response.status_code, 302)
 
     def test_quiz_question_page_returns_correct_html(self):
         """Verify Quiz start page loads up."""
@@ -142,6 +161,12 @@ class DashboardTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Back',response.content)
         self.assertIn(b'Next',response.content)
+
+    def test_quiz_question_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/quiz/1/question/1/')
+        self.assertEqual(response.status_code, 302)
 
     def test_quiz_question_page_returns_correct_html(self):
         """Verify Quiz final page loads up."""
@@ -165,3 +190,9 @@ class DashboardTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Quiz Finished!',response.content)
         self.assertIn(b'Score',response.content)
+
+    def test_quiz_final_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/quiz/1/question/finished')
+        self.assertEqual(response.status_code, 302)

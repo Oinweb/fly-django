@@ -39,12 +39,12 @@ class HelpTest(TestCase):
     def setUp(self):
         translation.activate('en')  # Set English
     
-    def test_url_resolves_to_resources_page_view(self):
+    def test_url_resolves_to_help_page_view(self):
         url = reverse('help')
         found = resolve(url)
         self.assertEqual(found.func,views.help_page)
     
-    def test_resources_page_returns_correct_html(self):
+    def test_help_page_returns_correct_html(self):
         url = reverse('help')
         client = Client()
         client.login(
@@ -54,3 +54,10 @@ class HelpTest(TestCase):
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'TODO: PLEASE FILL IN',response.content)
+
+    def test_account_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        url = reverse('help')
+        client = Client()
+        response = client.get(url)
+        self.assertEqual(response.status_code, 302)

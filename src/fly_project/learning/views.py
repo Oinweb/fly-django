@@ -152,6 +152,7 @@ def quiz_question_page(request, quiz_id, question_id):
     })
 
 
+@login_required(login_url='/authentication')
 def quiz_final_question_page(request, quiz_id):
     quiz_submission = get_object_or_404(QuizSubmission,  quiz_id=int(quiz_id), user_id=request.user.id,)
     question_submissions = get_list_or_404(QuestionSubmission, quiz=quiz_submission.quiz)

@@ -53,30 +53,48 @@ class AccountTest(TestCase):
         found = resolve('/en/goal_history/1/')
         self.assertEqual(found.func,views.goal_history_page)
 
+    def test_url_resolves_to_badges_page_view(self):
+        found = resolve('/en/badges')
+        self.assertEqual(found.func,views.badges_page)
+
     def test_account_page_returns_correct_html(self):
-        resources_url = reverse('account')
+        url = reverse('account')
         client = Client()
         client.login(
             username=TEST_USER_USERNAME,
             password=TEST_USER_PASSWORD
         )
-        response = client.get(resources_url)
+        response = client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'User Info',response.content)
         self.assertIn(b'Current Goals',response.content)
         self.assertIn(b'Delete Account',response.content)
 
+    def test_account_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        url = reverse('account')
+        client = Client()
+        response = client.get(url)
+        self.assertEqual(response.status_code, 302)
+
     def test_notifications_page_returns_correct_html(self):
-        resources_url = reverse('notifications')
+        url = reverse('notifications')
         client = Client()
         client.login(
             username=TEST_USER_USERNAME,
             password=TEST_USER_PASSWORD
         )
-        response = client.get(resources_url)
+        response = client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Notifications',response.content)
         self.assertIn(b'Save Changes',response.content)
+
+    def test_notifications_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        url = reverse('notifications')
+        client = Client()
+        response = client.get(url)
+        self.assertEqual(response.status_code, 302)
 
     def test_goal_history_page_returns_correct_html(self):
         client = Client()
@@ -87,3 +105,26 @@ class AccountTest(TestCase):
         response = client.get('/en/goal_history/1/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'History',response.content)
+
+    def test_goal_history_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/goal_history/1/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_badges_page_returns_correct_html(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/en/badges')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Badges',response.content)
+
+    def test_badges_page_is_secure(self):
+        """Ensure going to this page without login will be prevented."""
+        client = Client()
+        response = client.get('/en/badges')
+        self.assertEqual(response.status_code, 302)
+

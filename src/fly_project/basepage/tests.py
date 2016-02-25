@@ -66,7 +66,6 @@ class BasePageTest(TestCase):
         self.assertIn(b'Rodolfo Martinez',response.content)
 
     def test_ssl_page_returns_correct_html(self):
-        resources_url = reverse('resources')
         client = Client()
         response = client.get('/38657648AF65578D3AD846C1DB9497C8.txt')
         self.assertEqual(response.status_code, 200)
