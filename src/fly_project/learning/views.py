@@ -56,7 +56,7 @@ def course_page(request, course_id):
 
     # Security: Prevent course access if pre-requisites not met.
     if has_course_prerequisites(course, request.me.courses) == False:
-        return HttpResponseBadRequest(_("Access Denied: Course pre-requistes not met."))
+        return HttpResponseBadRequest(_("Access Denied: Course prerequisites not met."))
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
     # create it now.
