@@ -1,0 +1,51 @@
+{% extends 'basepage/base.html' %}
+{% load staticfiles i18n %}
+{% block content %}
+
+<!-- ---------- notification ------------- -->
+<div data-role="page" style="background-color:#fff;" id="badges">
+
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            loadUserData();
+                          
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
+        });
+    </script>
+
+    <!-- Content -->
+    <div data-role="content">
+        <div class="text-center">
+            <form>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" style="background-color:#E66771;color:#fff;">
+                        <h4>{% trans "Badges" %}</h4>
+                    </li>
+                    {% for badge in request.me.badges.all %}
+                    <li>
+                        <span style="position:relative;top:10px;font-size:10pt;">{{ badge.title|escape|safe }}</span>
+                            <span class="text-right fright">
+                                {{ badge.description|escape|safe }}
+                            </span>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <button onclick="window.location='/{{ request.language }}/account#profile';" id="btnSaveChanges" class="mt10 ui-btn ui-icon-check ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:10px;">
+                            <span>{% trans "OK" %}</span>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div><!-- /content -->
+    
+    {% include "basepage/notification.html" %}
+    {% include "basepage/footer.html" %}
+
+</div><!-- /page -->
+{% endblock content %}

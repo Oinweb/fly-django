@@ -62,3 +62,11 @@ def goal_history_page(request, goal_type):
     })
 
 
+
+@login_required(login_url='/authentication')
+def badges_page(request):
+    return render(request, 'account/badges.html',{
+        'settings': settings,
+        'constants': constants,
+    })
+
