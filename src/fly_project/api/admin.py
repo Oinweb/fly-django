@@ -7,7 +7,7 @@ from api.models import BannedWord
 from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
-#from api.models import Badge 
+#from api.models import Badge
 from api.models import XPLevel
 #from api.models import Course
 #from api.models import Quiz
@@ -16,6 +16,7 @@ from api.models import EnrolledCourse
 from api.models import QuizSubmission
 from api.models import QuestionSubmission
 from api.models import Me
+from api.models import Notification
 
 
 admin.site.register(ImageUpload)
@@ -31,5 +32,4 @@ admin.site.register(EnrolledCourse)
 admin.site.register(QuizSubmission)
 admin.site.register(QuestionSubmission)
 admin.site.register(Me)
-
-
+admin.site.register(Notification)

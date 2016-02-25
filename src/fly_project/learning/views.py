@@ -94,7 +94,7 @@ def quiz_home_page(request, quiz_id):
 @login_required(login_url='/authentication')
 def quiz_question_page(request, quiz_id, question_id):
     question = get_object_or_404(Question, id=question_id)
-    
+
     # Fetch the User's Submission for this particular Question and if there
     # is no Submission for it then create it here.
     submission, created  = QuestionSubmission.objects.get_or_create(
@@ -123,7 +123,7 @@ def quiz_question_page(request, quiz_id, question_id):
             if (question.num - 1) == current_question.num:
                 previous = current_question
                 break
-    
+
     # Debugging Purposes Only.
     print("NEXT", next)
     print("CURRENT",question.num)
@@ -156,7 +156,10 @@ def quiz_final_question_page(request, quiz_id):
     # Fetch the EnrolledCourse for the User and evaluate it based off the
     # submitted Quiz.
     try:
-        enrolled_course = EnrolledCourse.objects.get(course=quiz_submission.quiz.course)
+        enrolled_course = EnrolledCourse.objects.get(
+            course=quiz_submission.quiz.course,
+            user_id=request.user.id,
+        )
         enrolled_course.final_mark = quiz_submission.final_mark
         if quiz_submission.final_mark >= 50:
             enrolled_course.is_finished= True

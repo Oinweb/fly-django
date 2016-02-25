@@ -13,14 +13,16 @@ from api.models import SavingsGoal
 from api.models import CreditGoal
 from api.models import FinalGoal
 from api.models import Notification
+from api.models import Course
+from api.models import EnrolledCourse
 
 
 class Command(BaseCommand):
     help = _('Evaluate the User\'s profile and grant reward and calculate XP.')
-    
+
     def add_arguments(self, parser):
         parser.add_argument('id', nargs='+')
-    
+
     def handle(self, *args, **options):
         for id in options['id']:
             try:
@@ -46,7 +48,7 @@ class Command(BaseCommand):
         sum1 = SavingsGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
         if sum1['earned_xp__sum']:
             me.xp = sum1['earned_xp__sum']
-        
+
         sum2 = CreditGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
         if sum2['earned_xp__sum']:
             me.xp = sum2['earned_xp__sum']
@@ -54,7 +56,7 @@ class Command(BaseCommand):
         sum3 = FinalGoal.objects.filter(user=me.user,is_closed=True).aggregate(Sum('earned_xp'))
         if sum3['earned_xp__sum']:
             me.xp = sum3['earned_xp__sum']
-        
+
         me.save()
 
     def process_xp_level_up(self, me):
@@ -91,39 +93,96 @@ class Command(BaseCommand):
             xplevel=xp_tier,
             badge=None,
         )
-    
+
     def process_xp_level_up_badges(self, me, badge):
         """
             Function will grant the Badge to the User if it meets the requirement.
         """
-        if me.xp >= badge.required_xp:
-            # Grant the badge to the User.
-            me.badges.add(badge)
+        if badge.has_xp_requirement:
+            if me.xp >= badge.required_xp:
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+
+    def process_badge_per_course(self, me, badge, course_id):
+        # Lookup the particular 'course_id' which is succesfully completed.
+        try:
+            completed_course = EnrolledCourse.objects.get(
+                course_id=course_id,
+                user=me.user,
+                is_finished=True,
+            )
+
+            # If the User does not have a record of this course then add it
+            # to the User's profile and grant the badge and make notification.
+            if completed_course not in me.courses.all():
+                me.courses.add(completed_course)
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
                 
-            # Create a notification
-            self.create_new_badge_notification(me, badge)
-            print("New XP Level Badge Earned!")
+        except EnrolledCourse.DoesNotExist:
+            pass
 
     def process_courses_badges(self, me, badge):
         """
             Function will grant the Badge to the User if the specific Course
             requirements are met.
         """
-        print("New Course Badge Earned!")  #TODO: Implement
-    
+        # Thanks for letting your friends know! - #12
+        #TODO: Implement
+
+        # Completed Finances 101 - #13
+        if badge.id == 13:
+            self.process_badge_per_course(me, badge, 1)
+
+        # Completed Finances II - #14
+        if badge.id == 14:
+            self.process_badge_per_course(me, badge, 4)
+
+        # Completed Saving & Budgeting 101 - #15
+        if badge.id == 15:
+            self.process_badge_per_course(me, badge, 2)
+
+        # Saving & Budgeting II - #16
+        if badge.id == 16:
+            self.process_badge_per_course(me, badge, 5)
+
+        # Completed Credit Score 101 - #17
+        if badge.id == 17:
+            self.process_badge_per_course(me, badge, 3)
+
+        # Completed Credit Score II - #18
+        if badge.id == 18:
+            self.process_badge_per_course(me, badge, 6)
+
+        # First Course - #11
+        if badge.id == 11:
+            if me.badges.count() == 1:
+                me.badges.add(badge)
+                self.create_new_badge_notification(me, badge)
+
     def process_goals_badges(self, me, badge):
         """
-            Function will grant the Badge to the User if a particular goals 
+            Function will grant the Badge to the User if a particular goals
             requirements have been met.
         """
-        print("New Goal Badge Earned!")  #TODO: Implement
-    
+        # First goal achieved - #19
+        # Goal Sharing - #20
+        # First goal failed - #21
+        # First savings goal achieved - #22
+        # First credit goal achieved - #23
+        # First big goal achieved - #24
+        # Savings champ - #25
+        # Credit score champ - #26
+        # Big saver! - #27
+        pass
+        # print("New Goal Badge Earned!")  #TODO: Implement
+
     def process_badges(self, me):
         """
             Function will iterate through all the badges in our application
             and evaluate whether to grant the User the particular Badge.
         """
-        badges = Badge.objects.filter(has_xp_requirement=True)
+        badges = Badge.objects.all()
         for badge in badges.all():
             if badge not in me.badges.all():
                 # (1) Evaluate the Badge and User's Me profile by comparing the
@@ -133,12 +192,12 @@ class Command(BaseCommand):
                 #(2) Evaluate Badge and the User's Courses to see if the User
                 # should be granted a Badge.
                 self.process_courses_badges(me, badge)
-            
+
                 # (3) Evaluate Badge and the User's Goals to see if the User
                 # should be granted a Badge.
                 self.process_goals_badges(me, badge)
 
-    def create_new_badge_notification(self,me, badge):
+    def create_new_badge_notification(self, me, badge):
         """
             Function will create a "New Badge" type of notification.
         """

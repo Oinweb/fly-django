@@ -17,10 +17,10 @@ class Command(BaseCommand):
         $ python manage.py evaluate_quiz {{ quiz_submission_id }}
     """
     help = _('Command will mark and score the User\'s submitted quiz.')
-    
+
     def add_arguments(self, parser):
         parser.add_argument('id', nargs='+')
-    
+
     def handle(self, *args, **options):
         # Process all the Quizzes that are inputted into this Command.
         for id in options['id']:
@@ -41,16 +41,19 @@ class Command(BaseCommand):
         """
         # Step 1: Fetch all the submitted Questions for this Quiz.
         try:
-            question_submissions = QuestionSubmission.objects.filter(quiz=submission.quiz)
+            question_submissions = QuestionSubmission.objects.filter(
+                quiz=submission.quiz,
+                user=submission.user,
+            )
         except QuestionSubmission.DoesNotExist:
             question_submissions = None
-        
+
         # Step 2: Iterate through all the submitted Questions and mark them
         #         either right or wrong depending on the correct answer.
         for question_submission in question_submissions.all():
             is_right = True
             question_answer = question_submission.question
-            
+
             if question_submission.a is not question_answer.a_is_correct:
                 is_right = False
             if question_submission.b is not question_answer.b_is_correct:

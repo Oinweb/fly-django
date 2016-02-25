@@ -23,12 +23,12 @@ class BannedDomain(models.Model):
         app_label = 'api'
         ordering = ('name',)
         db_table = 'fly_banned_domains'
-    
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=63, db_index=True, unique=True)
     banned_on = models.DateTimeField(auto_now_add=True)
     reason = models.CharField(max_length=127, blank=True, null=True)
-    
+
     def __str__(self):
         return str(self.name)
 
@@ -38,12 +38,12 @@ class BannedIP(models.Model):
         app_label = 'api'
         ordering = ('address',)
         db_table = 'fly_banned_ips'
-    
+
     id = models.AutoField(primary_key=True)
     address = models.GenericIPAddressField(db_index=True, unique=True)
     banned_on = models.DateTimeField(auto_now_add=True)
     reason = models.CharField(max_length=127, blank=True, null=True)
-    
+
     def __str__(self):
         return str(self.address)
 
@@ -53,12 +53,12 @@ class BannedWord(models.Model):
         app_label = 'api'
         ordering = ('text',)
         db_table = 'fly_banned_words'
-    
+
     id = models.AutoField(primary_key=True)
     text = models.CharField(max_length=63, db_index=True, unique=True)
     banned_on = models.DateTimeField(auto_now_add=True)
     reason = models.CharField(max_length=127, blank=True, null=True)
-    
+
     def __str__(self):
         return str(self.text)
 
@@ -67,12 +67,12 @@ class ImageUpload(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_image_uploads'
-    
+
     upload_id = models.AutoField(primary_key=True)
     upload_date = models.DateField(auto_now=True, null=True)
     image = models.ImageField(upload_to='upload', null=True, blank=True)
     user = models.ForeignKey(User, null=True, blank=True,)
-    
+
     def delete(self, *args, **kwargs):
         """
             Overrided delete functionality to include deleting the local file
@@ -84,7 +84,7 @@ class ImageUpload(models.Model):
             if os.path.isfile(self.image.path):
                 os.remove(self.image.path)
         super(ImageUpload, self).delete(*args, **kwargs) # Call the "real" delete() method
-    
+
     def __str__(self):
         return str(self.upload_id)
 
@@ -93,7 +93,7 @@ class ResourceLink(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_resource_links'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=127,)
@@ -112,36 +112,36 @@ class ResourceLink(models.Model):
 class Goal(models.Model):
     class Meta:
         abstract = True
-    
+
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, db_index=True,)
-    
+
     # Variable to be used to save the initial date this goal was created on.
     created = models.DateTimeField(auto_now_add=True, db_index=True,)
-    
+
     # Variable controls whether the User has set the Goal and will wait
     # 30 days before this Goal will unlock.
     is_locked = models.BooleanField(default=False)
-    
+
     # Variable controls when this particular goal can be closed. Closure
     # involves modifying 'is_closed' and 'earned_xp' values.
     unlocks = models.DateTimeField(null=True,blank=True)
-    
+
     # Variable controls whether this particular goal was finished and thus
     # cannot be modified after it was closed.
     is_closed = models.BooleanField(default=False, db_index=True,)
-    
+
     # When 'is_closed=True' variable was set, this variable controls whether
     # the User has actually finished this goal with success or not.
     was_accomplished = models.BooleanField(default=False)
-    
+
     # When 'is_closed=True' variable was set, this variable controls what
     # amount of experience points where earned for accomplishing it.
     earned_xp = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(9999)],
         default=0,
     )
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -194,7 +194,7 @@ class CreditGoal(Goal):
     class Meta:
         app_label = 'api'
         db_table = 'fly_credit_goals'
-    
+
     objects = CreditGoalManager()
     points = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(850)],
@@ -229,7 +229,7 @@ class FinalGoal(Goal):
     class Meta:
         app_label = 'api'
         db_table = 'fly_final_goals'
-    
+
     objects = FinalGoalManager()
     amount = models.DecimalField(
         max_digits=10,
@@ -254,7 +254,7 @@ class Badge(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_badges'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     type = models.PositiveSmallIntegerField(
@@ -274,7 +274,7 @@ class Badge(models.Model):
     required_xp = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
     )
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -292,13 +292,13 @@ class XPLevelManager(models.Manager):
                 min_xp=0,
                 max_xp=25,
             )
-                                    
+
 
 class XPLevel(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_xp_levels'
-    
+
     objects = XPLevelManager()
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -316,16 +316,25 @@ class XPLevel(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(9999)],
         default=25,
     )
-                                                   
+
     def __str__(self):
         return str(self.id)
+
+
+class CourseManager(models.Manager):
+    def get_by_id_or_none(self, id):
+        try:
+            return Course.objects.get(id=id)
+        except Course.DoesNotExist:
+            return None
 
 
 class Course(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_courses'
-    
+
+    objects = CourseManager()
     id = models.AutoField(primary_key=True)
     type = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(3)],
@@ -350,7 +359,7 @@ class Course(models.Model):
     )
     has_prerequisites = models.BooleanField(default=False,db_index=True,)
     prerequisites = models.ManyToManyField("self", blank=True,)
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -365,7 +374,7 @@ class Quiz(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_quizzes'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     course = models.ForeignKey(Course, db_index=True,)
@@ -380,7 +389,7 @@ class Question(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_questions'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     quiz = models.ForeignKey(Quiz, db_index=True,)
@@ -422,7 +431,7 @@ class EnrolledCourse(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_enrolled_courses'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, db_index=True,)
@@ -442,7 +451,7 @@ class QuizSubmission(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_quiz_submissions'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     course = models.ForeignKey(Course,)
@@ -463,7 +472,7 @@ class QuestionSubmission(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_question_submissions'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, db_index=True,)
@@ -494,7 +503,7 @@ class Me(models.Model):
     class Meta:
         app_label = 'api'
         db_table = 'fly_mes'
-    
+
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, db_index=True,)
@@ -514,7 +523,7 @@ class Me(models.Model):
     wants_goal_notify = models.BooleanField(default=False)
     wants_course_notify = models.BooleanField(default=False)
     wants_resource_notify = models.BooleanField(default=False)
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -536,4 +545,3 @@ class Notification(models.Model):
     user = models.ForeignKey(User, db_index=True,)
     xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
     badge = models.ForeignKey(Badge, null=True, blank=True,)
-
