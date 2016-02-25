@@ -28,7 +28,7 @@ class QuizSubmissionViewSet(viewsets.ModelViewSet):
 
 
     @detail_route(methods=['get'], permission_classes=[IsUser])
-    def apply_discounts(self, request, pk=None):
+    def evaluate(self, request, pk=None):
         """
             Function will iterate through all the submitted answers for this 
             particular Quiz and evaluate the Quiz. A final mark will be assigned

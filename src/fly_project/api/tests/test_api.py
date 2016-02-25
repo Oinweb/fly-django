@@ -190,3 +190,12 @@ class APITest(TestCase):
         response = client.get('/api/notifications/?format=json')
         self.assertEqual(response.status_code, 200)
 
+    def test_api_shares(self):
+        client = Client()
+        client.login(
+            username=TEST_USER_USERNAME,
+            password=TEST_USER_PASSWORD
+        )
+        response = client.get('/api/shares/?format=json')
+        self.assertEqual(response.status_code, 200)
+

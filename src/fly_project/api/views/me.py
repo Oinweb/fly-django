@@ -11,6 +11,7 @@ from api.models import Me
 from rest_framework.decorators import detail_route
 from django.core.management import call_command
 
+
 class MeFilter(django_filters.FilterSet):
     class Meta:
         model = Me

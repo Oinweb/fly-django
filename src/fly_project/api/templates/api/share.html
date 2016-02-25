@@ -1,7 +1,7 @@
 <script>
-    function filter_shares(criteria, success_callback, error_callback)
+    function filter_xplevels(criteria, success_callback, error_callback)
     {
-        var url = "/api/shares/?format=json";
+        var url = "/api/xplevels/?format=json";
         for (var i = 0; i < criteria.length; i++) {
             url += "&";
             
@@ -33,11 +33,11 @@
         });
     }
     
-    function set_share(data, success_callback, error_callback)
+    function set_xplevel(data, success_callback, error_callback)
     {
         // Setup depending on whether we are inserting or updating.
         var type = "POST"; // Insert.
-        var url = "/api/shares/";
+        var url = "/api/xplevels/";
         if (data['id'] > 0) {
             type = "PUT"; // Update
             url += data['id'] + "/";
@@ -68,8 +68,8 @@
         });
     }
 
-    function get_share(id, success_callback, error_callback) {
-        var url = "/api/shares/" + id + "/?format=json";
+    function get_xplevel(id, success_callback, error_callback) {
+        var url = "/api/xplevels/" + id + "/?format=json";
         jQuery.ajax({
             url: url,
             headers: {
@@ -92,8 +92,8 @@
         });
     }
 
-    function search_shares(keyword, success_callback, error_callback) {
-        var url = "/api/shares/?format=json&search="+keyword;
+    function search_xplevels(keyword, success_callback, error_callback) {
+        var url = "/api/xplevels/?format=json&search="+keyword;
         jQuery.ajax({
             url: url,
             headers: {

@@ -19,6 +19,7 @@ from api.views import quiz
 from api.views import question_submission
 from api.views import me
 from api.views import notification
+from api.views import share
 from rest_framework.routers import DefaultRouter
 
 
@@ -44,6 +45,7 @@ router.register(r'quizzes', quiz.QuizViewSet)
 router.register(r'question_submissions', question_submission.QuestionSubmissionViewSet)
 router.register(r'me', me.MeViewSet)
 router.register(r'notifications', notification.NotificationViewSet)
+router.register(r'shares', share.ShareViewSet)
 
 
 # The API URLs are now determined automatically by the router.

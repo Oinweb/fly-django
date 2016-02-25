@@ -17,6 +17,7 @@ from api.models import QuizSubmission
 from api.models import QuestionSubmission
 from api.models import Me
 from api.models import Notification
+from api.models import Share
 
 
 admin.site.register(ImageUpload)
@@ -33,3 +34,4 @@ admin.site.register(QuizSubmission)
 admin.site.register(QuestionSubmission)
 admin.site.register(Me)
 admin.site.register(Notification)
+admin.site.register(Share)

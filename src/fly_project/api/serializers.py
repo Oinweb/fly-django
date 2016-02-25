@@ -19,6 +19,7 @@ from api.models import QuizSubmission
 from api.models import QuestionSubmission
 from api.models import Me
 from api.models import Notification
+from api.models import Share
 
 
 class LoginSerializer(serializers.Serializer):
@@ -165,4 +166,7 @@ class NotificationSerializer(serializers.ModelSerializer):
         fields = ('id', 'type', 'title', 'description', 'user', 'xplevel', 'badge', 'xplevel_num', 'xplevel_title',)
 
 
-
+class ShareSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Share
+        fields = ('id', 'created', 'type', 'user', 'xplevel', 'badge', 'custom_title', 'custom_description', 'custom_url',)
