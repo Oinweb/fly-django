@@ -29,7 +29,7 @@ For Linux and OSX users, run these commands:
 
 1. First clone the project locally and then go into the directory
 
-  ```
+  ```bash
   git clone https://github.com/Oinweb/py-fly.git
   cd py-fly
   ```
@@ -37,7 +37,7 @@ For Linux and OSX users, run these commands:
 
 2. Setup our virtual environment
 
-  ```
+  ```bash
   (OSX)
   python3 -m venv env
 
@@ -49,22 +49,22 @@ For Linux and OSX users, run these commands:
 
 3. Now lets activate virtual environment
 
-  ```
-  $ source env/bin/activate
+  ```bash
+  source env/bin/activate
   ```
 
 
 4. **OSX USERS ONLY:** If you are using *Postgres.app*, you’ll need to have *pg_config* setup in your *$PATH*. If you already have set this up, skip this step, else simply run this command in the console to set the path manually.
 
 
-  ```
-  $ export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+  ```bash
+  export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
   ```
   
 
 5. Now lets install the libraries this project depends on.
 
-  ```
+  ```bash
   pip install -r requirements.txt
   ```
 
@@ -73,23 +73,22 @@ For Linux and OSX users, run these commands:
 ### Database
 We are almost done! Just follow these instructions and the database will be setup for the application to use. Load up your postgres and enter the console. Then to create our database, enter:
 
-  ```
+  ```sql
   create database fly_db;
-
   ```
 
 ### Application + Database
 Run the following command to create your custom settings instance. Note: Please write all your application passwords here as it won't be tracked on git.
 
-  ```
-  $ cd src/fly_project/fly_project
-  $ cp secret_settings_example.py secret_settings.py
+  ```bash
+  cd src/fly_project/fly_project
+  cp secret_settings_example.py secret_settings.py
   ```
 
 
 Run the following commands to populate the database.
 
-  ```
+  ```bash
   cd src/fly_project
   python manage.py migrate 
   python manage.py setup_fly
@@ -100,7 +99,7 @@ To run the web-app, you’ll need to run the server instance and access the page
 
 Start up the web-server:
 
-  ```
+  ```bash
   source env/bin/activate
   cd src/fly_project
   python manage.py runserver
