@@ -1,4 +1,4 @@
-![alt tag](https://github.com/Oinweb/py-fly/blob/master/docs/media/oin-fly-logo.png)
+![alt tag](https://github.com/Oinweb/py-fly/blob/master/docs/media/oin-fly-logo-medium.png)
 
 # py-fly 
 [![Build Status](https://travis-ci.org/Oinweb/py-fly.svg?branch=master)](https://travis-ci.org/Oinweb/py-fly) [![Coverage Status](https://coveralls.io/repos/github/Oinweb/py-fly/badge.svg?branch=master)](https://coveralls.io/github/Oinweb/py-fly?branch=master)
