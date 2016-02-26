@@ -25,7 +25,7 @@ See [requirements.txt](https://github.com/Oinweb/py-fly/blob/master/requirements
 
 ## Build Instructions
 ### Application
-For Linux and OSX users, run these commands:
+For Linux, FreeBSD and OS X users, run these commands:
 
 1. First clone the project locally and then go into the directory
 
@@ -37,24 +37,27 @@ For Linux and OSX users, run these commands:
 
 2. Setup our virtual environment
 
+  **OS X Environment:**
+
   ```bash
-  (OSX)
   python3 -m venv env
-
-  (Linux)
-  virtualenv env
-
   ```
 
+  **Linux or FreeBSD Environment:**
 
-3. Now lets activate virtual environment
+  ```bash
+  virtualenv env
+  ```
+  
+  
+3. Activate virtual environment
 
   ```bash
   source env/bin/activate
   ```
 
 
-4. **OSX USERS ONLY:** If you are using *Postgres.app*, you’ll need to have *pg_config* setup in your *$PATH*. If you already have set this up, skip this step, else simply run this command in the console to set the path manually.
+4. **OS X USERS ONLY:** If you are using *Postgres.app*, you’ll need to have *pg_config* setup in your *$PATH*. If you already have set this up, skip this step, else simply run this command in the console to set the path manually.
 
 
   ```bash
