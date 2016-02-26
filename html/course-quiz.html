@@ -283,7 +283,7 @@
             </div>
         </div>
         <div class="nav-menu">
-            <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
+            <a href="#nav-menu-panel4"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
 
@@ -385,31 +385,21 @@
         $('#badge-popup').popup('open')
     }
 
-    function showAnswers(){
-        if( confirm == true ) {
+    function showAnswers() {
+        if (confirm == true) {
             $('#quiz-answers').collapsible('expand');
-            $('#btnTryAgain').attr('disabled','true');
+            $('#btnTryAgain').attr('disabled', 'true');
             $('#quiz-answers').collapsible('disable');
             answersViewed = true;
         }
         confirm = false;
     }
 
-    function bindEventTouch(element) {
-        element.bind('tap', function(event, ui) {
-            if(element.hasClass('ui-collapsible-collapsed')) {
-                $('#confirm-popup2').popup('open');
-            }
-        });
-        element.bind('click', function(event, ui) {
-            if(element.hasClass('ui-collapsible-collapsed')) {
-                $('#confirm-popup2').popup('open');
-            }
-        });
-    }
 
     $(document).ready(function(){
         loadUserData();
+
+        $.mobile.ajaxEnabled = false;
 
         new ShareButton({
             networks: {
@@ -452,6 +442,11 @@
                 $('#course-quiz-finish').find('.quiz-score span').text(answer + '%').css('color','green');
                 gotBadge=true;
             }
+            else if( correct >= numQuestions){
+                $('#course-quiz-finish').find('.quiz-score span').text('100%').css('color', 'green');
+                $('#quiz-answers ul li').detach().remove();
+                $('#quiz-answers ul').append('<li><h5>Perfect Quiz</h5><p>All the questions were correct.</p></li>');
+            }
             else{
                 var answer = (correct / numQuestions) * 100;
                 answer = answer.toFixed(0);
@@ -477,6 +472,10 @@
             $(this).addClass('selected');
         });
 
-        bindEventTouch($('#quiz-answers'));
+        $('#quiz-answers').on('tap', function(event, ui) {
+           if( answersViewed == false ) {
+               $('#confirm-popup2').popup('open');
+           }
+        });
     });
 </script>

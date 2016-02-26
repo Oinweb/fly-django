@@ -9,68 +9,53 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/share-button.min.css" />
+    <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/share-button.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
 </head>
 <body>
 
 <!-- ---------- dashboard ------------- -->
-<div data-role="page">
+<div data-role="page" style="background-color:#fff;" id="share-content">
 
     <div data-role="header" data-theme="b" data-id="header-nav" data-position="fixed" data-tap-toggle="false" class="text-center">
-        <div class="user-info">
-            <img src="img/photo.png" class="user-image"/>
-            <h5 class="level">
-                <span>Lvl 1</span>
-            </h5>
-        </div>
-        <div class="progress-bar-div">
-            <div class="progress">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    50/100 XP
-                </div>
-            </div>
-        </div>
         <div class="nav-menu">
             <a href="#nav-menu-panel"><i class="fa fa-bars fa-fw"></i></a>
         </div>
     </div><!-- /header -->
 
     <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" >
-        <img src="img/photo.png" class="user-image" />
-        <h5 class="greeting">Hello, Rodolfo</h5>
         <ul data-role="listview">
-            <li><a onclick="window.location='profile.html#profile-page';"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li><a onclick="window.location='notifications.html#notifications-page';"><i class="fa fa-cog fa-fw"></i> Notifications</a></li>
-            <li><a onclick="window.location='index.html';"><i class="fa fa-power-off fa-fw"></i> Log Out</a></li>
-            <li data-role="list-divider"></li>
-            <li><a onclick="window.location='guided-tour.html';"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
-            <li><a onclick="window.location='dashboard.html';"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-            <li data-icon="carat-d">
-                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
-                <ul id="goal-menu" style="display:none;">
-                    <li><a onclick="window.location='savings-goal.html';">Savings</a></li>
-                    <li><a onclick="window.location='credit-goal.html';">Credit</a></li>
-                    <li><a onclick="window.location='goal-goal.html';">Goal</a></li>
-                    <li><a onclick="window.location='goal-complete.html';">Completed Goal</a></li>
-                </ul>
-            </li>
-            <li><a onclick="window.location='learning.html';"><i class="fa fa-edit fa-fw"></i> Learning</a></li>
-            <li><a onclick="window.location='resources.html';"><i class="fa fa-link fa-fw"></i> Resources</a></li>
-            <li><a onclick="window.location='modal-test.html';"><i class="fa fa-terminal fa-fw"></i> Modal Test Page</a></li>
+            <li><a onclick="window.location='profile.html#profile-page';"><i class="fa fa-user fa-fw"></i> Sign Up</a></li>
+            <li><a onclick="window.location='notifications.html#notifications-page';"><i class="fa fa-cog fa-fw"></i> Newsletter</a></li>
         </ul>
 
     </div><!-- /panel -->
 
     <div data-role="content">
         <div class="text-center">
-            <button data-icon="info" id="btnNewBadge" onclick="$('#badge-popup').popup('open');">New Badge</button>
-            <button data-icon="info" id="btnLevelUp" onclick="$('#levelup-popup').popup('open');">Level Up</button>
-            <button data-icon="info" id="btnGoalComplete" onclick="$('#goal-complete-popup').popup('open');">Goal Complete</button>
+            <h4 class="ui-bar ui-bar-a ui-corner-all" style="margin-top:0;">Rodolfo Wants to Share This With You!</h4>
+            <div class="ui-body ui-body-a ui-corner-all">
+                <h4 class="text-center">Rodolfo, has leveled up to level 5!</h4>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    Level 5
+                  </div>
+                </div>
+                <h4>He is now known as a financial guru!</h4>
+                <div class="text-center"><i class="fa fa-4x fa-area-chart" style="border:3px solid #ddd;padding:15px;border-radius:50%;color:goldenrod;"></i></div>
+            </div>
+            <div class="ui-body ui-body-a ui-corner-all" style="margin-top:10px;">
+                <h4 class="text-center">Rodolfo, has earned a new badge!</h4>
+                <div class="text-center"><i class="fa fa-4x fa-tasks" style="border:3px solid #ddd;padding:15px;border-radius:50%;color:goldenrod;"></i></div>
+                <h4>He earned this badge for completing a goal</h4>
+            </div>
+            <button class="ui-btn ui-corner-all" style="margin-bottom: 0;">Go to Landing Page</button>
         </div>
     </div><!-- /content -->
 
@@ -83,13 +68,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="$('#supporters3-popup').popup('open');">Supporters</a></small>
                 </p>
             </div>
-        </div>
-    </div>
-
-    <div data-role="popup" id="other-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div>
-            <input type="text" class="form-control" id="save-for-input" placeholder="Save for..." aria-label="Save for..."/>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" id="save-for-btn" onclick="">Save</button>
         </div>
     </div>
 
@@ -130,54 +108,6 @@
         </div>
     </div>
 
-    <div data-role="popup" id="badge-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3>You've earned a new FLY badge!</h3>
-            <p class="text-left">Congratulations! You've earned a shiny new badge for your collection! Keep up the good work and be sure to let your friends know!</p>
-            <div class="text-center"><i class="fa fa-4x fa-thumbs-up" style="border:3px solid #ddd;padding:15px;border-radius:50%;color:goldenrod;"></i></div>
-
-            <div class="social-sharing text-center" style="margin:auto;">
-                <share-button></share-button>
-            </div>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#badge-popup').popup('close');">OK</button>
-        </div>
-    </div>
-
-    <div data-role="popup" id="levelup-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3>You've earned a new FLY level!</h3>
-            <p class="text-left">Congratulations! You've just leveled up your financial skills! Let your friends know, and keep up the good work!</p>
-            <fieldset class="level-up-fieldset">
-                <h3 class="level">Level 4</h3>
-                <h4 class="level-title">Financial Guru</h4>
-            </fieldset>
-            <div class="social-sharing">
-                <share-button></share-button>
-            </div>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#levelup-popup').popup('close');">OK</button>
-        </div>
-    </div>
-
-    <div data-role="popup" id="goal-complete-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3>You've just achieved your goal!</h3>
-            <p class="text-left">Awesome work! Be sure to let your friends know, and set a new goal to keep your financial goals growing!</p>
-            <div class="social-sharing">
-                <share-button></share-button>
-            </div>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#goal-complete-popup').popup('close');">OK</button>
-        </div>
-    </div>
-
-    <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-        <div class="text-center">
-            <h3>Great you've set a goal!</h3>
-            <p>Once you confirm this goal you cannot change it for at least 30 days</p>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="lock_goal = true;$('#confirm-popup').popup('close');lockBoxItems();">Lock Goal</button>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#confirm-popup').popup('close');">Cancel</button>
-        </div>
-    </div>
-
 </div><!-- /page -->
 
 </body>
@@ -188,7 +118,7 @@
 <script>
     $(document).ready(function(){
         loadUserData();
-        
+
         new ShareButton({
             networks: {
                 pinterest: { enabled: false },
