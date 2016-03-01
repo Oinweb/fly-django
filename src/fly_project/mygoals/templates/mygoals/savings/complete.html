@@ -13,8 +13,7 @@
             <div class="my-boxes red-box goals-box">
                 <img src="{% static 'img/savings.png' %}" class="goals-img" />
                 <h2>{% trans "Savings" %}</h2>
-                <p>{% trans "Did you complete your goal" %}, {% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}?
-                </p>
+                <p>{% show_goal_text savings_goal constants.SAVINGS_MYGOAL_TYPE %}</p>
                 <select id="goal-switch" data-role="slider" data-mini="true">
                     <option selected="true" value="False">{% trans "No" %}</option>
                     <option value="True">{% trans "Yes" %}</option>
@@ -22,11 +21,11 @@
                 <button data-icon="check" onclick="ajax_finish_savings_goal({{ savings_goal.id }});">{% trans "OK" %}</button>
             </div>
             <!-- end Savings -->
-            
+
         </div>
-        
+
     </div><!-- /content -->
-    
+
     {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
