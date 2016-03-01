@@ -25,7 +25,7 @@ class HelpTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-        
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -38,12 +38,12 @@ class HelpTest(TestCase):
 
     def setUp(self):
         translation.activate('en')  # Set English
-    
+
     def test_url_resolves_to_help_page_view(self):
         url = reverse('help')
         found = resolve(url)
         self.assertEqual(found.func,views.help_page)
-    
+
     def test_help_page_returns_correct_html(self):
         url = reverse('help')
         client = Client()
@@ -53,6 +53,7 @@ class HelpTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'TODO: PLEASE FILL IN',response.content)
 
     def test_account_page_is_secure(self):

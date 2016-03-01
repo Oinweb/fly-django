@@ -25,7 +25,7 @@ class AccountTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-        
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -38,7 +38,7 @@ class AccountTest(TestCase):
 
     def setUp(self):
         translation.activate('en')  # Set English
-    
+
     def test_url_resolves_to_account_page_view(self):
         url = reverse('account')
         found = resolve(url)
@@ -66,6 +66,7 @@ class AccountTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'User Info',response.content)
         self.assertIn(b'Current Goals',response.content)
         self.assertIn(b'Delete Account',response.content)
@@ -86,6 +87,7 @@ class AccountTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Notifications',response.content)
         self.assertIn(b'Save Changes',response.content)
 
@@ -104,6 +106,7 @@ class AccountTest(TestCase):
         )
         response = client.get('/en/goal_history/1/')
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'History',response.content)
 
     def test_goal_history_page_is_secure(self):
@@ -120,6 +123,7 @@ class AccountTest(TestCase):
         )
         response = client.get('/en/badges')
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Badges',response.content)
 
     def test_badges_page_is_secure(self):
@@ -127,4 +131,3 @@ class AccountTest(TestCase):
         client = Client()
         response = client.get('/en/badges')
         self.assertEqual(response.status_code, 302)
-

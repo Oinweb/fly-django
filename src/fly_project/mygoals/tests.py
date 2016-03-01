@@ -25,7 +25,7 @@ class MyGoalsTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-        
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -38,11 +38,11 @@ class MyGoalsTest(TestCase):
 
     def setUp(self):
         translation.activate('en')  # Set English
-    
+
     def test_url_resolves_to_mygoals_page_view(self):
         found = resolve('/en/mygoals')
         self.assertEqual(found.func,views.mygoals_page)
-    
+
     def test_mygoals_page_returns_correct_html(self):
         client = Client()
         client.login(
@@ -51,7 +51,8 @@ class MyGoalsTest(TestCase):
         )
         response = client.get('/en/mygoals')
         self.assertEqual(response.status_code, 200)
-        
+        self.assertTrue(len(response.content) > 1)
+
         # Verify the links to the three different type of Goals exist
         # in this page for the User to access.
         self.assertIn(b'/en/mygoals/savings',response.content)

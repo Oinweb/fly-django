@@ -55,6 +55,7 @@ class ResourceTest(TestCase):
         )
         response = client.get(resources_url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Social Media',response.content)
         self.assertIn(b'Blogs',response.content)
         self.assertIn(b'Other Cool Apps',response.content)
@@ -76,6 +77,7 @@ class ResourceTest(TestCase):
         )
         response = client.get(resources_url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         me = Me.objects.all()[:1][0]  # Fetch the only instance of 'Me' object.
         badge = Badge.objects.get(id=28)
         self.assertIn(badge,me.badges.all())

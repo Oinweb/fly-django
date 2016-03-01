@@ -25,7 +25,7 @@ class ShareTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-        
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -38,11 +38,11 @@ class ShareTest(TestCase):
 
     def setUp(self):
         translation.activate('en')  # Set English
-    
+
     def test_url_resolves_to_share_page_view(self):
         found = resolve('/en/share/1/')
         self.assertEqual(found.func,views.share_page)
-    
+
     def test_share_page_returns_correct_html(self):
         client = Client()
         client.login(
@@ -51,6 +51,7 @@ class ShareTest(TestCase):
         )
         response = client.get('/en/share/1/')
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
 #        self.assertIn(b'Social Media',response.content)
 #        self.assertIn(b'Blogs',response.content)
 #        self.assertIn(b'Other Cool Apps',response.content)

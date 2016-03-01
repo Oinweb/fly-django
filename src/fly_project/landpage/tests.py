@@ -18,7 +18,7 @@ class LandpageTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-    
+
     def tearDown(self):
         pass
 
@@ -37,6 +37,6 @@ class LandpageTest(TestCase):
             data=parameters,
         )
         self.assertEqual(response.status_code, 200)
-        
+        self.assertTrue(len(response.content) > 1)
         #TODO: Fixed to have the actual content once it was implemented.
         self.assertIn(b'Generic Login',response.content)

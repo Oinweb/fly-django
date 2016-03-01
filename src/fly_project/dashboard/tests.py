@@ -27,7 +27,7 @@ class DashboardTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-    
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -57,6 +57,7 @@ class DashboardTest(TestCase):
         )
         response = client.get(dashboard_url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'My Goals',response.content)
 
     def test_dashboard_page_is_secure(self):
@@ -76,6 +77,7 @@ class DashboardTest(TestCase):
         )
         response = client.get(dashboard_url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         me = Me.objects.all()[:1][0]  # Fetch the only instance of 'Me' object.
         badge = Badge.objects.get(id=1)
         self.assertIn(badge,me.badges.all())

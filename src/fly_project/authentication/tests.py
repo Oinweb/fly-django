@@ -25,7 +25,7 @@ class AuthenticationTest(TestCase):
         'quizzes.json',
         'questions.json',
     ]
-        
+
     @classmethod
     def setUpTestData(cls):
         user = User.objects.create_user(  # Create our user.
@@ -38,7 +38,7 @@ class AuthenticationTest(TestCase):
 
     def setUp(self):
         translation.activate('en')  # Set English
-    
+
     def test_url_resolves_to_authentication_page_view(self):
         url = reverse('authentication')
         found = resolve(url)
@@ -63,6 +63,7 @@ class AuthenticationTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Facebook',response.content)
         self.assertIn(b'Twitter',response.content)
         self.assertIn(b'Google',response.content)
@@ -77,6 +78,7 @@ class AuthenticationTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Create Account',response.content)
         self.assertIn(b'Close',response.content)
         self.assertIn(b'Login',response.content)
@@ -91,6 +93,7 @@ class AuthenticationTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.content) > 1)
         self.assertIn(b'Login',response.content)
         self.assertIn(b'Close',response.content)
         self.assertIn(b'Register',response.content)
