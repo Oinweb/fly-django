@@ -151,13 +151,13 @@ def goal_complete_page(request, goal_type, goal_id):
             goal = FinalGoal.objects.get(id=goal_id)
     except Exception as e:
         pass
-    
-    final_goal = FinalGoal.objects.get_latest(request.user.id)
+
     return render(request, 'mygoals/complete/view.html',{
         'settings': settings,
         'constants': constants,
         'goal_id': int(goal_id),
         'goal_type': int(goal_type),
+        'goal': goal,
     })
 
 
@@ -178,12 +178,12 @@ def goal_failed_page(request, goal_type, goal_id):
     # Evaulate the User's profile
     call_command('evaluate_me', str(request.me.id))
 
-    final_goal = FinalGoal.objects.get_latest(request.user.id)
     return render(request, 'mygoals/failed/view.html',{
         'settings': settings,
         'constants': constants,
         'goal_id': int(goal_id),
         'goal_type': int(goal_type),
+        'goal': goal,
     })
 
 
