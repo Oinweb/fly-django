@@ -20,7 +20,7 @@
 </div>
 
 <div data-role="popup" id="privacy3-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
-    <div>
+    <div style="overflow-y:scroll;">
         <h3>{% trans 'Privacy Statement' %}</h3>
         <h5>{% trans 'Introduction' %}</h5>
         <p>{% trans 'Ontario Immigrant Network maintains this web site to help the public find information about its services. Ontario Immigrant Network is committed to ensuring your privacy while you visit the site.' %}</p>
@@ -45,3 +45,20 @@
         <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#supporters3-popup').popup('close');">{% trans 'Close' %}</button>
     </div>
 </div>
+
+<script>
+$(document).ready(function(){
+    $.mobile.ajaxEnabled = false;
+    $.mobile.allowSamePageTransition = false;
+
+    new ShareButton({
+            networks: {
+                pinterest: { enabled: false },
+                reddit: { enabled: false },
+                linkedin: { enabled: false },
+                whatsapp: { enabled: false }
+            }
+        });
+
+});
+</script>

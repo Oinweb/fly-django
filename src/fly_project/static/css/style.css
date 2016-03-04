@@ -415,6 +415,10 @@
     background-color: gold;
     text-shadow: none;
 }
+.ui-content .ui-listview .goal-notset a{
+    background-color: #fefefe;
+    text-shadow: none;
+}
 .ui-content .ui-collapsible .ui-collapsible-content{
     padding-top: 0px;
 }
@@ -455,6 +459,9 @@
 
 /* Popups
  * -------------------------- */
+.ui-popup{
+    width: 300px;
+}
 #badges-popup div, #locked-popup div, #confirm-popup2 div, #goal-complete-popup div, #levelup-popup div, #badge-popup div, #confirm-popup div, #contacts3-popup div, #privacy3-popup div, #supporters3-popup div, #other-popup div, #error-popup div{
     padding: 10px 10px;
 }

@@ -26,22 +26,36 @@
                     <li data-role="list-divider" style="background-color:#E66771;color:#fff;">
                         <h4>{% trans "Badges" %}</h4>
                     </li>
+                    <li style="margin-bottom:-10px;">
                     {% for badge in request.me.badges.all %}
-                        <li>
-                            <span style="position:relative;top:10px;font-size:10pt;">{{ badge.title|escape|safe }}</span>
-                            <span class="text-right fright">
-                                {{ badge.description|escape|safe }}
-                            </span>
-                        </li>
+                        <div class="ui-grid-a">
+                            {% if forloop.counter|divisibleby:2 %}
+                                <div class="ui-block-a badges text-center">
+                                    <i class="fa fa-3x {{ badge.icon|escape|safe }}" style="color:{{ badge.colour|escape|safe }};"></i>
+                                    <h4>{{ badge.title|escape|safe }}</h4>
+                                    <p style="word-break: keep-all;">{{ badge.description|escape|safe }}</p>
+                                </div>
+                            {% else %}
+                                <div class="ui-block-b badges text-center">
+                                    <i class="fa fa-3x {{ badge.icon|escape|safe }}" style="color:{{ badge.colour|escape|safe }};"></i>
+                                    <h4>{{ badge.title|escape|safe }}</h4>
+                                    <p style="word-break: keep-all;">{{ badge.description|escape|safe }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
                     {% empty %}
                         <li>
                             {% trans "No Badges Earned" %}
                         </li>
                     {% endfor %}
+                    </li>
                     <li>
-                        <button onclick="window.location='/{{ request.language }}/account#profile';" id="btnSaveChanges" class="mt10 ui-btn ui-icon-check ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow" style="margin-top:10px;">
+                        <a onclick="window.location='/{{ request.language }}/account#profile';" class="mt10 ui-btn ui-icon-check ui-btn-icon-left ui-btn-a " style="margin-top:10px;">
                             <span>{% trans "OK" %}</span>
-                        </button>
+                        </a>
+                        <script>
+
+                        </script>
                     </li>
                 </ul>
             </form>

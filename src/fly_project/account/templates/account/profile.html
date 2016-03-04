@@ -61,20 +61,17 @@
                 <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
                     <h4>{% trans "Goal History" %}</h4>
                 </li>
-                <li>
-                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.SAVINGS_MYGOAL_TYPE }}/';">
-                        <span>{% trans "Savings Goal" %}</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.CREDIT_MYGOAL_TYPE }}/';">
-                        <span>{% trans "Credit Goal" %}</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="window.location='/{{ request.language }}/goal_history/{{ constants.GOAL_MYGOAL_TYPE}}/';">
-                        <span>{% trans "Final Goal" %}</span>
-                    </a>
+                <li style="padding: 0;margin: 0;">
+                    <div data-role="collapsibleset" data-corners="true" style="margin: 0px;">
+                        <div data-role="collapsible" data-corners="false">
+                            <h4>Last Month</h4>
+                            <ul data-role="listview" data-corners="false" data-inset="true" style="margin: 0px;">
+                                <li data-icon="false" class="goal-notset"><a><span>{% trans "Savings Goal" %}</span></a></li>
+                                <li data-icon="false" class="goal-notset"><a><span>{% trans "Credit Goal" %}</span></a></li>
+                                <li data-icon="false" class="goal-notset"><a><span>{% trans "Long-term Goal" %}</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
             </ul>
         
