@@ -52,7 +52,10 @@
     {% endblock %}
     <!-- /.CONTENT -->
 </body>
+{% compress js %}
 <script type="text/javascript" src="{% static 'js/storage.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/retina.js' %}"></script>
+{% endcompress %}
 {% include "api/common_js.html" %}
 {% include "api/login.html" %}
 {% include "api/register.html" %}
