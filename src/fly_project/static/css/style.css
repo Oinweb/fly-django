@@ -21,7 +21,7 @@
     float: left;
 }
 .m0{
-    margin: 0px !important;
+    margin: 0 !important;
 }
 .m5{
     margin: 5px !important;
@@ -71,6 +71,82 @@
     }
 }
 
+/* Guided Tour
+ * ------------------------- */
+.bubble
+{
+    color: #000;
+    position: absolute;
+    top:25px;
+    left: 25px;
+    width: 250px;
+    height: auto;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #ddd;
+    background-color: #FCF8E3;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.bubble-bottom:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #FCF8E3 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 110px;
+}
+
+.bubble-top:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: #FCF8E3 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -15px;
+    left: 110px;
+}
+
+.bubble-right:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #FCF8E3;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -15px;
+    top: 40%;
+}
+
+.bubble-left:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #FCF8E3;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -15px;
+    top: 40%;
+}
+
 /* Page Header
  * -------------------------- */
 .ui-header{
@@ -92,10 +168,9 @@
 }
 .ui-header .user-info h5.level{
     display:inline-block;
-    margin:0 5px;
     float:left;
     font-size:11pt;
-    margin-top: 10px;
+    margin: 10px 5px 0;
     font-weight:bold;
 }
 .ui-header .user-info h5.level span{
@@ -114,19 +189,22 @@
 .ui-header .progress-bar-div .progress{
     display:inline-block;
     width:100%;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 .ui-header .progress-bar-div {
     text-align: center;
     display: inline-block;
-    min-width: 200px;
-    width:55%;
-    margin: 12px auto;
-    margin-bottom: 5px;
+    min-width: 150px;
+    width:45%;
+    margin: 12px auto 5px;
 }
 .ui-header .user-info{
     width:80px;
     display:inline-block;
+}
+.ui-header .nav-menu a{
+    text-decoration:none;
+    cursor: pointer;
 }
 
 /* Nav Panel
@@ -194,8 +272,7 @@
     text-shadow: 2px 2px 4px #000000;
 }
 #login-page .ui-content .row #inner-login-container{
-    padding:20px;
-    padding-top:0;
+    padding: 0 20px 20px;
 }
 #login-page .ui-content .row #inner-login-container{
     text-align:center;
@@ -209,15 +286,12 @@
     display:block;
     text-align:left;
     width:245px;
-    margin:5px;
-    margin-top:10px;
     text-shadow: 2px 2px 4px #000000;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 10px auto 5px;
     color:#fff;
 }
 #login-page .ui-content .row #inner-login-container a span {
-    font-family: arial;
+    font-family: arial, sans-serif;
     text-align: center;
     display: block;
     margin: auto !important;
@@ -231,8 +305,7 @@
     margin: 5px;
 }
 #dashboard .ui-content div .my-boxes a{
-    margin: 20px auto;
-    margin-bottom: 0;
+    margin: 20px auto 0;
     width:60%;
 }
 
@@ -258,13 +331,10 @@
 }
 .ui-content div .my-boxes.learning-box .ui-btn.begin-course{
     text-shadow: 2px 2px 4px #000000;
-    margin-top:20px;
-    margin-bottom:0;
     color:#fff;
     background-color:#779ECB;
     width:60%;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 20px auto 0;
 }
 .ui-content div .my-boxes.learning-box.locked{
     background-color: #8a8a8a !important;
@@ -279,12 +349,10 @@
 .ui-content div .my-boxes.learning-box.locked .locked-icon button{
     background: rgba(0,0,0,0.7);
     border-radius: 50%;
-    margin: 0;
     left:-10px;
     width:100px;
     height: 100px;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 0 auto;
     border: none;
     box-shadow: none;
 }
@@ -300,8 +368,7 @@
  * -------------------------- */
 #course-content .ui-content div h2{
     text-align: center;
-    margin: auto;
-    margin-bottom: 10px;
+    margin: auto auto 10px;
 }
 #course-content .ui-content div video{
     width: 255px;
@@ -332,7 +399,7 @@
     color: #fff;
 }
 .ui-content div .ui-listview{
-    margin-top: 0px;
+    margin-top: 0;
 }
 .ui-content div .ui-listview .ui-li-divider{
     background-color: #779ECB;
@@ -344,17 +411,16 @@
     text-align:center !important;
 }
 .ui-content div h2{
-    margin: 0px auto;
+    margin: 0 auto;
 }
 .ui-content div .ui-collapsible-heading-toggle{
     text-shadow: none;
 }
 .ui-content div .ui-listview li h5{
-    margin: 0px;
+    margin: 0;
 }
 .ui-content div .ui-listview li p{
-    margin: 0px;
-    margin-top: 5px;
+    margin: 5px 0 0;
 }
 
 /* Page Content - Resources
@@ -384,8 +450,7 @@
 }
 .ui-content div .my-boxes.goals-box img.goals-img{
     width:100%;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 0 auto;
     display:block;
 }
 
@@ -398,10 +463,10 @@
     white-space: normal;
 }
 .ui-li-static .ui-body-inherit{
-    padding: 0px;
+    padding: 0;
 }
 .ui-content .ui-collapsible{
-    margin: 0px;
+    margin: 0;
 }
 .ui-content .ui-listview .goal-fail a{
     background-color: #E66771;
@@ -420,13 +485,13 @@
     text-shadow: none;
 }
 .ui-content .ui-collapsible .ui-collapsible-content{
-    padding-top: 0px;
+    padding-top: 0;
 }
 .ui-listview>li h4{
     margin: 0 !important;
 }
 .ui-listview .ui-listview-inset .ui-shadow{
-    margin: 0px !important;
+    margin: 0 !important;
 }
 #profile-page #badges li span:first-child{
     position:relative;
@@ -447,7 +512,7 @@
 }
 .ui-footer .row div{
     width:90%;
-    padding:0px 10px;
+    padding:0 10px;
     text-align:center;
 }
 .ui-footer .row div a{
@@ -553,7 +618,7 @@
 }
 .ui-icon-fa {
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: FontAwesome, sans-serif;
     font-style: normal;
     font-weight: normal;
     line-height: 1;
