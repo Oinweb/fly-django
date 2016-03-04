@@ -88,7 +88,7 @@
     border:1px solid #ddd;
     background-color: #FCF8E3;
     padding: 10px;
-    z-index: 1000;
+    z-index: 1002;
 }
 
 .bubble-bottom:after

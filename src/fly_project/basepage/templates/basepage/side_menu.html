@@ -1,6 +1,6 @@
 {% load staticfiles i18n %}
 {% if user.is_authenticated %}
-<div data-role="panel" data-position="right" data-display="push" data-theme="a" id="nav-menu-panel" align="center" data-dismissible="false">
+<div data-role="panel" data-position="right" data-display="overlay" data-theme="a" id="nav-menu-panel" align="center" data-dismissible="false">
     {% if request.me.avater.url != None %}
         <img src="{{ request.avatar.url }}" class="user-image" />
     {% else %}

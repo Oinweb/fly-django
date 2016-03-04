@@ -23,7 +23,7 @@
     <div data-role="content">
         <div class="text-center">
 
-            <div class="bubble tour-bubble" style="display:none;"></div>
+            <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
 
             <div class="my-boxes dashboard-box red-box" >
                 <img src="{% static 'img/oinweb-fly-goals-menu-icon.png' %}" />
@@ -62,7 +62,7 @@
 
         var tour_bubbles = [
             {
-                top: 15,
+                top: 45,
                 left: 25,
                 posx: 'left',
                 type: 'bottom',
@@ -72,7 +72,7 @@
                 hasaction: false
             },
             {
-                top: 15,
+                top: 45,
                 left: 25,
                 posx: 'left',
                 type: 'bottom',
@@ -82,7 +82,7 @@
                 hasaction: false
             },
             {
-                top: 15,
+                top: 45,
                 right: 25,
                 posx: 'right',
                 type: 'bottom',
@@ -93,30 +93,30 @@
                 action: function(){ setTimeout(function(){ $('.menu-button').trigger('click'); }, 1000); }
             },
             {
-                top: 15,
+                top: 215,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'bottom',
                 element: '.ui-content div.text-center',
                 text: 'This menu allows you access to every part of the FLY App. Under Profile, you can see your account information, your statistics, current goals, goal history, completed courses, any earned FLY Badges, and can subscribe to the newsletter.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
                 hasaction: false
             },
             {
-                top: 15,
+                top: 215,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'bottom',
                 element: '.ui-content div.text-center',
                 text: 'Under notifications you can change notification options for instance if a goal has been completed and needs your attention, and can turn these on and off.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
                 hasaction: false
             },
             {
-                top: 15,
+                top: 215,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'bottom',
                 element: '.ui-content div.text-center',
                 text: 'Log Out allows you to log out of the application.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -126,7 +126,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'Help will take you to a contact page where you can ask questions if you need help with something.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -136,7 +136,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'Dashboard is the page you are on right now, and gives you quick access to your goals, any available courses, and also any resources that you can browse through',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -146,7 +146,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'My Goals allows you to set Savings, Credit, and Long-Term goals.  You can set goals once a month, and completing them lets you earn xp and badges.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -156,7 +156,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'Learning allows you to see any courses you have available. At the end of every course you\'ll be able to take a quiz to see how well you did.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -166,7 +166,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'Resources is a collection of resources like blogs, company pages, and social media accounts that give out financial advice, or have tips on managing your money.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -176,7 +176,7 @@
                 top: 15,
                 right: 25,
                 posx: 'right',
-                type: 'left',
+                type: 'top',
                 element: '.ui-content div.text-center',
                 text: 'Close Menu will close the navigation menu.  The menu will now close and you\'ll be back on the Dashboard.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
@@ -189,6 +189,7 @@
                 posx: 'right',
                 type: 'top',
                 element: '.red-box',
+                center: true,
                 text: 'This box lets you go to your goals section, where you can set goals by clicking the button at the bottom',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
                 hasaction: false
@@ -199,6 +200,7 @@
                 posx: 'right',
                 type: 'top',
                 element: '.blue-box',
+                center: true,
                 text: 'This box lets you go to the learning section, where you can take any available courses, plus a quiz once you are finished reading the course material.  More courses will unlock as you complete them.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
                 hasaction: false
@@ -209,16 +211,18 @@
                 posx: 'right',
                 type: 'top',
                 element: '.green-box',
+                center: true,
                 text: 'This box lets you go to the resources section, where you can browse through helpful resources on taking care of your finances and money, as well as visit social media accounts devoted to finances, and get access to other applications that can help you with money management.',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
                 hasaction: false
             },
             {
-                top: 15,
+                top: 45,
                 left: 25,
                 posx: 'left',
                 type: 'bottom',
                 element: '.ui-content div.text-center',
+                center: true,
                 text: 'That concludes the tour of the dashboard page. Remember that you can press the help icon in the top bar at any time to view the tour again, or to view a tour of another page',
                 button: '<br/><button data-role="none" onclick="advance_tour = true;">Finish</button>',
                 finish: true,
@@ -241,6 +245,9 @@
                     cur_bubble = 0;
                     return;
                 }
+
+                if( bubble.center )
+                    window.location="#tour-bubble";
 
                 // position the tour bubble dependant on element
                 $(bubble.element).prepend(active_bubble);
