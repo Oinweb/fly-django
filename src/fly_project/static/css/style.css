@@ -241,6 +241,9 @@
 .ui-panel .ui-panel-inner .ui-listview * #goal-menu li{
     padding-left:40px;
 }
+.ui-panel .ui-panel-inner .ui-listview * #goal-menu li a{
+    background-color:#EDEDED;
+}
 
 
 /* Page Content - Common
