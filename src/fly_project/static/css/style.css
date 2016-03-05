@@ -238,6 +238,10 @@
 .ui-panel .ui-panel-inner .ui-listview li a{
     color:#337AB7;
 }
+.ui-panel .ui-panel-inner .ui-listview * #goal-menu li{
+    padding-left:40px;
+}
+
 
 /* Page Content - Common
  * -------------------------- */

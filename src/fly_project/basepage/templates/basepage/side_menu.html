@@ -25,9 +25,15 @@
         <li>
             <a onclick="window.location='/{{ request.language }}/dashboard';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
         </li>
-        <li>
-            <a onclick="window.location='/{{ request.language }}/mygoals';"><i class="fa fa-bullseye fa-fw"></i> {% trans "My Goals" %}</a>
-        </li>
+        <li data-icon="carat-d">
+                <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
+                <ul data-role="listview" id="goal-menu" style="display:none;">
+                    <li><a onclick="window.location='/{{ request.language }}/mygoals';">{% trans "My Goals" %}</a></li>
+                    <li><a onclick="window.location='/{{ request.language }}/mygoals/savings';">{% trans "Saving" %}</a></li>
+                    <li><a onclick="window.location='/{{ request.language }}/mygoals/credit';">{% trans "Credit" %}</a></li>
+                    <li><a onclick="window.location='/{{ request.language }}/mygoals/final'">{% trans "Long Term" %}</a></li>
+                </ul>
+            </li>
         <li>
             <a onclick="window.location='/{{ request.language }}/learning';"><i class="fa fa-edit fa-fw"></i> {% trans "Learning" %}</a>
         </li>

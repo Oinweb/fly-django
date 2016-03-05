@@ -51,15 +51,7 @@
 
     <script>
         var advance_tour = false;
-
-        function start_page_tour(){
-            $('.tour-bubble').show();
-            next_bubble();
-
-            setInterval(function(){ if(advance_tour == true){ advance_tour = false; next_bubble(); } }, 300);
-
-        }
-
+        var cur_bubble = 0;
         var tour_bubbles = [
             {
                 top: 45,
@@ -231,7 +223,12 @@
 
         ];
 
-        var cur_bubble = 0;
+        function start_page_tour(){
+            $('.tour-bubble').show();
+            next_bubble();
+
+            setInterval(function(){ if(advance_tour == true){ advance_tour = false; next_bubble(); } }, 300);
+        }
 
         function next_bubble(){
             if(cur_bubble <= tour_bubbles.length){

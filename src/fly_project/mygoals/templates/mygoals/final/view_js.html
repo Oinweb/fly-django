@@ -105,4 +105,122 @@
             }
         ); // end Get Goal.
     }
+
+    var advance_tour = false;
+    var cur_bubble = 0;
+    var tour_bubbles = [
+            {
+                top: 180,
+                posy: 'top',
+                left: 25,
+                posx: 'left',
+                type: 'top',
+                center: true,
+                element: '.green-box',
+                text: 'This is the long term goal, in the first box you enter how much you want to save.',
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                hasaction: true,
+                action: function(){ $('#goal-amount').trigger('focus'); }
+            },
+            {
+                bottom: 180,
+                posy: 'top',
+                left: 25,
+                posx: 'left',
+                type: 'top',
+                center: true,
+                element: '.green-box',
+                text: 'In the second box, you enter the item you want to save up for. If you click \'other\' you will be prompted to enter your own savings goal interest.',
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                hasaction: true,
+                action: function(){ $('#goal-for').trigger('focus'); }
+            },
+            {
+                bottom: 180,
+                posy: 'top',
+                left: 25,
+                posx: 'left',
+                type: 'top',
+                center: true,
+                element: '.green-box',
+                text: 'Once you have your goal entered, click the \'Set My Goal!\' button to lock it in. You\'ll be prompted with a popup asking you to confirm locking in your goal. You can change your goal once every 30 days.',
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">Finish</button>',
+                finish: true,
+                hasaction: true,
+                action: function(){ $('#green-btn').trigger('focus'); }
+            }
+        ];
+
+        function start_page_tour(){
+            $('.tour-bubble').show();
+            next_bubble();
+
+            setInterval(function(){ if(advance_tour == true){ advance_tour = false; next_bubble(); } }, 300);
+        }
+
+        function next_bubble(){
+            if(cur_bubble <= tour_bubbles.length){
+                // get current bubble
+                var bubble = tour_bubbles[cur_bubble];
+                // get the active bubble
+                var active_bubble = $('.tour-bubble');
+
+                if( cur_bubble == tour_bubbles.length ){
+                    active_bubble.hide();
+                    cur_bubble = 0;
+                    return;
+                }
+
+                if( bubble.center )
+                    window.location="#tour-bubble";
+
+                // position the tour bubble dependant on element
+                $(bubble.element).prepend(active_bubble);
+
+                // change bubble type
+                if(bubble.type == 'top'){
+                    active_bubble.removeClass('bubble-bottom').removeClass('bubble-left').removeClass('bubble-right').addClass('bubble-top');
+                }
+                else if(bubble.type =='bottom'){
+                    active_bubble.removeClass('bubble-top').removeClass('bubble-left').removeClass('bubble-right').addClass('bubble-bottom');
+                }
+                else if(bubble.type == 'left'){
+                    active_bubble.removeClass('bubble-bottom').removeClass('bubble-top').removeClass('bubble-right').addClass('bubble-left');
+                }
+                else if(bubble.type == 'right'){
+                    active_bubble.removeClass('bubble-bottom').removeClass('bubble-top').removeClass('bubble-left').addClass('bubble-right');
+                }
+
+                // position bubble with absolute positioning
+                if( bubble.posy == 'top'){
+                    active_bubble.css('top',bubble.top+'px').css('bottom', 'auto');
+                }
+                else{
+                    active_bubble.css('bottom', bubble.bottom+'px').css('top', 'auto');
+                }
+                if( bubble.posx == 'left'){
+                    active_bubble.css('left',bubble.left+'px').css('right', 'auto');
+                }
+                else{
+                    active_bubble.css('right', bubble.right+'px').css('left', 'auto');
+                }
+
+                // change the bubble text and button
+                active_bubble.text(bubble.text);
+
+                // if there is an action to be performed, perform it
+                if(bubble.hasaction){
+                    bubble.action();
+                    setTimeout(function(){ active_bubble.append(bubble.button) }, 1500);
+                }
+                else{
+                    active_bubble.append(bubble.button);
+                }
+
+                active_bubble.show();
+
+                // advance count to next bubble to prepare for advancement
+                cur_bubble++;
+            }
+        }
 </script>
