@@ -38,6 +38,7 @@
                     </li>
                 </ul>
             </div>
+            <share-button></share-button>
         </div>
     </div>
     <!-- /content -->
@@ -46,4 +47,16 @@
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
+<script>
+    $(document).ready(function(){
+        new ShareButton({
+            networks: {
+                pinterest: { enabled: false },
+                reddit: { enabled: false },
+                linkedin: { enabled: false },
+                whatsapp: { enabled: false }
+            }
+        });
+    });
+</script>
 {% endblock content %}

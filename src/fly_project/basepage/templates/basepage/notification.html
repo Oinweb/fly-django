@@ -14,14 +14,8 @@
                 <!-- Description Placeholder -->
             </h4>
         </fieldset>
-        <div class="social-sharing">
-            <share-button></share-button>
-        </div>
-        <button onclick="ajax_delete_this_notification(); $('#levelup-popup').popup('close');"
-              data-role="button"
-                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">
-                  {% trans "OK" %}
-        </button>
+        <button onclick="window.location='share_page';" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
+        <button onclick="ajax_delete_this_notification(); $('#levelup-popup').popup('close');" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
     </div>
 </div>
 
@@ -35,14 +29,8 @@
         </p>
         <p><i class="fa fa-3x fa-thumbs-up"></i></p>
         
-        <div class="social-sharing">
-            <share-button></share-button>
-        </div>
-        <button onclick="ajax_delete_this_notification(); $('#badge-popup').popup('close');"
-              data-role="button"
-                  class="ui-btn ui-corner-all ui-shadow ui-btn-b">
-                  {% trans "OK" %}
-        </button>
+        <button onclick="window.location='share_page';" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
+        <button onclick="ajax_delete_this_notification(); $('#badge-popup').popup('close');" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
     </div>
 </div>
 
