@@ -22,11 +22,98 @@
             }
         });
     </script>
-
-    {% trans "TODO: PLEASE FILL IN" %}
+    <div class="container">
+        <h4 class="ui-bar-a ui-corner-all" style="padding:5px;">
+            Contact Us
+        </h4>
+        <p>If you have any questions about the usage of the program, or have found a bug, please send us a message and we will do our best to help you as quickly as we can.</p>
+        <form id="contactForm" method="post" action="/en/help/contact">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="name" name="name" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" name="email" />
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <select id="subject" name="subject">
+                    <option value="Comment">Comment</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Bug Report">Bug Report</option>
+                    <option value="Help Request">Help Request</option>
+                    <option value="Other Inquiry">Other Inquiry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div id="form-alert" class="alert" data-role="alert" style="display:none;"></div>
+            <input type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-mail" value="Send Message" />
+            <!-- <button onclick="ajax_send_message();" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-mail">Send Message</button> -->
+        </form>
+    </div>
     
     {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
+
+<script>
+$(document).ready(function() {
+    $('#form-alert').hide().removeClass('alert-danger').removeClass('alert-success');
+
+    var email_status = '{{ response.status }}';
+    var has_been_sent = '{{ response.sent_status }}';
+
+    if (has_been_sent == 'sent') {
+        if (email_status == 'success') {
+            $('#form-alert').addClass('alert-success').text('Message successfully sent.');
+            $('#form-alert').show();
+        }
+    }
+    if (has_been_sent == 'error') {
+        if (email_status == 'failure') {
+            $('#form-alert').addClass('alert-danger').text('There was an error sending the message.');
+            $('#form-alert').show();
+        }
+    }
+});
+
+    function ajax_send_message(){
+
+
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var subject = $('#subject').val();
+        var message = $('#message').val();
+
+        if( name == '' || email == '' || subject == '' || message == '' ){
+            $('#form-alert').addClass('alert-danger');
+            $('#form-alert').text('Please fill in all fields before trying to submit');
+            $('#form-alert').show();
+        }
+        else if( email != '' && !re.test(email) ){
+            $('#form-alert').addClass('alert-danger');
+            $('#form-alert').text('Please enter a valid email address so we can reply to your inquiry');
+            $('#form-alert').show();
+        }
+
+        $.ajax({
+                url: "/en/help/contact",
+                type: "post",
+                data: {
+                    name: name,
+                    subject: subject,
+                    email: email,
+                    message: message
+                },
+                cache: false
+            }
+        )};
+</script>
 {% endblock content %}

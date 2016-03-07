@@ -10,10 +10,9 @@ def land_page(request):
     })
 
 def contact(request):
-    response_data = {'status': 'failure', 'message': 'There was an error sending the email'}
-    print(request.language)
+    response_data = {'status': 'failure', 'message': 'There was an error sending the email', 'sent_status': 'unsent'}
+    print(request.method)
     if request.method == 'POST':
-        print('post')
         try:
             contact_list = [settings.DEFAULT_TO_EMAIL]
             name = request.POST.get('name')
@@ -21,10 +20,11 @@ def contact(request):
             phone = request.POST.get('phone')
             message = request.POST.get('message')
 
-            text = "FROM: " + email + "\n"
-            text += "NAME: " + name + "\n"
-            text += "PHONE: " + phone + "\n"
-            text += "MESSAGE: " + message + "\n"
+            text = "SENT FROM: FlyApp Landing Page\n"
+            text += "     FROM: " + email + "\n"
+            text += "     NAME: " + name + "\n"
+            text += "    PHONE: " + phone + "\n\n"
+            text += message + "\n"
 
             send_mail(
                 "New Inquiry",
@@ -33,8 +33,8 @@ def contact(request):
                 contact_list,
                 fail_silently = False
             )
-            response_data = {'status': 'success', 'message': 'Thank you for contacting us!'}
+            response_data = {'status': 'success', 'message': 'Thank you for contacting us!', 'sent_status': 'sent'}
         except Exception as e:
-            response_data = {'status': 'failure', 'message': 'there was some kind of error'}
+            response_data = {'status': 'failure', 'message': str(e), 'sent_status': 'error'}
 
-    return HttpResponse(json.dumps(response_data), content_type='application/json')
+    return render(request, 'landpage/view.html', { 'response': response_data })
