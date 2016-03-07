@@ -26,18 +26,7 @@
             <h2 class="ui-bar ui-bar-a ui-corner-all">{{ course.title|escape|safe }}</h2>
             <div class="ui-body ui-body-a ui-corner-all">
                 <p>{{ course.summary|escape|safe }}</p>
-                <video id="my-video"
-                    class="video-js"
-         controls preload="auto"
-                    width="255px"
-                   poster="/static/{{ course.image }}"
-               data-setup="{}">
-                    <source src="/static/{{ course.video_url }}" type='video/mp4' />
-                        <p class="vjs-no-js">
-                            {% trans "To view this video please enable JavaScript, and consider upgrading to a web browser that" %}
-                            <a href="http://videojs.com/html5-video-support/" target="_blank">{% trans "supports HTML5 video" %}</a>
-                        </p>
-                </video>
+                <iframe id="my-video" src="https://www.youtube.com/embed/BtbfbuFkuE8" frameborder="0" allowfullscreen style="margin-left:-12px;"></iframe>
                 <p>{{ course.description|escape|safe }}</p>
                 <button id="btnTakeQuiz"
                  data-icon="info"
@@ -54,5 +43,19 @@
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
+
+<script>
+$(document).ready(function(){
+    $(window).resize(function(){
+        var win_width = $(window).width();
+        $('#my-video').css('width',win_width + 'px');
+        $('#my-video').css('height', win_width*0.56 + 'px');
+    });
+    var win_width = $(window).width();
+    $('#my-video').css('width',win_width + 'px');
+    $('#my-video').css('height', win_width*0.56 + 'px');
+
+});
+</script>
 
 {% endblock content %}
