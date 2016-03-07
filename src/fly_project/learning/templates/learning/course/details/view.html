@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
-                          
+
             // Add a slight deley before detect any notications and load UI.
             setTimeout(function(){
                 handle_fly_notifications();
@@ -26,7 +26,9 @@
             <h2 class="ui-bar ui-bar-a ui-corner-all">{{ course.title|escape|safe }}</h2>
             <div class="ui-body ui-body-a ui-corner-all">
                 <p>{{ course.summary|escape|safe }}</p>
-                <iframe id="my-video" src="https://www.youtube.com/embed/BtbfbuFkuE8" frameborder="0" allowfullscreen style="margin-left:-12px;"></iframe>
+                <div class="videoWrapper">
+                    <iframe id="my-video" src="https://www.youtube.com/embed/BtbfbuFkuE8" frameborder="0" allowfullscreen></iframe>
+                </div>
                 <p>{{ course.description|escape|safe }}</p>
                 <button id="btnTakeQuiz"
                  data-icon="info"
@@ -38,7 +40,7 @@
         </div>
     </div>
     <!-- end CONTENT -->
-    
+
     {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
@@ -46,14 +48,14 @@
 
 <script>
 $(document).ready(function(){
-    $(window).resize(function(){
-        var win_width = $(window).width();
-        $('#my-video').css('width',win_width + 'px');
-        $('#my-video').css('height', win_width*0.56 + 'px');
-    });
-    var win_width = $(window).width();
-    $('#my-video').css('width',win_width + 'px');
-    $('#my-video').css('height', win_width*0.56 + 'px');
+{#    $(window).resize(function(){#}
+{#        var win_width = $(window).width() - 40;#}
+{#        $('#my-video').attr('width',win_width + 'px');#}
+{#        $('#my-video').attr('height', win_width*0.53 + 'px');#}
+{#    });#}
+{#    var win_width = $(window).width();#}
+{#    $('#my-video').attr('width',win_width + 'px');#}
+{#    $('#my-video').attr('height', win_width*0.53 + 'px');#}
 
 });
 </script>
