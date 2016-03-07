@@ -23,9 +23,8 @@
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
-            <ul id="id_question"
-         data-role="listview"
-        data-inset="true">
+            <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
+            <ul id="id_question" data-role="listview" data-inset="true">
                 <li data-role="list-divider">
                     <h4>
                         {% blocktrans with num=question.num text=question.text|escape|safe %}{{ num }}. {{ text }}{% endblocktrans %}

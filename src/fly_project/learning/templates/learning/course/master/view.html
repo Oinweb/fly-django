@@ -22,6 +22,7 @@
     <!-- CONTENT -->
     <div data-role="content">
         <div class="text-center">
+            <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
             {% for course in unlocked_courses.all %}
             <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box">
                 <img src="/static/{{ course.image }}" class="course-img" />
@@ -52,7 +53,7 @@
             </h3>
         
             {% for course in locked_courses.all %}
-            <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box {% if request.user|has_prerequisites:course == False %}locked{% endif %}">
+            <div class="my-boxes learning-box {% if request.user|has_prerequisites:course == False %}locked{% endif %}">
                 {% if request.user|has_prerequisites:course == False %}
                     <div class="locked-icon">
                         <button class="ui-btn-inline">

@@ -22,6 +22,7 @@
     <!-- CONTENT -->
     <div data-role="content" class="ui-content" role="main">
         <div class="text-center">
+            <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
             <h2>{% trans "Quiz Finished!" %}</h2>
             <h4 class="quiz-score">{% trans "Score:" %} <span style="color:yellowgreen">{{ quiz_submission.final_mark }}%</span></h4>
             <div class="social-sharing">
@@ -90,5 +91,152 @@
     <!-- end Footer -->
 
 </div><!-- /page -->
+
+<script>
+$(document).ready(function(){
+    new ShareButton({
+            networks: {
+                pinterest: { enabled: false },
+                reddit: { enabled: false },
+                linkedin: { enabled: false },
+                whatsapp: { enabled: false }
+            }
+        });
+});
+
+var advance_tour = false;
+    var cur_bubble = 0;
+    var tour_bubbles = [
+        {
+            top: 45,
+            left: 25,
+            posx: 'left',
+            type: 'bottom',
+            center: true,
+            element: '.ui-content div.text-center',
+            text: 'This is the quiz score page! Here, you\'ll see the grade you received on your quiz.',
+            button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+            hasaction: false
+        },
+        {
+            top: 45,
+            left: 25,
+            posx: 'left',
+            type: 'bottom',
+            center: true,
+            element: '.ui-content div.text-center',
+            text: 'If you did well on the quiz, you may want to share your progress through social media. Simply click the \'Share\' button, and you\'ll be able to share through Facebook, Twitter, or Google+.',
+            button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+            hasaction: false
+        },
+        {
+            bottom: 45,
+            left: 25,
+            posx: 'left',
+            posy: 'bottom',
+            type: 'top',
+            center: true,
+            element: '.ui-content div.text-center',
+            text: 'If you didn\'t do very well on the quiz, you can click \'Try Again\' to be taken back to the start of the quiz, or you can click \'Finish Quiz\' where you will see any rewards you\'ve earned for completing the quiz.',
+            button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+            hasaction: false
+        },
+        {
+            top: 45,
+            right: 25,
+            posx: 'left',
+            posy: 'top',
+            type: 'top',
+            center: true,
+            positionto: true,
+            positiontoelement: '#quiz-answers',
+            element: '.ui-page',
+            text: 'If you want to see what the correct answers were for the quiz, you won\'t be able to re-take it, but you\'ll be able to know what questions you got wrong and what the correct answer was. Just click \'Show Correct Answers\' and a popup will come up warning that you won\'t be able to re-take the quiz.',
+            button: '<br/><button data-role="none" onclick="cur_bubble=0;advance_tour = false;$(\'#tour-bubble\').hide();">Finish</button>',
+            finish: true,
+            finishnow: false,
+            hasaction: false
+        }
+    ];
+
+    function start_page_tour(){
+        $('.tour-bubble').show();
+        next_bubble();
+
+        setInterval(function(){ if(advance_tour == true){ advance_tour = false; next_bubble(); } }, 300);
+    }
+
+    function next_bubble(){
+        if(cur_bubble <= tour_bubbles.length){
+            // get current bubble
+            var bubble = tour_bubbles[cur_bubble];
+            // get the active bubble
+            var active_bubble = $('.tour-bubble');
+
+            if( bubble.center )
+                window.location="#tour-bubble";
+
+            // position the tour bubble dependant on element
+            active_bubble.detach();
+            if(bubble.position == 'after'){
+                $(bubble.element).after(active_bubble);
+            }
+            else {
+                $(bubble.element).prepend(active_bubble);
+            }
+
+            // change bubble type
+            if(bubble.type == 'top'){
+                active_bubble.removeClass('bubble-bottom').removeClass('bubble-left').removeClass('bubble-right').addClass('bubble-top');
+            }
+            else if(bubble.type =='bottom'){
+                active_bubble.removeClass('bubble-top').removeClass('bubble-left').removeClass('bubble-right').addClass('bubble-bottom');
+            }
+            else if(bubble.type == 'left'){
+                active_bubble.removeClass('bubble-bottom').removeClass('bubble-top').removeClass('bubble-right').addClass('bubble-left');
+            }
+            else if(bubble.type == 'right'){
+                active_bubble.removeClass('bubble-bottom').removeClass('bubble-top').removeClass('bubble-left').addClass('bubble-right');
+            }
+
+            // position bubble with absolute positioning
+            active_bubble.css('top',bubble.top+'px');
+            if( bubble.posy == 'top'){
+                active_bubble.css('top', bubble.top+'px').css('bottom', 'auto');
+            }
+            else if( bubble.posy == 'bottom'){
+                active_bubble.css('bottom', bubble.bottom+'px').css('top', 'auto');
+            }
+            if( bubble.posx == 'left'){
+                active_bubble.css('left',bubble.left+'px').css('right', 'auto');
+            }
+            else{
+                active_bubble.css('right', bubble.right+'px').css('left', 'auto');
+            }
+
+            if( bubble.positionto ){
+                var offset = $(bubble.positiontoelement).offset();
+                active_bubble.css('left', offset.left);
+                active_bubble.css('top', offset.top);
+            }
+
+            // change the bubble text and button
+            active_bubble.text(bubble.text);
+
+            // if there is an action to be performed, perform it
+            if(bubble.hasaction){
+                bubble.action();
+                setTimeout(function(){ active_bubble.append(bubble.button) }, 1500);
+            }
+            else{
+                active_bubble.append(bubble.button);
+            }
+
+            active_bubble.show();
+
+            cur_bubble++;
+        }
+    }
+</script>
 
 {% endblock content %}
