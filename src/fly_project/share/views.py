@@ -42,11 +42,14 @@ def share_page(request, notification_id):
                 notification_id=notification_id,
                 user_id=request.user.id,
                 type=3,
-                custom_title=notification.custom_title,
-                custom_description=notification.custom_description,
-                custom_url=notification.custom_url,
+                custom_title=notification.title,
+                custom_description=notification.description,
+                custom_url=''
             )
 
+        # Delete the Notification.
+        notification.delete()
+            
     # Pick the appropriate page for the Share.
     url = ''
     if share.type == 1:
