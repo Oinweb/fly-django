@@ -54,7 +54,7 @@ class HelpTest(TestCase):
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(len(response.content) > 1)
-        self.assertIn(b'TODO: PLEASE FILL IN',response.content)
+        self.assertIn(b'Contact Us',response.content)
 
     def test_account_page_is_secure(self):
         """Ensure going to this page without login will be prevented."""

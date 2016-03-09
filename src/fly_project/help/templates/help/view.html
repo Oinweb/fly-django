@@ -25,35 +25,35 @@
     <div class="container">
         <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
         <h4 class="ui-bar-a ui-corner-all" style="padding:5px;">
-            Contact Us
+            {% trans "Contact Us" %}
         </h4>
-        <p>If you have any questions about the usage of the program, or have found a bug, please send us a message and we will do our best to help you as quickly as we can.</p>
+        <p>{% trans "If you have any questions about the usage of the program, or have found a bug, please send us a message and we will do our best to help you as quickly as we can." %}</p>
         <form id="contactForm" method="post" action="/en/help/contact">
             {% csrf_token %}
             <div class="form-group">
-                <label>Name</label>
+                <label>{% trans "Name" %}</label>
                 <input type="text" id="name" name="name" />
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>{% trans "Email" %}</label>
                 <input type="email" id="email" name="email" />
             </div>
             <div class="form-group">
-                <label>Subject</label>
+                <label>{% trans "Subject" %}</label>
                 <select id="subject" name="subject">
-                    <option value="Comment">Comment</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Bug Report">Bug Report</option>
-                    <option value="Help Request">Help Request</option>
-                    <option value="Other Inquiry">Other Inquiry</option>
+                    <option value="Comment">{% trans "Comment" %}</option>
+                    <option value="General Inquiry">{% trans "General Inquiry" %}</option>
+                    <option value="Bug Report">{% trans "Bug Report" %}</option>
+                    <option value="Help Request">{% trans "Help Request" %}</option>
+                    <option value="Other Inquiry">{% trans "Other Inquiry" %}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Message</label>
+                <label>{% trans "Message" %}</label>
                 <textarea id="message" name="message"></textarea>
             </div>
             <div id="form-alert" class="alert" data-role="alert" style="display:none;"></div>
-            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-mail">Send Message</button>
+            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-mail">{% trans "Send Message" %}</button>
         </form>
     </div>
     
@@ -71,13 +71,13 @@ $(document).ready(function() {
 
     if (has_been_sent == 'sent') {
         if (email_status == 'success') {
-            $('#form-alert').addClass('alert-success').text('Message successfully sent.');
+            $('#form-alert').addClass('alert-success').text("{% trans 'Message successfully sent.' %}");
             $('#form-alert').show();
         }
     }
     if (has_been_sent == 'error') {
         if (email_status == 'failure') {
-            $('#form-alert').addClass('alert-danger').text('There was an error sending the message.');
+            $('#form-alert').addClass('alert-danger').text("{% trans 'There was an error sending the message.' %}");
             $('#form-alert').show();
         }
     }
@@ -94,12 +94,12 @@ $(document).ready(function() {
 
         if( name == '' || email == '' || subject == '' || message == '' ){
             $('#form-alert').addClass('alert-danger');
-            $('#form-alert').text('Please fill in all fields before trying to submit');
+            $('#form-alert').text("{% trans 'Please fill in all fields before trying to submit' %}");
             $('#form-alert').show();
         }
         else if( email != '' && !re.test(email) ){
             $('#form-alert').addClass('alert-danger');
-            $('#form-alert').text('Please enter a valid email address so we can reply to your inquiry');
+            $('#form-alert').text("{% trans 'Please enter a valid email address so we can reply to your inquiry' %}");
             $('#form-alert').show();
         }
 
@@ -125,8 +125,8 @@ $(document).ready(function() {
                 posx: 'left',
                 type: 'bottom',
                 element: '.ui-content',
-                text: 'Welcome to the help page, from here you can send us bugs you may have found, help requests, or just general comments.',
-                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                text: "{% trans 'Welcome to the help page, from here you can send us bugs you may have found, help requests, or just general comments.' %}",
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">{% trans "Continue" %}</button>',
                 hasaction: false
             },
             {
@@ -135,8 +135,8 @@ $(document).ready(function() {
                 posx: 'left',
                 type: 'top',
                 element: '.ui-content',
-                text: 'First, fill in your name so we know who the message is coming from.',
-                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                text: "{% trans 'First, fill in your name so we know who the message is coming from.' %}",
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">{% trans "Continue" %}</button>',
                 hasaction: true,
                 action: function(){ $('#name').trigger('focus'); }
 
@@ -147,8 +147,8 @@ $(document).ready(function() {
                 posx: 'left',
                 type: 'top',
                 element: '.ui-content',
-                text: 'Enter your email address next so that we can reply to your question.',
-                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                text: "{% trans 'Enter your email address next so that we can reply to your question.' %}",
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">{% trans "Continue" %}</button>',
                 hasaction: true,
                 action: function(){ $('#email').trigger('focus'); }
 
@@ -159,8 +159,8 @@ $(document).ready(function() {
                 posx: 'left',
                 type: 'top',
                 element: '.ui-content',
-                text: 'Select the subject of the email so we know how important it is for us to get back to you quickly.',
-                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                text: "{% trans 'Select the subject of the email so we know how important it is for us to get back to you quickly.' %}",
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">{% trans "Continue" %}</button>',
                 hasaction: true,
                 action: function(){ $('#subject').trigger('focus'); }
             },
@@ -170,8 +170,8 @@ $(document).ready(function() {
                 posx: 'left',
                 type: 'top',
                 element: '.ui-content',
-                text: 'Finally, enter a message, be it a question about how to use a certain feature, or a bug report.  If submitting a bug report please be as thorough as possible so we can find and identify the problem quickly.',
-                button: '<br/><button data-role="none" onclick="advance_tour = true;">Continue</button>',
+                text: "{% trans 'Finally, enter a message, be it a question about how to use a certain feature, or a bug report.  If submitting a bug report please be as thorough as possible so we can find and identify the problem quickly.' %}",
+                button: '<br/><button data-role="none" onclick="advance_tour = true;">{% trans "Continue" %}</button>',
                 hasaction: true,
                 action: function(){ $('#message').trigger('focus'); }
             },
@@ -183,8 +183,8 @@ $(document).ready(function() {
             type: 'top',
             center: true,
             element: '.ui-page',
-            text: 'To send your message, click the \'Send Message\' button, and we\'ll try to respond to your inquiry as quickly as possible.',
-            button: '<br/><button data-role="none" onclick="cur_bubble=0;advance_tour = false;$(\'#tour-bubble\').hide();">Finish</button>',
+            text: "{% trans 'To send your message, click the \'Send Message\' button, and we\'ll try to respond to your inquiry as quickly as possible.' %}",
+            button: '<br/><button data-role="none" onclick="cur_bubble=0;advance_tour = false;$(\'#tour-bubble\').hide();">{% trans "Finish" %}</button>',
             finish: true,
             finishnow: false,
             hasaction: false
