@@ -1,6 +1,7 @@
 {% load staticfiles i18n %}
 
 <input id="notification_id" type="hidden" value=0 />
+<input id="notification_type" type="hidden" value=0 />
 
 <div data-role="popup" id="levelup-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
     <div class="text-center">
@@ -14,7 +15,7 @@
                 <!-- Description Placeholder -->
             </h4>
         </fieldset>
-        <button onclick="window.location='share_page';" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
+        <button onclick="ajax_share_and_reload();" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
         <button onclick="ajax_delete_this_notification(); $('#levelup-popup').popup('close');" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
     </div>
 </div>
@@ -29,7 +30,7 @@
         </p>
         <p><i class="fa fa-3x fa-thumbs-up"></i></p>
         
-        <button onclick="window.location='share_page';" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
+        <button onclick="ajax_share_and_reload();" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
         <button onclick="ajax_delete_this_notification(); $('#badge-popup').popup('close');" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
     </div>
 </div>
@@ -84,6 +85,7 @@
         $('#id_levelup_num').html("Level "+num);
         $('#id_levelup_title').html(title);
         $('#notification_id').val(id);
+        $('#notification_type').val(1);
         $('#levelup-popup').popup('open');
     }
 
@@ -97,6 +99,7 @@
         $('#id_new_badge_description').html(description);
         $('#id_new_badge_title').html(title);
         $('#notification_id').val(id);
+        $('#notification_type').val(2);
         $('#badge-popup').popup('open');
     }
 
@@ -117,6 +120,14 @@
                 console.log(error_json);
             }
         ); // end Delete Notification.
+    }
+
+    /**
+     *  Function will load the share page for the particular notification_id.
+     */
+    function ajax_share_and_reload(){
+        var id = parseInt( $('#notification_id').val() );
+        window.location ="/{{ request.language }}/share/"+id+"/";
     }
 
 </script>

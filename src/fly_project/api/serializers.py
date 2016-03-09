@@ -169,4 +169,4 @@ class NotificationSerializer(serializers.ModelSerializer):
 class ShareSerializer(serializers.ModelSerializer):
     class Meta:
         model = Share
-        fields = ('id', 'created', 'type', 'user', 'xplevel', 'badge', 'custom_title', 'custom_description', 'custom_url',)
+        fields = ('id', 'created', 'type', 'user', 'xplevel', 'badge', 'custom_title', 'custom_description', 'custom_url', 'notification_id',)

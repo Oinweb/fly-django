@@ -28,7 +28,7 @@
             {% trans "Contact Us" %}
         </h4>
         <p>{% trans "If you have any questions about the usage of the program, or have found a bug, please send us a message and we will do our best to help you as quickly as we can." %}</p>
-        <form id="contactForm" method="post" action="/en/help/contact">
+        <form id="contactForm" method="post" action="/{{ request.language }}/help/contact">
             {% csrf_token %}
             <div class="form-group">
                 <label>{% trans "Name" %}</label>
@@ -104,7 +104,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-                url: "/en/help/contact",
+                url: "/{{ request.language }}/help/contact",
                 type: "post",
                 data: {
                     name: name,

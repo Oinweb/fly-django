@@ -393,7 +393,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert contact-status" style="display:none;">No message sent yet</div>
-                    <form name="sentMessage" id="contactForm" method="post" action="/en/contact" novalidate>
+                    <form name="sentMessage" id="contactForm" method="post" action="/{{ request.language }}/contact" novalidate>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">

@@ -4,8 +4,17 @@
 
 <!-- ---------- resources ------------- -->
 <div data-role="page">
+    {% include 'basepage/top_menu.html' %}
+    {% include 'basepage/side_menu.html' %}
     <script>
         $(document).ready(function(){
+            loadUserData();
+                     
+            // Add a slight deley before detect any notications and load UI.
+            setTimeout(function(){
+                handle_fly_notifications();
+            }, 500);
+                          
             // check if user is on an IOS device and change app links
             if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
                 $('#mint-link').attr('href','https://itunes.apple.com/ca/app/mint-money-manager-budget/id300238550?mt=8');
@@ -28,13 +37,13 @@
                         </a>
                     </li>
                 </ul>
-                <share-button></share-button>
             </div>
-            
+            <share-button></share-button>
         </div>
     </div>
     <!-- /content -->
 
+    {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->

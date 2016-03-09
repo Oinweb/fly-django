@@ -546,6 +546,8 @@ class Notification(models.Model):
     xplevel = models.ForeignKey(XPLevel, null=True, blank=True,)
     badge = models.ForeignKey(Badge, null=True, blank=True,)
 
+    def __str__(self):
+        return str(self.id)
 
 
 class Share(models.Model):
@@ -566,3 +568,7 @@ class Share(models.Model):
     custom_title = models.CharField(max_length=511, null=True, blank=True)
     custom_description = models.CharField(max_length=511, null=True, blank=True)
     custom_url = models.URLField(null=True, blank=True)
+    notification_id = models.PositiveIntegerField(blank=True)
+    
+    def __str__(self):
+        return str(self.id)
