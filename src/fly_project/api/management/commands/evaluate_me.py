@@ -15,6 +15,7 @@ from api.models import FinalGoal
 from api.models import Notification
 from api.models import Course
 from api.models import EnrolledCourse
+from api.models import Share
 
 
 class Command(BaseCommand):
@@ -123,13 +124,20 @@ class Command(BaseCommand):
         except EnrolledCourse.DoesNotExist:
             pass
 
+    def process_badge_for_social(self, me, badge, shares):
+        if shares.count() > 0:
+            me.badges.add(badge)
+            self.create_new_badge_notification(me, badge)
+    
     def process_courses_badges(self, me, badge):
         """
             Function will grant the Badge to the User if the specific Course
             requirements are met.
         """
         # Thanks for letting your friends know! - #12
-        #TODO: Implement
+        shares = Share.objects.filter(user=me.user)
+        if badge.id == 12:
+            self.process_badge_for_social(me, badge, shares)
 
         # Completed Finances 101 - #13
         if badge.id == 13:
@@ -158,7 +166,6 @@ class Command(BaseCommand):
         # First Course - #11
         if badge.id == 11:
             if me.courses.count() == 1:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
 
@@ -180,7 +187,6 @@ class Command(BaseCommand):
         ).count()
         
         if savings_goals_failure_count or credit_goals_failure_count or final_goals_failure_count:
-            print("Badge", badge.id)
             me.badges.add(badge)
             self.create_new_badge_notification(me, badge)
 
@@ -213,7 +219,6 @@ class Command(BaseCommand):
         # First goal achieved - #19
         if badge.id == 19:
             if savings_goals_count or credit_goals_count or final_goals_count:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
         
@@ -224,42 +229,36 @@ class Command(BaseCommand):
         # First savings goal achieved - #22
         if badge.id == 22:
             if savings_goals_count:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
         
         # First credit goal achieved - #23
         if badge.id == 23:
             if credit_goals_count:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
         
         # First big goal achieved - #24
         if badge.id == 24:
             if final_goals_count:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
     
         # Savings champ - #25
         if badge.id == 25:
             if savings_goals_count >= 3:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
     
         # Credit score champ - #26
         if badge.id == 26:
             if credit_goals_count >= 3:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
 
         # Big saver! - #27
         if badge.id == 27:
             if final_goals_count >= 3:
-                print("Badge", badge.id)
                 me.badges.add(badge)
                 self.create_new_badge_notification(me, badge)
 
