@@ -62,4 +62,5 @@ def share_page(request, notification_id):
     # Render the Share.
     return render(request, url, {
         'settings': settings,
+        'share': share,
     })

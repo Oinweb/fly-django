@@ -18,19 +18,13 @@
     <!-- Content -->
     <div data-role="content">
         <div class="text-center">
-            <div class="my-boxes red-box resources-box">
-                <img src="{% static 'img/oinflyapp-social-media-icon.png' %}" />
-                <h2>{% trans "Social Media" %}</h2>
-                <ul data-role="listview" data-inset="true" class="m0">
-                    <li>
-                        <a href="{{ resource.url }}">
-                            test
-                        </a>
-                    </li>
-                </ul>
-                <share-button></share-button>
-            </div>
-            
+            <h1>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h1>
+            <p>ICON: {{ share.badge.icon }}<p>
+            <p>COLOUR: {{ share.badge.colour }}<p>
+            <p>LEVEL: {{ share.badge.level }}<p>
+            <p>TITLE: {{ share.badge.title }}<p>
+            <p>DESCRIPTION: {{ share.badge.description }}<p>
+            <share-button></share-button>
         </div>
     </div>
     <!-- /content -->
