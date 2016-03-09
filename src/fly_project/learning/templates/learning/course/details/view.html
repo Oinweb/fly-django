@@ -27,7 +27,7 @@
             <div class="ui-body ui-body-a ui-corner-all">
                 <p>{{ course.summary|escape|safe }}</p>
                 <div class="videoWrapper">
-                    <iframe id="my-video" src="https://www.youtube.com/embed/BtbfbuFkuE8" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="my-video" src="{{ course.video_url }}" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <p>{{ course.description|escape|safe }}</p>
                 <button id="btnTakeQuiz"
