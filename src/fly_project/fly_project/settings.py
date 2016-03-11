@@ -312,3 +312,13 @@ CORS_ORIGIN_WHITELIST = (
     'mint.com',
     'play.google.com',
 )
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-compressor (Third Party)                                             #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# http://django-compressor.readthedocs.org/en/latest/settings/
+
+#COMPRESS_ENABLED = True  # Uncomment to force compression.
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.rCSSMinFilter',]
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
