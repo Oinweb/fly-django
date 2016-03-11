@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'compressor',
     'rest_framework',
     'rest_framework.authtoken',
-    'social.apps.django_app.default', 
+    'social.apps.django_app.default',
     'modeltranslation',
     'basepage',
     'landpage',
@@ -86,7 +86,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'fly_project.middleware.PyFlyLanguageMiddleware',
     'fly_project.middleware.PyFlyMeMiddleware',
-    'fly_project.middleware.PyFlyTokenMiddleware',                      
+    'fly_project.middleware.PyFlyTokenMiddleware'
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
