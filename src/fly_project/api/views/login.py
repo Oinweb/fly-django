@@ -82,7 +82,7 @@ class LoginViewSet(mixins.UpdateModelMixin, viewsets.GenericViewSet):
                         'status': 'success',
                         'message': 'logged in',
                         'user_id': user.id,
-                    #'csrf_token': get_new_csrf_key(),
+                        'token': str(request.token)
                     }
                 else:
                     response_data = {'status' : 'failure', 'message' : 'you are suspended'}

@@ -150,12 +150,17 @@ class QuestionSubmissionSerializer(serializers.ModelSerializer):
 
 
 class MeSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    date_joined = serializers.DateTimeField(source='user.date_joined', read_only=True)
     num = serializers.IntegerField(source='xplevel.num', read_only=True)
     min_xp = serializers.IntegerField(source='xplevel.min_xp', read_only=True)
     max_xp = serializers.IntegerField(source='xplevel.max_xp', read_only=True)
     class Meta:
         model = Me
-        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify', 'num', 'min_xp', 'max_xp',)
+        fields = ('id', 'created', 'user', 'avatar', 'xp', 'xp_percent', 'xplevel', 'badges', 'courses', 'wants_newsletter', 'wants_goal_notify', 'wants_course_notify', 'wants_resource_notify', 'num', 'min_xp', 'max_xp', 'username', 'first_name', 'last_name', 'email', 'date_joined')
 
 
 class NotificationSerializer(serializers.ModelSerializer):
