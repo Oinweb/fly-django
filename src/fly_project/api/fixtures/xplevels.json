@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "created": "2016-01-29T23:27:45.605Z",
-            "title": "Financial Guru",
+            "title": "Beginner",
             "num": 1,
             "min_xp": 0,
             "max_xp": 25
@@ -15,7 +15,7 @@
         "pk": 2,
         "fields": {
             "created": "2016-02-01T19:10:28.499Z",
-            "title": "Financial Guru",
+            "title": "Money Smarts Student",
             "num": 2,
             "min_xp": 25,
             "max_xp": 50
@@ -26,7 +26,7 @@
         "pk": 3,
         "fields": {
             "created": "2016-02-01T19:10:28.501Z",
-            "title": "Financial Guru",
+            "title": "Savings Apprentice",
             "num": 3,
             "min_xp": 50,
             "max_xp": 75
@@ -37,7 +37,7 @@
         "pk": 4,
         "fields": {
             "created": "2016-02-01T19:10:28.502Z",
-            "title": "Financial Guru",
+            "title": "Savings Knight",
             "num": 4,
             "min_xp": 75,
             "max_xp": 100
@@ -48,7 +48,7 @@
         "pk": 5,
         "fields": {
             "created": "2016-02-01T19:10:28.507Z",
-            "title": "Financial Guru",
+            "title": "Fiscally Dedicated",
             "num": 5,
             "min_xp": 100,
             "max_xp": 150
@@ -59,7 +59,7 @@
         "pk": 6,
         "fields": {
             "created": "2016-02-01T19:10:28.509Z",
-            "title": "Financial Guru",
+            "title": "Goal Achiever",
             "num": 6,
             "min_xp": 150,
             "max_xp": 200
@@ -70,7 +70,7 @@
         "pk": 7,
         "fields": {
             "created": "2016-02-01T19:10:28.511Z",
-            "title": "Financial Guru",
+            "title": "Financial Expert",
             "num": 7,
             "min_xp": 200,
             "max_xp": 250
@@ -81,7 +81,7 @@
         "pk": 8,
         "fields": {
             "created": "2016-02-01T19:10:28.515Z",
-            "title": "Financial Guru",
+            "title": "Financial Superstar",
             "num": 8,
             "min_xp": 250,
             "max_xp": 300
@@ -103,7 +103,7 @@
         "pk": 10,
         "fields": {
             "created": "2016-02-01T19:10:28.519Z",
-            "title": "Financial Guru",
+            "title": "Financial Wizard",
             "num": 10,
             "min_xp": 350,
             "max_xp": 450

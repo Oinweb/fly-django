@@ -302,7 +302,7 @@ class XPLevel(models.Model):
     objects = XPLevelManager()
     id = models.AutoField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=15, null=True, blank=True)
+    title = models.CharField(max_length=31, null=True, blank=True)
     num = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999)],
         choices=constants.DURATION_IN_MINUTES_OPTIONS,
@@ -342,7 +342,7 @@ class Course(models.Model):
         default=1,
         db_index=True,
     )
-    image = models.CharField(max_length=15, null=True, blank=True)
+    image = models.CharField(max_length=63, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True,db_index=True,)
     title = models.CharField(max_length=63, null=True, blank=True)
     summary = models.CharField(max_length=255, null=True, blank=True)
