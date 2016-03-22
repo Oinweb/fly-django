@@ -67,7 +67,8 @@ class AuthenticationTest(TestCase):
         self.assertIn(b'Facebook',response.content)
         self.assertIn(b'Twitter',response.content)
         self.assertIn(b'Google',response.content)
-        self.assertIn(b'Generic Register',response.content)
+        self.assertIn(b'E-Mail Login',response.content)
+        self.assertIn(b'Register',response.content)
 
     def test_login_page_returns_correct_html(self):
         url = reverse('login')
