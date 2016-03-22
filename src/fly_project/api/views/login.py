@@ -7,6 +7,7 @@ from django.middleware.csrf import CsrfViewMiddleware
 from rest_framework import status
 from rest_framework import viewsets, mixins
 from rest_framework import filters
+from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import detail_route, list_route
@@ -77,12 +78,22 @@ class LoginViewSet(mixins.UpdateModelMixin, viewsets.GenericViewSet):
             # Generate the return message according to whether we are logged in or not.
             if user is not None:
                 if user.is_active:
+                    # Login
                     login(request, user)
+                    
+                    # Fetch the token id for the user if it exists. If token
+                    # doesn't work then we need to create it right now.
+                    try:
+                        token = Token.objects.get(user_id=request.user.id)
+                    except Token.DoesNotExist:
+                        token = Token.objects.create(user_id=request.user.id)
+
+                    # Return the success status.
                     response_data = {
                         'status': 'success',
                         'message': 'logged in',
                         'user_id': user.id,
-                        'token': str(request.token)
+                        'token': str(token)
                     }
                 else:
                     response_data = {'status' : 'failure', 'message' : 'you are suspended'}
