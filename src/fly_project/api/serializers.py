@@ -87,19 +87,19 @@ class ResourceLinkSerializer(serializers.ModelSerializer):
 class SavingsGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavingsGoal
-        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'times', 'period',)
+        fields = ('id', 'user', 'goal_type', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'times', 'period',)
 
 
 class CreditGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreditGoal
-        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'points', 'times', 'period',)
+        fields = ('id', 'user', 'goal_type', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'points', 'times', 'period',)
 
 
 class FinalGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinalGoal
-        fields = ('id', 'user', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'for_want', 'for_other_want',)
+        fields = ('id', 'user', 'goal_type', 'created', 'is_locked', 'unlocks', 'is_closed', 'was_accomplished', 'earned_xp', 'amount', 'for_want', 'for_other_want',)
 
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:

@@ -123,6 +123,10 @@ class Goal(models.Model):
     # 30 days before this Goal will unlock.
     is_locked = models.BooleanField(default=False)
 
+    # Variable allows the client to find out the goal type
+    # through an ajax request
+    goal_type = models.IntegerField(default=-1)
+
     # Variable controls when this particular goal can be closed. Closure
     # involves modifying 'is_closed' and 'earned_xp' values.
     unlocks = models.DateTimeField(null=True, blank=True)
