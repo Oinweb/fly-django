@@ -45,6 +45,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Library
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,12 +54,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    # Third Party Library
     'corsheaders',
     'compressor',
     'rest_framework',
     'rest_framework.authtoken',
     'social.apps.django_app.default',
     'modeltranslation',
+    # Project
     'basepage',
     'landpage',
     'api',
@@ -86,7 +89,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'fly_project.middleware.PyFlyLanguageMiddleware',
     'fly_project.middleware.PyFlyMeMiddleware',
-    'fly_project.middleware.PyFlyTokenMiddleware'
+    'fly_project.middleware.PyFlyTokenMiddleware',
+    'fly_project.middleware.PyFlySocialAuthExceptionMiddleware'
 ]
 
 ROOT_URLCONF = 'fly_project.urls'
@@ -295,7 +299,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = '/dashboard'
-
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/dashboard'
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 # django-cors-headers (Third Party)                                           #

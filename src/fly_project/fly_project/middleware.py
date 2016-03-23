@@ -1,7 +1,9 @@
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.utils.translation import get_language
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from social.apps.django_app.middleware import SocialAuthExceptionMiddleware
+from social import exceptions as social_exceptions
 from api.models import Me
 from api.models import XPLevel
 
@@ -54,3 +56,18 @@ class PyFlyTokenMiddleware(object):
                 request.token = Token.objects.create(user_id=request.user.id)
     
         return None  # Finish our middleware handler.
+
+    
+class PyFlySocialAuthExceptionMiddleware(SocialAuthExceptionMiddleware):
+    def process_exception(self, request, exception):
+        """
+            The purpose of this function is to caputure the "AuthCanceled"
+            exception raised by the "Python Social Auth" library and to 
+            redirect the user to the /en/authentication page.
+        """
+        if hasattr(social_exceptions, 'AuthCanceled'):
+            language = get_language()
+            url = "/" + language + "/authentication"
+            return HttpResponseRedirect(url)
+        else:
+            raise exception
