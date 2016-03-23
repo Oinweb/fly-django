@@ -35,7 +35,7 @@
                     {% for resource in resources.all %}
                         {% if resource.type == 1 %}
                             <li>
-                                <a href="{{ resource.url }}">
+                                <a href="{{ resource.url }}" target="_blank">
                                     {{ resource.title|escape|safe }}
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                     {% for resource in resources.all %}
                         {% if resource.type == 2 %}
                             <li>
-                                <a href="{{ resource.url }}">
+                                <a href="{{ resource.url }}" target="_blank">
                                     {{ resource.title|escape|safe }}
                                 </a>
                             </li>
