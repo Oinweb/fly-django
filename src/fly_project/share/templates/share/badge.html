@@ -24,7 +24,16 @@
             <p>LEVEL: {{ share.badge.level }}<p>
             <p>TITLE: {{ share.badge.title }}<p>
             <p>DESCRIPTION: {{ share.badge.description }}<p>
-            <share-button></share-button>
+            
+            <!-- Social Media Share -->
+            <div class="g-plusone" data-size="tall" data-annotation="none"></div>
+            
+            <a class="twitter-share-button"
+                href="https://twitter.com/intent/tweet">
+                Tweet</a>
+
+            <div class="fb-like" data-href="https://www.flyapp.ca/en/share/{{ share.badge.id }}/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+            <!-- end Social Media Share -->
         </div>
     </div>
     <!-- /content -->
@@ -32,16 +41,40 @@
     {% include "basepage/footer.html" %}
 
 </div><!-- /page -->
-<script>
-    $(document).ready(function(){
-        new ShareButton({
-            networks: {
-                pinterest: { enabled: false },
-                reddit: { enabled: false },
-                linkedin: { enabled: false },
-                whatsapp: { enabled: false }
-            }
-        });
-    });
+<div id="fb-root"></div>
+
+<!-- Facebook -->
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1670933129848966";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
+<!-- end Facebook -->
+<!-- Twitter -->
+<script>
+    window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+                    
+            t._e = [];
+            t.ready = function(f) {
+            t._e.push(f);
+        };
+                    
+        return t;
+    }(document, "script", "twitter-wjs"));
+</script>
+<!-- end Twitter -->
+<!-- Google Plus -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<g:plusone></g:plusone>
+<!-- end Google Plus -->
 {% endblock content %}
