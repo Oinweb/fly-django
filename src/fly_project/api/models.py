@@ -125,7 +125,12 @@ class Goal(models.Model):
 
     # Variable allows the client to find out the goal type
     # through an ajax request
-    goal_type = models.IntegerField(default=-1)
+    goal_type = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(3)],
+        blank=True,
+        default=0,
+        db_index=True,
+    )
 
     # Variable controls when this particular goal can be closed. Closure
     # involves modifying 'is_closed' and 'earned_xp' values.
