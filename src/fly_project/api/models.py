@@ -408,7 +408,7 @@ class Question(models.Model):
     )
     text = models.CharField(max_length=511, null=True, blank=True)
     type = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(2)],
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
         choices=constants.QUESTION_TYPE_OPTIONS,
         default=1,
         db_index=True,
@@ -488,7 +488,7 @@ class QuestionSubmission(models.Model):
     question = models.ForeignKey(Question, db_index=True,)
     quiz = models.ForeignKey(Quiz)
     type = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(2)],
+        validators=[MinValueValidator(1), MaxValueValidator(3)],
         choices=constants.QUESTION_TYPE_OPTIONS,
         default=1,
         db_index=True,

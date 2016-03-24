@@ -9,8 +9,8 @@
             "title_en": "Finances 101 Quiz",
             "title_fr": null,
             "title_es": null,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.",
-            "description_en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.",
+            "description": "This quiz should be after the Finance 101 video is done playing, for this quiz no wrong answers.",
+            "description_en": "This quiz should be after the Finance 101 video is done playing, for this quiz no wrong answers.",
             "description_fr": null,
             "description_es": null
         }
@@ -25,7 +25,7 @@
             "title_en": "Saving & Budgeting Quiz",
             "title_fr": null,
             "title_es": null,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.",
+            "description": "How much do you think you can save each month?",
             "description_en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis justo ac odio tincidunt, nec dignissim orci posuere. Aenean tincidunt nulla ut mollis viverra.",
             "description_fr": null,
             "description_es": null

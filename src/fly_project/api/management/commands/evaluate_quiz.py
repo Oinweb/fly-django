@@ -44,6 +44,7 @@ class Command(BaseCommand):
             )
         except QuestionSubmission.DoesNotExist:
             question_submissions = None
+        
 
         # Step 2: Iterate through all the submitted Questions and mark them
         #         either right or wrong depending on the correct answer.
@@ -51,26 +52,34 @@ class Command(BaseCommand):
             is_right = True
             question_answer = question_submission.question
 
-            if question_submission.a is not question_answer.a_is_correct:
-                is_right = False
-            if question_submission.b is not question_answer.b_is_correct:
-                is_right = False
-            if question_submission.c is not question_answer.c_is_correct:
-                is_right = False
-            if question_submission.d is not question_answer.d_is_correct:
-                is_right = False
-            if question_submission.e is not question_answer.e_is_correct:
-                is_right = False
-            if question_submission.f is not question_answer.f_is_correct:
-                is_right = False
-
-            if is_right:
+            # Step 3: If the question is 'Open-ended' then simply give the
+            #         student the mark and finish this function, else then
+            #         evaluate the quiz question.
+            if question_submission.type == 1:
                 question_submission.mark = 1
+            
             else:
-                question_submission.mark = 0
+                if question_submission.a is not question_answer.a_is_correct:
+                    is_right = False
+                if question_submission.b is not question_answer.b_is_correct:
+                    is_right = False
+                if question_submission.c is not question_answer.c_is_correct:
+                    is_right = False
+                if question_submission.d is not question_answer.d_is_correct:
+                    is_right = False
+                if question_submission.e is not question_answer.e_is_correct:
+                    is_right = False
+                if question_submission.f is not question_answer.f_is_correct:
+                    is_right = False
+
+                if is_right:
+                    question_submission.mark = 1
+                else:
+                    question_submission.mark = 0
+                        
             question_submission.save()
 
-        # Step 3: Iterate through all the submitted Questions and perform a
+        # Step 4: Iterate through all the submitted Questions and perform a
         # total mark tally of the Quiz and then mark the Quiz either a success
         # or a failure.
         total_mark = 0

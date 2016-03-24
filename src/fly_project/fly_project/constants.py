@@ -41,8 +41,9 @@ DURATION_IN_MINUTES_OPTIONS = (
 )
 
 QUESTION_TYPE_OPTIONS = (
-    (1, _('Multiple Choice')),
-    (2, _('True / False')),
+    (1, _('Open-Ended')),
+    (2, _('Partial')),
+    (3, _('All-or-None')),
 )
 
 RESOURCE_TYPE_OPTIONS = (
