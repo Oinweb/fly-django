@@ -42,7 +42,7 @@
                       {% if request.user|has_completed:course %}
                           {% trans "Finished" %}
                       {% else %}
-                          {% trans "Begin Course" %}
+                          {% trans "Start" %}
                       {% endif %}
                 </button>
             </div>
@@ -76,7 +76,7 @@
                 <button class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all begin-course"
                     {% if request.user|has_prerequisites:course == False %}disabled{% endif %}
                       onclick="window.location='/{{ request.language }}/course/{{ course.id }}/';">
-                    {% trans "Begin Course" %}
+                    {% trans "Start" %}
                 </button>
             </div>
             {% endfor %}

@@ -66,7 +66,6 @@ class PyFlySocialAuthExceptionMiddleware(SocialAuthExceptionMiddleware):
             redirect the user to the /en/authentication page.
         """
         if hasattr(social_exceptions, 'AuthCanceled'):
-            #print("Redirecting")
             print(exception)
             language = get_language()
             url = "/" + language + "/authentication"

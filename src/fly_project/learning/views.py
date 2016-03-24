@@ -40,7 +40,6 @@ def has_course_prerequisites(course, enrollments):
         return True
     
     prerequisite_count = 0
-    print(enrollments)
     for prerequisite in course.prerequisites.all():
         for enrollment in enrollments.all():
             if enrollment.course == prerequisite:

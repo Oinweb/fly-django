@@ -78,7 +78,7 @@ class DashboardTest(TestCase):
         response = client.get(learning_url)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(len(response.content) > 1)
-        self.assertIn(b'Begin Course',response.content)
+        self.assertIn(b'Start',response.content)
 
     def test_learning_page_is_secure(self):
         """Ensure going to this page without login will be prevented."""
