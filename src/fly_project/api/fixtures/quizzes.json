@@ -25,8 +25,8 @@
             "title_en": "Saving & Budgeting Quiz",
             "title_fr": null,
             "title_es": null,
-            "description": "",
-            "description_en": "",
+            "description": "This quiz should be after the Saving & Budgeting video is done playing, for this quiz no wrong answers.",
+            "description_en": "This quiz should be after the Saving & Budgeting video is done playing, for this quiz no wrong answers.",
             "description_fr": null,
             "description_es": null
         }
@@ -57,8 +57,8 @@
             "title_en": "Finances II Quiz",
             "title_fr": null,
             "title_es": null,
-            "description": "This quiz should launch after the video for finance II is done",
-            "description_en": "This quiz should launch after the video for finance II is done",
+            "description": "This quiz should launch after the video for Finance II is done",
+            "description_en": "This quiz should launch after the video for Finance II is done",
             "description_fr": null,
             "description_es": null
         }
