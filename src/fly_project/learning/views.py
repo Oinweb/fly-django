@@ -40,6 +40,7 @@ def has_course_prerequisites(course, enrollments):
         return True
     
     prerequisite_count = 0
+    print(enrollments)
     for prerequisite in course.prerequisites.all():
         for enrollment in enrollments.all():
             if enrollment.course == prerequisite:
@@ -55,7 +56,7 @@ def course_page(request, course_id):
     quiz = get_object_or_404(Quiz, course=course)
 
     # Security: Prevent course access if pre-requisites not met.
-    if has_course_prerequisites(course, request.me.courses) == False:
+    if has_course_prerequisites(course, request.me.courses.all()) == False:
         return HttpResponseBadRequest(_("Access Denied: Course prerequisites not met."))
 
     # Fetch the EnrolledCourse for the User and if it doesn't exist then
@@ -179,6 +180,8 @@ def quiz_final_question_page(request, quiz_id):
         else:
             enrolled_course.is_finished = False
         enrolled_course.save()
+
+        request.me.courses.add(enrolled_course)
     except EnrolledCourse.DoesNotExist:
         pass
 
