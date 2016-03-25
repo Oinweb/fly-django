@@ -29,7 +29,7 @@ def contact(request):
             send_mail(
                 "New Inquiry",
                 text,
-                settings.EMAIL_HOST_USER,
+                settings.DEFAULT_FROM_EMAIL,
                 contact_list,
                 fail_silently = False
             )

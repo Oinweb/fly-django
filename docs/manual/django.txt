@@ -100,6 +100,7 @@ pip3 install python-social-auth                 # Twitter/Facebook/etc Social Au
 pip3 install django-cors-headers                # Enable CORS in Heades
 pip3 install django-modeltranslation==0.11rc2   # Model Translations
 pip3 install django_compressor                  # CSS & JS Compressor
+pip3 install django-mailgun                     # Mailgun Emailer
 #pip3 install qrcode                            # QR Code Generator
 #pip3 install pylibmc                           # memcached connector
 #pip3 install pylibmc --install-option="--with-libmemcached=/usr/local"  # (FreeBSD Only for memcached!)

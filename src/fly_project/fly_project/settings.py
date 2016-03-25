@@ -202,39 +202,20 @@ MEDIA_URL = '/media/'
 
 
 # Email
-# http://stackoverflow.com/questions/19264907/python-django-gmail-smtp-setup
+# 
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = SECRET_EMAIL_HOST
-EMAIL_PORT = SECRET_EMAIL_PORT
-EMAIL_HOST_USER = SECRET_EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = SECRET_EMAIL_HOST_PASSWORD
-DEFAULT_FROM_EMAIL = 'oinwebmail@gmail.com'
-DEFAULT_TO_EMAIL = 'oinwebmail@gmail.com'
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = SECRET_MAILGUN_ACCESS_KEY
+MAILGUN_SERVER_NAME = SECRET_MAILGUN_SERVER_NAME
+DEFAULT_FROM_EMAIL = SECRET_DEFAULT_FROM_EMAIL
+DEFAULT_TO_EMAIL = SECRET_DEFAULT_TO_EMAIL
+APPEND_SLASH=False
 
 
 
 # Error Emailing
 # https://docs.djangoproject.com/en/dev/topics/logging/
 
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'handlers': {
-#        'mail_admins': {
-#            'level': 'ERROR',
-#            'class': 'django.utils.log.AdminEmailHandler',
-#            'include_html': False, # Set to this value to prevent spam
-#        }
-#    },
-#    'loggers': {
-#        'django.request': {
-#            'handlers': ['mail_admins'],
-#            'level': 'ERROR',
-#            'propagate': False,
-#        },
-#    },
-#}
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -242,18 +223,24 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': False, # Set to this value to prevent spam
+        }
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
     },
 }
-
-
-# The Google Analytics Key
-GOOGLE_ANALYTICS_KEY = SECRET_GOOGLE_ANALYTICS_KEY
 
 
 

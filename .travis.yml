@@ -21,6 +21,7 @@ install:
   - pip install django-cors-headers==1.1.0
   - pip install django-modeltranslation==0.11rc2
   - pip install django_compressor==2.0
+  - pip install django-mailgun==0.8.0
   - pip install coveralls
 
 before_script:
