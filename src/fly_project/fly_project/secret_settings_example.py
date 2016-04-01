@@ -36,3 +36,11 @@ SECRET_SOCIAL_AUTH_TWITTER_SECRET = ''
 # Google ( https://console.developers.google.com/ )
 SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+
+
+
+#---------------------------------------------------------------------------#
+# django-htmlmin (See: https://github.com/cobrateam/django-htmlmin )        #
+#---------------------------------------------------------------------------#
+SECRET_HTML_MINIFY = True
+SECRET_KEEP_COMMENTS_ON_MINIFYING = False

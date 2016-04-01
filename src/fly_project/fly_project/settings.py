@@ -87,6 +87,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',   # django-htmlmin
+    'htmlmin.middleware.MarkRequestMiddleware',  # django-htmlmin
     'fly_project.middleware.PyFlyLanguageMiddleware',
     'fly_project.middleware.PyFlyMeMiddleware',
     'fly_project.middleware.PyFlyTokenMiddleware',
@@ -313,3 +315,12 @@ CORS_ORIGIN_WHITELIST = (
 #COMPRESS_ENABLED = True  # Uncomment to force compression.
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.rCSSMinFilter',]
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-htmlmin (Third Party)                                                #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/cobrateam/django-htmlmin
+
+HTML_MINIFY = SECRET_HTML_MINIFY
+KEEP_COMMENTS_ON_MINIFYING = SECRET_KEEP_COMMENTS_ON_MINIFYING
