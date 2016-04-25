@@ -146,7 +146,7 @@ class QuizSubmissionSerializer(serializers.ModelSerializer):
 class QuestionSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionSubmission
-        fields = ('id', 'created', 'user', 'quiz', 'type', 'a', 'b', 'c', 'd', 'e', 'f', 'mark',)
+        fields = ('id', 'created', 'user', 'quiz', 'type', 'question', 'a', 'b', 'c', 'd', 'e', 'f', 'mark',)
 
 
 class MeSerializer(serializers.ModelSerializer):
