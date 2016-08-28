@@ -285,7 +285,7 @@
     text-align:center;
 }
 #login-page .ui-content .row #inner-login-container #login-logo{
-    width:100%;
+    width: 100%;
     max-width: 260px;
     margin: auto;
 }
@@ -294,7 +294,7 @@
     text-align:left;
     width:245px;
     text-shadow: 2px 2px 4px #000000;
-    margin: 10px auto 5px;
+    margin: 2px auto 1px;
     color:#fff;
 }
 #login-page .ui-content .row #inner-login-container a span {
