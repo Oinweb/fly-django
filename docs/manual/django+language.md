@@ -3,6 +3,31 @@ By: Bartlomiej Mika
 Date: April, 28th, 2015
 
 
+## Pre-Setup
+
+Install gettext GNU tools with Homebrew using Terminal
+
+Install Homebrew :
+
+  ```
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ```
+
+Install GNU gettext :
+
+  ```
+  brew install gettext
+  ```
+
+Create symlink :
+
+  ```
+  brew link gettext --force
+  ```
+
+Source: http://stackoverflow.com/a/35101851
+
+
 
 ## Setup
 1. Go to settings.py file.

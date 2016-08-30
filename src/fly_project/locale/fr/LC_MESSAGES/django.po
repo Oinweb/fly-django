@@ -1,0 +1,1529 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-27 14:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: account/templates/account/badges.html:27
+msgid "Badges"
+msgstr ""
+
+#: account/templates/account/badges.html:48
+msgid "No Badges Earned"
+msgstr ""
+
+#: account/templates/account/badges.html:54
+#: basepage/templates/basepage/notification.html:19
+#: basepage/templates/basepage/notification.html:34
+#: mygoals/templates/mygoals/complete/view.html:25
+#: mygoals/templates/mygoals/credit/complete.html:21
+#: mygoals/templates/mygoals/final/complete.html:21
+#: mygoals/templates/mygoals/savings/complete.html:21
+msgid "OK"
+msgstr ""
+
+#: account/templates/account/goal_history.html:28
+msgid " History"
+msgstr ""
+
+#: account/templates/account/goal_history.html:74
+msgid "No goals set."
+msgstr ""
+
+#: account/templates/account/notification.html:124
+#: basepage/templates/basepage/side_menu.html:38
+msgid "Notifications"
+msgstr ""
+
+#: account/templates/account/notification.html:127
+msgid "Set New Goal"
+msgstr ""
+
+#: account/templates/account/notification.html:130
+#: account/templates/account/notification.html:139
+#: account/templates/account/notification.html:148
+#: account/templates/account/profile.html:120
+msgid "Off"
+msgstr ""
+
+#: account/templates/account/notification.html:131
+#: account/templates/account/notification.html:140
+#: account/templates/account/notification.html:149
+#: account/templates/account/profile.html:121
+msgid "On"
+msgstr ""
+
+#: account/templates/account/notification.html:136
+msgid "New Course Available"
+msgstr ""
+
+#: account/templates/account/notification.html:145
+msgid "New Resource Available"
+msgstr ""
+
+#: account/templates/account/notification.html:155
+#: account/templates/account/profile.html:126
+msgid "Save Changes"
+msgstr ""
+
+#: account/templates/account/profile.html:18
+msgid "User Info"
+msgstr ""
+
+#: account/templates/account/profile.html:21 help/templates/help/view.html:34
+msgid "Name"
+msgstr ""
+
+#: account/templates/account/profile.html:25
+msgid "Date Joined"
+msgstr ""
+
+#: account/templates/account/profile.html:29
+msgid "Level"
+msgstr ""
+
+#: account/templates/account/profile.html:33
+msgid "Experience"
+msgstr ""
+
+#: account/templates/account/profile.html:45
+msgid "Current Goals"
+msgstr ""
+
+#: account/templates/account/profile.html:48
+#: basepage/templates/basepage/side_menu.html:19
+msgid "Saving"
+msgstr ""
+
+#: account/templates/account/profile.html:52
+#: basepage/templates/basepage/side_menu.html:20 fly_project/constants.py:9
+#: mygoals/templates/mygoals/credit/complete.html:15
+#: mygoals/templates/mygoals/credit/complete_js.html:33
+#: mygoals/templates/mygoals/credit/complete_js.html:44
+#: mygoals/templates/mygoals/credit/complete_js.html:52
+#: mygoals/templates/mygoals/credit/view.html:16
+#: mygoals/templates/mygoals/credit/view_js.html:35
+#: mygoals/templates/mygoals/credit/view_js.html:41
+#: mygoals/templates/mygoals/credit/view_js.html:47
+#: mygoals/templates/mygoals/final/view_js.html:41
+#: mygoals/templates/mygoals/type/view.html:36
+msgid "Credit"
+msgstr ""
+
+#: account/templates/account/profile.html:56 fly_project/constants.py:10
+#: mygoals/templates/mygoals/final/complete.html:15
+#: mygoals/templates/mygoals/final/complete_js.html:48
+#: mygoals/templates/mygoals/final/complete_js.html:56
+#: mygoals/templates/mygoals/final/view.html:16
+#: mygoals/templates/mygoals/final/view.html:40
+#: mygoals/templates/mygoals/final/view_js.html:35
+msgid "Goal"
+msgstr ""
+
+#: account/templates/account/profile.html:63
+msgid "Goal History"
+msgstr ""
+
+#: account/templates/account/profile.html:70
+#: account/templatetags/account_extras.py:49
+msgid "Savings Goal"
+msgstr ""
+
+#: account/templates/account/profile.html:71
+#: account/templatetags/account_extras.py:51
+msgid "Credit Goal"
+msgstr ""
+
+#: account/templates/account/profile.html:72
+msgid "Long-term Goal"
+msgstr ""
+
+#: account/templates/account/profile.html:81
+msgid "Courses Completed"
+msgstr ""
+
+#: account/templates/account/profile.html:98
+msgid "Not enrolled in any courses."
+msgstr ""
+
+#: account/templates/account/profile.html:105
+msgid "FLY Badges"
+msgstr ""
+
+#: account/templates/account/profile.html:108
+msgid "View Badges"
+msgstr ""
+
+#: account/templates/account/profile.html:114
+msgid "Newsletter Signup"
+msgstr ""
+
+#: account/templates/account/profile.html:117
+msgid "Receive Newsletter"
+msgstr ""
+
+#: account/templates/account/profile.html:131
+msgid "Remove Account"
+msgstr ""
+
+#: account/templates/account/profile.html:145
+msgid "Delete your account?"
+msgstr ""
+
+#: account/templates/account/profile.html:146
+msgid ""
+"If you delete your account you will lose all account information and "
+"achievements.  Type 'delete' below to confirm deleting your account."
+msgstr ""
+
+#: account/templates/account/profile.html:147
+msgid "Please type 'delete' below to delete your account."
+msgstr ""
+
+#: account/templates/account/profile.html:149
+msgid "Delete Account"
+msgstr ""
+
+#: account/templates/account/profile.html:150
+#: mygoals/templates/mygoals/credit/complete.html:60
+#: mygoals/templates/mygoals/credit/view.html:92
+#: mygoals/templates/mygoals/final/complete.html:59
+#: mygoals/templates/mygoals/final/view.html:97
+#: mygoals/templates/mygoals/savings/view.html:94
+msgid "Cancel"
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:6
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s every %(times)s weeks\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:10
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s every %(times)s months\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:15
+#: mygoals/templates/templatetags/show_goal_text.html:15
+msgid "No savings goal was set."
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:22
+#, python-format
+msgid ""
+"\n"
+"                I want to raise my credit points by %(points)s every "
+"%(times)s weeks\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:26
+#, python-format
+msgid ""
+"\n"
+"                I want to raise my credit points by %(points)s every "
+"%(times)s months\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:31
+#: mygoals/templates/templatetags/show_goal_text.html:31
+msgid "No credit goal was set."
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:38
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for a House\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:42
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for Business\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:46
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for a Vacation\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:50
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for Retirement\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:54
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for General Savings\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:58
+#, python-format
+msgid ""
+"\n"
+"                I want to save $%(amount)s for %(other_want)s\n"
+"            "
+msgstr ""
+
+#: account/templates/templatetags/show_goal_text.html:63
+#: mygoals/templates/templatetags/show_goal_text.html:63
+msgid "No final goal was set."
+msgstr ""
+
+#: account/templatetags/account_extras.py:37
+msgid "This Month"
+msgstr ""
+
+#: account/templatetags/account_extras.py:53
+msgid "Final Goal"
+msgstr ""
+
+#: api/management/commands/evaluate_me.py:22
+msgid "Evaluate the User's profile and grant reward and calculate XP."
+msgstr ""
+
+#: api/management/commands/evaluate_me.py:33
+msgid "Error - No Me profile object detected for ID: "
+msgstr ""
+
+#: api/management/commands/evaluate_me.py:87
+#: basepage/templates/basepage/notification.html:8
+msgid "You've earned a new FLY level!"
+msgstr ""
+
+#: api/management/commands/evaluate_me.py:88
+#: basepage/templates/basepage/notification.html:9
+msgid ""
+"Congratulations! You've just leveled up your financial skills! Let your "
+"friends know, and keep up the good work!"
+msgstr ""
+
+#: api/management/commands/evaluate_me.py:287
+msgid "You've earned a new Badge:"
+msgstr ""
+
+#: api/management/commands/evaluate_quiz.py:19
+msgid "Command will mark and score the User's submitted quiz."
+msgstr ""
+
+#: api/management/commands/setup_fly.py:11
+msgid "Loads all the data necessary to operate this application."
+msgstr ""
+
+#: authentication/templates/authentication/login.html:15
+#: authentication/templates/authentication/register.html:16
+msgid "Email Address"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:16
+#: authentication/templates/authentication/register.html:19
+msgid "Password"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:17
+#: authentication/templates/authentication/register.html:24
+msgid "Login"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:20
+msgid "Create Account"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:30
+#: authentication/templates/authentication/register.html:32
+msgid "Login: Error"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:34
+#: authentication/templates/authentication/register.html:36
+#: basepage/templates/basepage/footer.html:18
+#: basepage/templates/basepage/footer.html:34
+#: basepage/templates/basepage/footer.html:45
+#: mygoals/templates/mygoals/credit/complete.html:41
+#: mygoals/templates/mygoals/credit/view.html:73
+#: mygoals/templates/mygoals/final/complete.html:40
+#: mygoals/templates/mygoals/final/view.html:78
+#: mygoals/templates/mygoals/savings/complete.html:40
+#: mygoals/templates/mygoals/savings/view.html:75
+msgid "Close"
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:11
+msgid "Please enter your email."
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:16
+#: authentication/templates/authentication/register_js.html:25
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:21
+msgid "Please enter your password."
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:39
+msgid "Username and/or password are blank, please fill it it."
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:44
+msgid "Wrong username or password"
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:49
+msgid "Email not found"
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:53
+msgid "Unknown error."
+msgstr ""
+
+#: authentication/templates/authentication/login_js.html:71
+msgid "Error - Wrong email or password."
+msgstr ""
+
+#: authentication/templates/authentication/register.html:17
+msgid "First Name"
+msgstr ""
+
+#: authentication/templates/authentication/register.html:18
+msgid "Last Name"
+msgstr ""
+
+#: authentication/templates/authentication/register.html:20
+msgid "Confirm Password"
+msgstr ""
+
+#: authentication/templates/authentication/register.html:21
+#: authentication/templates/authentication/view.html:33
+msgid "Register"
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:7
+msgid "Please enter your first name."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:12
+msgid "Please enter your last name."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:20
+msgid "Please enter a email address."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:32
+msgid "Please enter a password."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:37
+msgid "Please confirm your password."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:42
+msgid "Passwords do not match."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:49
+msgid "Please agree to the service agreement to continue."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:82
+msgid "Missing email, please fill it it."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:87
+msgid "Missing password, please fill it in."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:92
+msgid "Email has already been taken by another user."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:97
+msgid "Missing first name, please fill it it."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:102
+msgid "Missing last name, please fill it it."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:105
+msgid "Unknown error occurred."
+msgstr ""
+
+#: authentication/templates/authentication/register_js.html:144
+msgid "Error - Wrong email or password"
+msgstr ""
+
+#: authentication/templates/authentication/view.html:17
+msgid "Login With Facebook"
+msgstr ""
+
+#: authentication/templates/authentication/view.html:23
+msgid "Login With Twitter"
+msgstr ""
+
+#: authentication/templates/authentication/view.html:29
+msgid "Login With Google"
+msgstr ""
+
+#: authentication/templates/authentication/view.html:32
+msgid "E-Mail Login"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:5
+msgid "Provided by Ontario Immigrant Network"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:5
+msgid "Contacts"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:6
+#: landpage/templates/landpage/view.html:455
+msgid "Privacy Policy"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:7
+msgid "Supporters"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:14 help/templates/help/view.html:28
+#: landpage/templates/landpage/view.html:395
+msgid "Contact Us"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:15 help/templates/help/view.html:38
+msgid "Email"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:16
+msgid "Twitter"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:17
+msgid "Website"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:24
+msgid "Privacy Statement"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:25
+msgid "Introduction"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:26
+msgid ""
+"Ontario Immigrant Network maintains this web site to help the public find "
+"information about its services. Ontario Immigrant Network is committed to "
+"ensuring your privacy while you visit the site."
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:27
+msgid "Links to other sites"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:28
+msgid ""
+"The Ontario Immigrant Network web site provides links to other sites that "
+"may be of interest. This privacy statement covers the main Ontario Immigrant "
+"Network web site and those of Ontario Immigrant Network business units ONLY "
+"and not the web sites of other organizations. Each organization’s web site "
+"may have a different privacy statement depending on the nature of its site. "
+"You should review the privacy statement each time you submit personal "
+"information on a web site."
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:29
+msgid "Collection of information"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:30
+msgid ""
+"The only information collected that is used to identify you is information "
+"you give voluntarily. When you submit a question or comment, you may be "
+"asked for your name, e-mail address, or other information. This information "
+"is only used to process and respond to your question or comment. This "
+"information is not disclosed except to authorized personnel who need it to "
+"answer your question. In transit, the information that you send may not be "
+"secure. If you would prefer to raise a comment or question in person, please "
+"call Ontario Immigrant Network at 519-521-3135."
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:31
+msgid "Security"
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:32
+msgid ""
+"Ontario Immigrant Network computer system uses software to monitor "
+"unauthorized attempts to upload or change information, or damage the service "
+"we provide. No attempt is made to identify users or their usage patterns "
+"except during investigations."
+msgstr ""
+
+#: basepage/templates/basepage/footer.html:40
+msgid "FLY was made possible by:"
+msgstr ""
+
+#: basepage/templates/basepage/notification.html:18
+#: basepage/templates/basepage/notification.html:33
+msgid "Share"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:9
+msgid "Hello"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:12
+msgid "Dashboard"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:18
+#: dashboard/templates/dashboard/view.html:30
+#: dashboard/templates/dashboard/view.html:32
+#: mygoals/templates/mygoals/type/view.html:33
+msgid "My Goals"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:21
+#: mygoals/templates/mygoals/type/view.html:37
+msgid "Long Term"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:26
+#: dashboard/templates/dashboard/view.html:37
+msgid "Learning"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:30
+#: dashboard/templates/dashboard/view.html:44
+msgid "Resources"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:34
+msgid "Profile"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:42
+msgid "Log Out"
+msgstr ""
+
+#: basepage/templates/basepage/side_menu.html:49
+msgid "Help"
+msgstr ""
+
+#: dashboard/templates/dashboard/view.html:31
+#: mygoals/templates/mygoals/type/view.html:34
+msgid "Set goals for savings and credit score"
+msgstr ""
+
+#: dashboard/templates/dashboard/view.html:38
+msgid "Learn more about financial management"
+msgstr ""
+
+#: dashboard/templates/dashboard/view.html:39
+#: dashboard/templates/dashboard/view.html:46 help/templates/help/view.html:129
+#: help/templates/help/view.html.py:139 help/templates/help/view.html:151
+#: help/templates/help/view.html.py:163 help/templates/help/view.html:174
+msgid "Continue"
+msgstr ""
+
+#: dashboard/templates/dashboard/view.html:45
+msgid "Other helpful apps and sites"
+msgstr ""
+
+#: fly_project/constants.py:8 mygoals/templates/mygoals/credit/view_js.html:100
+#: mygoals/templates/mygoals/credit/view_js.html:108
+#: mygoals/templates/mygoals/final/view_js.html:94
+#: mygoals/templates/mygoals/final/view_js.html:102
+#: mygoals/templates/mygoals/savings/complete.html:15
+#: mygoals/templates/mygoals/savings/complete_js.html:44
+#: mygoals/templates/mygoals/savings/complete_js.html:55
+#: mygoals/templates/mygoals/savings/complete_js.html:63
+#: mygoals/templates/mygoals/savings/view.html:16
+#: mygoals/templates/mygoals/savings/view_js.html:36
+#: mygoals/templates/mygoals/savings/view_js.html:42
+#: mygoals/templates/mygoals/savings/view_js.html:48
+#: mygoals/templates/mygoals/savings/view_js.html:101
+#: mygoals/templates/mygoals/savings/view_js.html:109
+#: mygoals/templates/mygoals/type/view.html:35
+msgid "Savings"
+msgstr ""
+
+#: fly_project/constants.py:17 mygoals/templates/mygoals/credit/view.html.py:37
+#: mygoals/templates/mygoals/savings/view.html:37
+msgid "Weeks"
+msgstr ""
+
+#: fly_project/constants.py:18 mygoals/templates/mygoals/credit/view.html.py:40
+#: mygoals/templates/mygoals/savings/view.html:40
+msgid "Months"
+msgstr ""
+
+#: fly_project/constants.py:22 mygoals/templates/mygoals/final/view.html.py:28
+msgid "House"
+msgstr ""
+
+#: fly_project/constants.py:23 mygoals/templates/mygoals/final/view.html.py:31
+msgid "Business"
+msgstr ""
+
+#: fly_project/constants.py:24 mygoals/templates/mygoals/final/view.html.py:37
+msgid "Vacation"
+msgstr ""
+
+#: fly_project/constants.py:25
+msgid "Retirement"
+msgstr ""
+
+#: fly_project/constants.py:26 mygoals/templates/mygoals/final/view.html.py:43
+msgid "General Savings"
+msgstr ""
+
+#: fly_project/constants.py:27 mygoals/templates/mygoals/final/view.html.py:46
+msgid "Other"
+msgstr ""
+
+#: fly_project/constants.py:31
+msgid "Badge"
+msgstr ""
+
+#: fly_project/constants.py:32
+msgid "Goal Badge"
+msgstr ""
+
+#: fly_project/constants.py:33
+msgid "Education Badge"
+msgstr ""
+
+#: fly_project/constants.py:34
+msgid "Resource Badge"
+msgstr ""
+
+#: fly_project/constants.py:38
+msgid "5 Minutes"
+msgstr ""
+
+#: fly_project/constants.py:39
+msgid "30 Minutes"
+msgstr ""
+
+#: fly_project/constants.py:40
+msgid "1 Hour"
+msgstr ""
+
+#: fly_project/constants.py:44
+msgid "Open-Ended"
+msgstr ""
+
+#: fly_project/constants.py:45
+msgid "Partial"
+msgstr ""
+
+#: fly_project/constants.py:46
+msgid "All-or-None"
+msgstr ""
+
+#: fly_project/constants.py:50 resources/templates/resources/view.html.py:33
+msgid "Social Media"
+msgstr ""
+
+#: fly_project/constants.py:51 resources/templates/resources/view.html.py:49
+msgid "Blogs"
+msgstr ""
+
+#: fly_project/constants.py:52 resources/templates/resources/view.html.py:65
+msgid "Other Cool Apps"
+msgstr ""
+
+#: fly_project/constants.py:56
+msgid "Level Up Notifiction"
+msgstr ""
+
+#: fly_project/constants.py:57
+msgid "New Badge Notification"
+msgstr ""
+
+#: fly_project/constants.py:58
+msgid "Custom Notification"
+msgstr ""
+
+#: fly_project/constants.py:63
+msgid "Level Up Share"
+msgstr ""
+
+#: fly_project/constants.py:64
+msgid "New Badge Share"
+msgstr ""
+
+#: fly_project/constants.py:65
+msgid "Custom Share"
+msgstr ""
+
+#: fly_project/settings.py:171
+msgid "English"
+msgstr ""
+
+#: fly_project/settings.py:172
+msgid "French"
+msgstr ""
+
+#: fly_project/settings.py:173
+msgid "Spanish"
+msgstr ""
+
+#: help/templates/help/view.html:30
+msgid ""
+"If you have any questions about the usage of the program, or have found a "
+"bug, please send us a message and we will do our best to help you as quickly "
+"as we can."
+msgstr ""
+
+#: help/templates/help/view.html:42
+msgid "Subject"
+msgstr ""
+
+#: help/templates/help/view.html:44
+msgid "Comment"
+msgstr ""
+
+#: help/templates/help/view.html:45
+msgid "General Inquiry"
+msgstr ""
+
+#: help/templates/help/view.html:46
+msgid "Bug Report"
+msgstr ""
+
+#: help/templates/help/view.html:47
+msgid "Help Request"
+msgstr ""
+
+#: help/templates/help/view.html:48
+msgid "Other Inquiry"
+msgstr ""
+
+#: help/templates/help/view.html:52
+msgid "Message"
+msgstr ""
+
+#: help/templates/help/view.html:56 landpage/templates/landpage/view.html:428
+msgid "Send Message"
+msgstr ""
+
+#: help/templates/help/view.html:74
+msgid "Message successfully sent."
+msgstr ""
+
+#: help/templates/help/view.html:80
+msgid "There was an error sending the message."
+msgstr ""
+
+#: help/templates/help/view.html:97
+msgid "Please fill in all fields before trying to submit"
+msgstr ""
+
+#: help/templates/help/view.html:102
+msgid "Please enter a valid email address so we can reply to your inquiry"
+msgstr ""
+
+#: help/templates/help/view.html:128
+msgid ""
+"Welcome to the help page, from here you can send us bugs you may have found, "
+"help requests, or just general comments."
+msgstr ""
+
+#: help/templates/help/view.html:138
+msgid "First, fill in your name so we know who the message is coming from."
+msgstr ""
+
+#: help/templates/help/view.html:150
+msgid "Enter your email address next so that we can reply to your question."
+msgstr ""
+
+#: help/templates/help/view.html:162
+msgid ""
+"Select the subject of the email so we know how important it is for us to get "
+"back to you quickly."
+msgstr ""
+
+#: help/templates/help/view.html:173
+msgid ""
+"Finally, enter a message, be it a question about how to use a certain "
+"feature, or a bug report.  If submitting a bug report please be as thorough "
+"as possible so we can find and identify the problem quickly."
+msgstr ""
+
+#: help/templates/help/view.html:186
+msgid "To send your message, click the \\"
+msgstr ""
+
+#: help/templates/help/view.html:187
+msgid "Finish"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:10
+msgid ""
+"FLY will help you learn more about managing and achieving your financial "
+"goals."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:11
+msgid ""
+"entrepreneurship, financial, literacy, youth, app, saving money, money, "
+"learning, teaching"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:13
+msgid "Financial Literacy for Youth (FLY)"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:57
+msgid "Toggle navigation"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:62
+msgid "FLY by OIN"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:69
+msgid "Home"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:72
+msgid "Get Started"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:75
+msgid "Features"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:78
+msgid "Gallery"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:81
+msgid "Team"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:90
+msgid "Contact"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:103
+msgid "It's time to level up your financial literacy.<br/>Start Here"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:104
+msgid "OIN is a non-profit funded by <a href=\\"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:105
+msgid "Start Fly"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:115
+msgid "Introducing Fly"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:116
+msgid ""
+"FLY (Financial Literacy &amp; Entrepreneurship for Youth) is a free app "
+"available on Android, iOS, and the web. Built from a grassroots, non-profit "
+"perspective, and backed by Libro Credit Union, as well as financial "
+"professionals, FLY was built to help you learn more about managing and "
+"achieving financial goals."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:125
+msgid "Fully Responsive"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:126
+msgid ""
+"You can get FLY in the Apple App Store or Google Play Store, but you can "
+"also use it via the web, and it will look great in any modern web browser"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:133
+msgid "Cloud-Based"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:134
+msgid ""
+"Want to check your goals from multiple devices? No worries, FLY keeps your "
+"goals in the cloud where they are sade, secure, and accessible."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:141
+msgid "Built For Youth"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:142
+msgid ""
+"FLY works on all major platforms, and was built just for you!  We want it to "
+"be fun and engaging, so don't be afraid to tell us how we can improve!"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:159
+msgid "Features Of FLY App"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:160
+msgid "We want FLY to be the only app of its kind for youth."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:170
+msgid "Multi Platform"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:171
+msgid ""
+"FLY will work on leading devices with modern web browsers. Use it from just "
+"about anywhere you want."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:179
+msgid "Open Source"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:180
+msgid ""
+"Not only will youth benefit, but organizations can view our project on "
+"GitHub to make FLY even better!"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:204
+msgid "All you need to know about FLY"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:205
+msgid ""
+"FLY is a free, open-source app built to teach youth financial literacy from "
+"a grassroots, non-profit approach."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:215
+msgid "Gamify Your Goals"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:216
+msgid ""
+"FLY helps tyou to achieve your financial goals. Hit a goal, get some XP, "
+"level upm, and even earn some cool badges :-)"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:224
+msgid "Diverse"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:225
+msgid "FLY will be available in English, French, and Spanish at launch."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:242
+msgid "Take a Look At The App"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:243
+msgid ""
+"FLY is free, and account creation is easy; you can login with Facebook, "
+"Twitter, or Google+. Want to see more before you downlad? Have a look below."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:286
+msgid "Our Amazing Team"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:293
+msgid "Rodolfo Martinez"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:294
+msgid "Project Manager"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:295
+msgid ""
+"Rodolfo is the Project Manager - he makes sure that projects are completed "
+"on time, and on budget, with maximum results."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:307
+msgid "Bart Mika"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:308
+msgid "CTO"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:309
+msgid ""
+"Bart is our Chief Technical Officer.  He works with our clients to make sure "
+"that all requirements are captured, and that all of our projects are "
+"designed right, the first time."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:321
+msgid "Chad Smith"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:322
+msgid "Lead Developer"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:323
+msgid ""
+"Chad is our Lead Developer.  With expertise in PHP, Java, C# and Python, he "
+"makes sure that all of our websites and apps run smoothly."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:335
+msgid ""
+"We are a team of dedicated professionals who have worked on many projects "
+"together, and are always looking for new opportunities.  Contact us today "
+"about your project and let us take a look at it for you."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:396
+msgid ""
+"We would love to hear from you! Fill out this form and we will try to answer "
+"you as soon as possible!"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:401
+msgid "No message sent yet"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:407
+msgid "Your Name *"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:407
+msgid "Please enter your name."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:411
+msgid "Your Email *"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:411
+msgid "Please enter your email address."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:415
+msgid "Your Phone *"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:415
+msgid "Please enter your phone number."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:421
+msgid "Your Message *"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:421
+msgid "Please enter a message."
+msgstr ""
+
+#: landpage/templates/landpage/view.html:441
+msgid "Copyright &copy; Financial Literacy for Youth 2016"
+msgstr ""
+
+#: landpage/templates/landpage/view.html:457
+msgid "Terms of Use"
+msgstr ""
+
+#: learning/templates/learning/course/details/view.html:37
+msgid "Take Quiz"
+msgstr ""
+
+#: learning/templates/learning/course/master/view.html:43
+#: learning/templates/learning/course/master/view.html:80
+msgid "Finished"
+msgstr ""
+
+#: learning/templates/learning/course/master/view.html:45
+#: learning/templates/learning/course/master/view.html:82
+msgid "Start"
+msgstr ""
+
+#: learning/templates/learning/course/master/view.html:52
+msgid "Locked Courses"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:26
+msgid "Quiz Finished!"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:27
+msgid "Score:"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:33
+msgid "Perfect Quiz!"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:33
+msgid "All the questions where correct!"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:36
+msgid "Show Correct Answers"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:40
+msgid "Question"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:82
+msgid "Try Again"
+msgstr ""
+
+#: learning/templates/learning/quiz/finished.html:88
+msgid "Finish Quiz"
+msgstr ""
+
+#: learning/templates/learning/quiz/question.html:30
+#, python-format
+msgid "%(num)s. %(text)s"
+msgstr ""
+
+#: learning/templates/learning/quiz/question.html:67
+#: learning/templates/learning/quiz/question.html:73
+msgid "Back"
+msgstr ""
+
+#: learning/templates/learning/quiz/question.html:81
+msgid "Next"
+msgstr ""
+
+#: learning/templates/learning/quiz/question.html:88
+msgid "Score Quiz"
+msgstr ""
+
+#: learning/templates/learning/quiz/start.html:43
+msgid "Close Quiz"
+msgstr ""
+
+#: learning/templates/learning/quiz/start.html:51
+msgid "Begin"
+msgstr ""
+
+#: learning/views.py:23
+msgid "No courses where found."
+msgstr ""
+
+#: learning/views.py:28
+msgid "No locked courses where found."
+msgstr ""
+
+#: learning/views.py:59
+msgid "Access Denied: Course prerequisites not met."
+msgstr ""
+
+#: mygoals/templates/mygoals/complete/view.html:13
+msgid "Congratulations"
+msgstr ""
+
+#: mygoals/templates/mygoals/complete/view.html:14
+msgid "You completed your goal, this is awesome! "
+msgstr ""
+
+#: mygoals/templates/mygoals/complete/view.html:18
+msgid "You've Earned 25 xp"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete.html:18
+#: mygoals/templates/mygoals/final/complete.html:18
+#: mygoals/templates/mygoals/savings/complete.html:18
+msgid "No"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete.html:19
+#: mygoals/templates/mygoals/final/complete.html:19
+#: mygoals/templates/mygoals/savings/complete.html:19
+msgid "Yes"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete.html:50
+#: mygoals/templates/mygoals/credit/view.html:82
+#: mygoals/templates/mygoals/final/complete.html:49
+#: mygoals/templates/mygoals/final/view.html:87
+#: mygoals/templates/mygoals/savings/view.html:84
+msgid "Great you've set a goal!"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete.html:51
+#: mygoals/templates/mygoals/credit/view.html:83
+#: mygoals/templates/mygoals/final/complete.html:50
+#: mygoals/templates/mygoals/final/view.html:88
+#: mygoals/templates/mygoals/savings/view.html:85
+msgid "Once you confirm this goal you cannot change it for at least 30 days"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete.html:55
+#: mygoals/templates/mygoals/credit/view.html:87
+#: mygoals/templates/mygoals/final/complete.html:54
+#: mygoals/templates/mygoals/final/view.html:92
+#: mygoals/templates/mygoals/savings/view.html:89
+msgid "Lock Goal"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete_js.html:34
+msgid "An unknown error occured when credit goal, please see log."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete_js.html:45
+#: mygoals/templates/mygoals/credit/view_js.html:101
+#: mygoals/templates/mygoals/final/complete_js.html:49
+#: mygoals/templates/mygoals/final/view_js.html:95
+#: mygoals/templates/mygoals/savings/complete_js.html:45
+#: mygoals/templates/mygoals/savings/complete_js.html:56
+#: mygoals/templates/mygoals/savings/view_js.html:102
+msgid "An unknown error occured when saving goal, please see log."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/complete_js.html:53
+#: mygoals/templates/mygoals/credit/view_js.html:109
+#: mygoals/templates/mygoals/final/complete_js.html:57
+#: mygoals/templates/mygoals/final/view_js.html:103
+#: mygoals/templates/mygoals/savings/complete_js.html:64
+#: mygoals/templates/mygoals/savings/view_js.html:110
+msgid "An unknown error occured when fetching goal, please see log."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:17
+msgid "I want to raise my credit score by..."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:22
+msgid "number of points"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:23
+msgid "Number of points"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:24
+msgid "In..."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:31
+#: mygoals/templates/mygoals/savings/view.html:31
+msgid "time period"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:32
+#: mygoals/templates/mygoals/savings/view.html:32
+msgid "Time period"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:50
+#: mygoals/templates/mygoals/final/view.html:55
+#: mygoals/templates/mygoals/savings/view.html:51
+#, python-format
+msgid "Goal Locked (%(days_remaining)s days)"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view.html:52
+#: mygoals/templates/mygoals/final/view.html:57
+#: mygoals/templates/mygoals/savings/view.html:53
+msgid "Set My Goal!"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view_js.html:36
+msgid "Please enter the number of credit points you want to earn (blue box)"
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view_js.html:42
+msgid "Please enter your credit period."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view_js.html:48
+#: mygoals/templates/mygoals/final/view_js.html:42
+msgid "Please enter your credit time."
+msgstr ""
+
+#: mygoals/templates/mygoals/credit/view_js.html:69
+#: mygoals/templates/mygoals/final/view_js.html:63
+#: mygoals/templates/mygoals/savings/view_js.html:70
+msgid "Unknown goal selected."
+msgstr ""
+
+#: mygoals/templates/mygoals/failed/view.html:13
+msgid "Sorry"
+msgstr ""
+
+#: mygoals/templates/mygoals/failed/view.html:14
+msgid "Do not worry! There is always next time. Please try again!"
+msgstr ""
+
+#: mygoals/templates/mygoals/final/complete_js.html:37
+msgid "Final"
+msgstr ""
+
+#: mygoals/templates/mygoals/final/complete_js.html:38
+msgid "An unknown error occured when final goal, please see log."
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view.html:17
+#: mygoals/templates/mygoals/savings/view.html:17
+msgid "I want to save..."
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view.html:22
+#: mygoals/templates/mygoals/savings/view.html:22
+msgid "amount in dollars"
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view.html:23
+#: mygoals/templates/mygoals/savings/view.html:23
+msgid "Amount (to the nearest dollar)"
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view.html:24
+msgid "For..."
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view.html:34
+msgid "Education"
+msgstr ""
+
+#: mygoals/templates/mygoals/final/view_js.html:36
+msgid "Please enter saving amount in dollars (green box)"
+msgstr ""
+
+#: mygoals/templates/mygoals/savings/view.html:24
+msgid "Every..."
+msgstr ""
+
+#: mygoals/templates/mygoals/savings/view_js.html:37
+msgid "Please enter saving amount in dollars (red box)"
+msgstr ""
+
+#: mygoals/templates/mygoals/savings/view_js.html:43
+msgid "Please enter your savings period."
+msgstr ""
+
+#: mygoals/templates/mygoals/savings/view_js.html:49
+msgid "Please enter your savings time."
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:6
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s every %(times)s weeks\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:10
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s every %(times)s months\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:22
+#, python-format
+msgid ""
+"\n"
+"                \"I want to raise my credit points by %(points)s every "
+"%(times)s weeks\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:26
+#, python-format
+msgid ""
+"\n"
+"                \"I want to raise my credit points by %(points)s every "
+"%(times)s months\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:38
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for a House\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:42
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for Business\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:46
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for a Vacation\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:50
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for Retirement\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:54
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for General Savings\"\n"
+"            "
+msgstr ""
+
+#: mygoals/templates/templatetags/show_goal_text.html:58
+#, python-format
+msgid ""
+"\n"
+"                \"I want to save $%(amount)s for %(other_want)s\"\n"
+"            "
+msgstr ""
