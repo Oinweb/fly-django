@@ -408,6 +408,9 @@
 
 /* Page Content - Learning - course quiz
  * -------------------------- */
+#id_question li, #id_question li h4 {
+    white-space: normal !important;
+}
 .ui-content div{
     text-shadow: none;
 }
