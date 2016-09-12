@@ -32,7 +32,11 @@
             ajax_pick(letter);
                              
             // Update the View.
-            $(this).addClass('selected');
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                $(this).addClass('selected');
+            }
         });
                   
         bindEventTouch($('#quiz-answers'));
