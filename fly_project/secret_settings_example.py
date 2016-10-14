@@ -26,7 +26,7 @@ SECRET_DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
 # Facebook ( http://developers.facebook.com )
 SECRET_SOCIAL_AUTH_FACEBOOK_KEY = 'your app client id'
 SECRET_SOCIAL_AUTH_FACEBOOK_SECRET = 'your app client secret'
-SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', ] 
+SECRET_SOCIAL_AUTH_FACEBOOK_SCOPE = ['public_profile', 'email', ] 
 SECRET_SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'us_EN'}
 
 # Twitter ( https://apps.twitter.com/app/new )

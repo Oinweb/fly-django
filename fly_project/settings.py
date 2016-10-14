@@ -150,6 +150,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Backends
+#
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',    # Custom
+    'social.backends.google.GoogleOAuth2',        # Custom
+    'social.backends.twitter.TwitterOAuth',       # Custom
+    'django.contrib.auth.backends.ModelBackend',  # Custom
+)
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -203,7 +214,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-
 # Email
 #
 
@@ -213,7 +223,6 @@ MAILGUN_SERVER_NAME = SECRET_MAILGUN_SERVER_NAME
 DEFAULT_FROM_EMAIL = SECRET_DEFAULT_FROM_EMAIL
 DEFAULT_TO_EMAIL = SECRET_DEFAULT_TO_EMAIL
 APPEND_SLASH=False
-
 
 
 # Error Emailing
@@ -244,7 +253,6 @@ LOGGING = {
         },
     },
 }
-
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
@@ -281,15 +289,9 @@ SOCIAL_AUTH_TWITTER_SECRET = SECRET_SOCIAL_AUTH_TWITTER_SECRET
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = SECRET_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
 
-AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.twitter.TwitterOAuth',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 LOGIN_REDIRECT_URL = '/dashboard'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/dashboard'
+
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 # django-cors-headers (Third Party)                                           #
