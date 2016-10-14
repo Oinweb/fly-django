@@ -6,12 +6,12 @@
     {% else %}
         <img src="{% static 'img/photo.png' %}" class="user-image" />
     {% endif %}
-    <h5 class="greeting">{% trans "Hello" %}, {{ request.user.first_name }} </h5>
+    <h5 class="greeting">{% trans "Hello" %}</h5>
     <ul data-role="listview">
         <li>
             <a onclick="window.location='{% url 'dashboard' %}';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
         </li>
-        
+
         <li data-icon="carat-d">
             <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
             <ul data-role="listview" id="goal-menu" style="display:none;">
@@ -21,34 +21,34 @@
                 <li><a onclick="window.location='{% url 'final_goals' %}'">{% trans "Long Term" %}</a></li>
             </ul>
         </li>
-        
+
         <li>
             <a onclick="window.location='{% url 'learning' %}';"><i class="fa fa-edit fa-fw"></i> {% trans "Learning" %}</a>
         </li>
-        
+
         <li>
             <a onclick="window.location='{% url 'resources' %}';"><i class="fa fa-link fa-fw"></i> {% trans "Resources" %}</a>
         </li>
-        
+
         <li>
             <a onclick="window.location='{% url 'account' %}';"><i class="fa fa-user fa-fw"></i> {% trans "Profile" %}</a>
         </li>
-        
+
         <li>
             <a onclick="window.location='{% url 'notifications' %}';"><i class="fa fa-cog fa-fw"></i> {% trans "Notifications" %}</a>
         </li>
-        
+
         <li>
             <a onclick="ajax_logoff();"><i class="fa fa-power-off fa-fw"></i> {% trans "Log Out" %}</a>
         </li>
-        
+
         <li data-role="list-divider">
         </li>
-        
+
         <li>
             <a onclick="window.location='{% url 'help' %}';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
         </li>
-        
+
         <li data-icon="delete">
             <a data-rel="close"><i class="fa fa-ban fa-fw fa-align-left"></i>Close Menu</a>
         </li>

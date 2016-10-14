@@ -21,7 +21,8 @@ function loadUserData(){
     var img_url = localStorage.getItem('img_url');
 
     $('.user-image').attr('src',img_url);
-    $('.greeting').text('Hello, ' + name);
+    $('.greeting').text('Hello, ' + name); // BUGFIX: Fix.
+    $('.greeting').text('Hello');
 }
 
 function getXP(){
