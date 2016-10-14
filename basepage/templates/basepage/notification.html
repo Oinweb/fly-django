@@ -29,7 +29,7 @@
             <!-- Description Placeholder -->
         </p>
         <p><i class="fa fa-3x fa-thumbs-up"></i></p>
-        
+
         <button onclick="ajax_share_and_reload();" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-comment">{% trans "Share" %}</button>
         <button onclick="ajax_delete_this_notification(); $('#badge-popup').popup('close');" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b">{% trans "OK" %}</button>
     </div>
@@ -44,7 +44,7 @@
     {
         var criteria = Array();
         criteria.push({ 'user': {{ request.user.id }} });
-        
+
         filter_notifications(
             criteria,
             function(json_result) {
@@ -57,7 +57,7 @@
                             popup_new_badge_modal(notification);
                         }
                         console.log("Create Popup of Type: "+type);
-                                                     
+
                         // Stop the current iteration which will result handling
                         // only a single notification at a time.
                         return false;
@@ -80,7 +80,7 @@
         var id = notification['id'];
         var num = notification['xplevel_num'];
         var title = notification['xplevel_title'];
-        
+
         // Load up the UI on the page.
         $('#id_levelup_num').html("Level "+num);
         $('#id_levelup_title').html(title);
@@ -94,7 +94,7 @@
         var id = notification['id'];
         var description = notification['description'];
         var title = notification['title'];
-    
+
         // Load up the UI on the page.
         $('#id_new_badge_description').html(description);
         $('#id_new_badge_title').html(title);
@@ -108,7 +108,7 @@
      */
     function ajax_delete_this_notification() {
         var id = parseInt( $('#notification_id').val() );
-        
+
         // Delete the notification in the database.
         delete_notification(
             id,
@@ -127,8 +127,9 @@
      */
     function ajax_share_and_reload(){
         var id = parseInt( $('#notification_id').val() );
-        window.location ="/{{ request.language }}/share/"+id+"/";
+        var url = "{% url 'share_page' 0 %}";
+        var details_url = url.replace("0", parseInt(id) );
+        window.location = details_url;
     }
 
 </script>
-

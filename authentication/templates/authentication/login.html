@@ -10,20 +10,20 @@
             <div class="container" id="inner-login-container">
                 {% include "authentication/login_js.html" %}
                 <img src="{% static 'img/oin-fly-logo.png' %}" id="login-logo" alt="bizmula-logo" style="" />
-                    
+
                 <form style="width:280px;margin:auto;">
                     <input type="text" placeholder="{% trans 'Email Address' %}" id="id_email" />
                     <input type="password" placeholder="{% trans 'Password' %}" id="id_password"  />
-                    <input type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
+                    <input id="id_login_btn" type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
                 </form>
                 <div class="clearfix"></div>
-                <a href="{% url 'register' %}" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
+                <a id="id_register_btn" href="{% url 'register' %}" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
             </div><!-- container -->
         </div>
     </div>
-    
+
     {% include "basepage/footer.html" %}
-    
+
     <!-- Error Message Modal -->
     <div data-role="popup" id="login-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
         <div>
@@ -31,7 +31,7 @@
             <p>
                 <div id="id_error"></div>
             </p>
-            <button data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#login-popup').popup('close');">{% trans "Close" %}</button>
+            <button id="id_ok_btn" data-role="button" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onclick="$('#login-popup').popup('close');">{% trans "Close" %}</button>
         </div>
     </div>
     <!-- end Error Message Modal -->

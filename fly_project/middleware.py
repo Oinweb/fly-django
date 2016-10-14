@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.utils.translation import get_language
 from django.contrib.auth.models import User
@@ -118,7 +119,7 @@ class CustomSocialAuthExceptionMiddleware(SocialAuthExceptionMiddleware):
         if hasattr(social_exceptions, 'AuthCanceled'):
             print(exception)
             language = get_language()
-            url = reverse('public_authentication_user_login')
+            url = reverse('authentication')
             return HttpResponseRedirect(url)
         else:
             print(exception)

@@ -1,5 +1,14 @@
 {% load staticfiles i18n %}
 <script>
+   $(document).ready(function () {
+       // Detect "Enter" button clicked and then auto-click on our submit button.
+       $(document).keypress(function(event){
+           if(event.keyCode == 13){
+               $("#id_login_btn").click();
+           }
+       });
+   }); // end Document Start
+
     /**
      *
      */
@@ -21,7 +30,7 @@
             $('#id_error').html('{% trans "Please enter your password." %}');
             return;
         }
-        
+
         // Login into our portal for editing customer information.
         ajax_login2(
             $('#id_email').val(),

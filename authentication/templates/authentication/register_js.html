@@ -1,5 +1,14 @@
 {% load staticfiles i18n %}
 <script>
+    $(document).ready(function () {
+        // Detect "Enter" button clicked and then auto-click on our submit button.
+        $(document).keypress(function(event){
+            if(event.keyCode == 13){
+                $("#id_register_btn").click();
+            }
+        });
+    }); // end Document Start
+
     function ajax_register() {
         // Defensive Code: Name handling.
         if( $('#id_first_name').val() == "" ){
@@ -12,7 +21,7 @@
             $('#id_error').html('{% trans "Please enter your last name." %}');
             return;
         }
-        
+
         // Defensive Code: The following code will ensure the proper
         //                 validation occured on the inputted entries.
         if ($('#id_email').val() == '') {
@@ -25,7 +34,7 @@
             $('#id_error').html('{% trans "Please enter a valid email address." %}');
             return;
         }
-        
+
         // Defensive Code: Password handling.
         if ( $('#id_password').val() == "" ){
             $('#login-popup').popup('open');
@@ -42,7 +51,7 @@
             $('#id_error').html('{% trans "Passwords do not match." %}');
             return;
         }
-        
+
         // Defensive Code: Ensure that the user agrees to the terms before proceeding.
         //var is_tsa_checked = $('#id_register_tos2').is(':checked');
         //if (is_tsa_checked == false) {
@@ -50,27 +59,27 @@
             //$('.alert-danger').show();
             //return;
         //}
-        
+
         ajax_new_user(
             function(json_result) {
-                      
+
                 console.log(json_result);
                 ajax_login(
                     $('#id_email').val(),
                     $('#id_password').val(),
                     function(login_json_result) {
-                           
+
                         console.log(login_json_result);
                         window.location = "{% url 'dashboard' %}";
-                           
+
                     },
                     function(login_error_json_result) {
-                           
+
                         console.log(login_error_json_result);
-                           
+
                     }
                 ); // end Login
-                      
+
             },
             function(error_json_result) {
                 // Convert the error json into string.
@@ -107,14 +116,14 @@
             }
         ); // end New User.
     }
-    
+
     function ajax_new_user(success_callback, error_callback) {
         var username = $('#id_email').val();
         var email = $('#id_email').val();
         var password = $('#id_password').val();
         var first_name = $('#id_first_name').val();
         var last_name = $('#id_last_name').val();
-        
+
         registration(
             username, email, password, first_name, last_name,
             function(json_result) {
@@ -124,7 +133,7 @@
                 } else {
                     error_callback(json_result['errors']);
                 }
-                     
+
             },
             function(error_json) {
                 error_callback(error_json['errors']);
