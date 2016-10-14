@@ -147,4 +147,4 @@ env/
 #—————————————————————————————
 # Application Specific Ignores
 #—————————————————————————————
-src/fly_project/fly_project/secret_settings.py
+fly_project/secret_settings.py
