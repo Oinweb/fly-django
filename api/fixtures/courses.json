@@ -45,7 +45,7 @@
             "description_fr": null,
             "description_es": null,
             "video_url": "https://www.youtube.com/embed/pLPbgOOQUlo",
-            "duration": 30,
+            "duration": 5,
             "awarded_xp": 50,
             "has_prerequisites": false,
             "prerequisites": []
@@ -71,7 +71,7 @@
             "description_fr": null,
             "description_es": null,
             "video_url": "https://www.youtube.com/embed/FGW5V9Gnvvc",
-            "duration": 60,
+            "duration": 5,
             "awarded_xp": 50,
             "has_prerequisites": false,
             "prerequisites": []
@@ -123,7 +123,7 @@
             "description_fr": null,
             "description_es": null,
             "video_url": "https://www.youtube.com/embed/pLPbgOOQUlo",
-            "duration": 30,
+            "duration": 5,
             "awarded_xp": 50,
             "has_prerequisites": true,
             "prerequisites": [2]
@@ -149,7 +149,7 @@
             "description_fr": null,
             "description_es": null,
             "video_url": "https://www.youtube.com/embed/pLPbgOOQUlo",
-            "duration": 60,
+            "duration": 5,
             "awarded_xp": 50,
             "has_prerequisites": true,
             "prerequisites": [3]
