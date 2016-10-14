@@ -1,7 +1,7 @@
-![alt tag](https://github.com/Oinweb/py-fly/blob/master/docs/media/oin-fly-logo-small.png)
+![alt tag](https://github.com/Oinweb/fly-django/blob/master/docs/media/oin-fly-logo-small.png)
 
-# py-fly 
-[![Build Status](https://travis-ci.org/Oinweb/py-fly.svg?branch=master)](https://travis-ci.org/Oinweb/py-fly) [![Coverage Status](https://coveralls.io/repos/github/Oinweb/py-fly/badge.svg?branch=master)](https://coveralls.io/github/Oinweb/py-fly?branch=master)
+# fly-django
+[![Build Status](https://travis-ci.org/Oinweb/fly-django.svg?branch=master)](https://travis-ci.org/Oinweb/fly-django) [![Coverage Status](https://coveralls.io/repos/github/Oinweb/fly-django/badge.svg?branch=master)](https://coveralls.io/github/Oinweb/fly-django?branch=master)
 
 
 ## Description
@@ -21,7 +21,7 @@ You can support this project by testing the app, submitting tickets via GitHub, 
 * Postgres SQL DB 9.4+
 
 ## Dependencies
-See [requirements.txt](https://github.com/Oinweb/py-fly/blob/master/requirements.txt) for more information.
+See [requirements.txt](https://github.com/Oinweb/fly-django/blob/master/requirements.txt) for more information.
 
 ## Build Instructions
 ### Application
@@ -30,8 +30,8 @@ For Linux, FreeBSD and OS X users, run these commands:
 1. First clone the project locally and then go into the directory
 
   ```bash
-  git clone https://github.com/Oinweb/py-fly.git
-  cd py-fly
+  git clone https://github.com/Oinweb/fly-django.git
+  cd fly-django
   ```
 
 
@@ -48,8 +48,8 @@ For Linux, FreeBSD and OS X users, run these commands:
   ```bash
   virtualenv env
   ```
-  
-  
+
+
 3. Activate virtual environment
 
   ```bash
@@ -63,7 +63,7 @@ For Linux, FreeBSD and OS X users, run these commands:
   ```bash
   export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
   ```
-  
+
 
 5. Now lets install the libraries this project depends on.
 
@@ -84,7 +84,7 @@ We are almost done! Just follow these instructions and the database will be setu
 Run the following command to create your custom settings instance. Note: Please write all your application passwords here as it won't be tracked on git.
 
   ```bash
-  cd src/fly_project/fly_project
+  cd fly_project
   cp secret_settings_example.py secret_settings.py
   ```
 
@@ -92,13 +92,13 @@ Run the following command to create your custom settings instance. Note: Please 
 Run the following commands to populate the database.
 
   ```bash
-  cd src/fly_project
-  python manage.py migrate 
+  cd ../
+  python manage.py migrate
   python manage.py setup_fly
   ```
 
 ## Usage
-To run the web-app, you’ll need to run the server instance and access the page from your browser. 
+To run the web-app, you’ll need to run the server instance and access the page from your browser.
 
 Start up the web-server:
 
@@ -114,9 +114,7 @@ In your web-browser, load up the following url
   http://127.0.0.1:8000/
   ```
 
-Congratulations, you are all setup to run the **py-fly**! Have fun coding!
+Congratulations, you are all setup to run the **fly-django**! Have fun coding!
 
 ## License
-**Py-fly** is licensed under the **Simplified BSD License**. See [LICENSE](https://github.com/Oinweb/py-fly/blob/master/LICENSE) for more information.
-
-
+**fly-django** is licensed under the **Simplified BSD License**. See [LICENSE](https://github.com/Oinweb/fly-django/blob/master/LICENSE) for more information.
