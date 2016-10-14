@@ -27,7 +27,7 @@
             $('#id_email').val(),
             $('#id_password').val(),
             function(json_result) {
-                window.location = '/{{ request.language }}/dashboard';
+                window.location = "{% url 'dashboard' %}";
             },
             function(json_error) {
                 // Convert the error json into string.

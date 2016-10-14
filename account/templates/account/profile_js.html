@@ -28,7 +28,7 @@
                     // Add a minor deley before redirecting to the home page.
                     setTimeout(function(){
                         console.log("Delete now"); // For debugging purposes only.
-                        window.location="/{{ request.language }}/"; // Redirect.
+                        window.location="{% url 'landpage' %}"; // Redirect.
                     }, 300);
                 },
                 function(error_json) {

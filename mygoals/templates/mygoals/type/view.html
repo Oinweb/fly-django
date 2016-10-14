@@ -32,9 +32,9 @@
             <img src="{% static 'img/oinweb-fly-goals-menu-icon.png' %}" />
             <h2>{% trans "My Goals" %}</h2>
             <p>{% trans "Set goals for savings and credit score" %}</p>
-            <a onclick="window.location='/{{ request.language }}/mygoals/savings'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Savings" %}</a>
-            <a onclick="window.location='/{{ request.language }}/mygoals/credit'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Credit" %}</a>
-            <a onclick="window.location='/{{ request.language }}/mygoals/final'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Long Term" %}</a>
+            <a onclick="window.location='{% url 'savings_goals' %}'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Savings" %}</a>
+            <a onclick="window.location='{% url 'credit_goals' %}'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Credit" %}</a>
+            <a onclick="window.location='{% url 'final_goals' %}'" class="ui-btn ui-btn-a ui-icon-arrow-r ui-btn-icon-left ui-shadow-icon ui-corner-all">{% trans "Long Term" %}</a>
         </div>
         
         </div>

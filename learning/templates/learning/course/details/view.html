@@ -33,7 +33,7 @@
                 <button id="btnTakeQuiz"
                  data-icon="info"
                      class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-b ui-corner-all ui-shadow"
-                   onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/';">
+                   onclick="window.location='{% url 'quiz' quiz.id %}';">
                     <span>{% trans "Take Quiz" %}</span>
                 </button>
             </div>

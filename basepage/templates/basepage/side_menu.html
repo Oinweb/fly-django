@@ -9,33 +9,33 @@
     <h5 class="greeting">{% trans "Hello" %}, {{ request.user.first_name }} </h5>
     <ul data-role="listview">
         <li>
-            <a onclick="window.location='/{{ request.language }}/dashboard';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
+            <a onclick="window.location='{% url 'dashboard' %}';"><i class="fa fa-dashboard fa-fw"></i> {% trans "Dashboard" %}</a>
         </li>
         
         <li data-icon="carat-d">
             <a onclick="$('#goal-menu').toggle();"><i class="fa fa-bullseye fa-fw"></i> My Goals</a>
             <ul data-role="listview" id="goal-menu" style="display:none;">
-                <li><a onclick="window.location='/{{ request.language }}/mygoals';">{% trans "My Goals" %}</a></li>
-                <li><a onclick="window.location='/{{ request.language }}/mygoals/savings';">{% trans "Saving" %}</a></li>
-                <li><a onclick="window.location='/{{ request.language }}/mygoals/credit';">{% trans "Credit" %}</a></li>
-                <li><a onclick="window.location='/{{ request.language }}/mygoals/final'">{% trans "Long Term" %}</a></li>
+                <li><a onclick="window.location='{% url 'my_goals' %}';">{% trans "My Goals" %}</a></li>
+                <li><a onclick="window.location='{% url 'savings_goals' %}';">{% trans "Saving" %}</a></li>
+                <li><a onclick="window.location='{% url 'credit_goals' %}';">{% trans "Credit" %}</a></li>
+                <li><a onclick="window.location='{% url 'final_goals' %}'">{% trans "Long Term" %}</a></li>
             </ul>
         </li>
         
         <li>
-            <a onclick="window.location='/{{ request.language }}/learning';"><i class="fa fa-edit fa-fw"></i> {% trans "Learning" %}</a>
+            <a onclick="window.location='{% url 'learning' %}';"><i class="fa fa-edit fa-fw"></i> {% trans "Learning" %}</a>
         </li>
         
         <li>
-            <a onclick="window.location='/{{ request.language }}/resources';"><i class="fa fa-link fa-fw"></i> {% trans "Resources" %}</a>
+            <a onclick="window.location='{% url 'resources' %}';"><i class="fa fa-link fa-fw"></i> {% trans "Resources" %}</a>
         </li>
         
         <li>
-            <a onclick="window.location='/{{ request.language }}/account';"><i class="fa fa-user fa-fw"></i> {% trans "Profile" %}</a>
+            <a onclick="window.location='{% url 'account' %}';"><i class="fa fa-user fa-fw"></i> {% trans "Profile" %}</a>
         </li>
         
         <li>
-            <a onclick="window.location='/{{ request.language }}/notifications';"><i class="fa fa-cog fa-fw"></i> {% trans "Notifications" %}</a>
+            <a onclick="window.location='{% url 'notifications' %}';"><i class="fa fa-cog fa-fw"></i> {% trans "Notifications" %}</a>
         </li>
         
         <li>
@@ -46,7 +46,7 @@
         </li>
         
         <li>
-            <a onclick="window.location='/{{ request.language }}/help';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
+            <a onclick="window.location='{% url 'help' %}';"><i class="fa fa-question-circle fa-fw"></i> {% trans "Help" %}</a>
         </li>
         
         <li data-icon="delete">
@@ -62,7 +62,7 @@
     {
         sign_off(
             function(ok) {
-                 window.location='/{{ request.language }}/authentication';
+                 window.location="{% url 'authentication' %}";
             },
             function(bad) {
                  console.log(bad);

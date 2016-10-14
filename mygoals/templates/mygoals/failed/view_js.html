@@ -12,11 +12,11 @@
     function load_goal()
     {
         {% if goal_type == constants.SAVINGS_MYGOAL_TYPE %}
-            window.location = "/{{ request.language }}/mygoals/savings";
+            window.location = "{% url 'savings_goals' %}";
         {% elif goal_type == constants.CREDIT_MYGOAL_TYPE %}
-            window.location = "/{{ request.language }}/mygoals/credit";
+            window.location = "{% url 'credit_goals' %}";
         {% elif goal_type == constants.GOAL_MYGOAL_TYPE %}
-            window.location = "/{{ request.language }}/mygoals/final";
+            window.location = "{% url 'final_goals' %}";
         {% else %}
             alert("Unknown goal type detected.");
             console.log("{{ goal_type }}");

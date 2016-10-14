@@ -17,7 +17,7 @@
                     <input type="button" onclick="ajax_login();" value="{% trans 'Login' %}" class="ui-btn ui-corner-all" />
                 </form>
                 <div class="clearfix"></div>
-                <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
+                <a href="{% url 'register' %}" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans "Create Account" %}</span></a>
             </div><!-- container -->
         </div>
     </div>

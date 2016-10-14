@@ -50,7 +50,7 @@
                     {% endfor %}
                     </li>
                     <li>
-                        <a onclick="window.location='/{{ request.language }}/account#profile';" class="mt10 ui-btn ui-icon-check ui-btn-icon-left ui-btn-a " style="margin-top:10px;">
+                        <a onclick="window.location='{% url 'account' %}#profile';" class="mt10 ui-btn ui-icon-check ui-btn-icon-left ui-btn-a " style="margin-top:10px;">
                             <span>{% trans "OK" %}</span>
                         </a>
                         <script>

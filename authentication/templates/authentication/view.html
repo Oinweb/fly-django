@@ -29,8 +29,8 @@
                     <span>{% trans 'Login With Google' %}</span>
                 </a>
                 
-                <a href="/{{ request.language }}/login" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'E-Mail Login' %}</span></a>
-                <a href="/{{ request.language }}/register" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Register' %}</span></a>
+                <a href="{% url 'login' %}" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'E-Mail Login' %}</span></a>
+                <a href="{% url 'register' %}" class="ui-btn ui-corner-all" style="background-color: #666;padding-top:25px;"><span>{% trans 'Register' %}</span></a>
             </div><!-- container -->
         </div>
     </div>

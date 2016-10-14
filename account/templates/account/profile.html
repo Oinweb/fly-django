@@ -82,7 +82,7 @@
                 </li>
                 {% for enrollment in enrollments.all %}
                     <li>
-                        <a onclick="window.location='/{{ request.language }}/course/{{ enrollment.course.id }}/';">
+                        <a onclick="window.location='{% url 'course' enrollment.course.id %}';">
                             <span>{{ enrollment.course.title|escape|safe }}</span>
                             {% if enrollment.final_mark >= 75 %}
                                 <span class="fright" style="color:green;">{{ enrollment.final_mark }}%</span>
@@ -105,7 +105,7 @@
                     <h4>{% trans "FLY Badges" %}</h4>
                 </li>
                 <li>
-                    <a onclick="window.location='/{{ request.language }}/badges#badges';">{% trans "View Badges" %}</a>
+                    <a onclick="window.location='{% url 'badges' %}#badges';">{% trans "View Badges" %}</a>
                 </li>
             </ul>
         

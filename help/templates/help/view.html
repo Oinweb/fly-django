@@ -104,7 +104,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-                url: "/{{ request.language }}/help/contact",
+                url: "{% url 'help_contact' %}",
                 type: "post",
                 data: {
                     name: name,
