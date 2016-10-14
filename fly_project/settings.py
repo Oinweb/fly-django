@@ -90,7 +90,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'fly_project.middleware.AttachMeMiddleware',                   # Custom
     'fly_project.middleware.AttachTokenMiddleware',                # Custom
-    'fly_project.middleware.CustomSocialAuthExceptionMiddleware',  # Custom
+    # 'fly_project.middleware.CustomSocialAuthExceptionMiddleware',  # Custom
     # 'htmlmin.middleware.MarkRequestMiddleware',                    # Third Party (Future Release)
 ]
 

@@ -11,12 +11,25 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
-                          
+
             // Add a slight deley before detect any notications and load UI.
             setTimeout(function(){
                 handle_fly_notifications();
             }, 500);
         });
+
+        function begin_quiz(quiz_id, question_id) {
+            var url = "{% url 'question' 0 1 %}";
+            var details_url = url.replace(0, parseInt(quiz_id) );
+            details_url = details_url.replace(1, parseInt(question_id) );
+            window.location = details_url;
+        }
+
+        function close_quiz(course_id) {
+            var url = "{% url 'course' 0 %}";
+            var details_url = url.replace(0, parseInt(course_id) );
+            window.location = details_url;
+        }
     </script>
 
     <!-- CONTENT -->
@@ -30,14 +43,14 @@
         </div>
     </div>
     <!-- end CONTENT -->
-    
+
     <!-- Footer -->
     <div data-role="footer"
         data-theme="b"
      data-position="fixed"
            data-id="footer-nav"
     data-tap-toggle="false">
-        <button onclick="window.location='/{{ request.language }}/course/{{ quiz.course.id }}/';"
+        <button onclick="close_quiz({{ quiz.course.id }});"
                   class="btnCloseQuiz ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left fleft m5"
                   style="background-color:darkred;">
                 {% trans "Close Quiz" %}
@@ -45,7 +58,7 @@
         {% for question in questions %}
             {% if question.num == 1 %}
                 <button id="btnBeginQuiz"
-                   onclick="window.location='/{{ request.language }}/quiz/{{ quiz.id }}/question/{{ question.id }}/';"
+                   onclick="begin_quiz({{ quiz.id }}, {{ question.id }});"
                      class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
                      style="background-color:green;">
                     {% trans "Begin" %}

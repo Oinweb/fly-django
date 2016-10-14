@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
-                          
+
             // Add a slight deley before detect any notications and load UI.
             setTimeout(function(){
                 handle_fly_notifications();
@@ -28,7 +28,7 @@
             <div class="social-sharing">
                 <share-button></share-button>
             </div>
-            
+
             {% if quiz_submission.final_mark >= 100 %}
                 <h5>{% trans "Perfect Quiz!" %}</h5><p>{% trans "All the questions where correct!" %}</p>
             {% else %}
@@ -41,23 +41,23 @@
                             {% if question_submission.question.a_is_correct %}
                                 <p>A - {{ question_submission.question.a }}</p>
                             {% endif %}
-                            
+
                             {% if question_submission.question.b_is_correct %}
                             <p>B - {{ question_submission.question.b }}</p>
                             {% endif %}
-                            
+
                             {% if question_submission.question.c_is_correct %}
                             <p>C - {{ question_submission.question.c }}</p>
                             {% endif %}
-                            
+
                             {% if question_submission.question.d_is_correct %}
                             <p>D - {{ question_submission.question.d }}</p>
                             {% endif %}
-                            
+
                             {% if question_submission.question.e_is_correct %}
                             <p>E - {{ question_submission.question.e }}</p>
                             {% endif %}
-                            
+
                             {% if question_submission.question.f_is_correct %}
                             <p>F - {{ question_submission.question.f }}</p>
                             {% endif %}
@@ -76,13 +76,13 @@
      data-position="fixed"
            data-id="footer-nav"
     data-tap-toggle="false">
-        <button onclick="window.location='/{{ request.language }}/quiz/{{ quiz_id }}/';"
+        <button onclick="back_to_quiz();"
                   class="btnCloseQuiz ui-btn ui-corner-all ui-icon-edit ui-btn-icon-left fleft m5"
                   style="background-color:darkred;">
             {% trans "Try Again" %}
         </button>
         <button id="btnBeginQuiz"
-           onclick="window.location='/{{ request.language }}/course/{{ quiz_submission.course.id }}/';"
+           onclick="back_to_course_list();"
              class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
              style="background-color:green;">
             {% trans "Finish Quiz" %}
@@ -93,6 +93,22 @@
 </div><!-- /page -->
 
 <script>
+    /**
+     *  Function returns to the beginning of this quiz.
+     */
+    function back_to_course_list() {
+        window.location = "{% url 'learning' %}";
+    }
+
+    /**
+     *  Function returns to the course home.
+     */
+    function back_to_quiz() {
+        var url = "{% url 'quiz' 0 %}";
+        var details_url = url.replace("0", parseInt("{{ quiz_id }}") );
+        window.location = details_url;
+    }
+
 $(document).ready(function(){
     new ShareButton({
             networks: {

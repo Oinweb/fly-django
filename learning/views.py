@@ -38,14 +38,14 @@ def has_course_prerequisites(course, enrollments):
     """Function will return True/False depending on if pre-requisites are met."""
     if course.has_prerequisites == False:
         return True
-    
+
     prerequisite_count = 0
     for prerequisite in course.prerequisites.all():
         for enrollment in enrollments.all():
             if enrollment.course == prerequisite:
                 if enrollment.is_finished:
                     prerequisite_count += 1
-   
+
     return prerequisite_count == len(course.prerequisites.all())
 
 

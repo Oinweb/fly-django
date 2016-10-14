@@ -17,20 +17,20 @@
 
     $(document).ready(function(){
         loadUserData();
-            
+
         // Add a slight deley before detect any notications and load UI.
         setTimeout(function(){
             handle_fly_notifications();
         }, 500);
-                      
+
         $('.quiz-answer').on('click', function(){
-                  
+
             // Get the value of the letter.
             var letter = $(this).attr('value');
-                             
+
             // Update Model.
             ajax_pick(letter);
-                             
+
             // Update the View.
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
@@ -38,11 +38,11 @@
                 $(this).addClass('selected');
             }
         });
-                  
+
         bindEventTouch($('#quiz-answers'));
     });
-    
-    
+
+
     function ajax_pick(letter)
     {
         get_question_submission(
@@ -56,7 +56,7 @@
                     // Make the particular letter be False.
                     submission[letter] = 'True';
                 }
-                
+
                 // Update the letter.
                 set_question_submission(
                     submission,
@@ -75,14 +75,26 @@
     }
 
 
-    function ajax_submit_question(is_final)
+    function ajax_submit_question()
     {
-        // Load the 'Finished' page if 'is_final' is true.
-        if (is_final) {
-            window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/finished';
-        } else {
-            window.location='/{{ request.language }}/quiz/{{ quiz_id }}/question/{{ next }}/';
-        }
+        {% if next == None %}
+            window.location="{% url 'final_question' quiz_id %}";
+        {% else %}
+            window.location="{% url 'question' quiz_id next %}";
+        {% endif %}
+    }
+
+    function goto_quiz_question(quiz_id, question_id) {
+        var url = "{% url 'question' 0 1 %}";
+        var details_url = url.replace(0, parseInt(quiz_id) );
+        details_url = details_url.replace(1, parseInt(question_id) );
+        window.location = details_url;
+    }
+
+    function goto_quiz_home(quiz_id) {
+        var url = "{% url 'quiz' 0 %}";
+        var details_url = url.replace(0, parseInt(quiz_id) );
+        window.location = details_url;
     }
 
     var advance_tour = false;
