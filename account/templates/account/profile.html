@@ -57,7 +57,7 @@
                     <p>{% show_goal_text final_goal constants.GOAL_MYGOAL_TYPE %}</p>
                 </li>
             </ul>
-                
+
             <ul data-role="listview" data-inset="true" style="border-bottom-right-radius:0px;border-bottom-left-radius: 0px;">
                 <li data-role="list-divider" style="background-color:#92C472;color:#fff;">
                     <h4>{% trans "Goal History" %}</h4>
@@ -75,7 +75,7 @@
                     </div>
                 </li>
             </ul>
-        
+
             <ul data-role="listview" data-inset="true" id="courses">
                 <li data-role="list-divider" style="background-color:#E74C3C;color:#fff;">
                     <h4>{% trans "Courses Completed" %}</h4>
@@ -99,7 +99,7 @@
                     </li>
                 {% endfor %}
             </ul>
-        
+
             <ul data-role="listview" data-inset="true" id="badges">
                 <li data-role="list-divider" style="background-color:darkturquoise;color:#fff;">
                     <h4>{% trans "FLY Badges" %}</h4>
@@ -108,7 +108,7 @@
                     <a onclick="window.location='{% url 'badges' %}#badges';">{% trans "View Badges" %}</a>
                 </li>
             </ul>
-        
+            {% comment %}
             <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider" style="background-color:goldenrod;color:#fff;">
                     <h4>{% trans "Newsletter Signup" %}</h4>
@@ -127,18 +127,19 @@
                     </button>
                 </li>
             </ul>
+            {% endcomment %}
             <button data-icon="warning" id="btnDeleteAccount" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-a ui-corner-all ui-shadow">
                 <span>{% trans "Remove Account" %}</span>
             </button>
         </div>
     </div>
     <!-- /.content -->
-    
+
     <!-- Footer -->
     {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
     <!-- /.Footer -->
-    
+
     <!-- Delete Confirmation -->
     <div data-role="popup" id="confirm-popup" data-theme="a" class="ui-corner-all" data-transition="pop">
         <div class="text-center">
@@ -151,6 +152,6 @@
         </div>
     </div>
     <!-- /.Delete Confirmation -->
-    
+
 </div><!-- /.page -->
 {% endblock content %}
