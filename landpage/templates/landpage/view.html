@@ -5,11 +5,12 @@
 <head>
 
     <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% trans 'FLY will help you learn more about managing and achieving your financial goals.' %}">
-    <meta name="keywords" content="{% trans 'entrepreneurship, financial, literacy, youth, app, saving money, money, learning, teaching' %}">
-    <link type="text/plain" rel="author" href="https://www.flyapp.ca/humans.txt" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="FLY will help you learn more about managing and achieving your financial goals." name="description"/>
+    <meta content="entrepreneurship, financial, literacy, youth, app, saving money, money, learning, teaching" name="keywords"/>
+    <link href="https://www.flyapp.ca/humans.txt" rel="author" type="text/plain"/>  <link type="text/plain" rel="author" href="https://www.flyapp.ca/humans.txt" />
     <title>{% trans "Financial Literacy for Youth (FLY)" %}</title>
     <meta name="google-site-verification" content="Gg2YrP5ZKFloZgbCHfik8Oqb4YmUacganqGgu_6oGIw" />
 
@@ -398,7 +399,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert contact-status" style="display:none;">{% trans "No message sent yet" %}</div>
-                    <form name="sentMessage" id="contactForm" method="post" action="/{{ request.language }}/contact" novalidate>
+                    <form name="sentMessage" id="contactForm" method="post" action="{% url 'contact' %}" novalidate>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">
