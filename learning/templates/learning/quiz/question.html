@@ -77,12 +77,14 @@
         {% if next %}
             <!-- Load to Next Question page. -->
             <button onclick="ajax_submit_question();"
+                         id="id_next_btn"
                       class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-left btnNext fright m5">
                 {% trans "Next" %}
             </button>
         {% else %}
             <!-- Load to Finished page. -->
             <button onclick="ajax_submit_question();"
+                         id="id_next_btn"
                       class="fright m5 ui-btn ui-icon-check ui-btn-icon-left ui-corner-all"
                       style="background-color:green;">
                 {% trans "Score Quiz" %}

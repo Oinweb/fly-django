@@ -16,7 +16,14 @@
             setTimeout(function(){
                 handle_fly_notifications();
             }, 500);
-        });
+
+            // Detect "Enter" button clicked and then auto-click on our submit button.
+            $(document).keypress(function(event){
+                if(event.keyCode == 13){
+                    $("#btnBeginQuiz").click();
+                }
+            });
+        }); // end DOC START
 
         function begin_quiz(quiz_id, question_id) {
             var url = "{% url 'question' 0 1 %}";

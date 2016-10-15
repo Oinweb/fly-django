@@ -16,6 +16,13 @@
             setTimeout(function(){
                 handle_fly_notifications();
             }, 500);
+
+            // Detect "Enter" button clicked and then auto-click on our submit button.
+            $(document).keypress(function(event){
+                if(event.keyCode == 13){
+                    $("#btnFinishQuiz").click();
+                }
+            });
         });
     </script>
 
@@ -81,7 +88,7 @@
                   style="background-color:darkred;">
             {% trans "Try Again" %}
         </button>
-        <button id="btnBeginQuiz"
+        <button id="btnFinishQuiz"
            onclick="back_to_course_list();"
              class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left fright m5"
              style="background-color:green;">

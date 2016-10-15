@@ -40,7 +40,14 @@
         });
 
         bindEventTouch($('#quiz-answers'));
-    });
+
+        // Detect "Enter" button clicked and then auto-click on our submit button.
+        $(document).keypress(function(event){
+            if(event.keyCode == 13){
+                $("#id_next_btn").click();
+            }
+        });
+    }); // end DOC START
 
 
     function ajax_pick(letter)

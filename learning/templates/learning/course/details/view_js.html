@@ -1,5 +1,14 @@
 {% load staticfiles i18n %}
 <script>
+    $(document).ready(function () {
+        // Detect "Enter" button clicked and then auto-click on our submit button.
+        $(document).keypress(function(event){
+            if(event.keyCode == 13){
+                $("#btnTakeQuiz").click();
+            }
+        });
+    }); // end Document Start
+
     var advance_tour = false;
     var cur_bubble = 0;
     var tour_bubbles = [
