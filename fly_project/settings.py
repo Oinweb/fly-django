@@ -16,6 +16,8 @@ ugettext = lambda s: s
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Import variables for our application. Basically all imported variables
 # have a SECRET_* prefix.
@@ -41,6 +43,10 @@ ALLOWED_HOSTS = SECRET_ALLOWED_HOSTS
 # 'Sites Framework' requires this line.
 SITE_ID = 1
 
+# Automatically redirect to SSL.
+# Note: https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
+SECURE_SSL_REDIRECT = SECRET_SECURE_SSL_REDIRECT
+
 
 # Application definition
 
@@ -55,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     # Third Party Library
+    'storages',
     'corsheaders',
     'compressor',
     'rest_framework',
@@ -191,27 +198,67 @@ LOCALE_PATHS = (
 )
 
 
+# Amazon S3 Service
+# http://django-storages.readthedocs.org/en/latest/index.html
+
+AWS_STORAGE_BUCKET_NAME = SECRET_AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = SECRET_AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = SECRET_AWS_SECRET_ACCESS_KEY
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = '/static/'
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'fly_project.s3utils.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',  # Django-Compressor
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'fly_project.s3utils.MediaStorage'
+
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),
 ]
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
-# User uploaded content.
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-compressor (Third Party)                                             #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# http://django-compressor.readthedocs.org/en/latest/settings/
+
+#COMPRESS_ENABLED = True  # Uncomment to force compression.
+COMPRESS_ENABLED = SECRET_COMPRESS_ENABLED
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.rCSSMinFilter',]
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# django-htmlmin (Third Party)                                                #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# https://github.com/cobrateam/django-htmlmin
+
+HTML_MINIFY = SECRET_HTML_MINIFY
+KEEP_COMMENTS_ON_MINIFYING = SECRET_KEEP_COMMENTS_ON_MINIFYING
+
+
+# Django-Compressor + Django-Storages
 #
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+COMPRESS_STORAGE = 'fly_project.s3utils.CachedS3BotoStorage'
+
 
 
 # Email
@@ -308,22 +355,3 @@ CORS_ORIGIN_WHITELIST = (
     'mint.com',
     'play.google.com',
 )
-
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# django-compressor (Third Party)                                             #
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# http://django-compressor.readthedocs.org/en/latest/settings/
-
-#COMPRESS_ENABLED = True  # Uncomment to force compression.
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.rCSSMinFilter',]
-COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
-
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# django-htmlmin (Third Party)                                                #
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
-# https://github.com/cobrateam/django-htmlmin
-
-HTML_MINIFY = SECRET_HTML_MINIFY
-KEEP_COMMENTS_ON_MINIFYING = SECRET_KEEP_COMMENTS_ON_MINIFYING
