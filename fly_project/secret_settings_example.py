@@ -7,7 +7,6 @@ SECRET_DEBUG = True
 SECRET_SECRET_KEY = 'blahblahblahblahblahblahblahblah'
 SECRET_ALLOWED_HOSTS = ['*']
 SECRET_ADMINS = [('Bart', 'your_name@your_domain.com'),]
-SECRET_SECURE_SSL_REDIRECT = False
 
 
 #---------------------------------------------------------------------------#

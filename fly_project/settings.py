@@ -43,9 +43,6 @@ ALLOWED_HOSTS = SECRET_ALLOWED_HOSTS
 # 'Sites Framework' requires this line.
 SITE_ID = 1
 
-# Automatically redirect to SSL.
-# Note: https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
-SECURE_SSL_REDIRECT = SECRET_SECURE_SSL_REDIRECT
 
 
 # Application definition
