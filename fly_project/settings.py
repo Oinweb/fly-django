@@ -83,7 +83,7 @@ MIDDLEWARE = [
     'fly_project.middleware.AttachIPAddressMiddleware',            # Custom
     # 'fly_project.middleware.BanEnforcingMiddleware',               # Custom (Future Release)
     # 'fly_project.middleware.AutomaticBanningMiddleware',           # Custom (Future Release)
-    # 'htmlmin.middleware.HtmlMinifyMiddleware',                     # Third Party (Future Release)
+    'htmlmin.middleware.HtmlMinifyMiddleware',                     # Third Party
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -94,8 +94,8 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'fly_project.middleware.AttachMeMiddleware',                   # Custom
     'fly_project.middleware.AttachTokenMiddleware',                # Custom
-    # 'fly_project.middleware.CustomSocialAuthExceptionMiddleware',  # Custom
-    # 'htmlmin.middleware.MarkRequestMiddleware',                    # Third Party (Future Release)
+    'fly_project.middleware.CustomSocialAuthExceptionMiddleware',  # Custom
+    'htmlmin.middleware.MarkRequestMiddleware',                    # Third Party
 ]
 
 

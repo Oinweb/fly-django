@@ -6,7 +6,7 @@ django-appconf==1.0.2
 django-compressor==2.1
 django-cors-headers==1.2.2
 django-filter==0.15.2
-django-htmlmin==0.9.1
+django-htmlmin==0.10.0
 django-mailgun==0.9.1
 django-modeltranslation==0.12
 django-storages==1.5.1
