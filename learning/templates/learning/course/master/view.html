@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             loadUserData();
-                          
+
             // Add a slight deley before detect any notications and load UI.
             setTimeout(function(){
                 handle_fly_notifications();
@@ -25,7 +25,7 @@
             <div class="bubble tour-bubble" id="tour-bubble" style="display:none;"></div>
             {% for course in unlocked_courses.all %}
             <div class="my-boxes {% if course.type == 1 %} red-box {% elif course.type == 2 %} blue-box {% elif course.type == 3 %} green-box {% endif %} learning-box">
-                <img src="/static/{{ course.image }}" class="course-img" />
+                <img src="{% static course.image %}" class="course-img" />
                 <h3>{{ course.title|escape|safe }}</h3>
                 <p>{{ course.summary|escape|safe }}</p>
                 {% if course.duration == 5 %}
@@ -47,11 +47,11 @@
                 </button>
             </div>
             {% endfor %}
-        
+
             <h3 class="ui-bar-a" style="max-width:800px;padding:10px;margin:20px auto;font-family:Arial;border-radius:5px;">
                 {% trans "Locked Courses" %}
             </h3>
-        
+
             {% for course in locked_courses.all %}
             <div class="my-boxes learning-box {% if request.user|has_prerequisites:course == False %}locked{% endif %}">
                 {% if request.user|has_prerequisites:course == False %}
@@ -61,7 +61,7 @@
                         </button>
                     </div>
                 {% endif %}
-                <img src="/static/{{ course.image }}" class="course-img locked-img" />
+                <img src="{% static course.image %}" class="course-img locked-img" />
                 <h3>{{ course.title|escape|safe }}</h3>
                 <p>{{ course.summary|escape|safe }}</p>
                 {% if course.duration == 5 %}
@@ -86,7 +86,7 @@
             {% endfor %}
         </div>
     </div><!-- end CONTENT -->
-    
+
     {% include "basepage/notification.html" %}
     {% include "basepage/footer.html" %}
 
