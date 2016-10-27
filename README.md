@@ -25,7 +25,7 @@ See [requirements.txt](https://github.com/Oinweb/fly-django/blob/master/requirem
 
 ## Build Instructions
 ### Application
-For Linux, FreeBSD and OS X users, run these commands:
+For Linux, FreeBSD and MacOS users, run these commands:
 
 1. First clone the project locally and then go into the directory
 
@@ -37,13 +37,13 @@ For Linux, FreeBSD and OS X users, run these commands:
 
 2. Setup our virtual environment
 
-  **OS X Environment:**
+  **MacOS Environment:**
 
   ```bash
   python3 -m venv env
   ```
 
-  **Linux or FreeBSD Environment:**
+  **FreeBSD Environment:**
 
   ```bash
   virtualenv env
@@ -57,7 +57,7 @@ For Linux, FreeBSD and OS X users, run these commands:
   ```
 
 
-4. **OS X USERS ONLY:** If you are using *Postgres.app*, you’ll need to have *pg_config* setup in your *$PATH*. If you already have set this up, skip this step, else simply run this command in the console to set the path manually.
+4. **MacOS USERS ONLY:** If you are using *Postgres.app*, you’ll need to have *pg_config* setup in your *$PATH*. If you already have set this up, skip this step, else simply run this command in the console to set the path manually.
 
 
   ```bash
@@ -76,7 +76,7 @@ For Linux, FreeBSD and OS X users, run these commands:
 ### Database
 We are almost done! Just follow these instructions and the database will be setup for the application to use. Load up your postgres and enter the console. Then to create our database, enter:
 
-#### MacOS
+  **MacOS Environment:**
 
   ```sql
   create database fly_db;
@@ -86,7 +86,7 @@ We are almost done! Just follow these instructions and the database will be setu
   ALTER USER django CREATEDB;
   ```
 
-#### FreeBSD / Linux
+  **FreeBSD Environment:**
 
   ```sql
   /usr/local/bin/dropdb fly_db;
