@@ -1,7 +1,7 @@
 language: python
 
 python:
-  - "3.4"
+  - "3.5"
 
 addons:
   postgresql: "9.6"
@@ -22,8 +22,10 @@ install:
   - pip install django-modeltranslation==0.12
   - pip install django_compressor==2.1
   - pip install django-mailgun==0.9.1
-  - pip install django-htmlmin==0.9.1
+  - pip install django-htmlmin==0.10.0
   - pip install coveralls
+  - pip install django-storages==1.5.1
+  - pip install boto==2.42.0
 
 before_script:
   - psql -c 'create database fly_db;'
