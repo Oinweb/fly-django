@@ -1,4 +1,4 @@
-![alt tag](https://github.com/Oinweb/fly-django/blob/master/docs/media/oin-fly-logo-small.png)
+![alt tag](https://github.com/Oinweb/fly-django/blob/master/fly_project/static/img/oin-fly-logo-small.png)
 
 # fly-django
 [![Build Status](https://travis-ci.org/Oinweb/fly-django.svg?branch=master)](https://travis-ci.org/Oinweb/fly-django) [![Coverage Status](https://coveralls.io/repos/github/Oinweb/fly-django/badge.svg?branch=master)](https://coveralls.io/github/Oinweb/fly-django?branch=master)
@@ -17,8 +17,8 @@ You can support this project by testing the app, submitting tickets via GitHub, 
 - Gamification elements, such as badges, levels and XP
 
 ## System Requirements
-* Python 3.4.x+
-* Postgres SQL DB 9.4+
+* Python 3.5.x+
+* Postgres SQL DB 9.6+
 
 ## Dependencies
 See [requirements.txt](https://github.com/Oinweb/fly-django/blob/master/requirements.txt) for more information.
@@ -76,9 +76,38 @@ For Linux, FreeBSD and OS X users, run these commands:
 ### Database
 We are almost done! Just follow these instructions and the database will be setup for the application to use. Load up your postgres and enter the console. Then to create our database, enter:
 
+#### MacOS
+
   ```sql
   create database fly_db;
+  \c fly_db;
+  CREATE USER django WITH PASSWORD NULL;
+  GRANT ALL PRIVILEGES ON DATABASE fly_db to django;
+  ALTER USER django CREATEDB;
   ```
+
+#### FreeBSD / Linux
+
+  ```sql
+  /usr/local/bin/dropdb fly_db;
+  /usr/local/bin/createdb fly_db;
+  /usr/local/bin/psql fly_db;
+  CREATE USER freebsd WITH PASSWORD NULL;
+  GRANT ALL PRIVILEGES ON DATABASE fly_db to freebsd;
+  ALTER USER freebsd CREATEDB;
+  ```
+
+
+
+### Static Files Hosting
+Files are stored on a remote server. The service we are using is [Amazon Amazon Simple Storage Service](https://aws.amazon.com/s3/).
+
+
+
+### Email
+Emails are handled by communicating with a third-party API-based emailing service. The service we are using is [Mailgun](http://www.mailgun.com).
+
+
 
 ### Application + Database
 Run the following command to create your custom settings instance. Note: Please write all your application passwords here as it won't be tracked on git.
@@ -104,7 +133,6 @@ Start up the web-server:
 
   ```bash
   source env/bin/activate
-  cd src/fly_project
   python manage.py runserver
   ```
 
