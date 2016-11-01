@@ -34,7 +34,9 @@ class CachedS3BotoStorage(S3BotoStorage):
         # print id(content2)
         return name
 
-    def get_available_name(self, name):
-        if self.exists(name):
-            self.delete(name)
-        return name
+    def get_available_name(self, name, max_length=None):
+        """ Overwrite existing file with the same name. """
+        if self.file_overwrite:
+            name = self._clean_name(name)
+            return name
+        return super(CachedS3BotoStorage, self).get_available_name(name, max_length)
