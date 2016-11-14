@@ -18,16 +18,28 @@
     <!-- Content -->
     <div data-role="content">
         <div class="text-center">
-            <h1>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h1>
-            <p>ICON: {{ share.badge.icon }}<p>
-            <p>COLOUR: {{ share.badge.colour }}<p>
-            <p>LEVEL: {{ share.badge.level }}<p>
-            <p>TITLE: {{ share.badge.title }}<p>
-            <p>DESCRIPTION: {{ share.badge.description }}<p>
-            
-            <!-- Social Media Share -->
-            <div class="g-plusone" data-size="tall" data-annotation="none"></div>
-            
+            <ul data-inset="true" data-role="listview">
+                <li data-role="list-divider" style="background-color:#92C472;color:#fff;"><h4>Badge</h4></li>
+                <li style="margin-bottom:-10px;">
+                    <div class="ui-grid-a">
+                        <div class="badges text-center">
+                            <h2>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+
+                            <i class="fa fa-5x {{ share.badge.icon }}" style="{{ share.badge.colour }}"></i>
+                            <h3>{{ share.badge.title }}</h3>
+                            <h4>Level: {{ share.badge.level }}</h4>
+
+                            <p>{{ share.badge.description }}</p>
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+                    <!-- Social Media Share -->
+                    <div class="g-plusone" data-size="tall" data-annotation="none"></div>
+                </li>
+            </ul>
+
             <a class="twitter-share-button"
                 href="https://twitter.com/intent/tweet">
                 Tweet</a>
