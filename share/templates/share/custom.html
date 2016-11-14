@@ -25,16 +25,30 @@
     <!-- Content -->
     <div data-role="content">
         <div class="text-center">
-            <h1>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h1>
-            <p>{{ share.custom_title }}</p>
-            <p>{{ share.custom_description }}</p>
-            {% if share.custom_url %}
-                <p>{{ share.custom_url }}</p>
-            {% endif %}
-            
-            <!-- Social Media Share -->
-            <div class="g-plusone" data-size="tall" data-annotation="none"></div>
-            
+            <ul data-inset="true" data-role="listview">
+                <li data-role="list-divider" style="background-color:#2ad;color:#fff;"><h4>Share</h4></li>
+                <li style="margin-bottom:-10px;">
+                    <div class="ui-grid-a">
+                        <div class="badges text-center">
+                            <h2>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+
+                            <h3>{{ share.custom_title }}</h3>
+
+                            {% if share.custom_url %}
+                            <p>{{ share.custom_url }}</p>
+                            {% endif %}
+
+                            <p>{{ share.custom_description }}</p>
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+                    <!-- Social Media Share -->
+                    <div class="g-plusone" data-size="tall" data-annotation="none"></div>
+                </li>
+            </ul>
+
             <a class="twitter-share-button"
                 href="https://twitter.com/intent/tweet">
                 Tweet</a>
