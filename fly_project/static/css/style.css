@@ -257,17 +257,30 @@
     border-radius:5px;
     color:#fff;
 }
-.ui-content * .my-boxes.red-box{
-    background-color:#E66771 !important;
+
+.ui-content * .my-boxes.red-box {
+    background-color: #E66771 !important
 }
-.ui-content * .my-boxes.blue-box{
-    background-color:#779ECB !important;
+
+.ui-content * .my-boxes.blue-box {
+    background-color: #779ECB !important
 }
-.ui-content * .my-boxes.green-box{
-    background-color:#92C472 !important;
+
+.ui-content * .my-boxes.green-box {
+    background-color: #92C472 !important
 }
-.ui-content * .my-boxes{
-    text-align:center;
+.ui-content * .my-boxes.d-red-box {
+    background-color: #E74C3C !important
+}
+.ui-content * .my-boxes.s-blue-box {
+    background-color: #2ad !important
+}
+.ui-content * .my-boxes.d-yellow-box {
+    background-color: #daa520 !important
+}
+
+.ui-content * .my-boxes {
+    text-align: center
 }
 
 /* Page Content - Login
