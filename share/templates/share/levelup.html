@@ -25,13 +25,28 @@
     <!-- Content -->
     <div data-role="content">
         <div class="text-center">
-            <h1>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h1>
-            <p>TITLE: {{ share.xplevel.title }}</p>
-            <p>LEVEL: {{ share.xplevel.num }}</p>
-            
-            <!-- Social Media Share -->
-            <div class="g-plusone" data-size="tall" data-annotation="none"></div>
-            
+            <ul data-inset="true" data-role="listview">
+                <li data-role="list-divider" style="background-color:#779ECB;color:#fff;"><h4>XP Level</h4></li>
+                <li style="margin-bottom:-10px;">
+                    <div class="ui-grid-a">
+                        <div class="badges text-center">
+                            <h2>Congradulations {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+
+                            <i class="fa fa-5x fa-flag-checkered" style="color: #779ECB;"></i>
+                            <h3>{{ share.xplevel.title }}</h3>
+                            <h4>Level: {{ share.xplevel.num }}</h4>
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+
+                    <!-- Social Media Share -->
+                    <div class="g-plusone" data-size="tall" data-annotation="none"></div>
+
+                </li>
+            </ul>
+
             <a class="twitter-share-button"
                 href="https://twitter.com/intent/tweet">
                 Tweet</a>
